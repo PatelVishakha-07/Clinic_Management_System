@@ -15,6 +15,18 @@ namespace Clinic_Management_System
         public Patients()
         {
             InitializeComponent();
+            Dashboard dashboard = new Dashboard();
+            dashboard.Dock = DockStyle.Left;
+            PanelLeft.Controls.Add(dashboard);
+
+            MenuPatient menuPatient = new MenuPatient();    
+            menuPatient.Dock = DockStyle.Top;
+            PanelTop.Controls.Add(menuPatient);
+        }
+
+        private void Patients_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
