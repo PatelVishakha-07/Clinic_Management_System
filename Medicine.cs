@@ -10,16 +10,18 @@ using System.Windows.Forms;
 
 namespace Clinic_Management_System
 {
-    public partial class Dashboard : Form
+    public partial class Medicine : Form
     {
-        public Dashboard()
+        public Medicine()
         {
             InitializeComponent();
         }
 
-        private void Dashboard_Load(object sender, EventArgs e)
+        private void Medicine_Load(object sender, EventArgs e)
         {
-
+            Dashboard dashboard = new Dashboard();
+            dashboard.Dock = DockStyle.Left;
+            this.Controls.Add(dashboard);
         }
     }
 }
