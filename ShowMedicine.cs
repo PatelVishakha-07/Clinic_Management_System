@@ -10,10 +10,11 @@ using System.Windows.Forms;
 
 namespace Clinic_Management_System
 {
-    public partial class Medicine : Form
+    public partial class ShowMedicine : Form
     {
-        public Medicine()
+        public ShowMedicine()
         {
+            InitializeComponent();
             InitializeComponent();
             Dashboard dashboard = new Dashboard();
             dashboard.Dock = DockStyle.Left;
@@ -23,12 +24,6 @@ namespace Clinic_Management_System
 
             menuMedicine.Dock = DockStyle.Top;
             TopPanel.Controls.Add(menuMedicine);
-        }
-
-        private void Medicine_Load(object sender, EventArgs e)
-        {
-
-
         }
 
         private void TopPanel_Paint(object sender, PaintEventArgs e)
