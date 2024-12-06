@@ -22,6 +22,11 @@ namespace Clinic_Management_System
 
         }
 
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -32,9 +37,6 @@ namespace Clinic_Management_System
 
         }
 
-        //private void ShowMedicine_Load(object sender, EventArgs e)
-       // {
-
-       // }
+      
     }
 }

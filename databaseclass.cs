@@ -24,10 +24,11 @@ namespace Clinic_Management_System
             if (conn.State != ConnectionState.Open)
             {  conn.Open();
             }
-            if (string.IsNullOrEmpty(query))
+            if (!string.IsNullOrEmpty(query))
             {
                 dataAdapter = new NpgsqlDataAdapter(query, conn);
-                dataAdapter.Fill(ds = new DataSet());
+                ds = new DataSet();
+                dataAdapter.Fill(ds);
                 conn.Close();
                 return ds;
             }
@@ -39,7 +40,7 @@ namespace Clinic_Management_System
             {
                 conn.Open();
             }
-            if (string.IsNullOrEmpty(query))
+            if (!string.IsNullOrEmpty(query))
             {
                 cmd=new NpgsqlCommand(query, conn);
                 cmd.ExecuteNonQuery();
