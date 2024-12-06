@@ -30,8 +30,8 @@ namespace Clinic_Management_System
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Medicine medicine = new Medicine();
-            medicine.ShowDialog();
+            Patients patients = new Patients();
+            patients.ShowDialog();
             this.Close();
         }
     }

@@ -36,7 +36,7 @@ namespace Clinic_Management_System
 
         private void btnPatients_Click(object sender, EventArgs e)
         {
-
+            ShowForm(new Patients());
         }
     }
 }

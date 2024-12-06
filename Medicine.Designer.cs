@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            leftPanel = new Panel();
             TopPanel = new Panel();
+            leftPanel = new Panel();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -45,21 +45,21 @@
             panel1.Size = new Size(990, 760);
             panel1.TabIndex = 0;
             // 
+            // TopPanel
+            // 
+            TopPanel.Dock = DockStyle.Top;
+            TopPanel.Location = new Point(241, 0);
+            TopPanel.Name = "TopPanel";
+            TopPanel.Size = new Size(749, 90);
+            TopPanel.TabIndex = 1;
+            // 
             // leftPanel
             // 
             leftPanel.Dock = DockStyle.Left;
             leftPanel.Location = new Point(0, 0);
             leftPanel.Name = "leftPanel";
-            leftPanel.Size = new Size(220, 760);
+            leftPanel.Size = new Size(241, 760);
             leftPanel.TabIndex = 0;
-            // 
-            // TopPanel
-            // 
-            TopPanel.Dock = DockStyle.Top;
-            TopPanel.Location = new Point(220, 0);
-            TopPanel.Name = "TopPanel";
-            TopPanel.Size = new Size(770, 90);
-            TopPanel.TabIndex = 1;
             // 
             // Medicine
             // 
@@ -69,6 +69,7 @@
             ClientSize = new Size(990, 760);
             Controls.Add(panel1);
             Name = "Medicine";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Medicine";
             Load += Medicine_Load;
             panel1.ResumeLayout(false);
