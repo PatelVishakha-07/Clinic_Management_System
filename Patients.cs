@@ -19,12 +19,19 @@ namespace Clinic_Management_System
             dashboard.Dock = DockStyle.Left;
             PanelLeft.Controls.Add(dashboard);
 
-            MenuPatient menuPatient = new MenuPatient();    
+            MenuPatient menuPatient = new MenuPatient();
             menuPatient.Dock = DockStyle.Top;
             PanelTop.Controls.Add(menuPatient);
         }
 
         private void Patients_Load(object sender, EventArgs e)
+        {
+            ShowPatients showPatients = new ShowPatients();
+            PatientsPanel.Controls.Clear();
+            PatientsPanel.Controls.Add(showPatients);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
