@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
+            PanelMedicine = new Panel();
             TopPanel = new Panel();
             leftPanel = new Panel();
-            panel1.SuspendLayout();
+            PanelMedicine.SuspendLayout();
             SuspendLayout();
             // 
-            // panel1
+            // PanelMedicine
             // 
-            panel1.BackColor = Color.Transparent;
-            panel1.Controls.Add(TopPanel);
-            panel1.Controls.Add(leftPanel);
-            panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(990, 760);
-            panel1.TabIndex = 0;
+            PanelMedicine.BackColor = Color.Transparent;
+            PanelMedicine.Controls.Add(TopPanel);
+            PanelMedicine.Controls.Add(leftPanel);
+            PanelMedicine.Dock = DockStyle.Fill;
+            PanelMedicine.Location = new Point(0, 0);
+            PanelMedicine.Name = "PanelMedicine";
+            PanelMedicine.Size = new Size(990, 760);
+            PanelMedicine.TabIndex = 0;
             // 
             // TopPanel
             // 
@@ -67,18 +67,18 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.med1;
             ClientSize = new Size(990, 760);
-            Controls.Add(panel1);
+            Controls.Add(PanelMedicine);
             Name = "Medicine";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Medicine";
             Load += Medicine_Load;
-            panel1.ResumeLayout(false);
+            PanelMedicine.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Panel panel1;
+        private Panel PanelMedicine;
         private Panel leftPanel;
         private Panel TopPanel;
     }

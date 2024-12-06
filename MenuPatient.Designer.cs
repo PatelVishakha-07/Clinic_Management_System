@@ -61,6 +61,9 @@
             // 
             // showPatientsToolStripMenuItem
             // 
+            showPatientsToolStripMenuItem.Checked = true;
+            showPatientsToolStripMenuItem.CheckOnClick = true;
+            showPatientsToolStripMenuItem.CheckState = CheckState.Checked;
             showPatientsToolStripMenuItem.ForeColor = Color.Purple;
             showPatientsToolStripMenuItem.Name = "showPatientsToolStripMenuItem";
             showPatientsToolStripMenuItem.Size = new Size(182, 58);

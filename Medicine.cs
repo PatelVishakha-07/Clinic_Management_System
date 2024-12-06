@@ -27,8 +27,9 @@ namespace Clinic_Management_System
 
         private void Medicine_Load(object sender, EventArgs e)
         {
-            
-            
+            ShowMedicine showMedicine = new ShowMedicine();
+            PanelMedicine.Controls.Clear();
+            PanelMedicine.Controls.Add(showMedicine);
         }
     }
 }

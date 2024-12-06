@@ -39,6 +39,7 @@
             pictureBox1 = new PictureBox();
             btnPatients = new Button();
             panel2 = new Panel();
+            pictureBox4 = new PictureBox();
             PanelDashboard.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -46,6 +47,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
             // 
             // PanelDashboard
@@ -66,7 +69,7 @@
             panel5.Controls.Add(pictureBox3);
             panel5.Controls.Add(btnInHouse);
             panel5.Dock = DockStyle.Top;
-            panel5.Location = new Point(0, 312);
+            panel5.Location = new Point(0, 359);
             panel5.Name = "panel5";
             panel5.Size = new Size(241, 100);
             panel5.TabIndex = 1;
@@ -102,7 +105,7 @@
             panel4.Controls.Add(pictureBox2);
             panel4.Controls.Add(btnMedicine);
             panel4.Dock = DockStyle.Top;
-            panel4.Location = new Point(0, 212);
+            panel4.Location = new Point(0, 259);
             panel4.Name = "panel4";
             panel4.Size = new Size(241, 100);
             panel4.TabIndex = 2;
@@ -139,7 +142,7 @@
             panel3.Controls.Add(pictureBox1);
             panel3.Controls.Add(btnPatients);
             panel3.Dock = DockStyle.Top;
-            panel3.Location = new Point(0, 112);
+            panel3.Location = new Point(0, 159);
             panel3.Name = "panel3";
             panel3.Size = new Size(241, 100);
             panel3.TabIndex = 1;
@@ -173,11 +176,22 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(pictureBox4);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(241, 112);
+            panel2.Size = new Size(241, 159);
             panel2.TabIndex = 0;
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.Image = Properties.Resources.doctor;
+            pictureBox4.Location = new Point(56, 18);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(131, 114);
+            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox4.TabIndex = 0;
+            pictureBox4.TabStop = false;
             // 
             // Dashboard
             // 
@@ -194,6 +208,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ResumeLayout(false);
         }
 
@@ -210,5 +226,6 @@
         private Panel panel4;
         private PictureBox pictureBox2;
         private Button btnMedicine;
+        private PictureBox pictureBox4;
     }
 }

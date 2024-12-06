@@ -30,8 +30,8 @@
         {
             panel1 = new Panel();
             menuStrip1 = new MenuStrip();
-            showMedicinesToolStripMenuItem = new ToolStripMenuItem();
             addMedicineToolStripMenuItem = new ToolStripMenuItem();
+            showMedicinesToolStripMenuItem = new ToolStripMenuItem();
             panel1.SuspendLayout();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -51,12 +51,22 @@
             menuStrip1.Dock = DockStyle.Fill;
             menuStrip1.Font = new Font("Cascadia Code", 12F, FontStyle.Bold, GraphicsUnit.Point);
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { addMedicineToolStripMenuItem, showMedicinesToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { showMedicinesToolStripMenuItem, addMedicineToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(807, 67);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
+            // 
+            // addMedicineToolStripMenuItem
+            // 
+            addMedicineToolStripMenuItem.Checked = true;
+            addMedicineToolStripMenuItem.CheckOnClick = true;
+            addMedicineToolStripMenuItem.CheckState = CheckState.Checked;
+            addMedicineToolStripMenuItem.ForeColor = Color.FromArgb(0, 0, 192);
+            addMedicineToolStripMenuItem.Name = "addMedicineToolStripMenuItem";
+            addMedicineToolStripMenuItem.Size = new Size(170, 63);
+            addMedicineToolStripMenuItem.Text = "Add Medicine";
             // 
             // showMedicinesToolStripMenuItem
             // 
@@ -64,13 +74,6 @@
             showMedicinesToolStripMenuItem.Name = "showMedicinesToolStripMenuItem";
             showMedicinesToolStripMenuItem.Size = new Size(194, 63);
             showMedicinesToolStripMenuItem.Text = "Show Medicines";
-            // 
-            // addMedicineToolStripMenuItem
-            // 
-            addMedicineToolStripMenuItem.ForeColor = Color.FromArgb(0, 0, 192);
-            addMedicineToolStripMenuItem.Name = "addMedicineToolStripMenuItem";
-            addMedicineToolStripMenuItem.Size = new Size(170, 63);
-            addMedicineToolStripMenuItem.Text = "Add Medicine";
             // 
             // MenuMedicine
             // 
