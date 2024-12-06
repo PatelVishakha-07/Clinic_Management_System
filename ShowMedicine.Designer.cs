@@ -117,7 +117,7 @@
             Controls.Add(dataGridView1);
             Controls.Add(TopPanel);
             Controls.Add(leftPanel);
-            Name = "ShowMedicine";
+           // Name = "ShowMedicine";
             Text = "ShowMedicine";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

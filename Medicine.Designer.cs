@@ -41,33 +41,38 @@
             panel1.Controls.Add(leftPanel);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(990, 760);
+            panel1.Size = new Size(1238, 950);
             panel1.TabIndex = 0;
+            panel1.Paint += panel1_Paint;
             // 
             // TopPanel
             // 
             TopPanel.Dock = DockStyle.Top;
-            TopPanel.Location = new Point(241, 0);
+            TopPanel.Location = new Point(301, 0);
+            TopPanel.Margin = new Padding(4);
             TopPanel.Name = "TopPanel";
-            TopPanel.Size = new Size(749, 90);
+            TopPanel.Size = new Size(937, 112);
             TopPanel.TabIndex = 1;
             // 
             // leftPanel
             // 
             leftPanel.Dock = DockStyle.Left;
             leftPanel.Location = new Point(0, 0);
+            leftPanel.Margin = new Padding(4);
             leftPanel.Name = "leftPanel";
-            leftPanel.Size = new Size(241, 760);
+            leftPanel.Size = new Size(301, 950);
             leftPanel.TabIndex = 0;
             // 
             // Medicine
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.med1;
-            ClientSize = new Size(990, 760);
+            BackColor = Color.LightGray;
+            ClientSize = new Size(1238, 950);
             Controls.Add(panel1);
+            Margin = new Padding(4);
             Name = "Medicine";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Medicine";

@@ -57,8 +57,9 @@
             PanelDashboard.Controls.Add(panel2);
             PanelDashboard.Dock = DockStyle.Left;
             PanelDashboard.Location = new Point(0, 0);
+            PanelDashboard.Margin = new Padding(4);
             PanelDashboard.Name = "PanelDashboard";
-            PanelDashboard.Size = new Size(241, 749);
+            PanelDashboard.Size = new Size(301, 1006);
             PanelDashboard.TabIndex = 0;
             // 
             // panel5
@@ -66,17 +67,19 @@
             panel5.Controls.Add(pictureBox3);
             panel5.Controls.Add(btnInHouse);
             panel5.Dock = DockStyle.Top;
-            panel5.Location = new Point(0, 312);
+            panel5.Location = new Point(0, 390);
+            panel5.Margin = new Padding(4);
             panel5.Name = "panel5";
-            panel5.Size = new Size(241, 100);
+            panel5.Size = new Size(301, 125);
             panel5.TabIndex = 1;
             // 
             // pictureBox3
             // 
             pictureBox3.Image = Properties.Resources.add;
-            pictureBox3.Location = new Point(19, 22);
+            pictureBox3.Location = new Point(24, 28);
+            pictureBox3.Margin = new Padding(4);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(56, 56);
+            pictureBox3.Size = new Size(70, 70);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox3.TabIndex = 4;
             pictureBox3.TabStop = false;
@@ -88,10 +91,11 @@
             btnInHouse.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnInHouse.ForeColor = Color.White;
             btnInHouse.ImageAlign = ContentAlignment.TopLeft;
-            btnInHouse.Location = new Point(19, 22);
+            btnInHouse.Location = new Point(24, 28);
+            btnInHouse.Margin = new Padding(4);
             btnInHouse.Name = "btnInHouse";
             btnInHouse.Padding = new Padding(2, 0, 0, 0);
-            btnInHouse.Size = new Size(202, 56);
+            btnInHouse.Size = new Size(252, 70);
             btnInHouse.TabIndex = 5;
             btnInHouse.Text = "In-House Patients";
             btnInHouse.TextAlign = ContentAlignment.MiddleRight;
@@ -102,17 +106,19 @@
             panel4.Controls.Add(pictureBox2);
             panel4.Controls.Add(btnMedicine);
             panel4.Dock = DockStyle.Top;
-            panel4.Location = new Point(0, 212);
+            panel4.Location = new Point(0, 265);
+            panel4.Margin = new Padding(4);
             panel4.Name = "panel4";
-            panel4.Size = new Size(241, 100);
+            panel4.Size = new Size(301, 125);
             panel4.TabIndex = 2;
             // 
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources.medicine;
-            pictureBox2.Location = new Point(19, 22);
+            pictureBox2.Location = new Point(24, 28);
+            pictureBox2.Margin = new Padding(4);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(56, 56);
+            pictureBox2.Size = new Size(70, 70);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 2;
             pictureBox2.TabStop = false;
@@ -124,10 +130,11 @@
             btnMedicine.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnMedicine.ForeColor = Color.White;
             btnMedicine.ImageAlign = ContentAlignment.TopLeft;
-            btnMedicine.Location = new Point(19, 22);
+            btnMedicine.Location = new Point(24, 28);
+            btnMedicine.Margin = new Padding(4);
             btnMedicine.Name = "btnMedicine";
             btnMedicine.Padding = new Padding(2, 0, 0, 0);
-            btnMedicine.Size = new Size(202, 55);
+            btnMedicine.Size = new Size(252, 69);
             btnMedicine.TabIndex = 3;
             btnMedicine.Text = "Medicines";
             btnMedicine.TextAlign = ContentAlignment.MiddleRight;
@@ -139,17 +146,19 @@
             panel3.Controls.Add(pictureBox1);
             panel3.Controls.Add(btnPatients);
             panel3.Dock = DockStyle.Top;
-            panel3.Location = new Point(0, 112);
+            panel3.Location = new Point(0, 140);
+            panel3.Margin = new Padding(4);
             panel3.Name = "panel3";
-            panel3.Size = new Size(241, 100);
+            panel3.Size = new Size(301, 125);
             panel3.TabIndex = 1;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.patient;
-            pictureBox1.Location = new Point(12, 22);
+            pictureBox1.Location = new Point(15, 28);
+            pictureBox1.Margin = new Padding(4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(56, 56);
+            pictureBox1.Size = new Size(70, 70);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
@@ -161,10 +170,11 @@
             btnPatients.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnPatients.ForeColor = Color.White;
             btnPatients.ImageAlign = ContentAlignment.TopLeft;
-            btnPatients.Location = new Point(12, 22);
+            btnPatients.Location = new Point(15, 28);
+            btnPatients.Margin = new Padding(4);
             btnPatients.Name = "btnPatients";
             btnPatients.Padding = new Padding(2, 0, 0, 0);
-            btnPatients.Size = new Size(202, 55);
+            btnPatients.Size = new Size(252, 69);
             btnPatients.TabIndex = 1;
             btnPatients.Text = "Patients";
             btnPatients.TextAlign = ContentAlignment.MiddleRight;
@@ -175,17 +185,19 @@
             // 
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
+            panel2.Margin = new Padding(4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(241, 112);
+            panel2.Size = new Size(301, 140);
             panel2.TabIndex = 0;
             // 
             // Dashboard
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(PanelDashboard);
+            Margin = new Padding(4);
             Name = "Dashboard";
-            Size = new Size(730, 749);
+            Size = new Size(1260, 1006);
             Load += Dashboard_Load;
             PanelDashboard.ResumeLayout(false);
             panel5.ResumeLayout(false);
