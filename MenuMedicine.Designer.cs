@@ -30,8 +30,8 @@
         {
             panel1 = new Panel();
             menuStrip1 = new MenuStrip();
-            addMedicineToolStripMenuItem = new ToolStripMenuItem();
             showMedicinesToolStripMenuItem = new ToolStripMenuItem();
+            addMedicineToolStripMenuItem = new ToolStripMenuItem();
             panel1.SuspendLayout();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -41,9 +41,8 @@
             panel1.Controls.Add(menuStrip1);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1009, 84);
+            panel1.Size = new Size(807, 67);
             panel1.TabIndex = 0;
             // 
             // menuStrip1
@@ -55,34 +54,33 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { showMedicinesToolStripMenuItem, addMedicineToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(8, 2, 0, 2);
-            menuStrip1.Size = new Size(1009, 84);
+            menuStrip1.Size = new Size(807, 67);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             menuStrip1.ItemClicked += menuStrip1_ItemClicked;
-            // 
-            // addMedicineToolStripMenuItem
-            // 
-            addMedicineToolStripMenuItem.ForeColor = Color.Black;
-            addMedicineToolStripMenuItem.Name = "addMedicineToolStripMenuItem";
-            addMedicineToolStripMenuItem.Size = new Size(198, 80);
-            addMedicineToolStripMenuItem.Text = "Add Medicine";
             // 
             // showMedicinesToolStripMenuItem
             // 
             showMedicinesToolStripMenuItem.ForeColor = Color.Black;
             showMedicinesToolStripMenuItem.Name = "showMedicinesToolStripMenuItem";
-            showMedicinesToolStripMenuItem.Size = new Size(226, 80);
+            showMedicinesToolStripMenuItem.Size = new Size(194, 63);
             showMedicinesToolStripMenuItem.Text = "Show Medicines";
+            showMedicinesToolStripMenuItem.Click += showMedicinesToolStripMenuItem_Click;
+            // 
+            // addMedicineToolStripMenuItem
+            // 
+            addMedicineToolStripMenuItem.ForeColor = Color.Black;
+            addMedicineToolStripMenuItem.Name = "addMedicineToolStripMenuItem";
+            addMedicineToolStripMenuItem.Size = new Size(170, 63);
+            addMedicineToolStripMenuItem.Text = "Add Medicine";
             // 
             // MenuMedicine
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel1);
-            Margin = new Padding(4);
             Name = "MenuMedicine";
-            Size = new Size(1009, 84);
+            Size = new Size(807, 67);
             Load += MenuMedicine_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

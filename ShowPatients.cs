@@ -53,7 +53,12 @@ namespace Clinic_Management_System
 
                 dataGridView1.Columns.Add(linkColumn1);
                 dataGridView1.DataSource = ds.Tables[0];
-            }  
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

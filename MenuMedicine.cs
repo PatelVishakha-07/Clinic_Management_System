@@ -35,5 +35,11 @@ namespace Clinic_Management_System
         {
 
         }
+
+        private void showMedicinesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Medicine medicine= new Medicine();
+            
+        }
     }
 }

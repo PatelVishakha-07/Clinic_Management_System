@@ -29,17 +29,25 @@
         private void InitializeComponent()
         {
             MedicinePanel = new Panel();
-            TopPanel = new Panel();
-            leftPanel = new Panel();
+            topPanel = new Panel();
+            menuStrip1 = new MenuStrip();
+            showMedicinesToolStripMenuItem = new ToolStripMenuItem();
+            addMedicineToolStripMenuItem = new ToolStripMenuItem();
             panel1 = new Panel();
+            leftPanel = new Panel();
+            MainPanel = new Panel();
+            panel3 = new Panel();
             MedicinePanel.SuspendLayout();
+            topPanel.SuspendLayout();
+            menuStrip1.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // MedicinePanel
             // 
             MedicinePanel.BackColor = Color.Transparent;
-            MedicinePanel.Controls.Add(panel1);
-            MedicinePanel.Controls.Add(TopPanel);
+            MedicinePanel.Controls.Add(panel3);
+            MedicinePanel.Controls.Add(topPanel);
             MedicinePanel.Controls.Add(leftPanel);
             MedicinePanel.Dock = DockStyle.Fill;
             MedicinePanel.Location = new Point(0, 0);
@@ -48,13 +56,52 @@
             MedicinePanel.TabIndex = 0;
             MedicinePanel.Paint += panel1_Paint;
             // 
-            // TopPanel
+            // topPanel
             // 
-            TopPanel.Dock = DockStyle.Top;
-            TopPanel.Location = new Point(241, 0);
-            TopPanel.Name = "TopPanel";
-            TopPanel.Size = new Size(749, 90);
-            TopPanel.TabIndex = 1;
+            topPanel.Controls.Add(menuStrip1);
+            topPanel.Controls.Add(panel1);
+            topPanel.Dock = DockStyle.Top;
+            topPanel.Location = new Point(241, 0);
+            topPanel.Name = "topPanel";
+            topPanel.Size = new Size(749, 54);
+            topPanel.TabIndex = 3;
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.BackColor = Color.Gainsboro;
+            menuStrip1.Dock = DockStyle.Fill;
+            menuStrip1.Font = new Font("Cascadia Code", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            menuStrip1.ImageScalingSize = new Size(20, 20);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { showMedicinesToolStripMenuItem, addMedicineToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(749, 54);
+            menuStrip1.TabIndex = 1;
+            menuStrip1.Text = "menuStrip1";
+            menuStrip1.ItemClicked += menuStrip1_ItemClicked;
+            // 
+            // showMedicinesToolStripMenuItem
+            // 
+            showMedicinesToolStripMenuItem.ForeColor = Color.Black;
+            showMedicinesToolStripMenuItem.Name = "showMedicinesToolStripMenuItem";
+            showMedicinesToolStripMenuItem.Size = new Size(194, 50);
+            showMedicinesToolStripMenuItem.Text = "Show Medicines";
+            showMedicinesToolStripMenuItem.Click += showMedicinesToolStripMenuItem_Click;
+            // 
+            // addMedicineToolStripMenuItem
+            // 
+            addMedicineToolStripMenuItem.ForeColor = Color.Black;
+            addMedicineToolStripMenuItem.Name = "addMedicineToolStripMenuItem";
+            addMedicineToolStripMenuItem.Size = new Size(170, 50);
+            addMedicineToolStripMenuItem.Text = "Add Medicine";
+            addMedicineToolStripMenuItem.Click += addMedicineToolStripMenuItem_Click;
+            // 
+            // panel1
+            // 
+            panel1.Location = new Point(6, 60);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(743, 630);
+            panel1.TabIndex = 2;
             // 
             // leftPanel
             // 
@@ -64,13 +111,22 @@
             leftPanel.Size = new Size(241, 760);
             leftPanel.TabIndex = 0;
             // 
-            // panel1
+            // MainPanel
             // 
-            panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(241, 90);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(749, 670);
-            panel1.TabIndex = 2;
+            MainPanel.Dock = DockStyle.Fill;
+            MainPanel.Location = new Point(0, 0);
+            MainPanel.Name = "MainPanel";
+            MainPanel.Size = new Size(749, 706);
+            MainPanel.TabIndex = 3;
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(MainPanel);
+            panel3.Dock = DockStyle.Fill;
+            panel3.Location = new Point(241, 54);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(749, 706);
+            panel3.TabIndex = 4;
             // 
             // Medicine
             // 
@@ -84,6 +140,11 @@
             Text = "Medicine";
             Load += Medicine_Load;
             MedicinePanel.ResumeLayout(false);
+            topPanel.ResumeLayout(false);
+            topPanel.PerformLayout();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
+            panel3.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -91,7 +152,12 @@
 
         private Panel MedicinePanel;
         private Panel leftPanel;
-        private Panel TopPanel;
         private Panel panel1;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem showMedicinesToolStripMenuItem;
+        private ToolStripMenuItem addMedicineToolStripMenuItem;
+        private Panel topPanel;
+        private Panel panel3;
+        private Panel MainPanel;
     }
 }

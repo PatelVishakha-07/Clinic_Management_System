@@ -41,23 +41,21 @@
             panel1.Controls.Add(menuStrip1);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(4, 4, 4, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(898, 78);
+            panel1.Size = new Size(718, 62);
             panel1.TabIndex = 0;
             // 
             // menuStrip1
             // 
             menuStrip1.BackColor = Color.Gainsboro;
-            menuStrip1.Dock = DockStyle.Fill;
+            menuStrip1.Dock = DockStyle.None;
             menuStrip1.Font = new Font("Cascadia Code", 12F, FontStyle.Bold, GraphicsUnit.Point);
             menuStrip1.GripStyle = ToolStripGripStyle.Visible;
             menuStrip1.ImageScalingSize = new Size(20, 20);
             menuStrip1.Items.AddRange(new ToolStripItem[] { showPatientsToolStripMenuItem, addPatientsToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(4, 2, 0, 2);
-            menuStrip1.Size = new Size(898, 78);
+            menuStrip1.Size = new Size(515, 35);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -65,24 +63,23 @@
             // 
             showPatientsToolStripMenuItem.ForeColor = Color.Black;
             showPatientsToolStripMenuItem.Name = "showPatientsToolStripMenuItem";
-            showPatientsToolStripMenuItem.Size = new Size(212, 74);
+            showPatientsToolStripMenuItem.Size = new Size(182, 31);
             showPatientsToolStripMenuItem.Text = "Show Patients";
             // 
             // addPatientsToolStripMenuItem
             // 
             addPatientsToolStripMenuItem.ForeColor = Color.Black;
             addPatientsToolStripMenuItem.Name = "addPatientsToolStripMenuItem";
-            addPatientsToolStripMenuItem.Size = new Size(198, 74);
+            addPatientsToolStripMenuItem.Size = new Size(170, 31);
             addPatientsToolStripMenuItem.Text = "Add Patients";
             // 
             // MenuPatient
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel1);
-            Margin = new Padding(4, 4, 4, 4);
             Name = "MenuPatient";
-            Size = new Size(898, 78);
+            Size = new Size(718, 62);
             Load += MenuPatient_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

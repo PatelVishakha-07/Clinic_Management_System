@@ -29,15 +29,22 @@
         private void InitializeComponent()
         {
             PatientsPanel = new Panel();
+            MainPanel = new Panel();
             PanelTop = new Panel();
+            menuStrip1 = new MenuStrip();
+            showPatientsToolStripMenuItem = new ToolStripMenuItem();
+            addPatientsToolStripMenuItem = new ToolStripMenuItem();
             PanelLeft = new Panel();
-            panel1 = new Panel();
+            neewPatientsToolStripMenuItem = new ToolStripMenuItem();
+            oldPatientsToolStripMenuItem = new ToolStripMenuItem();
             PatientsPanel.SuspendLayout();
+            PanelTop.SuspendLayout();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // PatientsPanel
             // 
-            PatientsPanel.Controls.Add(panel1);
+            PatientsPanel.Controls.Add(MainPanel);
             PatientsPanel.Controls.Add(PanelTop);
             PatientsPanel.Controls.Add(PanelLeft);
             PatientsPanel.Dock = DockStyle.Fill;
@@ -46,13 +53,52 @@
             PatientsPanel.Size = new Size(990, 760);
             PatientsPanel.TabIndex = 0;
             // 
+            // MainPanel
+            // 
+            MainPanel.Dock = DockStyle.Fill;
+            MainPanel.Location = new Point(247, 62);
+            MainPanel.Name = "MainPanel";
+            MainPanel.Size = new Size(743, 698);
+            MainPanel.TabIndex = 2;
+            // 
             // PanelTop
             // 
+            PanelTop.Controls.Add(menuStrip1);
             PanelTop.Dock = DockStyle.Top;
             PanelTop.Location = new Point(247, 0);
             PanelTop.Name = "PanelTop";
             PanelTop.Size = new Size(743, 62);
             PanelTop.TabIndex = 1;
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.BackColor = Color.Gainsboro;
+            menuStrip1.Dock = DockStyle.Fill;
+            menuStrip1.Font = new Font("Cascadia Code", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            menuStrip1.GripStyle = ToolStripGripStyle.Visible;
+            menuStrip1.ImageScalingSize = new Size(20, 20);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { showPatientsToolStripMenuItem, addPatientsToolStripMenuItem, neewPatientsToolStripMenuItem, oldPatientsToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(743, 62);
+            menuStrip1.TabIndex = 1;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // showPatientsToolStripMenuItem
+            // 
+            showPatientsToolStripMenuItem.ForeColor = Color.Black;
+            showPatientsToolStripMenuItem.Name = "showPatientsToolStripMenuItem";
+            showPatientsToolStripMenuItem.Size = new Size(182, 58);
+            showPatientsToolStripMenuItem.Text = "Show Patients";
+            showPatientsToolStripMenuItem.Click += showPatientsToolStripMenuItem_Click;
+            // 
+            // addPatientsToolStripMenuItem
+            // 
+            addPatientsToolStripMenuItem.ForeColor = Color.Black;
+            addPatientsToolStripMenuItem.Name = "addPatientsToolStripMenuItem";
+            addPatientsToolStripMenuItem.Size = new Size(170, 58);
+            addPatientsToolStripMenuItem.Text = "Add Patients";
+            addPatientsToolStripMenuItem.Click += addPatientsToolStripMenuItem_Click;
             // 
             // PanelLeft
             // 
@@ -62,13 +108,17 @@
             PanelLeft.Size = new Size(247, 760);
             PanelLeft.TabIndex = 0;
             // 
-            // panel1
+            // neewPatientsToolStripMenuItem
             // 
-            panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(247, 62);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(743, 698);
-            panel1.TabIndex = 2;
+            neewPatientsToolStripMenuItem.Name = "neewPatientsToolStripMenuItem";
+            neewPatientsToolStripMenuItem.Size = new Size(170, 58);
+            neewPatientsToolStripMenuItem.Text = "New Patients";
+            // 
+            // oldPatientsToolStripMenuItem
+            // 
+            oldPatientsToolStripMenuItem.Name = "oldPatientsToolStripMenuItem";
+            oldPatientsToolStripMenuItem.Size = new Size(170, 58);
+            oldPatientsToolStripMenuItem.Text = "Old Patients";
             // 
             // Patients
             // 
@@ -82,6 +132,10 @@
             Text = "Patients";
             Load += Patients_Load;
             PatientsPanel.ResumeLayout(false);
+            PanelTop.ResumeLayout(false);
+            PanelTop.PerformLayout();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -90,6 +144,11 @@
         private Panel PatientsPanel;
         private Panel PanelTop;
         private Panel PanelLeft;
-        private Panel panel1;
+        private Panel MainPanel;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem showPatientsToolStripMenuItem;
+        private ToolStripMenuItem addPatientsToolStripMenuItem;
+        private ToolStripMenuItem neewPatientsToolStripMenuItem;
+        private ToolStripMenuItem oldPatientsToolStripMenuItem;
     }
 }

@@ -19,17 +19,17 @@ namespace Clinic_Management_System
             dashboard.Dock = DockStyle.Left;
             leftPanel.Controls.Add(dashboard);
 
-            MenuMedicine menuMedicine = new MenuMedicine();
+            //MenuMedicine menuMedicine = new MenuMedicine();
 
-            menuMedicine.Dock = DockStyle.Top;
-            TopPanel.Controls.Add(menuMedicine);
+            //menuMedicine.Dock = DockStyle.Top;
+            //TopPanel.Controls.Add(menuMedicine);
         }
 
         private void Medicine_Load(object sender, EventArgs e)
         {
-            panel1.Controls.Clear();
+            MainPanel.Controls.Clear();
             ShowMedicine showMedicine = new ShowMedicine();
-            panel1.Controls.Add(showMedicine);
+            MainPanel.Controls.Add(showMedicine);
 
         }
 
@@ -41,6 +41,25 @@ namespace Clinic_Management_System
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void showMedicinesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MainPanel.Controls.Clear();
+            ShowMedicine showMedicine = new ShowMedicine();
+            MainPanel.Controls.Add(showMedicine);
+        }
+
+        private void addMedicineToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MainPanel.Controls.Clear();
+            AddMedicine addMedicine = new AddMedicine();
+            MainPanel.Controls.Add(addMedicine);
         }
     }
 }
