@@ -31,7 +31,9 @@
             PatientsPanel = new Panel();
             PanelTop = new Panel();
             PanelLeft = new Panel();
+            panel1 = new Panel();
             PatientsPanel.SuspendLayout();
+            PanelLeft.SuspendLayout();
             SuspendLayout();
             // 
             // PatientsPanel
@@ -56,12 +58,20 @@
             // 
             // PanelLeft
             // 
+            PanelLeft.Controls.Add(panel1);
             PanelLeft.Dock = DockStyle.Left;
             PanelLeft.Location = new Point(0, 0);
             PanelLeft.Margin = new Padding(4);
             PanelLeft.Name = "PanelLeft";
             PanelLeft.Size = new Size(309, 950);
             PanelLeft.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            panel1.Location = new Point(309, 76);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(926, 871);
+            panel1.TabIndex = 2;
             // 
             // Patients
             // 
@@ -76,6 +86,7 @@
             Text = "Patients";
             Load += Patients_Load;
             PatientsPanel.ResumeLayout(false);
+            PanelLeft.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -84,5 +95,6 @@
         private Panel PatientsPanel;
         private Panel PanelTop;
         private Panel PanelLeft;
+        private Panel panel1;
     }
 }

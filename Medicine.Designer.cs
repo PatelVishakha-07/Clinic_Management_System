@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            panelshowmedgrid = new Panel();
             TopPanel = new Panel();
             leftPanel = new Panel();
             panel1.SuspendLayout();
@@ -37,6 +38,7 @@
             // panel1
             // 
             panel1.BackColor = Color.Transparent;
+            panel1.Controls.Add(panelshowmedgrid);
             panel1.Controls.Add(TopPanel);
             panel1.Controls.Add(leftPanel);
             panel1.Dock = DockStyle.Fill;
@@ -45,7 +47,14 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1238, 950);
             panel1.TabIndex = 0;
-            panel1.Paint += panel1_Paint;
+            // 
+            // panelshowmedgrid
+            // 
+            panelshowmedgrid.Location = new Point(308, 119);
+            panelshowmedgrid.Name = "panelshowmedgrid";
+            panelshowmedgrid.Size = new Size(920, 816);
+            panelshowmedgrid.TabIndex = 3;
+            panelshowmedgrid.Paint += panelshowmedgrid_Paint;
             // 
             // TopPanel
             // 
@@ -55,6 +64,7 @@
             TopPanel.Name = "TopPanel";
             TopPanel.Size = new Size(937, 112);
             TopPanel.TabIndex = 1;
+           // TopPanel.Paint += this.TopPanel_Paint;
             // 
             // leftPanel
             // 
@@ -64,6 +74,7 @@
             leftPanel.Name = "leftPanel";
             leftPanel.Size = new Size(301, 950);
             leftPanel.TabIndex = 0;
+           // leftPanel.Paint += this.leftPanel_Paint;
             // 
             // Medicine
             // 
@@ -76,7 +87,6 @@
             Name = "Medicine";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Medicine";
-            Load += Medicine_Load;
             panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -86,5 +96,6 @@
         private Panel panel1;
         private Panel leftPanel;
         private Panel TopPanel;
+        private Panel panelshowmedgrid;
     }
 }

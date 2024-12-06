@@ -24,19 +24,16 @@ namespace Clinic_Management_System
             menuMedicine.Dock = DockStyle.Top;
             TopPanel.Controls.Add(menuMedicine);
         }
-
-        private void Medicine_Load(object sender, EventArgs e)
+        public void LoadFormIntoPanel(Form form)
         {
-
-
+            panelshowmedgrid.Controls.Clear();
+            form.TopLevel = false;
+            form.Dock = DockStyle.Fill;
+            panelshowmedgrid.Controls.Add(form);
+            form.Show();
         }
 
-        private void TopPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void panelshowmedgrid_Paint(object sender, PaintEventArgs e)
         {
 
         }
