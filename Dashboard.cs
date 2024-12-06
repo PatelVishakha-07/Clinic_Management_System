@@ -17,9 +17,20 @@ namespace Clinic_Management_System
             InitializeComponent();
         }
 
+        private void ShowForm(Form form) {
+            Form currentForm = this.FindForm();
+            currentForm?.Hide();
+            form.ShowDialog();
+        }
+
         private void Dashboard_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnMedicine_Click(object sender, EventArgs e)
+        {
+            ShowForm(new Medicine());
         }
     }
 }

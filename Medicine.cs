@@ -15,13 +15,14 @@ namespace Clinic_Management_System
         public Medicine()
         {
             InitializeComponent();
+            Dashboard dashboard = new Dashboard();
+            dashboard.Dock = DockStyle.Left;
+            this.Controls.Add(dashboard);
         }
 
         private void Medicine_Load(object sender, EventArgs e)
         {
-            Dashboard dashboard = new Dashboard();
-            dashboard.Dock = DockStyle.Left;
-            this.Controls.Add(dashboard);
+            
             MenuMedicine menuMedicine = new MenuMedicine();
             menuMedicine.Dock = DockStyle.Top;
             this.Controls.Add(menuMedicine);

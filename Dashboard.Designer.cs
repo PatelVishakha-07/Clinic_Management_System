@@ -28,19 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             panel1 = new Panel();
             panel5 = new Panel();
             pictureBox3 = new PictureBox();
-            button3 = new Button();
+            btnInHouse = new Button();
             panel4 = new Panel();
             pictureBox2 = new PictureBox();
-            button2 = new Button();
+            btnMedicine = new Button();
             panel3 = new Panel();
             pictureBox1 = new PictureBox();
-            button1 = new Button();
+            btnPatients = new Button();
             panel2 = new Panel();
-            contextMenuStrip1 = new ContextMenuStrip(components);
             panel1.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -66,7 +64,7 @@
             // panel5
             // 
             panel5.Controls.Add(pictureBox3);
-            panel5.Controls.Add(button3);
+            panel5.Controls.Add(btnInHouse);
             panel5.Dock = DockStyle.Top;
             panel5.Location = new Point(0, 312);
             panel5.Name = "panel5";
@@ -83,26 +81,26 @@
             pictureBox3.TabIndex = 4;
             pictureBox3.TabStop = false;
             // 
-            // button3
+            // btnInHouse
             // 
-            button3.BackgroundImageLayout = ImageLayout.Zoom;
-            button3.FlatStyle = FlatStyle.Popup;
-            button3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button3.ForeColor = Color.White;
-            button3.ImageAlign = ContentAlignment.TopLeft;
-            button3.Location = new Point(19, 22);
-            button3.Name = "button3";
-            button3.Padding = new Padding(2, 0, 0, 0);
-            button3.Size = new Size(202, 56);
-            button3.TabIndex = 5;
-            button3.Text = "In-House Patients";
-            button3.TextAlign = ContentAlignment.MiddleRight;
-            button3.UseVisualStyleBackColor = true;
+            btnInHouse.BackgroundImageLayout = ImageLayout.Zoom;
+            btnInHouse.FlatStyle = FlatStyle.Popup;
+            btnInHouse.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnInHouse.ForeColor = Color.White;
+            btnInHouse.ImageAlign = ContentAlignment.TopLeft;
+            btnInHouse.Location = new Point(19, 22);
+            btnInHouse.Name = "btnInHouse";
+            btnInHouse.Padding = new Padding(2, 0, 0, 0);
+            btnInHouse.Size = new Size(202, 56);
+            btnInHouse.TabIndex = 5;
+            btnInHouse.Text = "In-House Patients";
+            btnInHouse.TextAlign = ContentAlignment.MiddleRight;
+            btnInHouse.UseVisualStyleBackColor = true;
             // 
             // panel4
             // 
             panel4.Controls.Add(pictureBox2);
-            panel4.Controls.Add(button2);
+            panel4.Controls.Add(btnMedicine);
             panel4.Dock = DockStyle.Top;
             panel4.Location = new Point(0, 212);
             panel4.Name = "panel4";
@@ -119,26 +117,27 @@
             pictureBox2.TabIndex = 2;
             pictureBox2.TabStop = false;
             // 
-            // button2
+            // btnMedicine
             // 
-            button2.BackgroundImageLayout = ImageLayout.Zoom;
-            button2.FlatStyle = FlatStyle.Popup;
-            button2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.ForeColor = Color.White;
-            button2.ImageAlign = ContentAlignment.TopLeft;
-            button2.Location = new Point(19, 22);
-            button2.Name = "button2";
-            button2.Padding = new Padding(2, 0, 0, 0);
-            button2.Size = new Size(202, 55);
-            button2.TabIndex = 3;
-            button2.Text = "Medicines";
-            button2.TextAlign = ContentAlignment.MiddleRight;
-            button2.UseVisualStyleBackColor = true;
+            btnMedicine.BackgroundImageLayout = ImageLayout.Zoom;
+            btnMedicine.FlatStyle = FlatStyle.Popup;
+            btnMedicine.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnMedicine.ForeColor = Color.White;
+            btnMedicine.ImageAlign = ContentAlignment.TopLeft;
+            btnMedicine.Location = new Point(19, 22);
+            btnMedicine.Name = "btnMedicine";
+            btnMedicine.Padding = new Padding(2, 0, 0, 0);
+            btnMedicine.Size = new Size(202, 55);
+            btnMedicine.TabIndex = 3;
+            btnMedicine.Text = "Medicines";
+            btnMedicine.TextAlign = ContentAlignment.MiddleRight;
+            btnMedicine.UseVisualStyleBackColor = true;
+            btnMedicine.Click += btnMedicine_Click;
             // 
             // panel3
             // 
             panel3.Controls.Add(pictureBox1);
-            panel3.Controls.Add(button1);
+            panel3.Controls.Add(btnPatients);
             panel3.Dock = DockStyle.Top;
             panel3.Location = new Point(0, 112);
             panel3.Name = "panel3";
@@ -155,21 +154,21 @@
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             // 
-            // button1
+            // btnPatients
             // 
-            button1.BackgroundImageLayout = ImageLayout.Zoom;
-            button1.FlatStyle = FlatStyle.Popup;
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.ForeColor = Color.White;
-            button1.ImageAlign = ContentAlignment.TopLeft;
-            button1.Location = new Point(12, 22);
-            button1.Name = "button1";
-            button1.Padding = new Padding(2, 0, 0, 0);
-            button1.Size = new Size(202, 55);
-            button1.TabIndex = 1;
-            button1.Text = "Patients";
-            button1.TextAlign = ContentAlignment.MiddleRight;
-            button1.UseVisualStyleBackColor = true;
+            btnPatients.BackgroundImageLayout = ImageLayout.Zoom;
+            btnPatients.FlatStyle = FlatStyle.Popup;
+            btnPatients.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnPatients.ForeColor = Color.White;
+            btnPatients.ImageAlign = ContentAlignment.TopLeft;
+            btnPatients.Location = new Point(12, 22);
+            btnPatients.Name = "btnPatients";
+            btnPatients.Padding = new Padding(2, 0, 0, 0);
+            btnPatients.Size = new Size(202, 55);
+            btnPatients.TabIndex = 1;
+            btnPatients.Text = "Patients";
+            btnPatients.TextAlign = ContentAlignment.MiddleRight;
+            btnPatients.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -178,12 +177,6 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(241, 112);
             panel2.TabIndex = 0;
-            // 
-            // contextMenuStrip1
-            // 
-            contextMenuStrip1.ImageScalingSize = new Size(20, 20);
-            contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(61, 4);
             // 
             // Dashboard
             // 
@@ -209,14 +202,13 @@
         private Panel panel1;
         private Panel panel2;
         private Panel panel3;
-        private Button button1;
+        private Button btnPatients;
         private PictureBox pictureBox1;
         private Panel panel5;
         private PictureBox pictureBox3;
-        private Button button3;
+        private Button btnInHouse;
         private Panel panel4;
         private PictureBox pictureBox2;
-        private Button button2;
-        private ContextMenuStrip contextMenuStrip1;
+        private Button btnMedicine;
     }
 }
