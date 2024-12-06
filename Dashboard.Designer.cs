@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
+            PanelDashboard = new Panel();
             panel5 = new Panel();
             pictureBox3 = new PictureBox();
             btnInHouse = new Button();
@@ -39,7 +39,7 @@
             pictureBox1 = new PictureBox();
             btnPatients = new Button();
             panel2 = new Panel();
-            panel1.SuspendLayout();
+            PanelDashboard.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             panel4.SuspendLayout();
@@ -48,18 +48,18 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // panel1
+            // PanelDashboard
             // 
-            panel1.BackColor = Color.FromArgb(64, 64, 64);
-            panel1.Controls.Add(panel5);
-            panel1.Controls.Add(panel4);
-            panel1.Controls.Add(panel3);
-            panel1.Controls.Add(panel2);
-            panel1.Dock = DockStyle.Left;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(241, 749);
-            panel1.TabIndex = 0;
+            PanelDashboard.BackColor = Color.FromArgb(64, 64, 64);
+            PanelDashboard.Controls.Add(panel5);
+            PanelDashboard.Controls.Add(panel4);
+            PanelDashboard.Controls.Add(panel3);
+            PanelDashboard.Controls.Add(panel2);
+            PanelDashboard.Dock = DockStyle.Left;
+            PanelDashboard.Location = new Point(0, 0);
+            PanelDashboard.Name = "PanelDashboard";
+            PanelDashboard.Size = new Size(241, 749);
+            PanelDashboard.TabIndex = 0;
             // 
             // panel5
             // 
@@ -169,6 +169,7 @@
             btnPatients.Text = "Patients";
             btnPatients.TextAlign = ContentAlignment.MiddleRight;
             btnPatients.UseVisualStyleBackColor = true;
+            btnPatients.Click += btnPatients_Click;
             // 
             // panel2
             // 
@@ -182,12 +183,11 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(801, 749);
-            Controls.Add(panel1);
+            Controls.Add(PanelDashboard);
             Name = "Dashboard";
-            Text = "Dashboard";
+            Size = new Size(730, 749);
             Load += Dashboard_Load;
-            panel1.ResumeLayout(false);
+            PanelDashboard.ResumeLayout(false);
             panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             panel4.ResumeLayout(false);
@@ -199,7 +199,7 @@
 
         #endregion
 
-        private Panel panel1;
+        private Panel PanelDashboard;
         private Panel panel2;
         private Panel panel3;
         private Button btnPatients;

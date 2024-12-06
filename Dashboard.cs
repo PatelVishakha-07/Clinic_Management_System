@@ -10,14 +10,15 @@ using System.Windows.Forms;
 
 namespace Clinic_Management_System
 {
-    public partial class Dashboard : Form
+    public partial class Dashboard : UserControl
     {
         public Dashboard()
         {
             InitializeComponent();
         }
 
-        private void ShowForm(Form form) {
+        private void ShowForm(Form form)
+        {
             Form currentForm = this.FindForm();
             currentForm?.Hide();
             form.ShowDialog();
@@ -31,6 +32,11 @@ namespace Clinic_Management_System
         private void btnMedicine_Click(object sender, EventArgs e)
         {
             ShowForm(new Medicine());
+        }
+
+        private void btnPatients_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

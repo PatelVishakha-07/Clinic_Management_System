@@ -17,15 +17,18 @@ namespace Clinic_Management_System
             InitializeComponent();
             Dashboard dashboard = new Dashboard();
             dashboard.Dock = DockStyle.Left;
-            this.Controls.Add(dashboard);
+            leftPanel.Controls.Add(dashboard);
+
+            MenuMedicine menuMedicine = new MenuMedicine();
+           
+            menuMedicine.Dock = DockStyle.Top;
+            TopPanel.Controls.Add(menuMedicine);
         }
 
         private void Medicine_Load(object sender, EventArgs e)
         {
             
-            MenuMedicine menuMedicine = new MenuMedicine();
-            menuMedicine.Dock = DockStyle.Top;
-            this.Controls.Add(menuMedicine);
+            
         }
     }
 }
