@@ -41,47 +41,48 @@
             panel1.Controls.Add(menuStrip1);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(807, 67);
+            panel1.Size = new Size(1009, 84);
             panel1.TabIndex = 0;
             // 
             // menuStrip1
             // 
-            menuStrip1.BackColor = Color.FromArgb(255, 255, 192);
+            menuStrip1.BackColor = Color.Gainsboro;
             menuStrip1.Dock = DockStyle.Fill;
             menuStrip1.Font = new Font("Cascadia Code", 12F, FontStyle.Bold, GraphicsUnit.Point);
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { showMedicinesToolStripMenuItem, addMedicineToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { addMedicineToolStripMenuItem, showMedicinesToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(807, 67);
+            menuStrip1.Padding = new Padding(8, 2, 0, 2);
+            menuStrip1.Size = new Size(1009, 84);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
             // addMedicineToolStripMenuItem
             // 
-            addMedicineToolStripMenuItem.Checked = true;
-            addMedicineToolStripMenuItem.CheckOnClick = true;
-            addMedicineToolStripMenuItem.CheckState = CheckState.Checked;
-            addMedicineToolStripMenuItem.ForeColor = Color.FromArgb(0, 0, 192);
+            addMedicineToolStripMenuItem.ForeColor = Color.Black;
             addMedicineToolStripMenuItem.Name = "addMedicineToolStripMenuItem";
-            addMedicineToolStripMenuItem.Size = new Size(170, 63);
+            addMedicineToolStripMenuItem.Size = new Size(198, 80);
             addMedicineToolStripMenuItem.Text = "Add Medicine";
             // 
             // showMedicinesToolStripMenuItem
             // 
-            showMedicinesToolStripMenuItem.ForeColor = Color.FromArgb(0, 0, 192);
+            showMedicinesToolStripMenuItem.ForeColor = Color.Black;
             showMedicinesToolStripMenuItem.Name = "showMedicinesToolStripMenuItem";
-            showMedicinesToolStripMenuItem.Size = new Size(194, 63);
+            showMedicinesToolStripMenuItem.Size = new Size(226, 80);
             showMedicinesToolStripMenuItem.Text = "Show Medicines";
+            showMedicinesToolStripMenuItem.Click += showMedicinesToolStripMenuItem_Click;
             // 
             // MenuMedicine
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel1);
+            Margin = new Padding(4);
             Name = "MenuMedicine";
-            Size = new Size(807, 67);
+            Size = new Size(1009, 84);
             Load += MenuMedicine_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

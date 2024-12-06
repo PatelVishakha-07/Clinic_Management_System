@@ -20,16 +20,25 @@ namespace Clinic_Management_System
             leftPanel.Controls.Add(dashboard);
 
             MenuMedicine menuMedicine = new MenuMedicine();
-           
+
             menuMedicine.Dock = DockStyle.Top;
             TopPanel.Controls.Add(menuMedicine);
         }
 
         private void Medicine_Load(object sender, EventArgs e)
         {
-            ShowMedicine showMedicine = new ShowMedicine();
-            PanelMedicine.Controls.Clear();
-            PanelMedicine.Controls.Add(showMedicine);
+
+
+        }
+
+        private void TopPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

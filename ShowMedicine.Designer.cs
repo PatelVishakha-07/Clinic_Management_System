@@ -2,12 +2,12 @@
 {
     partial class ShowMedicine
     {
-        /// <summary> 
+        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -20,155 +20,117 @@
             base.Dispose(disposing);
         }
 
-        #region Component Designer generated code
+        #region Windows Form Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
+        /// <summary>
+        /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            panel1 = new Panel();
-            label1 = new Label();
-            btnSearch = new Button();
-            txtSearch = new TextBox();
+            leftPanel = new Panel();
+            TopPanel = new Panel();
             dataGridView1 = new DataGridView();
-            medNameColumn = new DataGridViewTextBoxColumn();
-            cmpColumn = new DataGridViewTextBoxColumn();
-            stockColumn = new DataGridViewTextBoxColumn();
-            dateColumn = new DataGridViewTextBoxColumn();
-            panel1.SuspendLayout();
+            Name = new DataGridViewTextBoxColumn();
+            Company = new DataGridViewTextBoxColumn();
+            Quanity = new DataGridViewTextBoxColumn();
+            Expiry = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // panel1
+            // leftPanel
             // 
-            panel1.BackColor = Color.Transparent;
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(btnSearch);
-            panel1.Controls.Add(txtSearch);
-            panel1.Controls.Add(dataGridView1);
-            panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1050, 778);
-            panel1.TabIndex = 0;
+            leftPanel.Dock = DockStyle.Left;
+            leftPanel.Location = new Point(0, 0);
+            leftPanel.Margin = new Padding(4);
+            leftPanel.Name = "leftPanel";
+            leftPanel.Size = new Size(275, 950);
+            leftPanel.TabIndex = 1;
             // 
-            // label1
+            // TopPanel
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = Color.Red;
-            label1.Location = new Point(374, 48);
-            label1.Name = "label1";
-            label1.Size = new Size(271, 35);
-            label1.TabIndex = 7;
-            label1.Text = "Medicine Information";
-            label1.TextAlign = ContentAlignment.TopCenter;
-            // 
-            // btnSearch
-            // 
-            btnSearch.BackColor = Color.FromArgb(192, 192, 255);
-            btnSearch.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point);
-            btnSearch.ForeColor = SystemColors.ControlText;
-            btnSearch.Location = new Point(866, 151);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(120, 41);
-            btnSearch.TabIndex = 6;
-            btnSearch.Text = "Search";
-            btnSearch.UseVisualStyleBackColor = false;
-            // 
-            // txtSearch
-            // 
-            txtSearch.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            txtSearch.Location = new Point(64, 151);
-            txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(774, 41);
-            txtSearch.TabIndex = 5;
+            TopPanel.Dock = DockStyle.Top;
+            TopPanel.Location = new Point(275, 0);
+            TopPanel.Margin = new Padding(4);
+            TopPanel.Name = "TopPanel";
+            TopPanel.Size = new Size(963, 112);
+            TopPanel.TabIndex = 2;
+            TopPanel.Paint += TopPanel_Paint;
             // 
             // dataGridView1
             // 
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridView1.ColumnHeadersHeight = 35;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { medNameColumn, cmpColumn, stockColumn, dateColumn });
-            dataGridView1.Location = new Point(64, 251);
+            dataGridView1.BorderStyle = BorderStyle.Fixed3D;
+            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.Sunken;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Name, Company, Quanity, Expiry });
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.ScrollBar;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.ScrollBar;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView1.Dock = DockStyle.Right;
+            dataGridView1.GridColor = SystemColors.Control;
+            dataGridView1.Location = new Point(282, 112);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(922, 479);
-            dataGridView1.TabIndex = 4;
+            dataGridView1.RowHeadersWidth = 62;
+            dataGridView1.RowTemplate.Height = 33;
+            dataGridView1.Size = new Size(956, 838);
+            dataGridView1.TabIndex = 3;
             // 
-            // medNameColumn
+            // Name
             // 
-            medNameColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            medNameColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            medNameColumn.HeaderText = "Medicine Name";
-            medNameColumn.MinimumWidth = 6;
-            medNameColumn.Name = "medNameColumn";
-            medNameColumn.ReadOnly = true;
+            Name.HeaderText = "Name";
+            Name.MinimumWidth = 8;
+            Name.Name = "Name";
+            Name.Width = 370;
             // 
-            // cmpColumn
+            // Company
             // 
-            cmpColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            cmpColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            cmpColumn.HeaderText = "Company Name";
-            cmpColumn.MinimumWidth = 6;
-            cmpColumn.Name = "cmpColumn";
-            cmpColumn.ReadOnly = true;
+            Company.HeaderText = "Company";
+            Company.MinimumWidth = 8;
+            Company.Name = "Company";
+            Company.Width = 200;
             // 
-            // stockColumn
+            // Quanity
             // 
-            stockColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            stockColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            stockColumn.HeaderText = "Medicine Stock";
-            stockColumn.MinimumWidth = 6;
-            stockColumn.Name = "stockColumn";
-            stockColumn.ReadOnly = true;
+            Quanity.HeaderText = "Quantity";
+            Quanity.MinimumWidth = 8;
+            Quanity.Name = "Quanity";
+            Quanity.Width = 150;
             // 
-            // dateColumn
+            // Expiry
             // 
-            dateColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dateColumn.DefaultCellStyle = dataGridViewCellStyle4;
-            dateColumn.HeaderText = "Expiry Date";
-            dateColumn.MinimumWidth = 6;
-            dateColumn.Name = "dateColumn";
-            dateColumn.ReadOnly = true;
+            Expiry.HeaderText = "Expiry";
+            Expiry.MinimumWidth = 8;
+            Expiry.Name = "Expiry";
+            Expiry.Width = 200;
             // 
             // ShowMedicine
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.med1;
-            Controls.Add(panel1);
-            Name = "ShowMedicine";
-            Size = new Size(1050, 778);
-            Load += ShowMedicine_Load;
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            ClientSize = new Size(1238, 950);
+            Controls.Add(dataGridView1);
+            Controls.Add(TopPanel);
+            Controls.Add(leftPanel);
+           // Name = "ShowMedicine";
+            Text = "ShowMedicine";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Panel panel1;
-        private Label label1;
-        private Button btnSearch;
-        private TextBox txtSearch;
+        private Panel leftPanel;
+        private Panel TopPanel;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn medNameColumn;
-        private DataGridViewTextBoxColumn cmpColumn;
-        private DataGridViewTextBoxColumn stockColumn;
-        private DataGridViewTextBoxColumn dateColumn;
+        private DataGridViewTextBoxColumn Name;
+        private DataGridViewTextBoxColumn Company;
+        private DataGridViewTextBoxColumn Quanity;
+        private DataGridViewTextBoxColumn Expiry;
     }
 }
