@@ -52,13 +52,14 @@
             menuStrip1.Dock = DockStyle.Fill;
             menuStrip1.Font = new Font("Cascadia Code", 12F, FontStyle.Bold, GraphicsUnit.Point);
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { addMedicineToolStripMenuItem, showMedicinesToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { showMedicinesToolStripMenuItem, addMedicineToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(8, 2, 0, 2);
             menuStrip1.Size = new Size(1009, 84);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
+            menuStrip1.ItemClicked += menuStrip1_ItemClicked;
             // 
             // addMedicineToolStripMenuItem
             // 
@@ -73,7 +74,6 @@
             showMedicinesToolStripMenuItem.Name = "showMedicinesToolStripMenuItem";
             showMedicinesToolStripMenuItem.Size = new Size(226, 80);
             showMedicinesToolStripMenuItem.Text = "Show Medicines";
-            showMedicinesToolStripMenuItem.Click += showMedicinesToolStripMenuItem_Click;
             // 
             // MenuMedicine
             // 

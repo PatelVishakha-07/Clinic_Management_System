@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            dataGridView1 = new DataGridView();
-            txtSearch = new TextBox();
-            btnSearch = new Button();
             label1 = new Label();
+            btnSearch = new Button();
+            txtSearch = new TextBox();
+            dataGridView1 = new DataGridView();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -46,57 +46,63 @@
             panel1.Controls.Add(dataGridView1);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(4, 4, 4, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1008, 807);
+            panel1.Size = new Size(1260, 1009);
             panel1.TabIndex = 0;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(25, 255);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(964, 516);
-            dataGridView1.TabIndex = 0;
-            // 
-            // txtSearch
-            // 
-            txtSearch.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            txtSearch.Location = new Point(25, 152);
-            txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(719, 41);
-            txtSearch.TabIndex = 1;
-            txtSearch.TextChanged += textBox1_TextChanged;
-            // 
-            // btnSearch
-            // 
-            btnSearch.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            btnSearch.Location = new Point(817, 152);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(148, 41);
-            btnSearch.TabIndex = 2;
-            btnSearch.Text = "Search";
-            btnSearch.UseVisualStyleBackColor = true;
+            panel1.Paint += panel1_Paint;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(271, 13);
+            label1.Location = new Point(339, 16);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(370, 46);
+            label1.Size = new Size(432, 54);
             label1.TabIndex = 3;
             label1.Text = "Medicine Information";
             // 
+            // btnSearch
+            // 
+            btnSearch.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            btnSearch.Location = new Point(1021, 190);
+            btnSearch.Margin = new Padding(4, 4, 4, 4);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(185, 51);
+            btnSearch.TabIndex = 2;
+            btnSearch.Text = "Search";
+            btnSearch.UseVisualStyleBackColor = true;
+            // 
+            // txtSearch
+            // 
+            txtSearch.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            txtSearch.Location = new Point(31, 190);
+            txtSearch.Margin = new Padding(4, 4, 4, 4);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(898, 47);
+            txtSearch.TabIndex = 1;
+            txtSearch.TextChanged += textBox1_TextChanged;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(31, 319);
+            dataGridView1.Margin = new Padding(4, 4, 4, 4);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.RowTemplate.Height = 29;
+            dataGridView1.Size = new Size(1205, 645);
+            dataGridView1.TabIndex = 0;
+            // 
             // ShowMedicine
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel1);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "ShowMedicine";
-            Size = new Size(1008, 807);
-            Load += ShowMedicine_Load;
+            Size = new Size(1260, 1009);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
