@@ -31,12 +31,14 @@
             MedicinePanel = new Panel();
             TopPanel = new Panel();
             leftPanel = new Panel();
+            panel1 = new Panel();
             MedicinePanel.SuspendLayout();
             SuspendLayout();
             // 
             // MedicinePanel
             // 
             MedicinePanel.BackColor = Color.Transparent;
+            MedicinePanel.Controls.Add(panel1);
             MedicinePanel.Controls.Add(TopPanel);
             MedicinePanel.Controls.Add(leftPanel);
             MedicinePanel.Dock = DockStyle.Fill;
@@ -62,6 +64,14 @@
             leftPanel.Size = new Size(241, 760);
             leftPanel.TabIndex = 0;
             // 
+            // panel1
+            // 
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(241, 90);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(749, 670);
+            panel1.TabIndex = 2;
+            // 
             // Medicine
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -82,5 +92,6 @@
         private Panel MedicinePanel;
         private Panel leftPanel;
         private Panel TopPanel;
+        private Panel panel1;
     }
 }

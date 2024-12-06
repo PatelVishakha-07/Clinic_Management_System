@@ -16,10 +16,5 @@ namespace Clinic_Management_System
         {
             InitializeComponent();
         }
-
-        private void ShowPatients_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

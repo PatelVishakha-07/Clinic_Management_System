@@ -28,19 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             panel1 = new Panel();
             panel2 = new Panel();
             label1 = new Label();
-            dataGridView1 = new DataGridView();
             btnSearch = new Button();
-            textBox1 = new TextBox();
-            Name = new DataGridViewTextBoxColumn();
-            Age = new DataGridViewTextBoxColumn();
-            city = new DataGridViewTextBoxColumn();
-            contact = new DataGridViewTextBoxColumn();
+            txtSearch = new TextBox();
+            dataGridView1 = new DataGridView();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -48,111 +41,64 @@
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.GradientInactiveCaption;
+            panel1.BackColor = SystemColors.ControlDark;
             panel1.Controls.Add(panel2);
-            panel1.Controls.Add(dataGridView1);
-            panel1.Controls.Add(btnSearch);
-            panel1.Controls.Add(textBox1);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1194, 790);
+            panel1.Size = new Size(1008, 807);
             panel1.TabIndex = 0;
             // 
             // panel2
             // 
-            panel2.BackColor = Color.Transparent;
+            panel2.BackColor = SystemColors.ButtonShadow;
             panel2.Controls.Add(label1);
-            panel2.Dock = DockStyle.Top;
+            panel2.Controls.Add(btnSearch);
+            panel2.Controls.Add(txtSearch);
+            panel2.Controls.Add(dataGridView1);
+            panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1194, 58);
-            panel2.TabIndex = 8;
+            panel2.Size = new Size(1008, 807);
+            panel2.TabIndex = 1;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            label1.Location = new Point(446, 9);
+            label1.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(271, 13);
             label1.Name = "label1";
-            label1.Size = new Size(289, 38);
-            label1.TabIndex = 0;
+            label1.Size = new Size(351, 46);
+            label1.TabIndex = 3;
             label1.Text = "Patients Information";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // dataGridView1
-            // 
-            dataGridViewCellStyle4.BackColor = Color.White;
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridView1.BackgroundColor = SystemColors.ButtonFace;
-            dataGridView1.BorderStyle = BorderStyle.Fixed3D;
-            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.Sunken;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Name, Age, city, contact });
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.ScrollBar;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.ScrollBar;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
-            dataGridView1.GridColor = SystemColors.Control;
-            dataGridView1.Location = new Point(22, 183);
-            dataGridView1.Margin = new Padding(2);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle6;
-            dataGridView1.RowTemplate.Height = 33;
-            dataGridView1.Size = new Size(1117, 528);
-            dataGridView1.TabIndex = 7;
             // 
             // btnSearch
             // 
-            btnSearch.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point);
-            btnSearch.Location = new Point(975, 114);
+            btnSearch.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            btnSearch.Location = new Point(817, 152);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(146, 45);
-            btnSearch.TabIndex = 10;
+            btnSearch.Size = new Size(148, 41);
+            btnSearch.TabIndex = 2;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtSearch
             // 
-            textBox1.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(22, 114);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(870, 41);
-            textBox1.TabIndex = 9;
+            txtSearch.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            txtSearch.Location = new Point(25, 152);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(719, 41);
+            txtSearch.TabIndex = 1;
             // 
-            // Name
+            // dataGridView1
             // 
-            Name.HeaderText = "Name";
-            Name.MinimumWidth = 8;
-            Name.Name = "Name";
-            Name.Width = 370;
-            // 
-            // Age
-            // 
-            Age.HeaderText = "Age";
-            Age.MinimumWidth = 8;
-            Age.Name = "Age";
-            Age.Width = 200;
-            // 
-            // city
-            // 
-            city.HeaderText = "City";
-            city.MinimumWidth = 8;
-            city.Name = "city";
-            city.Width = 150;
-            // 
-            // contact
-            // 
-            contact.HeaderText = "Contact";
-            contact.MinimumWidth = 8;
-            contact.Name = "contact";
-            contact.Width = 200;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(25, 255);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.RowTemplate.Height = 29;
+            dataGridView1.Size = new Size(964, 516);
+            dataGridView1.TabIndex = 0;
             // 
             // ShowPatients
             // 
@@ -160,10 +106,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel1);
             Name = "ShowPatients";
-            Size = new Size(1194, 790);
-            Load += ShowPatients_Load;
+            Size = new Size(1008, 807);
             panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -175,12 +119,8 @@
         private Panel panel1;
         private Panel panel2;
         private Label label1;
-        private DataGridView dataGridView1;
         private Button btnSearch;
-        private TextBox textBox1;
-        private DataGridViewTextBoxColumn Name;
-        private DataGridViewTextBoxColumn Age;
-        private DataGridViewTextBoxColumn city;
-        private DataGridViewTextBoxColumn contact;
+        private TextBox txtSearch;
+        private DataGridView dataGridView1;
     }
 }

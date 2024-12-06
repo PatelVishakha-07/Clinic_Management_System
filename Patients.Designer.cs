@@ -31,46 +31,52 @@
             PatientsPanel = new Panel();
             PanelTop = new Panel();
             PanelLeft = new Panel();
+            panel1 = new Panel();
             PatientsPanel.SuspendLayout();
             SuspendLayout();
             // 
             // PatientsPanel
             // 
+            PatientsPanel.Controls.Add(panel1);
             PatientsPanel.Controls.Add(PanelTop);
             PatientsPanel.Controls.Add(PanelLeft);
             PatientsPanel.Dock = DockStyle.Fill;
             PatientsPanel.Location = new Point(0, 0);
-            PatientsPanel.Margin = new Padding(4);
             PatientsPanel.Name = "PatientsPanel";
-            PatientsPanel.Size = new Size(1238, 950);
+            PatientsPanel.Size = new Size(990, 760);
             PatientsPanel.TabIndex = 0;
             // 
             // PanelTop
             // 
             PanelTop.Dock = DockStyle.Top;
-            PanelTop.Location = new Point(309, 0);
-            PanelTop.Margin = new Padding(4);
+            PanelTop.Location = new Point(247, 0);
             PanelTop.Name = "PanelTop";
-            PanelTop.Size = new Size(929, 78);
+            PanelTop.Size = new Size(743, 62);
             PanelTop.TabIndex = 1;
             // 
             // PanelLeft
             // 
             PanelLeft.Dock = DockStyle.Left;
             PanelLeft.Location = new Point(0, 0);
-            PanelLeft.Margin = new Padding(4);
             PanelLeft.Name = "PanelLeft";
-            PanelLeft.Size = new Size(309, 950);
+            PanelLeft.Size = new Size(247, 760);
             PanelLeft.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(247, 62);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(743, 698);
+            panel1.TabIndex = 2;
             // 
             // Patients
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGray;
-            ClientSize = new Size(1238, 950);
+            ClientSize = new Size(990, 760);
             Controls.Add(PatientsPanel);
-            Margin = new Padding(4);
             Name = "Patients";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Patients";
@@ -84,5 +90,6 @@
         private Panel PatientsPanel;
         private Panel PanelTop;
         private Panel PanelLeft;
+        private Panel panel1;
     }
 }
