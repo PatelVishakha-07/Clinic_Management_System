@@ -22,6 +22,9 @@ namespace Clinic_Management_System
             Dashboard dashboard = new Dashboard();
             dashboard.Dock = DockStyle.Left;
             this.Controls.Add(dashboard);
+            MenuMedicine menuMedicine = new MenuMedicine();
+            menuMedicine.Dock = DockStyle.Top;
+            this.Controls.Add(menuMedicine);
         }
     }
 }

@@ -123,6 +123,16 @@ namespace Clinic_Management_System.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap medicine__1_ {
+            get {
+                object obj = ResourceManager.GetObject("medicine (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap medicinePageBg {
             get {
                 object obj = ResourceManager.GetObject("medicinePageBg", resourceCulture);
@@ -146,6 +156,16 @@ namespace Clinic_Management_System.Properties {
         internal static System.Drawing.Bitmap patient {
             get {
                 object obj = ResourceManager.GetObject("patient", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pills {
+            get {
+                object obj = ResourceManager.GetObject("pills", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
