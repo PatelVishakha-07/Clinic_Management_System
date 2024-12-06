@@ -10,19 +10,14 @@ using System.Windows.Forms;
 
 namespace Clinic_Management_System
 {
-    public partial class AddMedicine : UserControl
+    public partial class AddPatients : UserControl
     {
-        public AddMedicine()
+        public AddPatients()
         {
             InitializeComponent();
         }
 
-        private void AddMedicine_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void AddPatients_Load(object sender, EventArgs e)
         {
 
         }
