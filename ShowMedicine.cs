@@ -26,5 +26,15 @@ namespace Clinic_Management_System
         {
 
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void ShowMedicine_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

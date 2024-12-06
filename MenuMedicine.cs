@@ -24,6 +24,10 @@ namespace Clinic_Management_System
 
         private void showMedicinesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+           
+             ShowMedicine showMedicine = new ShowMedicine();
+             this.Hide();
+            showMedicine.ShowDialog();
 
         }
     }
