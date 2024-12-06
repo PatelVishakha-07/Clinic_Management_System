@@ -32,9 +32,9 @@ namespace Clinic_Management_System
 
         }
 
-        private void ShowMedicine_Load(object sender, EventArgs e)
-        {
+        //private void ShowMedicine_Load(object sender, EventArgs e)
+       // {
 
-        }
+       // }
     }
 }
