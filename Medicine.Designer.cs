@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             MedicinePanel = new Panel();
+            panel3 = new Panel();
+            MainPanel = new Panel();
             topPanel = new Panel();
             menuStrip1 = new MenuStrip();
             showMedicinesToolStripMenuItem = new ToolStripMenuItem();
             addMedicineToolStripMenuItem = new ToolStripMenuItem();
             panel1 = new Panel();
             leftPanel = new Panel();
-            MainPanel = new Panel();
-            panel3 = new Panel();
             MedicinePanel.SuspendLayout();
+            panel3.SuspendLayout();
             topPanel.SuspendLayout();
             menuStrip1.SuspendLayout();
-            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // MedicinePanel
@@ -55,6 +55,23 @@
             MedicinePanel.Size = new Size(990, 760);
             MedicinePanel.TabIndex = 0;
             MedicinePanel.Paint += panel1_Paint;
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(MainPanel);
+            panel3.Dock = DockStyle.Fill;
+            panel3.Location = new Point(241, 54);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(749, 706);
+            panel3.TabIndex = 4;
+            // 
+            // MainPanel
+            // 
+            MainPanel.Dock = DockStyle.Fill;
+            MainPanel.Location = new Point(0, 0);
+            MainPanel.Name = "MainPanel";
+            MainPanel.Size = new Size(749, 706);
+            MainPanel.TabIndex = 3;
             // 
             // topPanel
             // 
@@ -111,23 +128,6 @@
             leftPanel.Size = new Size(241, 760);
             leftPanel.TabIndex = 0;
             // 
-            // MainPanel
-            // 
-            MainPanel.Dock = DockStyle.Fill;
-            MainPanel.Location = new Point(0, 0);
-            MainPanel.Name = "MainPanel";
-            MainPanel.Size = new Size(749, 706);
-            MainPanel.TabIndex = 3;
-            // 
-            // panel3
-            // 
-            panel3.Controls.Add(MainPanel);
-            panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(241, 54);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(749, 706);
-            panel3.TabIndex = 4;
-            // 
             // Medicine
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -140,11 +140,11 @@
             Text = "Medicine";
             Load += Medicine_Load;
             MedicinePanel.ResumeLayout(false);
+            panel3.ResumeLayout(false);
             topPanel.ResumeLayout(false);
             topPanel.PerformLayout();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-            panel3.ResumeLayout(false);
             ResumeLayout(false);
         }
 

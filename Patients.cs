@@ -18,17 +18,11 @@ namespace Clinic_Management_System
             Dashboard dashboard = new Dashboard();
             dashboard.Dock = DockStyle.Left;
             PanelLeft.Controls.Add(dashboard);
-
-            //MenuPatient menuPatient = new MenuPatient();
-           // menuPatient.Dock = DockStyle.Top;
-            //PanelTop.Controls.Add(menuPatient);
         }
 
         private void Patients_Load(object sender, EventArgs e)
         {
-            ShowPatients showPatients = new ShowPatients();
-            MainPanel.Controls.Clear();
-            MainPanel.Controls.Add(showPatients);
+            ShowContent(new ShowPatients());
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -38,16 +32,30 @@ namespace Clinic_Management_System
 
         private void showPatientsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MainPanel.Controls.Clear();
-            ShowPatients showPatients = new ShowPatients();
-            MainPanel.Controls.Add(showPatients);
+            ShowContent(new ShowPatients());
         }
 
         private void addPatientsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+            ShowContent(new AddPatients());
+
+        }
+
+        private void neewPatientsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowContent(new NewPatient());
+        }
+
+        private void ShowContent(UserControl userControl)
+        {
             MainPanel.Controls.Clear();
-            AddPatients addPatients= new AddPatients();
-            MainPanel.Controls.Add(addPatients);
+            MainPanel.Controls.Add(userControl);
+        }
+
+        private void oldPatientsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowContent(new OldPatients());
         }
     }
 }
