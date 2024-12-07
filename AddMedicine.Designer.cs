@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            label1 = new Label();
-            label2 = new Label();
-            pictureBox1 = new PictureBox();
-            txtName = new TextBox();
-            txtCmp = new TextBox();
-            label3 = new Label();
+            btnClear = new Button();
+            btnCancel = new Button();
+            btnSave = new Button();
+            dateTimePicker1 = new DateTimePicker();
             label4 = new Label();
             txtStock = new TextBox();
             label5 = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            btnSave = new Button();
-            btnCancel = new Button();
-            btnClear = new Button();
+            txtCmp = new TextBox();
+            label3 = new Label();
+            txtName = new TextBox();
+            pictureBox1 = new PictureBox();
+            label2 = new Label();
+            label1 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -71,66 +71,52 @@
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
             // 
-            // label1
+            // btnClear
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Segoe UI", 17F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            label1.ForeColor = Color.Green;
-            label1.Location = new Point(430, 17);
-            label1.Name = "label1";
-            label1.Size = new Size(207, 40);
-            label1.TabIndex = 0;
-            label1.Text = "Add Medicine";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
+            btnClear.BackColor = Color.Coral;
+            btnClear.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            btnClear.ForeColor = Color.DarkBlue;
+            btnClear.Location = new Point(550, 535);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(179, 69);
+            btnClear.TabIndex = 12;
+            btnClear.Text = "Clear";
+            btnClear.UseVisualStyleBackColor = false;
+            btnClear.Click += btnClear_Click;
             // 
-            // label2
+            // btnCancel
             // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(356, 150);
-            label2.Name = "label2";
-            label2.Size = new Size(240, 33);
-            label2.TabIndex = 1;
-            label2.Text = "Medicine Name: ";
+            btnCancel.BackColor = Color.Coral;
+            btnCancel.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCancel.ForeColor = Color.DarkBlue;
+            btnCancel.Location = new Point(813, 535);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(179, 69);
+            btnCancel.TabIndex = 11;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = false;
+            btnCancel.Click += btnCancel_Click;
             // 
-            // pictureBox1
+            // btnSave
             // 
-            pictureBox1.Image = Properties.Resources.medicine__1_;
-            pictureBox1.Location = new Point(18, 150);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(286, 296);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 2;
-            pictureBox1.TabStop = false;
+            btnSave.BackColor = Color.Coral;
+            btnSave.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            btnSave.ForeColor = Color.DarkBlue;
+            btnSave.Location = new Point(260, 535);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(179, 69);
+            btnSave.TabIndex = 10;
+            btnSave.Text = "Save";
+            btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
             // 
-            // txtName
+            // dateTimePicker1
             // 
-            txtName.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            txtName.Location = new Point(620, 140);
-            txtName.Name = "txtName";
-            txtName.Size = new Size(457, 41);
-            txtName.TabIndex = 3;
-            // 
-            // txtCmp
-            // 
-            txtCmp.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            txtCmp.Location = new Point(620, 227);
-            txtCmp.Name = "txtCmp";
-            txtCmp.Size = new Size(457, 41);
-            txtCmp.TabIndex = 5;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.Transparent;
-            label3.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(356, 237);
-            label3.Name = "label3";
-            label3.Size = new Size(225, 33);
-            label3.TabIndex = 4;
-            label3.Text = "Company Name: ";
+            dateTimePicker1.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            dateTimePicker1.Location = new Point(620, 405);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(457, 41);
+            dateTimePicker1.TabIndex = 9;
             // 
             // label4
             // 
@@ -162,49 +148,66 @@
             label5.TabIndex = 6;
             label5.Text = "Medicine Stock: ";
             // 
-            // dateTimePicker1
+            // txtCmp
             // 
-            dateTimePicker1.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimePicker1.Location = new Point(620, 405);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(457, 41);
-            dateTimePicker1.TabIndex = 9;
+            txtCmp.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            txtCmp.Location = new Point(620, 227);
+            txtCmp.Name = "txtCmp";
+            txtCmp.Size = new Size(457, 41);
+            txtCmp.TabIndex = 5;
             // 
-            // btnSave
+            // label3
             // 
-            btnSave.BackColor = Color.Coral;
-            btnSave.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            btnSave.ForeColor = Color.DarkBlue;
-            btnSave.Location = new Point(260, 535);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(179, 69);
-            btnSave.TabIndex = 10;
-            btnSave.Text = "Save";
-            btnSave.UseVisualStyleBackColor = false;
+            label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
+            label3.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(356, 237);
+            label3.Name = "label3";
+            label3.Size = new Size(225, 33);
+            label3.TabIndex = 4;
+            label3.Text = "Company Name: ";
             // 
-            // btnCancel
+            // txtName
             // 
-            btnCancel.BackColor = Color.Coral;
-            btnCancel.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCancel.ForeColor = Color.DarkBlue;
-            btnCancel.Location = new Point(813, 535);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(179, 69);
-            btnCancel.TabIndex = 11;
-            btnCancel.Text = "Cancel";
-            btnCancel.UseVisualStyleBackColor = false;
+            txtName.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            txtName.Location = new Point(620, 140);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(457, 41);
+            txtName.TabIndex = 3;
             // 
-            // btnClear
+            // pictureBox1
             // 
-            btnClear.BackColor = Color.Coral;
-            btnClear.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            btnClear.ForeColor = Color.DarkBlue;
-            btnClear.Location = new Point(550, 535);
-            btnClear.Name = "btnClear";
-            btnClear.Size = new Size(179, 69);
-            btnClear.TabIndex = 12;
-            btnClear.Text = "Clear";
-            btnClear.UseVisualStyleBackColor = false;
+            pictureBox1.Image = Properties.Resources.medicine__1_;
+            pictureBox1.Location = new Point(18, 150);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(286, 296);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 2;
+            pictureBox1.TabStop = false;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(356, 150);
+            label2.Name = "label2";
+            label2.Size = new Size(240, 33);
+            label2.TabIndex = 1;
+            label2.Text = "Medicine Name: ";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Segoe UI", 17F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            label1.ForeColor = Color.Green;
+            label1.Location = new Point(430, 17);
+            label1.Name = "label1";
+            label1.Size = new Size(207, 40);
+            label1.TabIndex = 0;
+            label1.Text = "Add Medicine";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // AddMedicine
             // 

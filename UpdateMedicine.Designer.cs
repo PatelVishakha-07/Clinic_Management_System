@@ -31,7 +31,7 @@
             panel1 = new Panel();
             btnReset = new Button();
             btnCancel = new Button();
-            btnSave = new Button();
+            btnUpdate = new Button();
             dateTimePicker1 = new DateTimePicker();
             label4 = new Label();
             txtStock = new TextBox();
@@ -53,7 +53,7 @@
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
             panel1.Controls.Add(btnReset);
             panel1.Controls.Add(btnCancel);
-            panel1.Controls.Add(btnSave);
+            panel1.Controls.Add(btnUpdate);
             panel1.Controls.Add(dateTimePicker1);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(txtStock);
@@ -93,18 +93,20 @@
             btnCancel.TabIndex = 11;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = false;
+            btnCancel.Click += btnCancel_Click;
             // 
-            // btnSave
+            // btnUpdate
             // 
-            btnSave.BackColor = Color.Coral;
-            btnSave.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            btnSave.ForeColor = Color.DarkBlue;
-            btnSave.Location = new Point(260, 535);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(179, 69);
-            btnSave.TabIndex = 10;
-            btnSave.Text = "Update";
-            btnSave.UseVisualStyleBackColor = false;
+            btnUpdate.BackColor = Color.Coral;
+            btnUpdate.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            btnUpdate.ForeColor = Color.DarkBlue;
+            btnUpdate.Location = new Point(260, 535);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(179, 69);
+            btnUpdate.TabIndex = 10;
+            btnUpdate.Text = "Update";
+            btnUpdate.UseVisualStyleBackColor = false;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // dateTimePicker1
             // 
@@ -224,7 +226,7 @@
         private Panel panel1;
         private Button btnReset;
         private Button btnCancel;
-        private Button btnSave;
+        private Button btnUpdate;
         private DateTimePicker dateTimePicker1;
         private Label label4;
         private TextBox txtStock;
