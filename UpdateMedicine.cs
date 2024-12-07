@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace Clinic_Management_System
 {
     public partial class UpdateMedicine : UserControl
     {
+        public event EventHandler UpdateCompleted;
         int medicineId;
         string cmpPattern = @"^[a-zA-Z0-9\s\.\-]+$";
         string medicinePattern = @"^[a-zA-Z0-9\s\-\(\)]+$";
@@ -88,7 +90,8 @@ namespace Clinic_Management_System
                     dbClass.databaseoperations(query);
                     Medicine medicine = new Medicine();
                     MessageBox.Show("Record Updated Successfully");
-                    medicine.ShowControl(new ShowMedicine());
+                    UpdateCompleted?.Invoke(this,EventArgs.Empty);
+                    //medicine.ShowControl(new ShowMedicine());
                 }
 
              }            
@@ -105,8 +108,8 @@ namespace Clinic_Management_System
             this.medicineId=medicineId;
             txtName.Text = medicineName;
             txtCmp.Text= companyName;
-            txtStock.Text = expiryDate;
-            dateTimePicker1.Text = stock.ToString();
+            txtStock.Text = stock.ToString();
+            dateTimePicker1.Text = expiryDate;
         }
     }
 }

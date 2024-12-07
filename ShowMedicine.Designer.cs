@@ -33,14 +33,14 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             panel1 = new Panel();
-            label1 = new Label();
-            btnSearch = new Button();
-            txtSearch = new TextBox();
             medicinegrid = new DataGridView();
             Medicine_Name = new DataGridViewTextBoxColumn();
             Company_Name = new DataGridViewTextBoxColumn();
             Medicine_Stock = new DataGridViewTextBoxColumn();
             Expiry_Date = new DataGridViewTextBoxColumn();
+            label1 = new Label();
+            btnSearch = new Button();
+            txtSearch = new TextBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)medicinegrid).BeginInit();
             SuspendLayout();
@@ -56,45 +56,10 @@
             panel1.Controls.Add(txtSearch);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1260, 1009);
+            panel1.Size = new Size(1008, 807);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(416, 24);
-            label1.Margin = new Padding(4, 0, 4, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(432, 54);
-            label1.TabIndex = 3;
-            label1.Text = "Medicine Information";
-            // 
-            // btnSearch
-            // 
-            btnSearch.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            btnSearch.Location = new Point(1018, 131);
-            btnSearch.Margin = new Padding(4);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(185, 51);
-            btnSearch.TabIndex = 2;
-            btnSearch.Text = "Search";
-            btnSearch.UseVisualStyleBackColor = true;
-            btnSearch.Click += btnSearch_Click;
-            // 
-            // txtSearch
-            // 
-            txtSearch.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            txtSearch.Location = new Point(31, 131);
-            txtSearch.Margin = new Padding(4);
-            txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(898, 47);
-            txtSearch.TabIndex = 1;
-            txtSearch.TextChanged += textBox1_TextChanged;
             // 
             // medicinegrid
             // 
@@ -118,8 +83,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             medicinegrid.DefaultCellStyle = dataGridViewCellStyle2;
             medicinegrid.GridColor = SystemColors.Info;
-            medicinegrid.Location = new Point(31, 222);
-            medicinegrid.Margin = new Padding(4);
+            medicinegrid.Location = new Point(25, 178);
             medicinegrid.Name = "medicinegrid";
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
@@ -136,8 +100,9 @@
             dataGridViewCellStyle4.SelectionForeColor = Color.Black;
             medicinegrid.RowsDefaultCellStyle = dataGridViewCellStyle4;
             medicinegrid.RowTemplate.Height = 29;
-            medicinegrid.Size = new Size(1205, 645);
+            medicinegrid.Size = new Size(964, 516);
             medicinegrid.TabIndex = 4;
+            medicinegrid.CellContentClick += medicinegrid_CellContentClick;
             // 
             // Medicine_Name
             // 
@@ -167,14 +132,44 @@
             Expiry_Date.Name = "Expiry_Date";
             Expiry_Date.Width = 200;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(333, 19);
+            label1.Name = "label1";
+            label1.Size = new Size(370, 46);
+            label1.TabIndex = 3;
+            label1.Text = "Medicine Information";
+            // 
+            // btnSearch
+            // 
+            btnSearch.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            btnSearch.Location = new Point(814, 105);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(148, 41);
+            btnSearch.TabIndex = 2;
+            btnSearch.Text = "Search";
+            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
+            // 
+            // txtSearch
+            // 
+            txtSearch.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            txtSearch.Location = new Point(25, 105);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(719, 41);
+            txtSearch.TabIndex = 1;
+            txtSearch.TextChanged += textBox1_TextChanged;
+            // 
             // ShowMedicine
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel1);
-            Margin = new Padding(4);
             Name = "ShowMedicine";
-            Size = new Size(1260, 1009);
+            Size = new Size(1008, 807);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)medicinegrid).EndInit();

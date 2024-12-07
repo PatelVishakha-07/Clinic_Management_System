@@ -24,7 +24,7 @@ namespace Clinic_Management_System
         {
             if (medicinegrid.Rows.Count == 1)
             {
-                string query = "select Medicine_Name,Company_Name,Medicine_Stock,Expiry_Date from Medicines;";
+                string query = "select Medicine_Id,Medicine_Name,Company_Name,Medicine_Stock,Expiry_Date from Medicines;";
                 DataSet ds = dbClass.Getdata(query);
                 populategridview(ds);
             }
@@ -47,13 +47,13 @@ namespace Clinic_Management_System
             if (!string.IsNullOrEmpty(value))
             {
 
-                if (int.TryParse(value,out int stock))
+                if (int.TryParse(value, out int stock))
                 {
-                    query =$"select Medicine_Name,Company_Name,Medicine_Stock,Expiry_Date from Medicines where Medicine_Stock={int.Parse(value)};";
+                    query = $"select Medicine_Name,Company_Name,Medicine_Stock,Expiry_Date from Medicines where Medicine_Stock={int.Parse(value)};";
                 }
-                else if (DateOnly.TryParse(value, out DateOnly expiry_date)) 
+                else if (DateOnly.TryParse(value, out DateOnly expiry_date))
                 {
-                    string formated_date = expiry_date .ToString("MM-dd-yyyy");
+                    string formated_date = expiry_date.ToString("MM-dd-yyyy");
                     query = $"select Medicine_Name,Company_Name,Medicine_Stock,Expiry_Date from Medicines where Expiry_Date='{formated_date}';";
                 }
                 else
@@ -73,14 +73,26 @@ namespace Clinic_Management_System
 
         private void populategridview(DataSet ds)
         {
-              if (ds != null && ds.Tables.Count > 0)
-              {
+            if (ds != null && ds.Tables.Count > 0)
+            {
                 medicinegrid.AutoGenerateColumns = false;
                 medicinegrid.Columns["Medicine_Name"].DataPropertyName = "Medicine_Name";
                 medicinegrid.Columns["Company_Name"].DataPropertyName = "Company_Name";
                 medicinegrid.Columns["Medicine_Stock"].DataPropertyName = "Medicine_Stock";
                 medicinegrid.Columns["Expiry_Date"].DataPropertyName = "Expiry_Date";
                 medicinegrid.DataSource = ds.Tables[0];
+
+                if (!medicinegrid.Columns.Contains("Medicine_Id"))
+                {
+                    var idColumn = new DataGridViewTextBoxColumn
+                    {
+                        Name = "Medicine_Id",
+                        DataPropertyName = "Medicine_Id",
+                        Visible = false 
+                    };
+                    medicinegrid.Columns.Add(idColumn);
+                }
+
                 if (!medicinegrid.Columns.Contains("updateLink"))
                 {
                     DataGridViewLinkColumn updateLink = new DataGridViewLinkColumn
@@ -94,6 +106,28 @@ namespace Clinic_Management_System
                     medicinegrid.Columns.Add(updateLink);
                 }
 
+            }
+        }
+
+        private void medicinegrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.ColumnIndex == medicinegrid.Columns["updateLink"].Index && e.RowIndex >= 0)
+            {
+                int medicineId = Convert.ToInt32(medicinegrid.Rows[e.RowIndex].Cells["Medicine_Id"].Value.ToString());
+                string medicineName = medicinegrid.Rows[e.RowIndex].Cells["Medicine_Name"].Value.ToString();
+                string cmpName = medicinegrid.Rows[e.RowIndex].Cells["Company_Name"].Value.ToString();
+                int stock = Convert.ToInt32(medicinegrid.Rows[e.RowIndex].Cells["Medicine_Stock"].Value.ToString());
+                string date = medicinegrid.Rows[e.RowIndex].Cells["Expiry_Date"].Value.ToString();
+                 
+                //int medicineId = 0;
+                UpdateMedicine updateMedicine = new UpdateMedicine();   
+                updateMedicine.getMedicineDetails(medicineId,medicineName,cmpName, stock, date);
+                Medicine medicine = this.FindForm() as Medicine;
+                updateMedicine.UpdateCompleted += (sender, e) =>
+                {
+                    medicine.ShowControl(new ShowMedicine());
+                };
+                medicine.ShowControl(updateMedicine);
             }
         }
     }

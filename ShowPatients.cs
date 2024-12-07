@@ -99,7 +99,19 @@ namespace Clinic_Management_System
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (e.ColumnIndex == dataGridView1.Columns["Prescription"].Index && e.RowIndex >= 0)
+            {
+                //int patientId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["patient_id"].Value.ToString());
+                string patientName = dataGridView1.Rows[e.RowIndex].Cells["name"].Value.ToString();
+                string address = dataGridView1.Rows[e.RowIndex].Cells["address"].Value.ToString();
+                int age = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["age"].Value.ToString());
+                string contact = dataGridView1.Rows[e.RowIndex].Cells["contact_no"].Value.ToString();
+                int patientId = 0;
+                AddPrescription addPrescription = new AddPrescription();
+                addPrescription.getPatientDetails(patientId, patientName, address, age, contact);
+                Patients patients = this.FindForm() as Patients;
+                patients.ShowContent(addPrescription);
+            }
         }
     }
 }
