@@ -26,28 +26,29 @@ namespace Clinic_Management_System
                 DataSet ds = databaseclass.Getdata(query);
                 populategridview(ds);
             }
-           
+
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
-        { 
-            string value=txtSearch.Text;
+        {
+            string value = txtSearch.Text;
             string query;
             if (!string.IsNullOrEmpty(value))
             {
-                
-                if (value.Length < 4) {
-                     query = $"select name,age,contact_no,gender,address from Patients where name='{value}' or age={int.Parse(value)} or gender='{value}' or contact_no='{value}' or address='{value}'";
+
+                if (int.TryParse(value,out int age))
+                {
+                    query = $"select name,age,contact_no,gender,address from Patients where age={int.Parse(value)}";
                 }
                 else
                 {
-                     query = $"select name,age,contact_no,gender,address from Patients where name='{value}' or gender='{value}' or contact_no='{value}' or address='{value}'";
+                    query = $"select name,age,contact_no,gender,address from Patients where name='{value}' or gender='{value}' or contact_no='{value}' or address='{value}'";
                 }
-                
+
             }
             else
             {
-                 query = "select name,age,contact_no,gender,address from Patients";
+                query = "select name,age,contact_no,gender,address from Patients";
             }
             DataSet ds = databaseclass.Getdata(query);
             populategridview(ds);
@@ -95,5 +96,10 @@ namespace Clinic_Management_System
 
             }
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
+    }
 }

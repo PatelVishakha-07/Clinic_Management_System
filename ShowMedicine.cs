@@ -16,55 +16,85 @@ namespace Clinic_Management_System
         public ShowMedicine()
         {
             InitializeComponent();
-            
+
         }
 
-        private void ShowMedicine_Load(object sender, EventArgs e)
-        {
-            string query = "select Medicine_Name, Company_Name, Medicine_Stock, Expiry_Date from Medicines;";
-            DataSet ds = new DataSet();
-            ds = dbClass.Getdata(query);
-            
-            if (ds != null && ds.Tables.Count > 0 && ds.Tables.Contains("Medicines"))
-            {
-                ds.Tables[0].TableName = "Medicines";
-                dataGridView1.Columns.Clear();
-                dataGridView1.AutoGenerateColumns = false;
-                dataGridView1.Columns["Medicine_Name"].DataPropertyName = "Medicine_Name";
-                dataGridView1.Columns["Company_Name"].DataPropertyName = "Company_Name";
-                dataGridView1.Columns["Medicine_Stock"].DataPropertyName = "Medicine_Stock";
-                dataGridView1.Columns["Expiry_Date"].DataPropertyName = "Expiry_Date";
-
-                if (dataGridView1.Columns["updateLink"] == null) {
-                    DataGridViewLinkColumn updateLink = new DataGridViewLinkColumn
-                    {
-                        HeaderText="Action",
-                        Name = "updateLink",
-                        Text = "Update",
-                        UseColumnTextForLinkValue = true,
-                    };
-
-                    dataGridView1.Columns.Add(updateLink);
-                    dataGridView1.DataSource = ds.Tables["Medicines"];
-                    dataGridView1.Refresh();
-                }
-
-            }            
-        }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-                    
+            if (medicinegrid.Rows.Count == 1)
+            {
+                string query = "select Medicine_Name,Company_Name,Medicine_Stock,Expiry_Date from Medicines;";
+                DataSet ds = dbClass.Getdata(query);
+                populategridview(ds);
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
-        }        
+        }
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string value = txtSearch.Text;
+            string query;
+            if (!string.IsNullOrEmpty(value))
+            {
+
+                if (int.TryParse(value,out int stock))
+                {
+                    query =$"select Medicine_Name,Company_Name,Medicine_Stock,Expiry_Date from Medicines where Medicine_Stock={int.Parse(value)};";
+                }
+                else if (DateOnly.TryParse(value, out DateOnly expiry_date)) 
+                {
+                    string formated_date = expiry_date .ToString("MM-dd-yyyy");
+                    query = $"select Medicine_Name,Company_Name,Medicine_Stock,Expiry_Date from Medicines where Expiry_Date='{formated_date}';";
+                }
+                else
+                {
+                    query = $"select Medicine_Name,Company_Name,Medicine_Stock,Expiry_Date from Medicines where Medicine_Name='{value}' or Company_Name='{value}';";
+
+                }
+
+            }
+            else
+            {
+                query = "select Medicine_Name,Company_Name,Medicine_Stock,Expiry_Date from Medicines;";
+            }
+            DataSet ds = dbClass.Getdata(query);
+            populategridview(ds);
+        }
+
+        private void populategridview(DataSet ds)
+        {
+              if (ds != null && ds.Tables.Count > 0)
+              {
+                medicinegrid.AutoGenerateColumns = false;
+                medicinegrid.Columns["Medicine_Name"].DataPropertyName = "Medicine_Name";
+                medicinegrid.Columns["Company_Name"].DataPropertyName = "Company_Name";
+                medicinegrid.Columns["Medicine_Stock"].DataPropertyName = "Medicine_Stock";
+                medicinegrid.Columns["Expiry_Date"].DataPropertyName = "Expiry_Date";
+                medicinegrid.DataSource = ds.Tables[0];
+                if (!medicinegrid.Columns.Contains("updateLink"))
+                {
+                    DataGridViewLinkColumn updateLink = new DataGridViewLinkColumn
+                    {
+                        HeaderText = "Action",
+                        Name = "updateLink",
+                        Text = "Update",
+                        UseColumnTextForLinkValue = true,
+                    };
+
+                    medicinegrid.Columns.Add(updateLink);
+                }
+
+            }
         }
     }
 }
