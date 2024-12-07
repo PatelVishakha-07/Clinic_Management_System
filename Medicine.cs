@@ -51,7 +51,7 @@ namespace Clinic_Management_System
             ShowControl(new AddMedicine());        
         }       
 
-        private void ShowControl(UserControl control)
+        public void ShowControl(UserControl control)
         {
             MainPanel.Controls.Clear();
             MainPanel.Controls.Add(control);

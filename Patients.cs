@@ -42,10 +42,7 @@ namespace Clinic_Management_System
 
         }
 
-        private void neewPatientsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ShowContent(new NewPatient());
-        }
+
 
         private void ShowContent(UserControl userControl)
         {
@@ -53,7 +50,14 @@ namespace Clinic_Management_System
             MainPanel.Controls.Add(userControl);
         }
 
-        private void oldPatientsToolStripMenuItem_Click(object sender, EventArgs e)
+        
+
+        private void neewPatientsToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            ShowContent(new NewPatient());
+        }
+
+        private void oldPatientsToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             ShowContent(new OldPatients());
         }
