@@ -49,9 +49,8 @@
             PatientsPanel.Controls.Add(PanelLeft);
             PatientsPanel.Dock = DockStyle.Fill;
             PatientsPanel.Location = new Point(0, 0);
-            PatientsPanel.Margin = new Padding(4, 4, 4, 4);
             PatientsPanel.Name = "PatientsPanel";
-            PatientsPanel.Size = new Size(1238, 950);
+            PatientsPanel.Size = new Size(990, 760);
             PatientsPanel.TabIndex = 0;
             // 
             // MainPanel
@@ -59,20 +58,18 @@
             MainPanel.AutoScroll = true;
             MainPanel.AutoScrollMargin = new Size(3, 4);
             MainPanel.Dock = DockStyle.Fill;
-            MainPanel.Location = new Point(309, 78);
-            MainPanel.Margin = new Padding(4, 4, 4, 4);
+            MainPanel.Location = new Point(247, 62);
             MainPanel.Name = "MainPanel";
-            MainPanel.Size = new Size(929, 872);
+            MainPanel.Size = new Size(743, 698);
             MainPanel.TabIndex = 2;
             // 
             // PanelTop
             // 
             PanelTop.Controls.Add(menuStrip1);
             PanelTop.Dock = DockStyle.Top;
-            PanelTop.Location = new Point(309, 0);
-            PanelTop.Margin = new Padding(4, 4, 4, 4);
+            PanelTop.Location = new Point(247, 0);
             PanelTop.Name = "PanelTop";
-            PanelTop.Size = new Size(929, 78);
+            PanelTop.Size = new Size(743, 62);
             PanelTop.TabIndex = 1;
             // 
             // menuStrip1
@@ -85,8 +82,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { showPatientsToolStripMenuItem, addPatientsToolStripMenuItem, neewPatientsToolStripMenuItem, oldPatientsToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(4, 2, 0, 2);
-            menuStrip1.Size = new Size(929, 78);
+            menuStrip1.Size = new Size(743, 62);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -94,7 +90,7 @@
             // 
             showPatientsToolStripMenuItem.ForeColor = Color.Black;
             showPatientsToolStripMenuItem.Name = "showPatientsToolStripMenuItem";
-            showPatientsToolStripMenuItem.Size = new Size(212, 74);
+            showPatientsToolStripMenuItem.Size = new Size(182, 58);
             showPatientsToolStripMenuItem.Text = "Show Patients";
             showPatientsToolStripMenuItem.Click += showPatientsToolStripMenuItem_Click;
             // 
@@ -102,40 +98,40 @@
             // 
             addPatientsToolStripMenuItem.ForeColor = Color.Black;
             addPatientsToolStripMenuItem.Name = "addPatientsToolStripMenuItem";
-            addPatientsToolStripMenuItem.Size = new Size(198, 74);
+            addPatientsToolStripMenuItem.Size = new Size(170, 58);
             addPatientsToolStripMenuItem.Text = "Add Patients";
             addPatientsToolStripMenuItem.Click += addPatientsToolStripMenuItem_Click;
             // 
             // neewPatientsToolStripMenuItem
             // 
             neewPatientsToolStripMenuItem.Name = "neewPatientsToolStripMenuItem";
-            neewPatientsToolStripMenuItem.Size = new Size(198, 74);
+            neewPatientsToolStripMenuItem.Size = new Size(170, 58);
             neewPatientsToolStripMenuItem.Text = "New Patients";
+            neewPatientsToolStripMenuItem.Click += neewPatientsToolStripMenuItem_Click_1;
             // 
             // oldPatientsToolStripMenuItem
             // 
             oldPatientsToolStripMenuItem.Name = "oldPatientsToolStripMenuItem";
-            oldPatientsToolStripMenuItem.Size = new Size(198, 74);
+            oldPatientsToolStripMenuItem.Size = new Size(170, 58);
             oldPatientsToolStripMenuItem.Text = "Old Patients";
+            oldPatientsToolStripMenuItem.Click += oldPatientsToolStripMenuItem_Click_1;
             // 
             // PanelLeft
             // 
             PanelLeft.Dock = DockStyle.Left;
             PanelLeft.Location = new Point(0, 0);
-            PanelLeft.Margin = new Padding(4, 4, 4, 4);
             PanelLeft.Name = "PanelLeft";
-            PanelLeft.Size = new Size(309, 950);
+            PanelLeft.Size = new Size(247, 760);
             PanelLeft.TabIndex = 0;
             // 
             // Patients
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             BackColor = Color.LightGray;
-            ClientSize = new Size(1238, 950);
+            ClientSize = new Size(990, 760);
             Controls.Add(PatientsPanel);
-            Margin = new Padding(4, 4, 4, 4);
             Name = "Patients";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Patients";

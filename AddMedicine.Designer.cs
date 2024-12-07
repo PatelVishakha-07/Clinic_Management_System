@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            lblStock = new Label();
+            lblName = new Label();
+            lblCmp = new Label();
             btnClear = new Button();
             btnCancel = new Button();
             btnSave = new Button();
@@ -51,6 +54,9 @@
             panel1.BackColor = SystemColors.ControlDark;
             panel1.BackgroundImage = Properties.Resources.med1;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(lblStock);
+            panel1.Controls.Add(lblName);
+            panel1.Controls.Add(lblCmp);
             panel1.Controls.Add(btnClear);
             panel1.Controls.Add(btnCancel);
             panel1.Controls.Add(btnSave);
@@ -70,6 +76,39 @@
             panel1.Size = new Size(1100, 763);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
+            // 
+            // lblStock
+            // 
+            lblStock.AutoSize = true;
+            lblStock.ForeColor = Color.Red;
+            lblStock.Location = new Point(620, 360);
+            lblStock.Name = "lblStock";
+            lblStock.Size = new Size(236, 20);
+            lblStock.TabIndex = 17;
+            lblStock.Text = "* Medicine Stock cannot be empty";
+            lblStock.Visible = false;
+            // 
+            // lblName
+            // 
+            lblName.AutoSize = true;
+            lblName.ForeColor = Color.Red;
+            lblName.Location = new Point(620, 184);
+            lblName.Name = "lblName";
+            lblName.Size = new Size(240, 20);
+            lblName.TabIndex = 16;
+            lblName.Text = "* Medicine Name cannot be empty";
+            lblName.Visible = false;
+            // 
+            // lblCmp
+            // 
+            lblCmp.AutoSize = true;
+            lblCmp.ForeColor = Color.Red;
+            lblCmp.Location = new Point(620, 271);
+            lblCmp.Name = "lblCmp";
+            lblCmp.Size = new Size(244, 20);
+            lblCmp.TabIndex = 15;
+            lblCmp.Text = "* Company Name Cannot be Empty";
+            lblCmp.Visible = false;
             // 
             // btnClear
             // 
@@ -239,5 +278,8 @@
         private Button btnClear;
         private Button btnCancel;
         private Button btnSave;
+        private Label lblCmp;
+        private Label lblName;
+        private Label lblStock;
     }
 }
