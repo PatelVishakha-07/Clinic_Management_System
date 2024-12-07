@@ -55,7 +55,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(508, 48);
             textBox1.TabIndex = 0;
-            textBox1.TextChanged += textBox1_TextChanged;
+           // textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label1
             // 
@@ -67,7 +67,7 @@
             label1.Size = new Size(91, 25);
             label1.TabIndex = 1;
             label1.Text = "Username";
-            label1.Click += label1_Click;
+           // label1.Click += label1_Click;
             // 
             // pictureBox1
             // 
@@ -154,7 +154,7 @@
             pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox4.TabIndex = 9;
             pictureBox4.TabStop = false;
-            pictureBox4.Click += pictureBox4_Click;
+            //pictureBox4.Click += pictureBox4_Click;
             // 
             // panel1
             // 
@@ -175,7 +175,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1238, 950);
             panel1.TabIndex = 0;
-            panel1.Paint += panel1_Paint;
+           // panel1.Paint += panel1_Paint;
             // 
             // LoginForm
             // 
@@ -189,7 +189,7 @@
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
-            Load += LoginForm_Load;
+           // Load += LoginForm_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
