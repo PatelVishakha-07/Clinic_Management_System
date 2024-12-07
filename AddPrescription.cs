@@ -22,8 +22,20 @@ namespace Clinic_Management_System
 
         }
 
-        public void getPatientDetails(int pid, string name, string address, int age, string contact) { 
-            
+        public void getPatientDetails(string name, string address, int age, string contact,string gender)
+        {
+            txtName.Text = name;
+            txtaddress.Text = address;
+            txtAge.Text=age.ToString();
+            txtContact.Text = contact;
+            txtGender.Text = gender.ToString();
         }
+
+        private void txtDisease_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }

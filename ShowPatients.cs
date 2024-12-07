@@ -106,9 +106,9 @@ namespace Clinic_Management_System
                 string address = dataGridView1.Rows[e.RowIndex].Cells["address"].Value.ToString();
                 int age = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["age"].Value.ToString());
                 string contact = dataGridView1.Rows[e.RowIndex].Cells["contact_no"].Value.ToString();
-                int patientId = 0;
+                string gender = dataGridView1.Rows[e.RowIndex].Cells["gender"].Value.ToString();
                 AddPrescription addPrescription = new AddPrescription();
-                addPrescription.getPatientDetails(patientId, patientName, address, age, contact);
+                addPrescription.getPatientDetails( patientName, address, age, contact,gender);
                 Patients patients = this.FindForm() as Patients;
                 patients.ShowContent(addPrescription);
             }
