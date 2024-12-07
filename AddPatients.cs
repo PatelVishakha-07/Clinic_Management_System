@@ -92,7 +92,7 @@ namespace Clinic_Management_System
                 {
                     listBox1.Visible = true;
                 }
-              
+
                 changingname = txtName.Text;
                 string query = "select name from Patients where name like @value";
                 NpgsqlConnection conn = new NpgsqlConnection("Host=localhost;Port=5432;Username=postgres;Password=2002;Database=Clinic_Management;");
@@ -111,15 +111,20 @@ namespace Clinic_Management_System
                 }
                 else
                 {
-                    listBox1.Visible=false;
+                    listBox1.Visible = false;
                 }
-               
+
             }
             else
             {
                 listBox1.Visible = false;
             }
-            
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtName.Text=listBox1.SelectedItem.ToString();
         }
     }
 }
