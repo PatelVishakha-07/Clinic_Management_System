@@ -33,13 +33,29 @@ namespace Clinic_Management_System
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            lblName.Text = "Medicine Name Cannot be empty";
+            lblCmp.Text = "Company Name Cannot be empty";
+            lblStock.Text = "Medicine Stock Cannot be empty";
+            LabelVisisble();
             databaseclass dbClass = new databaseclass();
             string medicineName = txtName.Text;
             string cmpName = txtCmp.Text;
-            int stock = Convert.ToInt32(txtStock.Text);
+            string stock =txtStock.Text;
             string date = dateTimePicker1.Text;
 
-            if (string.IsNullOrEmpty(medicineName))
+            if (string.IsNullOrEmpty(medicineName) && string.IsNullOrEmpty(cmpName) && string.IsNullOrEmpty(stock))
+            {
+                LabelVisisble(true,true,true);
+            }
+            else if(string.IsNullOrEmpty(medicineName) && string.IsNullOrEmpty(cmpName))
+            {
+                LabelVisisble(true, true, false);
+            }
+            else if (string.IsNullOrEmpty(stock) && string.IsNullOrEmpty(cmpName))
+            {
+                LabelVisisble(false, true, true);
+            }
+            else if(string.IsNullOrEmpty(medicineName))
             {
                 lblName.Visible = true;
             }
@@ -47,28 +63,25 @@ namespace Clinic_Management_System
             {
                 lblCmp.Visible = true;
             }
-            else if (string.IsNullOrEmpty(stock.ToString()))
+            else if (string.IsNullOrEmpty(stock))
             {
                 lblStock.Visible = true;
-            }
-            else if (string.IsNullOrEmpty(medicineName) && string.IsNullOrEmpty(cmpName) && string.IsNullOrEmpty(stock.ToString())) {
-                LabelVisisble(true);
-            }
+            }            
             else
             {
-                LabelVisisble(false);
+                LabelVisisble();
                 lblName.Text = "Please enter Valid Medicine Name";
                 lblCmp.Text = "Please enter Valid Company Name";
                 lblStock.Text = "Please enter Valid Medicine Stock";
 
                 lblName.Visible = !Regex.IsMatch(medicineName, medicinePattern);
                 lblCmp.Visible = !Regex.IsMatch(cmpName, cmpPattern);
-                lblStock.Visible = !Regex.IsMatch(stock.ToString(), stockPattern);
+                lblStock.Visible = !Regex.IsMatch(stock, stockPattern);
 
                 if (!lblName.Visible && !lblCmp.Visible && !lblStock.Visible)
                 {
                     string query = "insert into Medicines(Medicine_Name, Company_Name, Medicine_Stock, Expiry_Date) values ('" + medicineName +
-                "', '" + cmpName + "', " + stock + ", '" + date + "');";
+                "', '" + cmpName + "', " + int.Parse(stock) + ", '" + date + "');";
                     dbClass.databaseoperations(query);
                     MessageBox.Show("Record Inserted Successfully");
                     ClearText();
@@ -81,11 +94,12 @@ namespace Clinic_Management_System
            
         }        
 
-        private void LabelVisisble(bool boolValue)
+       
+        private void LabelVisisble(bool name=false, bool cmp=false, bool stock=false) 
         {
-            lblName.Visible = boolValue;
-            lblCmp.Visible = boolValue;
-            lblStock.Visible = boolValue;
+            lblName.Visible = name;
+            lblCmp.Visible = cmp;
+            lblStock.Visible = stock;
         }
         private void btnClear_Click(object sender, EventArgs e)
         {
