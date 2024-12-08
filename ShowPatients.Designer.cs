@@ -42,6 +42,7 @@
             Contact_No = new DataGridViewTextBoxColumn();
             Address = new DataGridViewTextBoxColumn();
             Gender = new DataGridViewTextBoxColumn();
+            patient_id = new DataGridViewTextBoxColumn();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -102,7 +103,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Name, Age, Contact_No, Address, Gender });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Name, Age, Contact_No, Address, Gender, patient_id });
             dataGridView1.Cursor = Cursors.Hand;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.ControlLight;
@@ -169,12 +170,20 @@
             Gender.Name = "Gender";
             Gender.Width = 150;
             // 
+            // patient_id
+            // 
+            patient_id.HeaderText = "patient_id";
+            patient_id.MinimumWidth = 6;
+            patient_id.Name = "patient_id";
+            patient_id.Visible = false;
+            patient_id.Width = 125;
+            // 
             // ShowPatients
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel2);
-            //Name = "ShowPatients";
+           // Name = "ShowPatients";
             Size = new Size(1100, 763);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
@@ -194,5 +203,6 @@
         private DataGridViewTextBoxColumn Contact_No;
         private DataGridViewTextBoxColumn Address;
         private DataGridViewTextBoxColumn Gender;
+        private DataGridViewTextBoxColumn patient_id;
     }
 }

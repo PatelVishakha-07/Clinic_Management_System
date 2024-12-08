@@ -18,19 +18,12 @@ namespace Clinic_Management_System
             InitializeComponent();
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)        {      }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void populategridview(DataSet ds)
         {
             if (ds != null && ds.Tables.Count > 0)
             {
                 dataGridView1.AutoGenerateColumns = false;
-
+                dataGridView1.Columns["patient_id"].DataPropertyName = "patient_id";
                 dataGridView1.Columns["Name"].DataPropertyName = "name";
                 dataGridView1.Columns["Age"].DataPropertyName = "age";
                 dataGridView1.Columns["Contact_No"].DataPropertyName = "contact_no";
@@ -47,9 +40,6 @@ namespace Clinic_Management_System
                     Text = "Add",
                     UseColumnTextForLinkValue = true
                 };
-
-
-
                 dataGridView1.Columns.Add(linkColumn);
             }
             if (!dataGridView1.Columns.Contains("Details"))
@@ -61,20 +51,22 @@ namespace Clinic_Management_System
                     Text = "View",
                     UseColumnTextForLinkValue = true
                 };
-
-
                 dataGridView1.Columns.Add(linkColumn1);
-
             }
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)        {        }
-
         private void panel2_Paint_1(object sender, PaintEventArgs e)
         {
+            if (string.IsNullOrEmpty(txtSearch.Text))
+            {
+                btnSearch.Enabled = false;  
+            }
+            else
+            { 
+                btnSearch.Enabled = true;
+            }
             if (dataGridView1.Rows.Count == 1)
             {
-                string query = "select name,age,contact_no,gender,address from Patients";
+                string query = "select * from Patients";
                 DataSet ds = databaseclass.Getdata(query);
                 populategridview(ds);
             }
@@ -84,14 +76,14 @@ namespace Clinic_Management_System
         {
             if (e.ColumnIndex == dataGridView1.Columns["Prescription"].Index && e.RowIndex >= 0)
             {
-                //int patientId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["patient_id"].Value.ToString());
+                int patientId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["patient_id"].Value.ToString());
                 string patientName = dataGridView1.Rows[e.RowIndex].Cells["name"].Value.ToString();
                 string address = dataGridView1.Rows[e.RowIndex].Cells["address"].Value.ToString();
                 int age = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["age"].Value.ToString());
                 string contact = dataGridView1.Rows[e.RowIndex].Cells["contact_no"].Value.ToString();
                 string gender = dataGridView1.Rows[e.RowIndex].Cells["gender"].Value.ToString();
                 AddPrescription addPrescription = new AddPrescription();
-                addPrescription.getPatientDetails(patientName, address, age, contact, gender);
+                addPrescription.getPatientDetails(patientId,patientName, address, age, contact, gender);
                 Patients patients = this.FindForm() as Patients;
                 patients.ShowContent(addPrescription);
             }
@@ -106,17 +98,17 @@ namespace Clinic_Management_System
 
                 if (int.TryParse(value, out int age))
                 {
-                    query = $"select name,age,contact_no,gender,address from Patients where age={int.Parse(value)}";
+                    query = $"select* from Patients where age={int.Parse(value)}";
                 }
                 else
                 {
-                    query = $"select name,age,contact_no,gender,address from Patients where name='{value}' or gender='{value}' or contact_no='{value}' or address='{value}'";
+                    query = $"select * from Patients where name='{value}' or gender='{value}' or contact_no='{value}' or address='{value}'";
                 }
 
             }
             else
             {
-                query = "select name,age,contact_no,gender,address from Patients";
+                query = "select * from Patients";
             }
             DataSet ds = databaseclass.Getdata(query);
             populategridview(ds);

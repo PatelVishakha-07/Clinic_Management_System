@@ -80,18 +80,18 @@
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1375, 954);
+            panel1.Size = new Size(1100, 763);
             panel1.TabIndex = 0;
             // 
             // listBox1
             // 
             listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 25;
-            listBox1.Location = new Point(768, 221);
+            listBox1.ItemHeight = 20;
+            listBox1.Location = new Point(614, 182);
+            listBox1.Margin = new Padding(2);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(481, 129);
+            listBox1.Size = new Size(457, 104);
             listBox1.TabIndex = 36;
             listBox1.Visible = false;
             listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
@@ -100,9 +100,10 @@
             // 
             lblall.AutoSize = true;
             lblall.ForeColor = Color.Red;
-            lblall.Location = new Point(768, 126);
+            lblall.Location = new Point(614, 101);
+            lblall.Margin = new Padding(2, 0, 2, 0);
             lblall.Name = "lblall";
-            lblall.Size = new Size(234, 25);
+            lblall.Size = new Size(193, 20);
             lblall.TabIndex = 35;
             lblall.Text = "*One or more field is empty";
             lblall.Visible = false;
@@ -111,9 +112,10 @@
             // 
             lblage.AutoSize = true;
             lblage.ForeColor = Color.Red;
-            lblage.Location = new Point(768, 332);
+            lblage.Location = new Point(614, 266);
+            lblage.Margin = new Padding(2, 0, 2, 0);
             lblage.Name = "lblage";
-            lblage.Size = new Size(214, 25);
+            lblage.Size = new Size(178, 20);
             lblage.TabIndex = 34;
             lblage.Text = "* Please Enter Proper Age";
             lblage.Visible = false;
@@ -122,9 +124,10 @@
             // 
             lbladd.AutoSize = true;
             lbladd.ForeColor = Color.Red;
-            lbladd.Location = new Point(768, 555);
+            lbladd.Location = new Point(614, 444);
+            lbladd.Margin = new Padding(2, 0, 2, 0);
             lbladd.Name = "lbladd";
-            lbladd.Size = new Size(264, 25);
+            lbladd.Size = new Size(219, 20);
             lbladd.TabIndex = 33;
             lbladd.Text = "* Please Enter Address Correctly";
             lbladd.Visible = false;
@@ -133,9 +136,10 @@
             // 
             lblph_no.AutoSize = true;
             lblph_no.ForeColor = Color.Red;
-            lblph_no.Location = new Point(768, 665);
+            lblph_no.Location = new Point(614, 532);
+            lblph_no.Margin = new Padding(2, 0, 2, 0);
             lblph_no.Name = "lblph_no";
-            lblph_no.Size = new Size(247, 25);
+            lblph_no.Size = new Size(205, 20);
             lblph_no.TabIndex = 32;
             lblph_no.Text = "* Please Enter Proper Number";
             lblph_no.Visible = false;
@@ -144,9 +148,10 @@
             // 
             lblname.AutoSize = true;
             lblname.ForeColor = Color.Red;
-            lblname.Location = new Point(768, 221);
+            lblname.Location = new Point(614, 177);
+            lblname.Margin = new Padding(2, 0, 2, 0);
             lblname.Name = "lblname";
-            lblname.Size = new Size(229, 25);
+            lblname.Size = new Size(191, 20);
             lblname.TabIndex = 31;
             lblname.Text = "* Please Enter Proper Name";
             lblname.Visible = false;
@@ -154,9 +159,10 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(768, 332);
+            label7.Location = new Point(614, 266);
+            label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
-            label7.Size = new Size(0, 25);
+            label7.Size = new Size(0, 20);
             label7.TabIndex = 30;
             // 
             // comboBox1
@@ -165,28 +171,25 @@
             comboBox1.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Male", "Female" });
-            comboBox1.Location = new Point(768, 392);
-            comboBox1.Margin = new Padding(4);
+            comboBox1.Location = new Point(614, 314);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(570, 49);
+            comboBox1.Size = new Size(457, 43);
             comboBox1.TabIndex = 29;
             // 
             // txtaddress
             // 
             txtaddress.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            txtaddress.Location = new Point(768, 504);
-            txtaddress.Margin = new Padding(4);
+            txtaddress.Location = new Point(614, 403);
             txtaddress.Name = "txtaddress";
-            txtaddress.Size = new Size(570, 47);
+            txtaddress.Size = new Size(457, 41);
             txtaddress.TabIndex = 28;
             // 
             // txtContact
             // 
             txtContact.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            txtContact.Location = new Point(768, 614);
-            txtContact.Margin = new Padding(4);
+            txtContact.Location = new Point(614, 491);
             txtContact.Name = "txtContact";
-            txtContact.Size = new Size(570, 47);
+            txtContact.Size = new Size(457, 41);
             txtContact.TabIndex = 27;
             // 
             // label6
@@ -194,10 +197,9 @@
             label6.AutoSize = true;
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(438, 621);
-            label6.Margin = new Padding(4, 0, 4, 0);
+            label6.Location = new Point(350, 497);
             label6.Name = "label6";
-            label6.Size = new Size(269, 40);
+            label6.Size = new Size(225, 33);
             label6.TabIndex = 26;
             label6.Text = "Phone Number: ";
             // 
@@ -206,10 +208,9 @@
             btnClear.BackColor = Color.LightSteelBlue;
             btnClear.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnClear.ForeColor = Color.Black;
-            btnClear.Location = new Point(808, 790);
-            btnClear.Margin = new Padding(4);
+            btnClear.Location = new Point(646, 632);
             btnClear.Name = "btnClear";
-            btnClear.Size = new Size(224, 86);
+            btnClear.Size = new Size(179, 69);
             btnClear.TabIndex = 25;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = false;
@@ -220,10 +221,9 @@
             btnSave.BackColor = Color.LightSteelBlue;
             btnSave.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnSave.ForeColor = Color.Black;
-            btnSave.Location = new Point(409, 790);
-            btnSave.Margin = new Padding(4);
+            btnSave.Location = new Point(327, 632);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(224, 86);
+            btnSave.Size = new Size(179, 69);
             btnSave.TabIndex = 23;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = false;
@@ -234,10 +234,9 @@
             label4.AutoSize = true;
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(438, 511);
-            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Location = new Point(350, 409);
             label4.Name = "label4";
-            label4.Size = new Size(161, 40);
+            label4.Size = new Size(135, 33);
             label4.TabIndex = 21;
             label4.Text = "Address:";
             // 
@@ -246,20 +245,18 @@
             label5.AutoSize = true;
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(438, 401);
-            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Location = new Point(350, 321);
             label5.Name = "label5";
-            label5.Size = new Size(161, 40);
+            label5.Size = new Size(135, 33);
             label5.TabIndex = 19;
             label5.Text = "Gender: ";
             // 
             // txtAge
             // 
             txtAge.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            txtAge.Location = new Point(768, 281);
-            txtAge.Margin = new Padding(4);
+            txtAge.Location = new Point(614, 225);
             txtAge.Name = "txtAge";
-            txtAge.Size = new Size(570, 47);
+            txtAge.Size = new Size(457, 41);
             txtAge.TabIndex = 18;
             // 
             // label3
@@ -267,20 +264,18 @@
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(438, 288);
-            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Location = new Point(350, 230);
             label3.Name = "label3";
-            label3.Size = new Size(107, 40);
+            label3.Size = new Size(90, 33);
             label3.TabIndex = 17;
             label3.Text = "Age: ";
             // 
             // txtName
             // 
             txtName.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            txtName.Location = new Point(768, 172);
-            txtName.Margin = new Padding(4);
+            txtName.Location = new Point(614, 138);
             txtName.Name = "txtName";
-            txtName.Size = new Size(570, 47);
+            txtName.Size = new Size(457, 41);
             txtName.TabIndex = 16;
             txtName.TextChanged += txtName_TextChanged;
             // 
@@ -288,10 +283,9 @@
             // 
             pictureBox1.BackColor = SystemColors.ControlDark;
             pictureBox1.Image = Properties.Resources.patient;
-            pictureBox1.Location = new Point(30, 221);
-            pictureBox1.Margin = new Padding(4);
+            pictureBox1.Location = new Point(24, 177);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(358, 370);
+            pictureBox1.Size = new Size(286, 296);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 15;
             pictureBox1.TabStop = false;
@@ -301,10 +295,9 @@
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(438, 179);
-            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Location = new Point(350, 143);
             label2.Name = "label2";
-            label2.Size = new Size(269, 40);
+            label2.Size = new Size(225, 33);
             label2.TabIndex = 14;
             label2.Text = "Patient Name: ";
             // 
@@ -314,22 +307,20 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 17F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(589, 47);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(471, 38);
             label1.Name = "label1";
-            label1.Size = new Size(223, 46);
+            label1.Size = new Size(191, 40);
             label1.TabIndex = 13;
             label1.Text = "Add Patients";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // AddPatients
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel1);
-            Margin = new Padding(4);
             Name = "AddPatients";
-            Size = new Size(1375, 954);
+            Size = new Size(1100, 763);
             Load += AddPatients_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            lbldisease = new Label();
             pictureBox1 = new PictureBox();
             txtDisease = new TextBox();
             txtPres = new TextBox();
@@ -54,7 +55,8 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(192, 255, 255);
+            panel1.BackColor = SystemColors.InactiveCaption;
+            panel1.Controls.Add(lbldisease);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(txtDisease);
             panel1.Controls.Add(txtPres);
@@ -80,6 +82,17 @@
             panel1.Size = new Size(1100, 763);
             panel1.TabIndex = 0;
             // 
+            // lbldisease
+            // 
+            lbldisease.AutoSize = true;
+            lbldisease.ForeColor = Color.Red;
+            lbldisease.Location = new Point(579, 86);
+            lbldisease.Name = "lbldisease";
+            lbldisease.Size = new Size(289, 20);
+            lbldisease.TabIndex = 57;
+            lbldisease.Text = "* Please enter the disease and prescription";
+            lbldisease.Visible = false;
+            // 
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.prescription;
@@ -97,7 +110,6 @@
             txtDisease.Name = "txtDisease";
             txtDisease.Size = new Size(457, 41);
             txtDisease.TabIndex = 54;
-            txtDisease.TextChanged += txtDisease_TextChanged;
             // 
             // txtPres
             // 
@@ -200,6 +212,7 @@
             btnSave.TabIndex = 43;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
             // 
             // label4
             // 
@@ -267,11 +280,11 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(382, 15);
+            label1.Location = new Point(426, 23);
             label1.Name = "label1";
-            label1.Size = new Size(255, 41);
+            label1.Size = new Size(188, 41);
             label1.TabIndex = 0;
-            label1.Text = "Add Prescription";
+            label1.Text = "Prescription";
             // 
             // AddPrescription
             // 
@@ -309,5 +322,6 @@
         private Label label8;
         private Label label9;
         private PictureBox pictureBox1;
+        private Label lbldisease;
     }
 }

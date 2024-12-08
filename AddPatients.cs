@@ -11,6 +11,9 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using Microsoft.VisualBasic;
 using Npgsql;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Net;
+using System.Xml.Linq;
 
 namespace Clinic_Management_System
 {
@@ -130,7 +133,7 @@ namespace Clinic_Management_System
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtName.Text=listBox1.SelectedItem.ToString();
+            txtName.Text = listBox1.SelectedItem.ToString();
         }
     }
 }
