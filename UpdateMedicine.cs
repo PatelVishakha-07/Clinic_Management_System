@@ -19,20 +19,19 @@ namespace Clinic_Management_System
         string cmpPattern = @"^[a-zA-Z0-9\s\.\-]+$";
         string medicinePattern = @"^[a-zA-Z0-9\s\-\(\)]+$";
         string stockPattern = @"^\d+$";
+        string medName, cpName, expDate;
+        int st;
         public UpdateMedicine()
         {
             InitializeComponent();
         }
 
-        private void UpdateMedicine_Load(object sender, EventArgs e)
-        {
-
-        }
+        private void UpdateMedicine_Load(object sender, EventArgs e) {        }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Medicine medicine = new Medicine();
-            medicine.ShowControl(new ShowMedicine());
+            UpdateCompleted?.Invoke(this, EventArgs.Empty);
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -42,9 +41,9 @@ namespace Clinic_Management_System
             lblStock.Text = "Medicine Stock Cannot be empty";
             LabelVisisble();
 
-            string medicineName=txtName.Text;
-            string companyName=txtCmp.Text;
-            string stock=txtStock.Text;
+            string medicineName = txtName.Text;
+            string companyName = txtCmp.Text;
+            string stock = txtStock.Text;
             string expiryDate = dateTimePicker1.Text;
 
             if (string.IsNullOrEmpty(medicineName) && string.IsNullOrEmpty(companyName) && string.IsNullOrEmpty(stock))
@@ -90,11 +89,10 @@ namespace Clinic_Management_System
                     dbClass.databaseoperations(query);
                     Medicine medicine = new Medicine();
                     MessageBox.Show("Record Updated Successfully");
-                    UpdateCompleted?.Invoke(this,EventArgs.Empty);
-                    //medicine.ShowControl(new ShowMedicine());
+                    UpdateCompleted?.Invoke(this, EventArgs.Empty);                    
                 }
 
-             }            
+            }
         }
 
         private void LabelVisisble(bool name = false, bool cmp = false, bool stock = false)
@@ -104,12 +102,25 @@ namespace Clinic_Management_System
             lblStock.Visible = stock;
         }
 
-        public void getMedicineDetails(int medicineId, string medicineName, string companyName, int stock, string expiryDate) {
-            this.medicineId=medicineId;
+        public void getMedicineDetails(int medicineId, string medicineName, string companyName, int stock, string expiryDate)
+        {
+            this.medicineId = medicineId;
             txtName.Text = medicineName;
-            txtCmp.Text= companyName;
+            txtCmp.Text = companyName;
             txtStock.Text = stock.ToString();
             dateTimePicker1.Text = expiryDate;
+            medName= medicineName;
+            cpName=companyName;
+            st=stock;
+            expDate=expiryDate;
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            txtName.Text= medName;
+            txtCmp.Text= cpName;
+            txtStock.Text = st.ToString();
+            dateTimePicker1.Text= expDate;
         }
     }
 }

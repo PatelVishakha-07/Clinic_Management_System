@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            lblStock = new Label();
+            lblName = new Label();
+            lblCmp = new Label();
             btnReset = new Button();
             btnCancel = new Button();
             btnUpdate = new Button();
@@ -42,9 +45,6 @@
             pictureBox1 = new PictureBox();
             label2 = new Label();
             label1 = new Label();
-            lblStock = new Label();
-            lblName = new Label();
-            lblCmp = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -76,6 +76,39 @@
             panel1.Size = new Size(1100, 763);
             panel1.TabIndex = 1;
             // 
+            // lblStock
+            // 
+            lblStock.AutoSize = true;
+            lblStock.ForeColor = Color.Red;
+            lblStock.Location = new Point(620, 360);
+            lblStock.Name = "lblStock";
+            lblStock.Size = new Size(236, 20);
+            lblStock.TabIndex = 20;
+            lblStock.Text = "* Medicine Stock cannot be empty";
+            lblStock.Visible = false;
+            // 
+            // lblName
+            // 
+            lblName.AutoSize = true;
+            lblName.ForeColor = Color.Red;
+            lblName.Location = new Point(620, 184);
+            lblName.Name = "lblName";
+            lblName.Size = new Size(240, 20);
+            lblName.TabIndex = 19;
+            lblName.Text = "* Medicine Name cannot be empty";
+            lblName.Visible = false;
+            // 
+            // lblCmp
+            // 
+            lblCmp.AutoSize = true;
+            lblCmp.ForeColor = Color.Red;
+            lblCmp.Location = new Point(620, 271);
+            lblCmp.Name = "lblCmp";
+            lblCmp.Size = new Size(244, 20);
+            lblCmp.TabIndex = 18;
+            lblCmp.Text = "* Company Name Cannot be Empty";
+            lblCmp.Visible = false;
+            // 
             // btnReset
             // 
             btnReset.BackColor = Color.Coral;
@@ -87,6 +120,7 @@
             btnReset.TabIndex = 12;
             btnReset.Text = "Reset";
             btnReset.UseVisualStyleBackColor = false;
+            btnReset.Click += btnReset_Click;
             // 
             // btnCancel
             // 
@@ -212,39 +246,6 @@
             label1.TabIndex = 0;
             label1.Text = "Update Medicine";
             label1.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // lblStock
-            // 
-            lblStock.AutoSize = true;
-            lblStock.ForeColor = Color.Red;
-            lblStock.Location = new Point(620, 360);
-            lblStock.Name = "lblStock";
-            lblStock.Size = new Size(236, 20);
-            lblStock.TabIndex = 20;
-            lblStock.Text = "* Medicine Stock cannot be empty";
-            lblStock.Visible = false;
-            // 
-            // lblName
-            // 
-            lblName.AutoSize = true;
-            lblName.ForeColor = Color.Red;
-            lblName.Location = new Point(620, 184);
-            lblName.Name = "lblName";
-            lblName.Size = new Size(240, 20);
-            lblName.TabIndex = 19;
-            lblName.Text = "* Medicine Name cannot be empty";
-            lblName.Visible = false;
-            // 
-            // lblCmp
-            // 
-            lblCmp.AutoSize = true;
-            lblCmp.ForeColor = Color.Red;
-            lblCmp.Location = new Point(620, 271);
-            lblCmp.Name = "lblCmp";
-            lblCmp.Size = new Size(244, 20);
-            lblCmp.TabIndex = 18;
-            lblCmp.Text = "* Company Name Cannot be Empty";
-            lblCmp.Visible = false;
             // 
             // UpdateMedicine
             // 

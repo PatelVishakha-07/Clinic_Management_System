@@ -66,6 +66,8 @@ namespace Clinic_Management_System
                 {
                     string query = $"insert into Patients(name,age,gender,contact_no,address) values('{name}',{int.Parse(age)},'{gender}','{contact}','{address}');";
                     dbclass.databaseoperations(query);
+                    MessageBox.Show("Record Inserted Successfully");
+                    ClearText();
                 }
             }
             else
@@ -76,6 +78,10 @@ namespace Clinic_Management_System
         }
 
         private void btnClear_Click(object sender, EventArgs e)
+        {
+            ClearText();
+        }
+        private void ClearText()
         {
             txtaddress.Text = string.Empty;
             txtAge.Text = string.Empty;

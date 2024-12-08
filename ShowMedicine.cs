@@ -88,7 +88,7 @@ namespace Clinic_Management_System
                     {
                         Name = "Medicine_Id",
                         DataPropertyName = "Medicine_Id",
-                        Visible = false 
+                        Visible = false
                     };
                     medicinegrid.Columns.Add(idColumn);
                 }
@@ -111,17 +111,17 @@ namespace Clinic_Management_System
 
         private void medicinegrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.ColumnIndex == medicinegrid.Columns["updateLink"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == medicinegrid.Columns["updateLink"].Index && e.RowIndex >= 0)
             {
                 int medicineId = Convert.ToInt32(medicinegrid.Rows[e.RowIndex].Cells["Medicine_Id"].Value.ToString());
                 string medicineName = medicinegrid.Rows[e.RowIndex].Cells["Medicine_Name"].Value.ToString();
                 string cmpName = medicinegrid.Rows[e.RowIndex].Cells["Company_Name"].Value.ToString();
                 int stock = Convert.ToInt32(medicinegrid.Rows[e.RowIndex].Cells["Medicine_Stock"].Value.ToString());
                 string date = medicinegrid.Rows[e.RowIndex].Cells["Expiry_Date"].Value.ToString();
-                 
+
                 //int medicineId = 0;
-                UpdateMedicine updateMedicine = new UpdateMedicine();   
-                updateMedicine.getMedicineDetails(medicineId,medicineName,cmpName, stock, date);
+                UpdateMedicine updateMedicine = new UpdateMedicine();
+                updateMedicine.getMedicineDetails(medicineId, medicineName, cmpName, stock, date);
                 Medicine medicine = this.FindForm() as Medicine;
                 updateMedicine.UpdateCompleted += (sender, e) =>
                 {
@@ -129,6 +129,11 @@ namespace Clinic_Management_System
                 };
                 medicine.ShowControl(updateMedicine);
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

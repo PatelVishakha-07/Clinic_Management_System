@@ -50,7 +50,7 @@
             PatientsPanel.Dock = DockStyle.Fill;
             PatientsPanel.Location = new Point(0, 0);
             PatientsPanel.Name = "PatientsPanel";
-            PatientsPanel.Size = new Size(990, 760);
+            PatientsPanel.Size = new Size(1342, 873);
             PatientsPanel.TabIndex = 0;
             // 
             // MainPanel
@@ -60,7 +60,7 @@
             MainPanel.Dock = DockStyle.Fill;
             MainPanel.Location = new Point(247, 62);
             MainPanel.Name = "MainPanel";
-            MainPanel.Size = new Size(743, 698);
+            MainPanel.Size = new Size(1095, 811);
             MainPanel.TabIndex = 2;
             // 
             // PanelTop
@@ -69,7 +69,7 @@
             PanelTop.Dock = DockStyle.Top;
             PanelTop.Location = new Point(247, 0);
             PanelTop.Name = "PanelTop";
-            PanelTop.Size = new Size(743, 62);
+            PanelTop.Size = new Size(1095, 62);
             PanelTop.TabIndex = 1;
             // 
             // menuStrip1
@@ -82,7 +82,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { showPatientsToolStripMenuItem, addPatientsToolStripMenuItem, neewPatientsToolStripMenuItem, oldPatientsToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(743, 62);
+            menuStrip1.Size = new Size(1095, 62);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -121,7 +121,7 @@
             PanelLeft.Dock = DockStyle.Left;
             PanelLeft.Location = new Point(0, 0);
             PanelLeft.Name = "PanelLeft";
-            PanelLeft.Size = new Size(247, 760);
+            PanelLeft.Size = new Size(247, 873);
             PanelLeft.TabIndex = 0;
             // 
             // Patients
@@ -130,7 +130,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             BackColor = Color.LightGray;
-            ClientSize = new Size(990, 760);
+            ClientSize = new Size(1342, 873);
             Controls.Add(PatientsPanel);
             Name = "Patients";
             StartPosition = FormStartPosition.CenterScreen;

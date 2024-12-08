@@ -15,6 +15,9 @@ namespace Clinic_Management_System
         public LoginForm()
         {
             InitializeComponent();
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
         }
         private void pictureBox3_Click(object sender, EventArgs e)
         {

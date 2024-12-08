@@ -52,7 +52,7 @@
             MedicinePanel.Dock = DockStyle.Fill;
             MedicinePanel.Location = new Point(0, 0);
             MedicinePanel.Name = "MedicinePanel";
-            MedicinePanel.Size = new Size(990, 760);
+            MedicinePanel.Size = new Size(1342, 873);
             MedicinePanel.TabIndex = 0;
             MedicinePanel.Paint += panel1_Paint;
             // 
@@ -62,15 +62,16 @@
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(241, 54);
             panel3.Name = "panel3";
-            panel3.Size = new Size(749, 706);
+            panel3.Size = new Size(1101, 819);
             panel3.TabIndex = 4;
             // 
             // MainPanel
             // 
+            MainPanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             MainPanel.Dock = DockStyle.Fill;
             MainPanel.Location = new Point(0, 0);
             MainPanel.Name = "MainPanel";
-            MainPanel.Size = new Size(749, 706);
+            MainPanel.Size = new Size(1101, 819);
             MainPanel.TabIndex = 3;
             // 
             // topPanel
@@ -80,7 +81,7 @@
             topPanel.Dock = DockStyle.Top;
             topPanel.Location = new Point(241, 0);
             topPanel.Name = "topPanel";
-            topPanel.Size = new Size(749, 54);
+            topPanel.Size = new Size(1101, 54);
             topPanel.TabIndex = 3;
             // 
             // menuStrip1
@@ -92,7 +93,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { showMedicinesToolStripMenuItem, addMedicineToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(749, 54);
+            menuStrip1.Size = new Size(1101, 54);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             menuStrip1.ItemClicked += menuStrip1_ItemClicked;
@@ -125,7 +126,7 @@
             leftPanel.Dock = DockStyle.Left;
             leftPanel.Location = new Point(0, 0);
             leftPanel.Name = "leftPanel";
-            leftPanel.Size = new Size(241, 760);
+            leftPanel.Size = new Size(241, 873);
             leftPanel.TabIndex = 0;
             // 
             // Medicine
@@ -133,7 +134,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGray;
-            ClientSize = new Size(990, 760);
+            ClientSize = new Size(1342, 873);
             Controls.Add(MedicinePanel);
             Name = "Medicine";
             StartPosition = FormStartPosition.CenterScreen;

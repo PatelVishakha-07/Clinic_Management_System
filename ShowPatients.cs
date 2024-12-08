@@ -18,40 +18,11 @@ namespace Clinic_Management_System
             InitializeComponent();
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-            if (dataGridView1.Rows.Count == 1)
-            {
-                string query = "select name,age,contact_no,gender,address from Patients";
-                DataSet ds = databaseclass.Getdata(query);
-                populategridview(ds);
-            }
-
-        }
+        private void panel2_Paint(object sender, PaintEventArgs e)        {      }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string value = txtSearch.Text;
-            string query;
-            if (!string.IsNullOrEmpty(value))
-            {
-
-                if (int.TryParse(value,out int age))
-                {
-                    query = $"select name,age,contact_no,gender,address from Patients where age={int.Parse(value)}";
-                }
-                else
-                {
-                    query = $"select name,age,contact_no,gender,address from Patients where name='{value}' or gender='{value}' or contact_no='{value}' or address='{value}'";
-                }
-
-            }
-            else
-            {
-                query = "select name,age,contact_no,gender,address from Patients";
-            }
-            DataSet ds = databaseclass.Getdata(query);
-            populategridview(ds);
+            
         }
 
         private void populategridview(DataSet ds)
@@ -97,7 +68,19 @@ namespace Clinic_Management_System
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)        {        }
+
+        private void panel2_Paint_1(object sender, PaintEventArgs e)
+        {
+            if (dataGridView1.Rows.Count == 1)
+            {
+                string query = "select name,age,contact_no,gender,address from Patients";
+                DataSet ds = databaseclass.Getdata(query);
+                populategridview(ds);
+            }
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dataGridView1.Columns["Prescription"].Index && e.RowIndex >= 0)
             {
@@ -108,10 +91,35 @@ namespace Clinic_Management_System
                 string contact = dataGridView1.Rows[e.RowIndex].Cells["contact_no"].Value.ToString();
                 string gender = dataGridView1.Rows[e.RowIndex].Cells["gender"].Value.ToString();
                 AddPrescription addPrescription = new AddPrescription();
-                addPrescription.getPatientDetails( patientName, address, age, contact,gender);
+                addPrescription.getPatientDetails(patientName, address, age, contact, gender);
                 Patients patients = this.FindForm() as Patients;
                 patients.ShowContent(addPrescription);
             }
+        }
+
+        private void btnSearch_Click_1(object sender, EventArgs e)
+        {
+            string value = txtSearch.Text;
+            string query;
+            if (!string.IsNullOrEmpty(value))
+            {
+
+                if (int.TryParse(value, out int age))
+                {
+                    query = $"select name,age,contact_no,gender,address from Patients where age={int.Parse(value)}";
+                }
+                else
+                {
+                    query = $"select name,age,contact_no,gender,address from Patients where name='{value}' or gender='{value}' or contact_no='{value}' or address='{value}'";
+                }
+
+            }
+            else
+            {
+                query = "select name,age,contact_no,gender,address from Patients";
+            }
+            DataSet ds = databaseclass.Getdata(query);
+            populategridview(ds);
         }
     }
 }
