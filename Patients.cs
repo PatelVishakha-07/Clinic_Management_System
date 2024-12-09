@@ -17,7 +17,7 @@ namespace Clinic_Management_System
             InitializeComponent();
             Dashboard dashboard = new Dashboard();
             dashboard.Dock = DockStyle.Left;
-            PanelLeft.Controls.Add(dashboard);
+            PanelLeft.Controls.Add(dashboard);            
         }
 
         private void Patients_Load(object sender, EventArgs e)

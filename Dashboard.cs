@@ -21,6 +21,7 @@ namespace Clinic_Management_System
         {
             Form currentForm = this.FindForm();
             currentForm?.Hide();
+            form.WindowState = currentForm.WindowState;
             form.ShowDialog();
         }
 
