@@ -10,24 +10,14 @@ using System.Windows.Forms;
 
 namespace Clinic_Management_System
 {
-    public partial class NewPatient : UserControl
+    public partial class Prescription_data : UserControl
     {
-        public NewPatient()
+        public Prescription_data()
         {
             InitializeComponent();
         }
 
-        private void NewPatient_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
+        private void Prescription_data_Load(object sender, EventArgs e)
         {
 
         }

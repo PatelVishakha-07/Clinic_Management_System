@@ -39,7 +39,6 @@ namespace Clinic_Management_System
         {
 
             ShowContent(new AddPatients());
-
         }
 
 
@@ -55,12 +54,12 @@ namespace Clinic_Management_System
 
         private void neewPatientsToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            ShowContent(new NewPatient());
+           
         }
 
         private void oldPatientsToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            ShowContent(new OldPatients());
+           
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
