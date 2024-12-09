@@ -87,6 +87,12 @@ namespace Clinic_Management_System
                 Patients patients = this.FindForm() as Patients;
                 patients.ShowContent(addPrescription);
             }
+            else if(e.ColumnIndex == dataGridView1.Columns["Details"].Index && e.RowIndex >= 0)
+            {
+                PatientDetails patientDetails = new PatientDetails();
+                Patients patients=this.FindForm() as Patients;
+                patients.ShowContent(patientDetails);
+            }
         }
 
         private void btnSearch_Click_1(object sender, EventArgs e)

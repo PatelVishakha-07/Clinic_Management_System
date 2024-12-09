@@ -51,8 +51,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.ControlDark;
-            panel1.BackgroundImage = Properties.Resources.med1;
+            panel1.BackColor = SystemColors.GradientActiveCaption;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
             panel1.Controls.Add(lblStock);
             panel1.Controls.Add(lblName);

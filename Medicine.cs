@@ -15,6 +15,7 @@ namespace Clinic_Management_System
         public Medicine()
         {
             InitializeComponent();
+            
             Dashboard dashboard = new Dashboard();
             dashboard.Dock = DockStyle.Left;
             leftPanel.Controls.Add(dashboard);

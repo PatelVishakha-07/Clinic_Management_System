@@ -34,21 +34,20 @@
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             panel1 = new Panel();
             medicinegrid = new DataGridView();
-            label1 = new Label();
-            btnSearch = new Button();
-            txtSearch = new TextBox();
             Medicine_Name = new DataGridViewTextBoxColumn();
             Company_Name = new DataGridViewTextBoxColumn();
             Medicine_Stock = new DataGridViewTextBoxColumn();
             Expiry_Date = new DataGridViewTextBoxColumn();
+            label1 = new Label();
+            btnSearch = new Button();
+            txtSearch = new TextBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)medicinegrid).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.ButtonShadow;
-            panel1.BackgroundImage = Properties.Resources.med1;
+            panel1.BackColor = SystemColors.GradientActiveCaption;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
             panel1.Controls.Add(medicinegrid);
             panel1.Controls.Add(label1);
@@ -106,6 +105,35 @@
             medicinegrid.TabIndex = 4;
             medicinegrid.CellContentClick += medicinegrid_CellContentClick;
             // 
+            // Medicine_Name
+            // 
+            Medicine_Name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Medicine_Name.HeaderText = "Medicine Name";
+            Medicine_Name.MinimumWidth = 8;
+            Medicine_Name.Name = "Medicine_Name";
+            // 
+            // Company_Name
+            // 
+            Company_Name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Company_Name.HeaderText = "Company Name";
+            Company_Name.MinimumWidth = 8;
+            Company_Name.Name = "Company_Name";
+            // 
+            // Medicine_Stock
+            // 
+            Medicine_Stock.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            Medicine_Stock.HeaderText = "Medicine Stock";
+            Medicine_Stock.MinimumWidth = 8;
+            Medicine_Stock.Name = "Medicine_Stock";
+            Medicine_Stock.Width = 139;
+            // 
+            // Expiry_Date
+            // 
+            Expiry_Date.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Expiry_Date.HeaderText = "Expiry Date";
+            Expiry_Date.MinimumWidth = 8;
+            Expiry_Date.Name = "Expiry_Date";
+            // 
             // label1
             // 
             label1.Anchor = AnchorStyles.Top;
@@ -140,35 +168,6 @@
             txtSearch.Size = new Size(822, 41);
             txtSearch.TabIndex = 1;
             txtSearch.TextChanged += textBox1_TextChanged;
-            // 
-            // Medicine_Name
-            // 
-            Medicine_Name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Medicine_Name.HeaderText = "Medicine Name";
-            Medicine_Name.MinimumWidth = 8;
-            Medicine_Name.Name = "Medicine_Name";
-            // 
-            // Company_Name
-            // 
-            Company_Name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Company_Name.HeaderText = "Company Name";
-            Company_Name.MinimumWidth = 8;
-            Company_Name.Name = "Company_Name";
-            // 
-            // Medicine_Stock
-            // 
-            Medicine_Stock.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            Medicine_Stock.HeaderText = "Medicine Stock";
-            Medicine_Stock.MinimumWidth = 8;
-            Medicine_Stock.Name = "Medicine_Stock";
-            Medicine_Stock.Width = 139;
-            // 
-            // Expiry_Date
-            // 
-            Expiry_Date.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Expiry_Date.HeaderText = "Expiry Date";
-            Expiry_Date.MinimumWidth = 8;
-            Expiry_Date.Name = "Expiry_Date";
             // 
             // ShowMedicine
             // 
