@@ -58,5 +58,11 @@ namespace Clinic_Management_System
                 patients.ShowContent(prescriped_Medicine);
             }
         }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtPres.Text= string.Empty;
+            txtDisease.Text= string.Empty;
+        }
     }
 }

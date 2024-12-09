@@ -84,6 +84,7 @@
             // 
             // lbldisease
             // 
+            lbldisease.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lbldisease.AutoSize = true;
             lbldisease.ForeColor = Color.Red;
             lbldisease.Location = new Point(579, 86);
@@ -105,6 +106,7 @@
             // 
             // txtDisease
             // 
+            txtDisease.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtDisease.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             txtDisease.Location = new Point(579, 437);
             txtDisease.Name = "txtDisease";
@@ -113,6 +115,7 @@
             // 
             // txtPres
             // 
+            txtPres.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtPres.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             txtPres.Location = new Point(579, 504);
             txtPres.Multiline = true;
@@ -122,6 +125,7 @@
             // 
             // label8
             // 
+            label8.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label8.AutoSize = true;
             label8.BackColor = Color.Transparent;
             label8.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
@@ -133,6 +137,7 @@
             // 
             // label9
             // 
+            label9.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label9.AutoSize = true;
             label9.BackColor = Color.Transparent;
             label9.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
@@ -144,6 +149,7 @@
             // 
             // txtGender
             // 
+            txtGender.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtGender.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             txtGender.Location = new Point(579, 248);
             txtGender.Name = "txtGender";
@@ -162,6 +168,7 @@
             // 
             // txtaddress
             // 
+            txtaddress.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtaddress.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             txtaddress.Location = new Point(579, 307);
             txtaddress.Name = "txtaddress";
@@ -171,6 +178,7 @@
             // 
             // txtContact
             // 
+            txtContact.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtContact.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             txtContact.Location = new Point(579, 374);
             txtContact.Name = "txtContact";
@@ -180,6 +188,7 @@
             // 
             // label6
             // 
+            label6.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label6.AutoSize = true;
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
@@ -191,6 +200,7 @@
             // 
             // btnClear
             // 
+            btnClear.Anchor = AnchorStyles.Bottom;
             btnClear.BackColor = Color.LightSteelBlue;
             btnClear.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnClear.ForeColor = Color.Black;
@@ -200,9 +210,11 @@
             btnClear.TabIndex = 44;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = false;
+            btnClear.Click += btnClear_Click;
             // 
             // btnSave
             // 
+            btnSave.Anchor = AnchorStyles.Bottom;
             btnSave.BackColor = Color.LightSteelBlue;
             btnSave.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnSave.ForeColor = Color.Black;
@@ -216,6 +228,7 @@
             // 
             // label4
             // 
+            label4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label4.AutoSize = true;
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
@@ -227,6 +240,7 @@
             // 
             // label5
             // 
+            label5.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label5.AutoSize = true;
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
@@ -238,6 +252,7 @@
             // 
             // txtAge
             // 
+            txtAge.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtAge.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             txtAge.Location = new Point(579, 179);
             txtAge.Name = "txtAge";
@@ -247,6 +262,7 @@
             // 
             // label3
             // 
+            label3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
@@ -258,6 +274,7 @@
             // 
             // txtName
             // 
+            txtName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtName.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             txtName.Location = new Point(579, 120);
             txtName.Name = "txtName";
@@ -267,6 +284,7 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
@@ -278,6 +296,7 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(426, 23);
