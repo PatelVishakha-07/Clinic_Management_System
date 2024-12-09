@@ -47,10 +47,11 @@ namespace Clinic_Management_System
         public void ShowContent(UserControl userControl)
         {
             MainPanel.Controls.Clear();
+            userControl.Dock = DockStyle.Fill;
             MainPanel.Controls.Add(userControl);
         }
 
-        
+
 
         private void neewPatientsToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
@@ -60,6 +61,11 @@ namespace Clinic_Management_System
         private void oldPatientsToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             ShowContent(new OldPatients());
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }

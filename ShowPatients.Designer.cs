@@ -64,6 +64,8 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top;
+            label1.AutoEllipsis = true;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(366, 76);
@@ -71,9 +73,11 @@
             label1.Size = new Size(351, 46);
             label1.TabIndex = 3;
             label1.Text = "Patients Information";
+            label1.Click += label1_Click;
             // 
             // btnSearch
             // 
+            btnSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnSearch.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnSearch.Location = new Point(931, 179);
             btnSearch.Name = "btnSearch";
@@ -85,6 +89,7 @@
             // 
             // txtSearch
             // 
+            txtSearch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtSearch.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             txtSearch.Location = new Point(66, 179);
             txtSearch.Name = "txtSearch";
@@ -93,6 +98,7 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.ControlDark;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -136,38 +142,39 @@
             // 
             // Name
             // 
+            Name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Name.HeaderText = "Name";
             Name.MinimumWidth = 8;
             Name.Name = "Name";
-            Name.Width = 170;
             // 
             // Age
             // 
+            Age.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Age.HeaderText = "Age";
             Age.MinimumWidth = 8;
             Age.Name = "Age";
-            Age.Width = 150;
             // 
             // Contact_No
             // 
+            Contact_No.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             Contact_No.HeaderText = "Contact_No";
             Contact_No.MinimumWidth = 8;
             Contact_No.Name = "Contact_No";
-            Contact_No.Width = 170;
+            Contact_No.Width = 115;
             // 
             // Address
             // 
+            Address.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Address.HeaderText = "Address";
             Address.MinimumWidth = 8;
             Address.Name = "Address";
-            Address.Width = 200;
             // 
             // Gender
             // 
+            Gender.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Gender.HeaderText = "Gender";
             Gender.MinimumWidth = 8;
             Gender.Name = "Gender";
-            Gender.Width = 150;
             // 
             // ShowPatients
             // 

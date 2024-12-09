@@ -28,26 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             panel1 = new Panel();
             medicinegrid = new DataGridView();
+            label1 = new Label();
+            btnSearch = new Button();
+            txtSearch = new TextBox();
             Medicine_Name = new DataGridViewTextBoxColumn();
             Company_Name = new DataGridViewTextBoxColumn();
             Medicine_Stock = new DataGridViewTextBoxColumn();
             Expiry_Date = new DataGridViewTextBoxColumn();
-            label1 = new Label();
-            btnSearch = new Button();
-            txtSearch = new TextBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)medicinegrid).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             panel1.BackColor = SystemColors.ButtonShadow;
             panel1.BackgroundImage = Properties.Resources.med1;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
@@ -66,78 +65,50 @@
             // medicinegrid
             // 
             medicinegrid.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Info;
-            dataGridViewCellStyle9.SelectionForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
-            medicinegrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Info;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            medicinegrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             medicinegrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             medicinegrid.Columns.AddRange(new DataGridViewColumn[] { Medicine_Name, Company_Name, Medicine_Stock, Expiry_Date });
             medicinegrid.Cursor = Cursors.Hand;
-            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = SystemColors.ControlLight;
-            dataGridViewCellStyle10.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle10.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = SystemColors.Info;
-            dataGridViewCellStyle10.SelectionForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.False;
-            medicinegrid.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Info;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            medicinegrid.DefaultCellStyle = dataGridViewCellStyle2;
             medicinegrid.GridColor = SystemColors.Info;
             medicinegrid.Location = new Point(25, 178);
             medicinegrid.Name = "medicinegrid";
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = SystemColors.Control;
-            dataGridViewCellStyle11.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle11.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle11.SelectionForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
-            medicinegrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            medicinegrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             medicinegrid.RowHeadersWidth = 51;
-            dataGridViewCellStyle12.BackColor = SystemColors.ControlLight;
-            dataGridViewCellStyle12.ForeColor = Color.Black;
-            dataGridViewCellStyle12.SelectionBackColor = SystemColors.Info;
-            dataGridViewCellStyle12.SelectionForeColor = Color.Black;
-            medicinegrid.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.BackColor = SystemColors.ControlLight;
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Info;
+            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
+            medicinegrid.RowsDefaultCellStyle = dataGridViewCellStyle4;
             medicinegrid.RowTemplate.Height = 29;
             medicinegrid.Size = new Size(1028, 516);
             medicinegrid.TabIndex = 4;
             medicinegrid.CellContentClick += medicinegrid_CellContentClick;
             // 
-            // Medicine_Name
-            // 
-            Medicine_Name.HeaderText = "Medicine Name";
-            Medicine_Name.MinimumWidth = 8;
-            Medicine_Name.Name = "Medicine_Name";
-            Medicine_Name.Width = 200;
-            // 
-            // Company_Name
-            // 
-            Company_Name.HeaderText = "Company Name";
-            Company_Name.MinimumWidth = 8;
-            Company_Name.Name = "Company_Name";
-            Company_Name.Width = 200;
-            // 
-            // Medicine_Stock
-            // 
-            Medicine_Stock.HeaderText = "Medicine Stock";
-            Medicine_Stock.MinimumWidth = 8;
-            Medicine_Stock.Name = "Medicine_Stock";
-            Medicine_Stock.Width = 200;
-            // 
-            // Expiry_Date
-            // 
-            Expiry_Date.HeaderText = "Expiry Date";
-            Expiry_Date.MinimumWidth = 8;
-            Expiry_Date.Name = "Expiry_Date";
-            Expiry_Date.Width = 200;
-            // 
             // label1
             // 
-            label1.Anchor = AnchorStyles.None;
+            label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
@@ -169,6 +140,35 @@
             txtSearch.Size = new Size(822, 41);
             txtSearch.TabIndex = 1;
             txtSearch.TextChanged += textBox1_TextChanged;
+            // 
+            // Medicine_Name
+            // 
+            Medicine_Name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Medicine_Name.HeaderText = "Medicine Name";
+            Medicine_Name.MinimumWidth = 8;
+            Medicine_Name.Name = "Medicine_Name";
+            // 
+            // Company_Name
+            // 
+            Company_Name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Company_Name.HeaderText = "Company Name";
+            Company_Name.MinimumWidth = 8;
+            Company_Name.Name = "Company_Name";
+            // 
+            // Medicine_Stock
+            // 
+            Medicine_Stock.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            Medicine_Stock.HeaderText = "Medicine Stock";
+            Medicine_Stock.MinimumWidth = 8;
+            Medicine_Stock.Name = "Medicine_Stock";
+            Medicine_Stock.Width = 139;
+            // 
+            // Expiry_Date
+            // 
+            Expiry_Date.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Expiry_Date.HeaderText = "Expiry Date";
+            Expiry_Date.MinimumWidth = 8;
+            Expiry_Date.Name = "Expiry_Date";
             // 
             // ShowMedicine
             // 

@@ -26,7 +26,7 @@ namespace Clinic_Management_System
             InitializeComponent();
         }
 
-        private void UpdateMedicine_Load(object sender, EventArgs e) {        }
+        private void UpdateMedicine_Load(object sender, EventArgs e) { }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -89,7 +89,7 @@ namespace Clinic_Management_System
                     dbClass.databaseoperations(query);
                     Medicine medicine = new Medicine();
                     MessageBox.Show("Record Updated Successfully");
-                    UpdateCompleted?.Invoke(this, EventArgs.Empty);                    
+                    UpdateCompleted?.Invoke(this, EventArgs.Empty);
                 }
 
             }
@@ -109,18 +109,23 @@ namespace Clinic_Management_System
             txtCmp.Text = companyName;
             txtStock.Text = stock.ToString();
             dateTimePicker1.Text = expiryDate;
-            medName= medicineName;
-            cpName=companyName;
-            st=stock;
-            expDate=expiryDate;
+            medName = medicineName;
+            cpName = companyName;
+            st = stock;
+            expDate = expiryDate;
         }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            txtName.Text= medName;
-            txtCmp.Text= cpName;
+            txtName.Text = medName;
+            txtCmp.Text = cpName;
             txtStock.Text = st.ToString();
-            dateTimePicker1.Text= expDate;
+            dateTimePicker1.Text = expDate;
+        }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

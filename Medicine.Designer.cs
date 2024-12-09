@@ -45,6 +45,7 @@
             // 
             // MedicinePanel
             // 
+            MedicinePanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             MedicinePanel.BackColor = Color.Transparent;
             MedicinePanel.Controls.Add(panel3);
             MedicinePanel.Controls.Add(topPanel);
@@ -52,7 +53,7 @@
             MedicinePanel.Dock = DockStyle.Fill;
             MedicinePanel.Location = new Point(0, 0);
             MedicinePanel.Name = "MedicinePanel";
-            MedicinePanel.Size = new Size(1342, 873);
+            MedicinePanel.Size = new Size(1327, 873);
             MedicinePanel.TabIndex = 0;
             MedicinePanel.Paint += panel1_Paint;
             // 
@@ -60,9 +61,9 @@
             // 
             panel3.Controls.Add(MainPanel);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(241, 54);
+            panel3.Location = new Point(241, 56);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1101, 819);
+            panel3.Size = new Size(1086, 817);
             panel3.TabIndex = 4;
             // 
             // MainPanel
@@ -71,8 +72,9 @@
             MainPanel.Dock = DockStyle.Fill;
             MainPanel.Location = new Point(0, 0);
             MainPanel.Name = "MainPanel";
-            MainPanel.Size = new Size(1101, 819);
+            MainPanel.Size = new Size(1086, 817);
             MainPanel.TabIndex = 3;
+            MainPanel.Paint += MainPanel_Paint;
             // 
             // topPanel
             // 
@@ -81,19 +83,19 @@
             topPanel.Dock = DockStyle.Top;
             topPanel.Location = new Point(241, 0);
             topPanel.Name = "topPanel";
-            topPanel.Size = new Size(1101, 54);
+            topPanel.Size = new Size(1086, 56);
             topPanel.TabIndex = 3;
             // 
             // menuStrip1
             // 
             menuStrip1.BackColor = Color.Gainsboro;
-            menuStrip1.Dock = DockStyle.Fill;
+            menuStrip1.Dock = DockStyle.None;
             menuStrip1.Font = new Font("Cascadia Code", 12F, FontStyle.Bold, GraphicsUnit.Point);
             menuStrip1.ImageScalingSize = new Size(20, 20);
             menuStrip1.Items.AddRange(new ToolStripItem[] { showMedicinesToolStripMenuItem, addMedicineToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1101, 54);
+            menuStrip1.Size = new Size(372, 35);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             menuStrip1.ItemClicked += menuStrip1_ItemClicked;
@@ -102,7 +104,7 @@
             // 
             showMedicinesToolStripMenuItem.ForeColor = Color.Black;
             showMedicinesToolStripMenuItem.Name = "showMedicinesToolStripMenuItem";
-            showMedicinesToolStripMenuItem.Size = new Size(194, 50);
+            showMedicinesToolStripMenuItem.Size = new Size(194, 31);
             showMedicinesToolStripMenuItem.Text = "Show Medicines";
             showMedicinesToolStripMenuItem.Click += showMedicinesToolStripMenuItem_Click;
             // 
@@ -110,7 +112,7 @@
             // 
             addMedicineToolStripMenuItem.ForeColor = Color.Black;
             addMedicineToolStripMenuItem.Name = "addMedicineToolStripMenuItem";
-            addMedicineToolStripMenuItem.Size = new Size(170, 50);
+            addMedicineToolStripMenuItem.Size = new Size(170, 31);
             addMedicineToolStripMenuItem.Text = "Add Medicine";
             addMedicineToolStripMenuItem.Click += addMedicineToolStripMenuItem_Click;
             // 
@@ -123,6 +125,7 @@
             // 
             // leftPanel
             // 
+            leftPanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             leftPanel.Dock = DockStyle.Left;
             leftPanel.Location = new Point(0, 0);
             leftPanel.Name = "leftPanel";
@@ -133,8 +136,9 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoValidate = AutoValidate.EnablePreventFocusChange;
             BackColor = Color.LightGray;
-            ClientSize = new Size(1342, 873);
+            ClientSize = new Size(1327, 873);
             Controls.Add(MedicinePanel);
             Name = "Medicine";
             StartPosition = FormStartPosition.CenterScreen;

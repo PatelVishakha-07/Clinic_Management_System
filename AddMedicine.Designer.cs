@@ -79,6 +79,7 @@
             // 
             // lblStock
             // 
+            lblStock.Anchor = AnchorStyles.Top;
             lblStock.AutoSize = true;
             lblStock.ForeColor = Color.Red;
             lblStock.Location = new Point(620, 360);
@@ -90,6 +91,7 @@
             // 
             // lblName
             // 
+            lblName.Anchor = AnchorStyles.Top;
             lblName.AutoSize = true;
             lblName.ForeColor = Color.Red;
             lblName.Location = new Point(620, 184);
@@ -101,6 +103,7 @@
             // 
             // lblCmp
             // 
+            lblCmp.Anchor = AnchorStyles.Top;
             lblCmp.AutoSize = true;
             lblCmp.ForeColor = Color.Red;
             lblCmp.Location = new Point(620, 271);
@@ -112,6 +115,7 @@
             // 
             // btnClear
             // 
+            btnClear.Anchor = AnchorStyles.Bottom;
             btnClear.BackColor = Color.Coral;
             btnClear.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnClear.ForeColor = Color.DarkBlue;
@@ -125,6 +129,7 @@
             // 
             // btnCancel
             // 
+            btnCancel.Anchor = AnchorStyles.Bottom;
             btnCancel.BackColor = Color.Coral;
             btnCancel.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnCancel.ForeColor = Color.DarkBlue;
@@ -138,6 +143,7 @@
             // 
             // btnSave
             // 
+            btnSave.Anchor = AnchorStyles.Bottom;
             btnSave.BackColor = Color.Coral;
             btnSave.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnSave.ForeColor = Color.DarkBlue;
@@ -151,6 +157,7 @@
             // 
             // dateTimePicker1
             // 
+            dateTimePicker1.Anchor = AnchorStyles.Top;
             dateTimePicker1.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             dateTimePicker1.Location = new Point(620, 405);
             dateTimePicker1.Name = "dateTimePicker1";
@@ -159,6 +166,7 @@
             // 
             // label4
             // 
+            label4.Anchor = AnchorStyles.Top;
             label4.AutoSize = true;
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
@@ -170,6 +178,7 @@
             // 
             // txtStock
             // 
+            txtStock.Anchor = AnchorStyles.Top;
             txtStock.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             txtStock.Location = new Point(620, 316);
             txtStock.Name = "txtStock";
@@ -178,6 +187,7 @@
             // 
             // label5
             // 
+            label5.Anchor = AnchorStyles.Top;
             label5.AutoSize = true;
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
@@ -189,6 +199,7 @@
             // 
             // txtCmp
             // 
+            txtCmp.Anchor = AnchorStyles.Top;
             txtCmp.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             txtCmp.Location = new Point(620, 227);
             txtCmp.Name = "txtCmp";
@@ -197,6 +208,7 @@
             // 
             // label3
             // 
+            label3.Anchor = AnchorStyles.Top;
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
@@ -208,6 +220,7 @@
             // 
             // txtName
             // 
+            txtName.Anchor = AnchorStyles.Top;
             txtName.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             txtName.Location = new Point(620, 140);
             txtName.Name = "txtName";
@@ -216,6 +229,7 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.Anchor = AnchorStyles.Left;
             pictureBox1.Image = Properties.Resources.medicine__1_;
             pictureBox1.Location = new Point(18, 150);
             pictureBox1.Name = "pictureBox1";
@@ -226,6 +240,7 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Top;
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
@@ -237,6 +252,7 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 17F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);

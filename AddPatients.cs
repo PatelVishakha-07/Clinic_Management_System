@@ -130,7 +130,12 @@ namespace Clinic_Management_System
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtName.Text=listBox1.SelectedItem.ToString();
+            txtName.Text = listBox1.SelectedItem.ToString();
+        }
+
+        private void lblall_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

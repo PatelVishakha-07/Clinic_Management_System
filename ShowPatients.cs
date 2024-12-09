@@ -18,11 +18,11 @@ namespace Clinic_Management_System
             InitializeComponent();
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)        {      }
+        private void panel2_Paint(object sender, PaintEventArgs e) { }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void populategridview(DataSet ds)
@@ -68,7 +68,7 @@ namespace Clinic_Management_System
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)        {        }
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
 
         private void panel2_Paint_1(object sender, PaintEventArgs e)
         {
@@ -120,6 +120,11 @@ namespace Clinic_Management_System
             }
             DataSet ds = databaseclass.Getdata(query);
             populategridview(ds);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
