@@ -134,5 +134,10 @@ namespace Clinic_Management_System
                 lblwrong.Visible = true;
             }
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

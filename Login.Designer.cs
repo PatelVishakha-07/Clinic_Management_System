@@ -49,28 +49,31 @@
             // textBox1
             // 
             textBox1.BackColor = SystemColors.ButtonFace;
-            textBox1.Location = new Point(208, 267);
+            textBox1.Location = new Point(260, 334);
+            textBox1.Margin = new Padding(4, 4, 4, 4);
             textBox1.Multiline = true;
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(407, 39);
+            textBox1.Size = new Size(508, 48);
             textBox1.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
-            label1.Location = new Point(208, 244);
+            label1.Location = new Point(260, 305);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(75, 20);
+            label1.Size = new Size(91, 25);
             label1.TabIndex = 1;
             label1.Text = "Username";
             // 
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.user1;
-            pictureBox1.Location = new Point(164, 267);
+            pictureBox1.Location = new Point(205, 334);
+            pictureBox1.Margin = new Padding(4, 4, 4, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(37, 39);
+            pictureBox1.Size = new Size(46, 49);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
@@ -78,36 +81,40 @@
             // panel2
             // 
             panel2.BackColor = Color.DarkSlateGray;
-            panel2.Location = new Point(164, 312);
+            panel2.Location = new Point(205, 390);
+            panel2.Margin = new Padding(4, 4, 4, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(463, 3);
+            panel2.Size = new Size(579, 4);
             panel2.TabIndex = 3;
             // 
             // textBox2
             // 
             textBox2.BackColor = SystemColors.ButtonFace;
-            textBox2.Location = new Point(208, 407);
+            textBox2.Location = new Point(260, 509);
+            textBox2.Margin = new Padding(4, 4, 4, 4);
             textBox2.Multiline = true;
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(407, 39);
+            textBox2.Size = new Size(508, 48);
             textBox2.TabIndex = 4;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
-            label2.Location = new Point(208, 384);
+            label2.Location = new Point(260, 480);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(75, 20);
+            label2.Size = new Size(87, 25);
             label2.TabIndex = 5;
-            label2.Text = "Username";
+            label2.Text = "Password";
             // 
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources.password1;
-            pictureBox2.Location = new Point(164, 407);
+            pictureBox2.Location = new Point(205, 509);
+            pictureBox2.Margin = new Padding(4, 4, 4, 4);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(37, 39);
+            pictureBox2.Size = new Size(46, 49);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 6;
             pictureBox2.TabStop = false;
@@ -115,18 +122,20 @@
             // panel3
             // 
             panel3.BackColor = Color.DarkSlateGray;
-            panel3.Location = new Point(164, 452);
+            panel3.Location = new Point(205, 565);
+            panel3.Margin = new Padding(4, 4, 4, 4);
             panel3.Name = "panel3";
-            panel3.Size = new Size(463, 3);
+            panel3.Size = new Size(579, 4);
             panel3.TabIndex = 7;
             // 
             // pictureBox3
             // 
             pictureBox3.BackgroundImage = Properties.Resources.med1;
             pictureBox3.Image = Properties.Resources.button;
-            pictureBox3.Location = new Point(345, 503);
+            pictureBox3.Location = new Point(431, 629);
+            pictureBox3.Margin = new Padding(4, 4, 4, 4);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(125, 54);
+            pictureBox3.Size = new Size(156, 68);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox3.TabIndex = 8;
             pictureBox3.TabStop = false;
@@ -136,9 +145,10 @@
             // 
             pictureBox4.BackColor = SystemColors.Info;
             pictureBox4.Image = Properties.Resources.login1;
-            pictureBox4.Location = new Point(277, 76);
+            pictureBox4.Location = new Point(346, 95);
+            pictureBox4.Margin = new Padding(4, 4, 4, 4);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(215, 118);
+            pictureBox4.Size = new Size(269, 148);
             pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox4.TabIndex = 9;
             pictureBox4.TabStop = false;
@@ -159,18 +169,20 @@
             panel1.Controls.Add(textBox1);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(4, 4, 4, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(720, 675);
+            panel1.Size = new Size(900, 844);
             panel1.TabIndex = 0;
             // 
             // LoginForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.PowderBlue;
             BackgroundImage = Properties.Resources.med1;
-            ClientSize = new Size(720, 675);
+            ClientSize = new Size(900, 844);
             Controls.Add(panel1);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";

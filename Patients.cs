@@ -17,7 +17,7 @@ namespace Clinic_Management_System
             InitializeComponent();
             Dashboard dashboard = new Dashboard();
             dashboard.Dock = DockStyle.Left;
-            PanelLeft.Controls.Add(dashboard);            
+            PanelLeft.Controls.Add(dashboard);
         }
 
         private void Patients_Load(object sender, EventArgs e)
@@ -54,15 +54,20 @@ namespace Clinic_Management_System
 
         private void neewPatientsToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-           
+
         }
 
         private void oldPatientsToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-           
+
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void MainPanel_Paint(object sender, PaintEventArgs e)
         {
 
         }

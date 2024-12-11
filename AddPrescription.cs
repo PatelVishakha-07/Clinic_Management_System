@@ -61,8 +61,13 @@ namespace Clinic_Management_System
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            txtPres.Text= string.Empty;
-            txtDisease.Text= string.Empty;
+            txtPres.Text = string.Empty;
+            txtDisease.Text = string.Empty;
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -31,28 +31,6 @@ namespace Clinic_Management_System
                 dataGridView1.Columns["Address"].DataPropertyName = "address";
                 dataGridView1.DataSource = ds.Tables[0];
             }
-            if (!dataGridView1.Columns.Contains("Prescription"))
-            {
-                DataGridViewLinkColumn linkColumn = new DataGridViewLinkColumn
-                {
-                    Name = "Prescription",
-                    HeaderText = "Prescription",
-                    Text = "Add",
-                    UseColumnTextForLinkValue = true
-                };
-                dataGridView1.Columns.Add(linkColumn);
-            }
-            if (!dataGridView1.Columns.Contains("Details"))
-            {
-                DataGridViewLinkColumn linkColumn1 = new DataGridViewLinkColumn
-                {
-                    Name = "Details",
-                    HeaderText = "Details",
-                    Text = "View",
-                    UseColumnTextForLinkValue = true
-                };
-                dataGridView1.Columns.Add(linkColumn1);
-            }
         }
         private void panel2_Paint_1(object sender, PaintEventArgs e)
         {
@@ -74,26 +52,32 @@ namespace Clinic_Management_System
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dataGridView1.Columns["Prescription"].Index && e.RowIndex >= 0)
-            {
-                int patientId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["patient_id"].Value.ToString());
-                string patientName = dataGridView1.Rows[e.RowIndex].Cells["name"].Value.ToString();
-                string address = dataGridView1.Rows[e.RowIndex].Cells["address"].Value.ToString();
-                int age = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["age"].Value.ToString());
-                string contact = dataGridView1.Rows[e.RowIndex].Cells["contact_no"].Value.ToString();
-                string gender = dataGridView1.Rows[e.RowIndex].Cells["gender"].Value.ToString();
-                AddPrescription addPrescription = new AddPrescription();
-                addPrescription.getPatientDetails(patientId,patientName, address, age, contact, gender);
-                Patients patients = this.FindForm() as Patients;
-                patients.ShowContent(addPrescription);
-            }
-            else if(e.ColumnIndex == dataGridView1.Columns["Details"].Index && e.RowIndex >= 0)
-            {
-                PatientDetails patientDetails = new PatientDetails();
-                Patients patients=this.FindForm() as Patients;
-                patients.ShowContent(patientDetails);
-            }
+            int patientId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["patient_id"].Value.ToString());
+            PatientDetails patientDetails = new PatientDetails();
+            patientDetails.getPatientDetails(patientId);
+            Patients patients = this.FindForm() as Patients;
+            patients.ShowContent(patientDetails);
         }
+
+            //if (e.ColumnIndex == dataGridView1.Columns["Prescription"].Index && e.RowIndex >= 0)
+            //{
+            //    int patientId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["patient_id"].Value.ToString());
+            //    string patientName = dataGridView1.Rows[e.RowIndex].Cells["name"].Value.ToString();
+            //    string address = dataGridView1.Rows[e.RowIndex].Cells["address"].Value.ToString();
+            //    int age = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["age"].Value.ToString());
+            //    string contact = dataGridView1.Rows[e.RowIndex].Cells["contact_no"].Value.ToString();
+            //    string gender = dataGridView1.Rows[e.RowIndex].Cells["gender"].Value.ToString();
+            //    AddPrescription addPrescription = new AddPrescription();
+            //    addPrescription.getPatientDetails(patientId,patientName, address, age, contact, gender);
+            //    Patients patients = this.FindForm() as Patients;
+            //    patients.ShowContent(addPrescription);
+            //}
+            //else if(e.ColumnIndex == dataGridView1.Columns["Details"].Index && e.RowIndex >= 0)
+            //{
+            //    PatientDetails patientDetails = new PatientDetails();
+            //    Patients patients=this.FindForm() as Patients;
+            //    patients.ShowContent(patientDetails);
+            //}
 
         private void btnSearch_Click_1(object sender, EventArgs e)
         {

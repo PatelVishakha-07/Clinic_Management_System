@@ -70,6 +70,13 @@ namespace Clinic_Management_System
                     string query = $"insert into Patients(name,age,gender,contact_no,address) values('{name}',{int.Parse(age)},'{gender}','{contact}','{address}');";
                     dbclass.databaseoperations(query);
                     MessageBox.Show("Record Inserted Successfully");
+                    AddPrescription prescription = new AddPrescription();
+                    query = $"select * from Patients where name='{name}' and age={int.Parse(age)} and gender='{gender}' and contact_no='{contact}' and address='{address}';";
+                    DataSet ds = dbclass.Getdata(query);
+                    int patientId = int.Parse(ds.Tables[0].Rows[0]["patient_id"].ToString());
+                    prescription.getPatientDetails(patientId, name, address, int.Parse(age), contact, gender);
+                    Patients patients = this.FindForm() as Patients;
+                    patients.ShowContent(prescription);
                     ClearText();
                 }
             }
