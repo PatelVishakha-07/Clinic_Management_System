@@ -78,6 +78,7 @@
             Margin = new Padding(4);
             Name = "PatientDetails";
             Size = new Size(1375, 954);
+            Load += PatientDetails_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
