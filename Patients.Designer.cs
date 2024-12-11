@@ -66,6 +66,7 @@
             // 
             // PanelTop
             // 
+            PanelTop.AutoScroll = true;
             PanelTop.Controls.Add(menuStrip1);
             PanelTop.Dock = DockStyle.Top;
             PanelTop.Location = new Point(309, 0);
@@ -94,7 +95,7 @@
             // 
             showPatientsToolStripMenuItem.ForeColor = Color.Black;
             showPatientsToolStripMenuItem.Name = "showPatientsToolStripMenuItem";
-            showPatientsToolStripMenuItem.Size = new Size(212, 74);
+            showPatientsToolStripMenuItem.Size = new Size(207, 36);
             showPatientsToolStripMenuItem.Text = "Show Patients";
             showPatientsToolStripMenuItem.Click += showPatientsToolStripMenuItem_Click;
             // 
@@ -102,7 +103,7 @@
             // 
             addPatientsToolStripMenuItem.ForeColor = Color.Black;
             addPatientsToolStripMenuItem.Name = "addPatientsToolStripMenuItem";
-            addPatientsToolStripMenuItem.Size = new Size(198, 74);
+            addPatientsToolStripMenuItem.Size = new Size(207, 36);
             addPatientsToolStripMenuItem.Text = "Add Patients";
             addPatientsToolStripMenuItem.Click += addPatientsToolStripMenuItem_Click;
             // 

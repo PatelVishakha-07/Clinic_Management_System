@@ -168,38 +168,18 @@ namespace Clinic_Management_System
         //    }
 
         //}
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
+        //private void panel1_Paint(object sender, PaintEventArgs e)
+        //{
+
           
-            string patientQuery = $"select * from patients WHERE patient_id={patientId}";
-            DataSet patientData = dbclass.Getdata(patientQuery);
-            int currentY = 200; 
-            currentY = DisplayData(patientData, panel1, currentY, "Patient Details", excludeColumns: new[] { "patient_id" });
+        //}
 
-            
-            string prescriptionQuery = $"select * from prescription where patient_id={patientId}";
-            DataSet prescriptionData = dbclass.Getdata(prescriptionQuery);
-            currentY = DisplayData(prescriptionData, panel1, currentY + 50, "Prescription Details", excludeColumns: new[] { "patient_id", "prescription_id" });
-
-           
-            if (prescriptionData != null && prescriptionData.Tables[0].Rows.Count > 0)
-            {
-                foreach (DataRow prescriptionRow in prescriptionData.Tables[0].Rows)
-                {
-                    int prescriptionId = Convert.ToInt32(prescriptionRow["prescription_id"]);
-                    string medicineQuery = $"select * from Prescribed_Medicine where prescription_id={prescriptionId}";
-                    DataSet medicineData = dbclass.Getdata(medicineQuery);
-                    currentY = DisplayData(medicineData, panel1, currentY + 50, "Prescribed Medicine Details", excludeColumns: new[] { "pres_med_id", "prescription_id" });
-                }
-            }
-        }
-
-        private int DisplayData(DataSet ds, Panel panel, int startY, string sectionTitle, string[] excludeColumns = null)
+        private int DisplayData(DataSet ds, Panel panel1, int startY, string sectionTitle, string[] excludeColumns = null)
         {
             int labelSpacing = 35;
             int keyValueSpacing = 250;
 
-           
+
             Label titleLabel = new Label()
             {
                 Text = sectionTitle,
@@ -208,8 +188,8 @@ namespace Clinic_Management_System
                 Font = new Font("Arial", 16, FontStyle.Bold),
                 ForeColor = Color.DimGray,
             };
-            panel.Controls.Add(titleLabel);
-            startY += 40; 
+            panel1.Controls.Add(titleLabel);
+            startY += 40;
 
             if (ds != null && ds.Tables[0].Rows.Count > 0)
             {
@@ -223,7 +203,7 @@ namespace Clinic_Management_System
                         string columnName = col.ColumnName.ToUpper();
                         string columnValue = row[col].ToString();
 
-                      
+
                         Label keyLabel = new Label()
                         {
                             Text = $"{columnName}:",
@@ -232,7 +212,7 @@ namespace Clinic_Management_System
                             Font = new Font("Arial", 12, FontStyle.Bold)
                         };
 
-                       
+
                         Label valueLabel = new Label()
                         {
                             Text = columnValue,
@@ -241,16 +221,16 @@ namespace Clinic_Management_System
                             Font = new Font("Arial", 12, FontStyle.Regular)
                         };
 
-                        panel.Controls.Add(keyLabel);
-                        panel.Controls.Add(valueLabel);
+                        panel1.Controls.Add(keyLabel);
+                        panel1.Controls.Add(valueLabel);
 
-                        startY += labelSpacing; 
+                        startY += labelSpacing;
                     }
                 }
             }
             else
             {
-               
+
                 Label noDataLabel = new Label()
                 {
                     Text = "No data available.",
@@ -259,19 +239,54 @@ namespace Clinic_Management_System
                     Font = new Font("Arial", 12, FontStyle.Italic),
                     ForeColor = Color.Gray
                 };
-                panel.Controls.Add(noDataLabel);
+                panel1.Controls.Add(noDataLabel);
                 startY += labelSpacing;
             }
 
-            return startY; 
+            return startY;
         }
 
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string query = $"select * from patients where patient_id={patientId}";
+            DataSet ds = dbclass.Getdata(query);
+            string name = ds.Tables[0].Rows[0]["name"].ToString();
+            int age = int.Parse(ds.Tables[0].Rows[0]["age"].ToString());
+            string address = ds.Tables[0].Rows[0]["address"].ToString();
+            string contact = ds.Tables[0].Rows[0]["contact_no"].ToString();
+            string gender = ds.Tables[0].Rows[0]["gender"].ToString();
             AddPrescription addPrescription = new AddPrescription();
+            addPrescription.getPatientDetails(patientId, name, address, age, contact, gender);
             Patients patients = this.FindForm() as Patients;
             patients.ShowContent(addPrescription);
+        }
+
+        private void panel1_Paint_1(object sender, PaintEventArgs e)
+        {
+           // panel1.Controls.Clear();
+            string patientQuery = $"select * from patients WHERE patient_id={patientId}";
+            DataSet patientData = dbclass.Getdata(patientQuery);
+            int currentY = 200;
+            currentY = DisplayData(patientData, panel1, currentY, "Patient Details", excludeColumns: new[] { "patient_id" });
+
+
+            string prescriptionQuery = $"select * from prescription where patient_id={patientId}";
+            DataSet prescriptionData = dbclass.Getdata(prescriptionQuery);
+            currentY = DisplayData(prescriptionData, panel1, currentY + 50, "Prescription Details", excludeColumns: new[] { "patient_id", "prescription_id" });
+
+
+            if (prescriptionData != null && prescriptionData.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow prescriptionRow in prescriptionData.Tables[0].Rows)
+                {
+                    int prescriptionId = Convert.ToInt32(prescriptionRow["prescription_id"]);
+                    string medicineQuery = $"select * from Prescribed_Medicine where prescription_id={prescriptionId}";
+                    DataSet medicineData = dbclass.Getdata(medicineQuery);
+                    currentY = DisplayData(medicineData, panel1, currentY + 50, "Prescribed Medicine Details", excludeColumns: new[] { "pres_med_id", "prescription_id" });
+                    currentY += 20;
+                }
+            }
         }
     }
 }
