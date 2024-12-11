@@ -24,7 +24,7 @@ namespace Clinic_Management_System
         {
             if (medicinegrid.Rows.Count == 1)
             {
-                string query = "select Medicine_Id,Medicine_Name,Company_Name,Medicine_Stock,Expiry_Date from Medicines;";
+                string query = "select Medicine_Id,Medicine_Name,Company_Name,Medicine_Type,Medicine_Stock,Expiry_Date from Medicines;";
                 DataSet ds = dbClass.Getdata(query);
                 populategridview(ds);
             }
@@ -76,10 +76,11 @@ namespace Clinic_Management_System
             if (ds != null && ds.Tables.Count > 0)
             {
                 medicinegrid.AutoGenerateColumns = false;
-                medicinegrid.Columns["Medicine_Name"].DataPropertyName = "Medicine_Name";
-                medicinegrid.Columns["Company_Name"].DataPropertyName = "Company_Name";
-                medicinegrid.Columns["Medicine_Stock"].DataPropertyName = "Medicine_Stock";
-                medicinegrid.Columns["Expiry_Date"].DataPropertyName = "Expiry_Date";
+                medicinegrid.Columns["medicine_name"].DataPropertyName = "medicine_name";
+                medicinegrid.Columns["company_name"].DataPropertyName = "company_name";
+                medicinegrid.Columns["medicine_type"].DataPropertyName = "medicine_type";
+                medicinegrid.Columns["medicine_stock"].DataPropertyName = "medicine_stock";
+                medicinegrid.Columns["expiry_date"].DataPropertyName = "expiry_date";
                 medicinegrid.DataSource = ds.Tables[0];
 
                 if (!medicinegrid.Columns.Contains("Medicine_Id"))
@@ -116,12 +117,13 @@ namespace Clinic_Management_System
                 int medicineId = Convert.ToInt32(medicinegrid.Rows[e.RowIndex].Cells["Medicine_Id"].Value.ToString());
                 string medicineName = medicinegrid.Rows[e.RowIndex].Cells["Medicine_Name"].Value.ToString();
                 string cmpName = medicinegrid.Rows[e.RowIndex].Cells["Company_Name"].Value.ToString();
+                string medType = medicinegrid.Rows[e.RowIndex].Cells["Medicine_Type"].Value.ToString();
                 int stock = Convert.ToInt32(medicinegrid.Rows[e.RowIndex].Cells["Medicine_Stock"].Value.ToString());
                 string date = medicinegrid.Rows[e.RowIndex].Cells["Expiry_Date"].Value.ToString();
 
                 //int medicineId = 0;
                 UpdateMedicine updateMedicine = new UpdateMedicine();
-                updateMedicine.getMedicineDetails(medicineId, medicineName, cmpName, stock, date);
+                updateMedicine.getMedicineDetails(medicineId, medicineName, cmpName, stock, date,medType);
                 Medicine medicine = this.FindForm() as Medicine;
                 updateMedicine.UpdateCompleted += (sender, e) =>
                 {

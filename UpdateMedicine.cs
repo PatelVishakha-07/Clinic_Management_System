@@ -19,7 +19,7 @@ namespace Clinic_Management_System
         string cmpPattern = @"^[a-zA-Z0-9\s\.\-]+$";
         string medicinePattern = @"^[a-zA-Z0-9\s\-\(\)]+$";
         string stockPattern = @"^\d+$";
-        string medName, cpName, expDate;
+        string medName, cpName, expDate, type;
         int st;
         public UpdateMedicine()
         {
@@ -102,17 +102,19 @@ namespace Clinic_Management_System
             lblStock.Visible = stock;
         }
 
-        public void getMedicineDetails(int medicineId, string medicineName, string companyName, int stock, string expiryDate)
+        public void getMedicineDetails(int medicineId, string medicineName, string companyName, int stock, string expiryDate, string medType)
         {
             this.medicineId = medicineId;
             txtName.Text = medicineName;
             txtCmp.Text = companyName;
             txtStock.Text = stock.ToString();
             dateTimePicker1.Text = expiryDate;
+            comboType.SelectedValue = medType;
             medName = medicineName;
             cpName = companyName;
             st = stock;
             expDate = expiryDate;
+            type = medType;
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -121,6 +123,7 @@ namespace Clinic_Management_System
             txtCmp.Text = cpName;
             txtStock.Text = st.ToString();
             dateTimePicker1.Text = expDate;
+            comboType .SelectedItem = type;
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            comboType = new ComboBox();
+            label6 = new Label();
             lblStock = new Label();
             lblName = new Label();
             lblCmp = new Label();
@@ -53,6 +55,8 @@
             // 
             panel1.BackColor = SystemColors.GradientActiveCaption;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(comboType);
+            panel1.Controls.Add(label6);
             panel1.Controls.Add(lblStock);
             panel1.Controls.Add(lblName);
             panel1.Controls.Add(lblCmp);
@@ -75,6 +79,33 @@
             panel1.Size = new Size(1100, 763);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
+            // 
+            // comboType
+            // 
+            comboType.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            comboType.FlatStyle = FlatStyle.Popup;
+            comboType.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            comboType.FormattingEnabled = true;
+            comboType.Items.AddRange(new object[] { "Strips", "Injection", "Syrup" });
+            comboType.Location = new Point(620, 490);
+            comboType.Name = "comboType";
+            comboType.Size = new Size(457, 43);
+            comboType.TabIndex = 19;
+            comboType.Text = "Strips";
+            comboType.SelectedIndexChanged += comboType_SelectedIndexChanged;
+            // 
+            // label6
+            // 
+            label6.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label6.AutoSize = true;
+            label6.BackColor = Color.Transparent;
+            label6.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.Location = new Point(356, 500);
+            label6.Name = "label6";
+            label6.Size = new Size(240, 33);
+            label6.TabIndex = 18;
+            label6.Text = "Medicine Type: ";
+            label6.Click += label6_Click;
             // 
             // lblStock
             // 
@@ -118,9 +149,9 @@
             btnClear.BackColor = Color.Coral;
             btnClear.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnClear.ForeColor = Color.DarkBlue;
-            btnClear.Location = new Point(550, 535);
+            btnClear.Location = new Point(504, 577);
             btnClear.Name = "btnClear";
-            btnClear.Size = new Size(179, 69);
+            btnClear.Size = new Size(176, 69);
             btnClear.TabIndex = 12;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = false;
@@ -132,9 +163,9 @@
             btnCancel.BackColor = Color.Coral;
             btnCancel.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnCancel.ForeColor = Color.DarkBlue;
-            btnCancel.Location = new Point(813, 535);
+            btnCancel.Location = new Point(767, 577);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(179, 69);
+            btnCancel.Size = new Size(176, 69);
             btnCancel.TabIndex = 11;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = false;
@@ -146,9 +177,9 @@
             btnSave.BackColor = Color.Coral;
             btnSave.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnSave.ForeColor = Color.DarkBlue;
-            btnSave.Location = new Point(260, 535);
+            btnSave.Location = new Point(214, 577);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(179, 69);
+            btnSave.Size = new Size(176, 69);
             btnSave.TabIndex = 10;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = false;
@@ -295,5 +326,7 @@
         private Label lblCmp;
         private Label lblName;
         private Label lblStock;
+        private Label label6;
+        private ComboBox comboType;
     }
 }

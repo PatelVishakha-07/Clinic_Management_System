@@ -270,7 +270,7 @@ namespace Clinic_Management_System
         private void PatientDetails_Load(object sender, EventArgs e)
         {
             // Fetch and display patient details
-            string patientQuery = $"select * from patients WHERE patient_id={patientId}";
+            string patientQuery = $"select Distinct * from patients WHERE patient_id={patientId}";
             DataSet patientData = dbclass.Getdata(patientQuery);
             int currentY = 200;
             currentY = DisplayData(patientData, panel1, currentY, "Patient Details", excludeColumns: new[] { "patient_id" });

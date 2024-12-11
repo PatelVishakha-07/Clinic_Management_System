@@ -40,14 +40,15 @@ namespace Clinic_Management_System
             databaseclass dbClass = new databaseclass();
             string medicineName = txtName.Text;
             string cmpName = txtCmp.Text;
-            string stock =txtStock.Text;
+            string stock = txtStock.Text;
             string date = dateTimePicker1.Text;
+            string type=comboType.SelectedItem?.ToString();
 
             if (string.IsNullOrEmpty(medicineName) && string.IsNullOrEmpty(cmpName) && string.IsNullOrEmpty(stock))
             {
-                LabelVisisble(true,true,true);
+                LabelVisisble(true, true, true);
             }
-            else if(string.IsNullOrEmpty(medicineName) && string.IsNullOrEmpty(cmpName))
+            else if (string.IsNullOrEmpty(medicineName) && string.IsNullOrEmpty(cmpName))
             {
                 LabelVisisble(true, true, false);
             }
@@ -55,7 +56,7 @@ namespace Clinic_Management_System
             {
                 LabelVisisble(false, true, true);
             }
-            else if(string.IsNullOrEmpty(medicineName))
+            else if (string.IsNullOrEmpty(medicineName))
             {
                 lblName.Visible = true;
             }
@@ -66,7 +67,7 @@ namespace Clinic_Management_System
             else if (string.IsNullOrEmpty(stock))
             {
                 lblStock.Visible = true;
-            }            
+            }
             else
             {
                 LabelVisisble();
@@ -80,8 +81,8 @@ namespace Clinic_Management_System
 
                 if (!lblName.Visible && !lblCmp.Visible && !lblStock.Visible)
                 {
-                    string query = "insert into Medicines(Medicine_Name, Company_Name, Medicine_Stock, Expiry_Date) values ('" + medicineName +
-                "', '" + cmpName + "', " + int.Parse(stock) + ", '" + date + "');";
+                    string query = "insert into Medicines(medicine_name, company_name,medicine_type, medicine_stock, expiry_date) values ('" + medicineName +
+                "', '" + cmpName + "', '" + type + "', " + int.Parse(stock) + ", '" + date + "');";
                     dbClass.databaseoperations(query);
                     MessageBox.Show("Record Inserted Successfully");
                     ClearText();
@@ -91,11 +92,11 @@ namespace Clinic_Management_System
 
 
             }
-           
-        }        
 
-       
-        private void LabelVisisble(bool name=false, bool cmp=false, bool stock=false) 
+        }
+
+
+        private void LabelVisisble(bool name = false, bool cmp = false, bool stock = false)
         {
             lblName.Visible = name;
             lblCmp.Visible = cmp;
@@ -110,7 +111,7 @@ namespace Clinic_Management_System
             txtName.Text = "";
             txtCmp.Text = "";
             txtStock.Text = "";
-            dateTimePicker1.Text = "";
+            dateTimePicker1.Text = DateTime.Today.ToString();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -119,6 +120,14 @@ namespace Clinic_Management_System
             medicine.ShowControl(new ShowMedicine());
         }
 
-        
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

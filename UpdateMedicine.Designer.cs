@@ -45,6 +45,8 @@
             pictureBox1 = new PictureBox();
             label2 = new Label();
             label1 = new Label();
+            comboType = new ComboBox();
+            label6 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -53,6 +55,8 @@
             // 
             panel1.BackColor = SystemColors.GradientActiveCaption;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(comboType);
+            panel1.Controls.Add(label6);
             panel1.Controls.Add(lblStock);
             panel1.Controls.Add(lblName);
             panel1.Controls.Add(lblCmp);
@@ -117,7 +121,7 @@
             btnReset.BackColor = Color.Coral;
             btnReset.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnReset.ForeColor = Color.DarkBlue;
-            btnReset.Location = new Point(550, 535);
+            btnReset.Location = new Point(465, 586);
             btnReset.Name = "btnReset";
             btnReset.Size = new Size(179, 69);
             btnReset.TabIndex = 12;
@@ -131,7 +135,7 @@
             btnCancel.BackColor = Color.Coral;
             btnCancel.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnCancel.ForeColor = Color.DarkBlue;
-            btnCancel.Location = new Point(813, 535);
+            btnCancel.Location = new Point(728, 586);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(179, 69);
             btnCancel.TabIndex = 11;
@@ -145,7 +149,7 @@
             btnUpdate.BackColor = Color.Coral;
             btnUpdate.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnUpdate.ForeColor = Color.DarkBlue;
-            btnUpdate.Location = new Point(260, 535);
+            btnUpdate.Location = new Point(175, 586);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(179, 69);
             btnUpdate.TabIndex = 10;
@@ -262,6 +266,31 @@
             label1.Text = "Update Medicine";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // comboType
+            // 
+            comboType.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            comboType.FlatStyle = FlatStyle.Popup;
+            comboType.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            comboType.FormattingEnabled = true;
+            comboType.Items.AddRange(new object[] { "Strips", "Injection", "Syrup" });
+            comboType.Location = new Point(620, 489);
+            comboType.Name = "comboType";
+            comboType.Size = new Size(457, 43);
+            comboType.TabIndex = 22;
+            comboType.Text = "Strips";
+            // 
+            // label6
+            // 
+            label6.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label6.AutoSize = true;
+            label6.BackColor = Color.Transparent;
+            label6.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.Location = new Point(356, 499);
+            label6.Name = "label6";
+            label6.Size = new Size(240, 33);
+            label6.TabIndex = 21;
+            label6.Text = "Medicine Type: ";
+            // 
             // UpdateMedicine
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -295,5 +324,7 @@
         private Label lblStock;
         private Label lblName;
         private Label lblCmp;
+        private ComboBox comboType;
+        private Label label6;
     }
 }
