@@ -37,6 +37,8 @@
             addMedicineToolStripMenuItem = new ToolStripMenuItem();
             panel1 = new Panel();
             leftPanel = new Panel();
+            expiredMedicineToolStripMenuItem = new ToolStripMenuItem();
+            outOfStockMedicineToolStripMenuItem = new ToolStripMenuItem();
             MedicinePanel.SuspendLayout();
             panel3.SuspendLayout();
             topPanel.SuspendLayout();
@@ -92,7 +94,7 @@
             menuStrip1.Dock = DockStyle.Fill;
             menuStrip1.Font = new Font("Cascadia Code", 12F, FontStyle.Bold, GraphicsUnit.Point);
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { showMedicinesToolStripMenuItem, addMedicineToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { showMedicinesToolStripMenuItem, addMedicineToolStripMenuItem, expiredMedicineToolStripMenuItem, outOfStockMedicineToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(1086, 56);
@@ -132,6 +134,18 @@
             leftPanel.Size = new Size(241, 873);
             leftPanel.TabIndex = 0;
             // 
+            // expiredMedicineToolStripMenuItem
+            // 
+            expiredMedicineToolStripMenuItem.Name = "expiredMedicineToolStripMenuItem";
+            expiredMedicineToolStripMenuItem.Size = new Size(218, 52);
+            expiredMedicineToolStripMenuItem.Text = "Expired Medicine";
+            // 
+            // outOfStockMedicineToolStripMenuItem
+            // 
+            outOfStockMedicineToolStripMenuItem.Name = "outOfStockMedicineToolStripMenuItem";
+            outOfStockMedicineToolStripMenuItem.Size = new Size(278, 52);
+            outOfStockMedicineToolStripMenuItem.Text = "Out Of Stock Medicine";
+            // 
             // Medicine
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -164,5 +178,7 @@
         private Panel topPanel;
         private Panel panel3;
         private Panel MainPanel;
+        private ToolStripMenuItem expiredMedicineToolStripMenuItem;
+        private ToolStripMenuItem outOfStockMedicineToolStripMenuItem;
     }
 }

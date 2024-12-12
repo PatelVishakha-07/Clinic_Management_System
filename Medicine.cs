@@ -39,7 +39,17 @@ namespace Clinic_Management_System
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-
+            ToolStripMenuItem item = e.ClickedItem as ToolStripMenuItem;
+            if (item != null) {
+                if(item.Text == "Expired Medicine")
+                {
+                    ShowControl(new Exp_Out_Medicines("expire"));
+                }
+                else if(item.Text == "Out Of Stock Medicine")
+                {
+                    ShowControl(new Exp_Out_Medicines("out of stock"));
+                }
+            }
         }
 
         private void showMedicinesToolStripMenuItem_Click(object sender, EventArgs e)

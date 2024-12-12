@@ -111,6 +111,7 @@ namespace Clinic_Management_System
             txtName.Text = "";
             txtCmp.Text = "";
             txtStock.Text = "";
+            comboType.SelectedItem = "Strips";
             dateTimePicker1.Text = DateTime.Today.ToString();
         }
 
