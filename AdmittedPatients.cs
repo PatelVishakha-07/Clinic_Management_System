@@ -17,12 +17,37 @@ namespace Clinic_Management_System
             InitializeComponent();
             Dashboard dashboard = new Dashboard();
             dashboard.Dock = DockStyle.Left;
-            panel2.Controls.Add(dashboard);   
+            leftPanel.Controls.Add(dashboard);
         }
 
         private void AdmittedPatients_Load(object sender, EventArgs e)
         {
+            panel2.Controls.Clear();
+            ShowAdmittedPatient showAdmittedPatient=new ShowAdmittedPatient();
+            showAdmittedPatient.Dock = DockStyle.Fill;
+            panel2.Controls.Add(showAdmittedPatient);
+        }
 
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void ShowContent(UserControl control)
+        {
+            panel2.Controls.Clear();
+            control.Dock = DockStyle.Fill;
+            panel2.Controls.Add(control);
+        }
+
+        private void showAdmittedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowContent(new ShowAdmittedPatient());
+        }
+
+        private void admitPatientsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowContent(new InHouse_Patient());
         }
     }
 }

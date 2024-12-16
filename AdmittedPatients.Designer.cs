@@ -30,12 +30,14 @@
         {
             panel1 = new Panel();
             panel2 = new Panel();
-            btnSearch = new Button();
-            txtSearch = new TextBox();
-            label1 = new Label();
-            dataGridView1 = new DataGridView();
+            topPanel = new Panel();
+            menuStrip1 = new MenuStrip();
+            showAdmittedToolStripMenuItem = new ToolStripMenuItem();
+            admitPatientsToolStripMenuItem = new ToolStripMenuItem();
+            leftPanel = new Panel();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            topPanel.SuspendLayout();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -43,10 +45,8 @@
             panel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             panel1.BackColor = Color.FromArgb(192, 255, 255);
             panel1.Controls.Add(panel2);
-            panel1.Controls.Add(btnSearch);
-            panel1.Controls.Add(txtSearch);
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(dataGridView1);
+            panel1.Controls.Add(topPanel);
+            panel1.Controls.Add(leftPanel);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
@@ -55,76 +55,86 @@
             // 
             // panel2
             // 
-            panel2.Dock = DockStyle.Left;
-            panel2.Location = new Point(0, 0);
+            panel2.AutoScroll = true;
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(225, 71);
             panel2.Name = "panel2";
-            panel2.Size = new Size(225, 745);
-            panel2.TabIndex = 5;
+            panel2.Size = new Size(1076, 674);
+            panel2.TabIndex = 7;
             // 
-            // btnSearch
+            // topPanel
             // 
-            btnSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnSearch.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSearch.Location = new Point(961, 150);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(124, 41);
-            btnSearch.TabIndex = 4;
-            btnSearch.Text = "Search";
-            btnSearch.UseVisualStyleBackColor = true;
+            topPanel.Controls.Add(menuStrip1);
+            topPanel.Dock = DockStyle.Top;
+            topPanel.Location = new Point(225, 0);
+            topPanel.Name = "topPanel";
+            topPanel.Size = new Size(1076, 71);
+            topPanel.TabIndex = 6;
             // 
-            // txtSearch
+            // menuStrip1
             // 
-            txtSearch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtSearch.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            txtSearch.Location = new Point(254, 150);
-            txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(644, 41);
-            txtSearch.TabIndex = 3;
+            menuStrip1.BackColor = Color.FromArgb(255, 255, 192);
+            menuStrip1.Dock = DockStyle.Fill;
+            menuStrip1.Font = new Font("Cinzel Black", 13.1999989F, FontStyle.Bold, GraphicsUnit.Point);
+            menuStrip1.ImageScalingSize = new Size(20, 20);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { showAdmittedToolStripMenuItem, admitPatientsToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(1076, 71);
+            menuStrip1.TabIndex = 0;
+            menuStrip1.Text = "menuStrip1";
+            menuStrip1.ItemClicked += menuStrip1_ItemClicked;
             // 
-            // label1
+            // showAdmittedToolStripMenuItem
             // 
-            label1.Anchor = AnchorStyles.Top;
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            label1.Location = new Point(455, 23);
-            label1.Name = "label1";
-            label1.Size = new Size(439, 41);
-            label1.TabIndex = 2;
-            label1.Text = "Admitted Patient Information";
+            showAdmittedToolStripMenuItem.Name = "showAdmittedToolStripMenuItem";
+            showAdmittedToolStripMenuItem.Size = new Size(322, 67);
+            showAdmittedToolStripMenuItem.Text = "Show Admitted Patients";
+            showAdmittedToolStripMenuItem.Click += showAdmittedToolStripMenuItem_Click;
             // 
-            // dataGridView1
+            // admitPatientsToolStripMenuItem
             // 
-            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(254, 263);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(1000, 457);
-            dataGridView1.TabIndex = 0;
+            admitPatientsToolStripMenuItem.Name = "admitPatientsToolStripMenuItem";
+            admitPatientsToolStripMenuItem.Size = new Size(208, 67);
+            admitPatientsToolStripMenuItem.Text = "Admit Patients";
+            admitPatientsToolStripMenuItem.Click += admitPatientsToolStripMenuItem_Click;
+            // 
+            // leftPanel
+            // 
+            leftPanel.Dock = DockStyle.Left;
+            leftPanel.Location = new Point(0, 0);
+            leftPanel.Name = "leftPanel";
+            leftPanel.Size = new Size(225, 745);
+            leftPanel.TabIndex = 5;
             // 
             // AdmittedPatients
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             ClientSize = new Size(1301, 745);
             Controls.Add(panel1);
+            MainMenuStrip = menuStrip1;
             Name = "AdmittedPatients";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Admitted Patients";
             Load += AdmittedPatients_Load;
             panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            topPanel.ResumeLayout(false);
+            topPanel.PerformLayout();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel panel1;
-        private Label label1;
-        private DataGridView dataGridView1;
-        private Button btnSearch;
-        private TextBox txtSearch;
+        private Panel leftPanel;
+        private Panel topPanel;
         private Panel panel2;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem showAdmittedToolStripMenuItem;
+        private ToolStripMenuItem admitPatientsToolStripMenuItem;
     }
 }
