@@ -58,9 +58,8 @@
             panel2.Controls.Add(dataGridView1);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 0);
-            panel2.Margin = new Padding(4, 4, 4, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1375, 954);
+            panel2.Size = new Size(1100, 763);
             panel2.TabIndex = 2;
             panel2.Paint += panel2_Paint_1;
             // 
@@ -70,10 +69,9 @@
             label1.AutoEllipsis = true;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(458, 95);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(366, 76);
             label1.Name = "label1";
-            label1.Size = new Size(413, 54);
+            label1.Size = new Size(351, 46);
             label1.TabIndex = 3;
             label1.Text = "Patients Information";
             // 
@@ -81,10 +79,9 @@
             // 
             btnSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnSearch.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            btnSearch.Location = new Point(1164, 224);
-            btnSearch.Margin = new Padding(4, 4, 4, 4);
+            btnSearch.Location = new Point(931, 179);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(185, 51);
+            btnSearch.Size = new Size(148, 41);
             btnSearch.TabIndex = 2;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = true;
@@ -94,10 +91,9 @@
             // 
             txtSearch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtSearch.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            txtSearch.Location = new Point(82, 224);
-            txtSearch.Margin = new Padding(4, 4, 4, 4);
+            txtSearch.Location = new Point(66, 179);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(1004, 47);
+            txtSearch.Size = new Size(804, 41);
             txtSearch.TabIndex = 1;
             // 
             // dataGridView1
@@ -123,8 +119,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.GridColor = SystemColors.Info;
-            dataGridView1.Location = new Point(25, 319);
-            dataGridView1.Margin = new Padding(4, 4, 4, 4);
+            dataGridView1.Location = new Point(20, 255);
             dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
@@ -141,7 +136,7 @@
             dataGridViewCellStyle4.SelectionForeColor = Color.Black;
             dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(1324, 599);
+            dataGridView1.Size = new Size(1059, 479);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick_1;
             // 
@@ -165,7 +160,7 @@
             Contact_No.HeaderText = "Contact_No";
             Contact_No.MinimumWidth = 8;
             Contact_No.Name = "Contact_No";
-            Contact_No.Width = 140;
+            Contact_No.Width = 115;
             // 
             // Address
             // 
@@ -191,12 +186,11 @@
             // 
             // ShowPatients
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel2);
-            Margin = new Padding(4, 4, 4, 4);
-           // Name = "ShowPatients";
-            Size = new Size(1375, 954);
+            //Name = "ShowPatients";
+            Size = new Size(1100, 763);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

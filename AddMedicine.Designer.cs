@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            lblSell = new Label();
+            txtSell = new TextBox();
+            label10 = new Label();
+            lblPurchase = new Label();
+            txtPurchase = new TextBox();
+            label8 = new Label();
             comboType = new ComboBox();
             label6 = new Label();
             lblStock = new Label();
@@ -55,6 +61,12 @@
             // 
             panel1.BackColor = SystemColors.GradientActiveCaption;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(lblSell);
+            panel1.Controls.Add(txtSell);
+            panel1.Controls.Add(label10);
+            panel1.Controls.Add(lblPurchase);
+            panel1.Controls.Add(txtPurchase);
+            panel1.Controls.Add(label8);
             panel1.Controls.Add(comboType);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(lblStock);
@@ -76,9 +88,76 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1100, 763);
+            panel1.Size = new Size(1100, 852);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
+            // 
+            // lblSell
+            // 
+            lblSell.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            lblSell.AutoSize = true;
+            lblSell.ForeColor = Color.Red;
+            lblSell.Location = new Point(620, 712);
+            lblSell.Name = "lblSell";
+            lblSell.Size = new Size(195, 20);
+            lblSell.TabIndex = 25;
+            lblSell.Text = "* Sell Price cannot be empty";
+            lblSell.Visible = false;
+            // 
+            // txtSell
+            // 
+            txtSell.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtSell.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            txtSell.Location = new Point(620, 668);
+            txtSell.Name = "txtSell";
+            txtSell.Size = new Size(457, 41);
+            txtSell.TabIndex = 24;
+            // 
+            // label10
+            // 
+            label10.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label10.AutoSize = true;
+            label10.BackColor = Color.Transparent;
+            label10.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            label10.Location = new Point(356, 678);
+            label10.Name = "label10";
+            label10.Size = new Size(195, 33);
+            label10.TabIndex = 23;
+            label10.Text = "Sell Price: ";
+            // 
+            // lblPurchase
+            // 
+            lblPurchase.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            lblPurchase.AutoSize = true;
+            lblPurchase.ForeColor = Color.Red;
+            lblPurchase.Location = new Point(620, 615);
+            lblPurchase.Name = "lblPurchase";
+            lblPurchase.Size = new Size(229, 20);
+            lblPurchase.TabIndex = 22;
+            lblPurchase.Text = "* Purchase Price cannot be empty";
+            lblPurchase.Visible = false;
+            // 
+            // txtPurchase
+            // 
+            txtPurchase.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtPurchase.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPurchase.Location = new Point(620, 571);
+            txtPurchase.Name = "txtPurchase";
+            txtPurchase.Size = new Size(457, 41);
+            txtPurchase.TabIndex = 21;
+            // 
+            // label8
+            // 
+            label8.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label8.AutoSize = true;
+            label8.BackColor = Color.Transparent;
+            label8.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.Location = new Point(356, 581);
+            label8.Name = "label8";
+            label8.Size = new Size(255, 33);
+            label8.TabIndex = 20;
+            label8.Text = "Purchase Price: ";
+            label8.Click += label8_Click;
             // 
             // comboType
             // 
@@ -149,7 +228,7 @@
             btnClear.BackColor = Color.Coral;
             btnClear.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnClear.ForeColor = Color.DarkBlue;
-            btnClear.Location = new Point(504, 577);
+            btnClear.Location = new Point(435, 770);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(176, 69);
             btnClear.TabIndex = 12;
@@ -163,7 +242,7 @@
             btnCancel.BackColor = Color.Coral;
             btnCancel.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnCancel.ForeColor = Color.DarkBlue;
-            btnCancel.Location = new Point(767, 577);
+            btnCancel.Location = new Point(698, 770);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(176, 69);
             btnCancel.TabIndex = 11;
@@ -177,7 +256,7 @@
             btnSave.BackColor = Color.Coral;
             btnSave.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnSave.ForeColor = Color.DarkBlue;
-            btnSave.Location = new Point(214, 577);
+            btnSave.Location = new Point(145, 770);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(176, 69);
             btnSave.TabIndex = 10;
@@ -299,7 +378,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel1);
             Name = "AddMedicine";
-            Size = new Size(1100, 763);
+            Size = new Size(1100, 852);
             Load += AddMedicine_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -328,5 +407,11 @@
         private Label lblStock;
         private Label label6;
         private ComboBox comboType;
+        private Label lblPurchase;
+        private TextBox txtPurchase;
+        private Label label8;
+        private Label lblSell;
+        private TextBox txtSell;
+        private Label label10;
     }
 }

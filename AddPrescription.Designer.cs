@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            txtmedqty = new TextBox();
+            label10 = new Label();
             lbldisease = new Label();
             pictureBox1 = new PictureBox();
             txtDisease = new TextBox();
@@ -49,8 +51,8 @@
             txtName = new TextBox();
             label2 = new Label();
             label1 = new Label();
-            txtmedqty = new TextBox();
-            label10 = new Label();
+            txtCharges = new TextBox();
+            label11 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -58,6 +60,8 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.InactiveCaption;
+            panel1.Controls.Add(txtCharges);
+            panel1.Controls.Add(label11);
             panel1.Controls.Add(txtmedqty);
             panel1.Controls.Add(label10);
             panel1.Controls.Add(lbldisease);
@@ -83,9 +87,31 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1100, 763);
+            panel1.Size = new Size(1100, 834);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
+            // 
+            // txtmedqty
+            // 
+            txtmedqty.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtmedqty.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            txtmedqty.Location = new Point(579, 739);
+            txtmedqty.Name = "txtmedqty";
+            txtmedqty.Size = new Size(186, 41);
+            txtmedqty.TabIndex = 59;
+            // 
+            // label10
+            // 
+            label10.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label10.AutoSize = true;
+            label10.BackColor = Color.Transparent;
+            label10.Font = new Font("Cascadia Code", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label10.Location = new Point(579, 716);
+            label10.Name = "label10";
+            label10.Size = new Size(441, 20);
+            label10.TabIndex = 58;
+            label10.Text = "How many types of medicine you want to describe?";
+            label10.Click += label10_Click;
             // 
             // lbldisease
             // 
@@ -209,7 +235,7 @@
             btnClear.BackColor = Color.LightSteelBlue;
             btnClear.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnClear.ForeColor = Color.Black;
-            btnClear.Location = new Point(315, 598);
+            btnClear.Location = new Point(45, 603);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(179, 69);
             btnClear.TabIndex = 44;
@@ -223,7 +249,7 @@
             btnSave.BackColor = Color.LightSteelBlue;
             btnSave.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnSave.ForeColor = Color.Black;
-            btnSave.Location = new Point(315, 673);
+            btnSave.Location = new Point(45, 716);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(179, 69);
             btnSave.TabIndex = 43;
@@ -310,27 +336,26 @@
             label1.TabIndex = 0;
             label1.Text = "Prescription";
             // 
-            // txtmedqty
+            // txtCharges
             // 
-            txtmedqty.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtmedqty.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            txtmedqty.Location = new Point(579, 626);
-            txtmedqty.Name = "txtmedqty";
-            txtmedqty.Size = new Size(186, 41);
-            txtmedqty.TabIndex = 59;
+            txtCharges.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtCharges.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            txtCharges.Location = new Point(579, 633);
+            txtCharges.Name = "txtCharges";
+            txtCharges.Size = new Size(457, 41);
+            txtCharges.TabIndex = 61;
             // 
-            // label10
+            // label11
             // 
-            label10.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label10.AutoSize = true;
-            label10.BackColor = Color.Transparent;
-            label10.Font = new Font("Cascadia Code", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label10.Location = new Point(579, 603);
-            label10.Name = "label10";
-            label10.Size = new Size(441, 20);
-            label10.TabIndex = 58;
-            label10.Text = "How many types of medicine you want to describe?";
-            label10.Click += label10_Click;
+            label11.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label11.AutoSize = true;
+            label11.BackColor = Color.Transparent;
+            label11.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            label11.Location = new Point(315, 639);
+            label11.Name = "label11";
+            label11.Size = new Size(150, 33);
+            label11.TabIndex = 60;
+            label11.Text = "Charges: ";
             // 
             // AddPrescription
             // 
@@ -338,7 +363,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel1);
             Name = "AddPrescription";
-            Size = new Size(1100, 763);
+            Size = new Size(1100, 834);
             Load += AddPrescription_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -371,5 +396,7 @@
         private Label lbldisease;
         private TextBox txtmedqty;
         private Label label10;
+        private TextBox txtCharges;
+        private Label label11;
     }
 }

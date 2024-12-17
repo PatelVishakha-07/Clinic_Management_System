@@ -34,7 +34,7 @@ namespace Clinic_Management_System
 
         private void AddPatients_Load(object sender, EventArgs e)
         {
-
+            comboBox1.SelectedItem = "Male";
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -97,7 +97,8 @@ namespace Clinic_Management_System
             txtAge.Text = string.Empty;
             txtContact.Text = string.Empty;
             txtName.Text = string.Empty;
-            comboBox1.Text = string.Empty;
+            //comboBox1.Text = string.Empty;
+            comboBox1.SelectedItem = "Male";
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)

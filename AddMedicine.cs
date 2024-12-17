@@ -36,13 +36,18 @@ namespace Clinic_Management_System
             lblName.Text = "Medicine Name Cannot be empty";
             lblCmp.Text = "Company Name Cannot be empty";
             lblStock.Text = "Medicine Stock Cannot be empty";
+            lblPurchase.Text = "Purchase Price cannot be empty";
+            lblSell.Text = "Sell Price cannot be empty";
+
             LabelVisisble();
             databaseclass dbClass = new databaseclass();
             string medicineName = txtName.Text;
             string cmpName = txtCmp.Text;
             string stock = txtStock.Text;
             string date = dateTimePicker1.Text;
-            string type=comboType.SelectedItem?.ToString();
+            string type = comboType.SelectedItem?.ToString();
+            string purchase=txtPurchase.Text;
+            string sell = txtSell.Text;
 
             if (string.IsNullOrEmpty(medicineName) && string.IsNullOrEmpty(cmpName) && string.IsNullOrEmpty(stock))
             {
@@ -74,6 +79,8 @@ namespace Clinic_Management_System
                 lblName.Text = "Please enter Valid Medicine Name";
                 lblCmp.Text = "Please enter Valid Company Name";
                 lblStock.Text = "Please enter Valid Medicine Stock";
+                lblPurchase.Text = "Please enter Valid Purchase Price";
+                lblSell.Text = "Please enter Valid Sell Price";
 
                 lblName.Visible = !Regex.IsMatch(medicineName, medicinePattern);
                 lblCmp.Visible = !Regex.IsMatch(cmpName, cmpPattern);
@@ -81,8 +88,9 @@ namespace Clinic_Management_System
 
                 if (!lblName.Visible && !lblCmp.Visible && !lblStock.Visible)
                 {
-                    string query = "insert into Medicines(medicine_name, company_name,medicine_type, medicine_stock, expiry_date) values ('" + medicineName +
-                "', '" + cmpName + "', '" + type + "', " + int.Parse(stock) + ", '" + date + "');";
+                    string query = "insert into Medicines(medicine_name, company_name,medicine_type, medicine_stock, expiry_date, purchase_price, sell_price) values ('" 
+                        + medicineName + "', '" + cmpName + "', '" + type + "', " + int.Parse(stock) + ", '" + date + "', " + int.Parse(purchase) 
+                        + ", " + int.Parse(sell) + ");";
                     dbClass.databaseoperations(query);
                     MessageBox.Show("Record Inserted Successfully");
                     ClearText();
@@ -96,11 +104,13 @@ namespace Clinic_Management_System
         }
 
 
-        private void LabelVisisble(bool name = false, bool cmp = false, bool stock = false)
+        private void LabelVisisble(bool name = false, bool cmp = false, bool stock = false, bool purchase=false, bool sell =false)
         {
             lblName.Visible = name;
             lblCmp.Visible = cmp;
             lblStock.Visible = stock;
+            lblPurchase.Visible = purchase;
+            lblSell.Visible = sell;
         }
         private void btnClear_Click(object sender, EventArgs e)
         {
@@ -112,6 +122,8 @@ namespace Clinic_Management_System
             txtCmp.Text = "";
             txtStock.Text = "";
             comboType.SelectedItem = "Strips";
+            txtPurchase.Text = "";
+            txtSell.Text = "";
             dateTimePicker1.Text = DateTime.Today.ToString();
         }
 
@@ -130,5 +142,7 @@ namespace Clinic_Management_System
         {
 
         }
+
+        private void label8_Click(object sender, EventArgs e)        {}
     }
 }
