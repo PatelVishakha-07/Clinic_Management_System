@@ -39,7 +39,7 @@ namespace Clinic_Management_System
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtPres.Text))
+            if (string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtPres.Text) || string.IsNullOrEmpty(txtmedqty.Text))
             {
                 lbldisease.Visible = true;
             }
@@ -53,7 +53,7 @@ namespace Clinic_Management_System
                 string data = $"select * from Prescription where patient_id={patient_id} and prescription_date='{dateFormatted}'";
                 DataSet ds = dbclass.Getdata(data);
                 Prescriped_medicine prescriped_Medicine = new Prescriped_medicine();
-                prescriped_Medicine.getprescriptiondetails(int.Parse(ds.Tables[0].Rows[0]["prescription_id"].ToString()));
+                prescriped_Medicine.GetPrescriptionDetails(int.Parse(ds.Tables[0].Rows[0]["prescription_id"].ToString()), int.Parse(txtmedqty.Text));
                 Patients patients = this.FindForm() as Patients;
                 patients.ShowContent(prescriped_Medicine);
             }
@@ -66,6 +66,11 @@ namespace Clinic_Management_System
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
         {
 
         }

@@ -179,7 +179,6 @@ namespace Clinic_Management_System
             int labelSpacing = 35;
             int keyValueSpacing = 250;
 
-
             Label titleLabel = new Label()
             {
                 Text = sectionTitle,
@@ -203,6 +202,11 @@ namespace Clinic_Management_System
                         string columnName = col.ColumnName.ToUpper();
                         string columnValue = row[col].ToString();
 
+                        // Check for the "usage" column and translate values
+                        if (col.ColumnName.Equals("usage", StringComparison.OrdinalIgnoreCase))
+                        {
+                            columnValue = TranslateUsageToBars(columnValue);
+                        }
 
                         Label keyLabel = new Label()
                         {
@@ -211,7 +215,6 @@ namespace Clinic_Management_System
                             AutoSize = true,
                             Font = new Font("Arial", 12, FontStyle.Bold)
                         };
-
 
                         Label valueLabel = new Label()
                         {
@@ -230,7 +233,6 @@ namespace Clinic_Management_System
             }
             else
             {
-
                 Label noDataLabel = new Label()
                 {
                     Text = "No data available.",
@@ -244,6 +246,24 @@ namespace Clinic_Management_System
             }
 
             return startY;
+        }
+
+        // Helper method to translate usage values to bars
+        private string TranslateUsageToBars(string usage)
+        {
+            switch (usage.ToUpper())
+            {
+                case "OD":
+                    return "| ";  // Once a day
+                case "BD":
+                    return "| |"; // Twice a day
+                case "TD":
+                    return "| | |"; // Thrice a day
+                case "QD":
+                    return "| | | |"; // Four times a day
+                default:
+                    return usage; // If no match, return original value
+            }
         }
 
 
@@ -284,9 +304,10 @@ namespace Clinic_Management_System
                 foreach (DataRow prescriptionRow in prescriptionData.Tables[0].Rows)
                 {
                     int prescriptionId = Convert.ToInt32(prescriptionRow["prescription_id"]);
-
+                    string query = $"select * from prescription where prescription_id={prescriptionId}";
+                    DataSet currentprescription= dbclass.Getdata(query);    
                     // Display prescription details
-                    currentY = DisplayData(prescriptionData, panel1, currentY, "Prescription Details", excludeColumns: new[] { "patient_id", "prescription_id" });
+                    currentY = DisplayData(currentprescription, panel1, currentY, "Prescription Details", excludeColumns: new[] { "patient_id", "prescription_id" });
 
                     // Fetch and display prescribed medicines for this prescription
                     string medicineQuery = $"select * from Prescribed_Medicine where prescription_id={prescriptionId}";

@@ -32,6 +32,10 @@
             btnSearch = new Button();
             txtSearch = new TextBox();
             dataGridView1 = new DataGridView();
+            Bed_Number = new DataGridViewTextBoxColumn();
+            Name = new DataGridViewTextBoxColumn();
+            ipd_id = new DataGridViewTextBoxColumn();
+            Contact_No = new DataGridViewTextBoxColumn();
             label1 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -49,6 +53,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1100, 763);
             panel1.TabIndex = 0;
+          //  panel1.Paint += panel1_Paint;
             // 
             // btnSearch
             // 
@@ -60,6 +65,7 @@
             btnSearch.TabIndex = 7;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
             // 
             // txtSearch
             // 
@@ -69,19 +75,48 @@
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(769, 41);
             txtSearch.TabIndex = 6;
-            txtSearch.TextChanged += txtSearch_TextChanged;
             // 
             // dataGridView1
             // 
             dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(54, 270);
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Bed_Number, Name, ipd_id, Contact_No });
+            dataGridView1.Location = new Point(155, 263);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(1000, 457);
+            dataGridView1.Size = new Size(778, 457);
             dataGridView1.TabIndex = 5;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            //dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // Bed_Number
+            // 
+            Bed_Number.HeaderText = "Bed_Number";
+            Bed_Number.MinimumWidth = 6;
+            Bed_Number.Name = "Bed_Number";
+            Bed_Number.Width = 125;
+            // 
+            // Name
+            // 
+            Name.HeaderText = "Name";
+            Name.MinimumWidth = 6;
+            Name.Name = "Name";
+            Name.Width = 300;
+            // 
+            // ipd_id
+            // 
+            ipd_id.HeaderText = "ipd_id";
+            ipd_id.MinimumWidth = 6;
+            ipd_id.Name = "ipd_id";
+            ipd_id.Visible = false;
+            ipd_id.Width = 125;
+            // 
+            // Contact_No
+            // 
+            Contact_No.HeaderText = "Contact_No";
+            Contact_No.MinimumWidth = 6;
+            Contact_No.Name = "Contact_No";
+            Contact_No.Width = 300;
             // 
             // label1
             // 
@@ -99,9 +134,8 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel1);
-            Name = "ShowAdmittedPatient";
+          //  Name = "ShowAdmittedPatient";
             Size = new Size(1100, 763);
-            Load += ShowAdmittedPatient_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -115,5 +149,9 @@
         private Button btnSearch;
         private TextBox txtSearch;
         private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn Bed_Number;
+        private DataGridViewTextBoxColumn Name;
+        private DataGridViewTextBoxColumn ipd_id;
+        private DataGridViewTextBoxColumn Contact_No;
     }
 }

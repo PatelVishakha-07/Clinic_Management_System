@@ -49,23 +49,23 @@ namespace Clinic_Management_System
 
                 if (int.TryParse(value, out int stock))
                 {
-                    query = $"select Medicine_Name,Company_Name,Medicine_Stock,Expiry_Date from Medicines where Medicine_Stock={int.Parse(value)};";
+                    query = $"select Medicine_Name,Company_Name,Medicine_Type,Medicine_Stock,Expiry_Date from Medicines where Medicine_Stock={int.Parse(value)};";
                 }
                 else if (DateOnly.TryParse(value, out DateOnly expiry_date))
                 {
                     string formated_date = expiry_date.ToString("MM-dd-yyyy");
-                    query = $"select Medicine_Name,Company_Name,Medicine_Stock,Expiry_Date from Medicines where Expiry_Date='{formated_date}';";
+                    query = $"select Medicine_Name,Company_Name,Medicine_Type,Medicine_Stock,Expiry_Date from Medicines where Expiry_Date='{formated_date}';";
                 }
                 else
                 {
-                    query = $"select Medicine_Name,Company_Name,Medicine_Stock,Expiry_Date from Medicines where Medicine_Name='{value}' or Company_Name='{value}';";
+                    query = $"select Medicine_Name,Company_Name,Medicine_Type,Medicine_Stock,Expiry_Date from Medicines where Medicine_Name='{value}' or Company_Name='{value}';";
 
                 }
 
             }
             else
             {
-                query = "select Medicine_Name,Company_Name,Medicine_Stock,Expiry_Date from Medicines;";
+                query = "select Medicine_Name,Company_Name,Medicine_Type,Medicine_Stock,Expiry_Date from Medicines;";
             }
             DataSet ds = dbClass.Getdata(query);
             populategridview(ds);
