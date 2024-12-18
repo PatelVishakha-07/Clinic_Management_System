@@ -29,6 +29,14 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            lblSell = new Label();
+            txtSell = new TextBox();
+            label10 = new Label();
+            lblPurchase = new Label();
+            txtPurchase = new TextBox();
+            label8 = new Label();
+            comboType = new ComboBox();
+            label6 = new Label();
             lblStock = new Label();
             lblName = new Label();
             lblCmp = new Label();
@@ -45,8 +53,6 @@
             pictureBox1 = new PictureBox();
             label2 = new Label();
             label1 = new Label();
-            comboType = new ComboBox();
-            label6 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -55,6 +61,12 @@
             // 
             panel1.BackColor = SystemColors.GradientActiveCaption;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(lblSell);
+            panel1.Controls.Add(txtSell);
+            panel1.Controls.Add(label10);
+            panel1.Controls.Add(lblPurchase);
+            panel1.Controls.Add(txtPurchase);
+            panel1.Controls.Add(label8);
             panel1.Controls.Add(comboType);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(lblStock);
@@ -76,8 +88,99 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1100, 763);
+            panel1.Size = new Size(1100, 852);
             panel1.TabIndex = 1;
+            // 
+            // lblSell
+            // 
+            lblSell.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            lblSell.AutoSize = true;
+            lblSell.ForeColor = Color.Red;
+            lblSell.Location = new Point(620, 712);
+            lblSell.Name = "lblSell";
+            lblSell.Size = new Size(195, 20);
+            lblSell.TabIndex = 31;
+            lblSell.Text = "* Sell Price cannot be empty";
+            lblSell.Visible = false;
+            // 
+            // txtSell
+            // 
+            txtSell.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtSell.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            txtSell.Location = new Point(620, 668);
+            txtSell.Name = "txtSell";
+            txtSell.Size = new Size(457, 41);
+            txtSell.TabIndex = 30;
+            // 
+            // label10
+            // 
+            label10.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label10.AutoSize = true;
+            label10.BackColor = Color.Transparent;
+            label10.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            label10.Location = new Point(356, 678);
+            label10.Name = "label10";
+            label10.Size = new Size(195, 33);
+            label10.TabIndex = 29;
+            label10.Text = "Sell Price: ";
+            // 
+            // lblPurchase
+            // 
+            lblPurchase.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            lblPurchase.AutoSize = true;
+            lblPurchase.ForeColor = Color.Red;
+            lblPurchase.Location = new Point(620, 615);
+            lblPurchase.Name = "lblPurchase";
+            lblPurchase.Size = new Size(229, 20);
+            lblPurchase.TabIndex = 28;
+            lblPurchase.Text = "* Purchase Price cannot be empty";
+            lblPurchase.Visible = false;
+            // 
+            // txtPurchase
+            // 
+            txtPurchase.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtPurchase.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPurchase.Location = new Point(620, 571);
+            txtPurchase.Name = "txtPurchase";
+            txtPurchase.Size = new Size(457, 41);
+            txtPurchase.TabIndex = 27;
+            // 
+            // label8
+            // 
+            label8.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label8.AutoSize = true;
+            label8.BackColor = Color.Transparent;
+            label8.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.Location = new Point(356, 581);
+            label8.Name = "label8";
+            label8.Size = new Size(255, 33);
+            label8.TabIndex = 26;
+            label8.Text = "Purchase Price: ";
+            // 
+            // comboType
+            // 
+            comboType.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            comboType.FlatStyle = FlatStyle.Popup;
+            comboType.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            comboType.FormattingEnabled = true;
+            comboType.Items.AddRange(new object[] { "Strips", "Injection", "Syrup", "Drops" });
+            comboType.Location = new Point(620, 489);
+            comboType.Name = "comboType";
+            comboType.Size = new Size(457, 43);
+            comboType.TabIndex = 22;
+            comboType.Text = "Strips";
+            // 
+            // label6
+            // 
+            label6.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label6.AutoSize = true;
+            label6.BackColor = Color.Transparent;
+            label6.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.Location = new Point(356, 499);
+            label6.Name = "label6";
+            label6.Size = new Size(240, 33);
+            label6.TabIndex = 21;
+            label6.Text = "Medicine Type: ";
             // 
             // lblStock
             // 
@@ -121,7 +224,7 @@
             btnReset.BackColor = Color.Coral;
             btnReset.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnReset.ForeColor = Color.DarkBlue;
-            btnReset.Location = new Point(465, 586);
+            btnReset.Location = new Point(445, 762);
             btnReset.Name = "btnReset";
             btnReset.Size = new Size(179, 69);
             btnReset.TabIndex = 12;
@@ -135,7 +238,7 @@
             btnCancel.BackColor = Color.Coral;
             btnCancel.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnCancel.ForeColor = Color.DarkBlue;
-            btnCancel.Location = new Point(728, 586);
+            btnCancel.Location = new Point(708, 762);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(179, 69);
             btnCancel.TabIndex = 11;
@@ -149,7 +252,7 @@
             btnUpdate.BackColor = Color.Coral;
             btnUpdate.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnUpdate.ForeColor = Color.DarkBlue;
-            btnUpdate.Location = new Point(175, 586);
+            btnUpdate.Location = new Point(155, 762);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(179, 69);
             btnUpdate.TabIndex = 10;
@@ -266,38 +369,13 @@
             label1.Text = "Update Medicine";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // comboType
-            // 
-            comboType.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            comboType.FlatStyle = FlatStyle.Popup;
-            comboType.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            comboType.FormattingEnabled = true;
-            comboType.Items.AddRange(new object[] { "Strips", "Injection", "Syrup" });
-            comboType.Location = new Point(620, 489);
-            comboType.Name = "comboType";
-            comboType.Size = new Size(457, 43);
-            comboType.TabIndex = 22;
-            comboType.Text = "Strips";
-            // 
-            // label6
-            // 
-            label6.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label6.AutoSize = true;
-            label6.BackColor = Color.Transparent;
-            label6.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(356, 499);
-            label6.Name = "label6";
-            label6.Size = new Size(240, 33);
-            label6.TabIndex = 21;
-            label6.Text = "Medicine Type: ";
-            // 
             // UpdateMedicine
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel1);
             Name = "UpdateMedicine";
-            Size = new Size(1100, 763);
+            Size = new Size(1100, 852);
             Load += UpdateMedicine_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -326,5 +404,11 @@
         private Label lblCmp;
         private ComboBox comboType;
         private Label label6;
+        private Label lblSell;
+        private TextBox txtSell;
+        private Label label10;
+        private Label lblPurchase;
+        private TextBox txtPurchase;
+        private Label label8;
     }
 }

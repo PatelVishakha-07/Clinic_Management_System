@@ -19,7 +19,7 @@ namespace Clinic_Management_System
         string cmpPattern = @"^[a-zA-Z0-9\s\.\-]+$";
         string medicinePattern = @"^[a-zA-Z0-9\s\-\(\)]+$";
         string stockPattern = @"^\d+$";
-        string medName, cpName, expDate, type;
+        string medName, cpName, expDate, type, medPurchase, sell;
         int st;
         public UpdateMedicine()
         {
@@ -39,12 +39,16 @@ namespace Clinic_Management_System
             lblName.Text = "Medicine Name Cannot be empty";
             lblCmp.Text = "Company Name Cannot be empty";
             lblStock.Text = "Medicine Stock Cannot be empty";
+            lblPurchase.Text = "Purchase Price cannot be empty";
+            lblSell.Text = "Sell Price cannot be empty";
             LabelVisisble();
 
             string medicineName = txtName.Text;
             string companyName = txtCmp.Text;
             string stock = txtStock.Text;
             string expiryDate = dateTimePicker1.Text;
+            string purchase = txtPurchase.Text;
+            string sell = txtSell.Text;
 
             if (string.IsNullOrEmpty(medicineName) && string.IsNullOrEmpty(companyName) && string.IsNullOrEmpty(stock))
             {
@@ -76,6 +80,8 @@ namespace Clinic_Management_System
                 lblName.Text = "Please enter Valid Medicine Name";
                 lblCmp.Text = "Please enter Valid Company Name";
                 lblStock.Text = "Please enter Valid Medicine Stock";
+                lblPurchase.Text = "Please enter Valid Purchase Price";
+                lblSell.Text = "Please enter Valid Sell Price";
 
                 lblName.Visible = !Regex.IsMatch(medicineName, medicinePattern);
                 lblCmp.Visible = !Regex.IsMatch(companyName, cmpPattern);
@@ -84,7 +90,8 @@ namespace Clinic_Management_System
                 if (!lblName.Visible && !lblCmp.Visible && !lblStock.Visible)
                 {
                     string query = "update Medicines set Medicine_Name= '" + medicineName + "', Company_Name= '" + companyName +
-                        "', Medicine_Stock= " + stock + ", Expiry_Date= '" + expiryDate + "' where Medicine_Id= " + medicineId;
+                        "', Medicine_Stock= " + int.Parse(stock) + ", Expiry_Date= '" + expiryDate + "', purchase_price=" + int.Parse(purchase) +
+                        ", sell_price= " + int.Parse(sell) + " where Medicine_Id= " + medicineId;
                     databaseclass dbClass = new databaseclass();
                     dbClass.databaseoperations(query);
                     Medicine medicine = new Medicine();
@@ -95,14 +102,16 @@ namespace Clinic_Management_System
             }
         }
 
-        private void LabelVisisble(bool name = false, bool cmp = false, bool stock = false)
+        private void LabelVisisble(bool name = false, bool cmp = false, bool stock = false, bool purchase=false, bool sell=false)
         {
             lblName.Visible = name;
             lblCmp.Visible = cmp;
             lblStock.Visible = stock;
+            lblPurchase.Visible = purchase;
+            lblSell.Visible = sell;
         }
 
-        public void getMedicineDetails(int medicineId, string medicineName, string companyName, int stock, string expiryDate, string medType)
+        public void getMedicineDetails(int medicineId, string medicineName, string companyName, int stock, string expiryDate, string medType, string pur, string medSell)
         {
             this.medicineId = medicineId;
             txtName.Text = medicineName;
@@ -110,11 +119,15 @@ namespace Clinic_Management_System
             txtStock.Text = stock.ToString();
             dateTimePicker1.Text = expiryDate;
             comboType.SelectedValue = medType;
+            txtPurchase.Text = pur;
+            txtSell.Text = medSell;
             medName = medicineName;
             cpName = companyName;
             st = stock;
             expDate = expiryDate;
             type = medType;
+            medPurchase = pur;
+            sell = medSell;
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -124,6 +137,8 @@ namespace Clinic_Management_System
             txtStock.Text = st.ToString();
             dateTimePicker1.Text = expDate;
             comboType .SelectedItem = type;
+            txtPurchase.Text = medPurchase;    
+            txtSell.Text = sell;
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)

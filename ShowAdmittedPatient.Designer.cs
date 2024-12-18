@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panel1 = new Panel();
             btnSearch = new Button();
             txtSearch = new TextBox();
@@ -53,7 +54,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1100, 763);
             panel1.TabIndex = 0;
-          //  panel1.Paint += panel1_Paint;
             // 
             // btnSearch
             // 
@@ -79,6 +79,14 @@
             // dataGridView1
             // 
             dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Bed_Number, Name, ipd_id, Contact_No });
             dataGridView1.Location = new Point(155, 263);
@@ -87,7 +95,6 @@
             dataGridView1.RowTemplate.Height = 29;
             dataGridView1.Size = new Size(778, 457);
             dataGridView1.TabIndex = 5;
-            //dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // Bed_Number
             // 
@@ -134,7 +141,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel1);
-          //  Name = "ShowAdmittedPatient";
+            //Name = "ShowAdmittedPatient";
             Size = new Size(1100, 763);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

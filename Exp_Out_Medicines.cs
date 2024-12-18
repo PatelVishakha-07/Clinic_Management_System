@@ -50,7 +50,22 @@ namespace Clinic_Management_System
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (e.ColumnIndex == dataGridView1.Columns["delete"].Index && e.RowIndex >= 0)
+            {
+                int medicineId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["Medicine_Id"].Value.ToString());
+                string query = "delete from medicines where medicine_id=" + medicineId;
+                databaseclass dbClass = new databaseclass();
+                dbClass.databaseoperations(query);
+                MessageBox.Show("Record Deleted Successfully");
+                if (st == "expire")
+                {
+                    ExpiredMedicine();
+                }
+                else if (st == "out of stock")
+                {
+                    OutOfStock();
+                }
+            }
         }
 
         private void PopulateGridView(DataSet ds)

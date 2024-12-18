@@ -24,7 +24,9 @@ namespace Clinic_Management_System
         {
             if (medicinegrid.Rows.Count == 1)
             {
-                string query = "select Medicine_Id,Medicine_Name,Company_Name,Medicine_Type,Medicine_Stock,Expiry_Date from Medicines;";
+                DateTime date = DateTime.Now;
+                string formattedDate = date.ToString("yyyy-MM-dd");
+                string query = "select * from Medicines where expiry_date >= '" + formattedDate + "' and medicine_stock > " + 0;
                 DataSet ds = dbClass.Getdata(query);
                 populategridview(ds);
             }
@@ -81,6 +83,8 @@ namespace Clinic_Management_System
                 medicinegrid.Columns["medicine_type"].DataPropertyName = "medicine_type";
                 medicinegrid.Columns["medicine_stock"].DataPropertyName = "medicine_stock";
                 medicinegrid.Columns["expiry_date"].DataPropertyName = "expiry_date";
+                medicinegrid.Columns["purchase_price"].DataPropertyName = "purchase_price";
+                medicinegrid.Columns["sell_price"].DataPropertyName = "sell_price";
                 medicinegrid.DataSource = ds.Tables[0];
 
                 if (!medicinegrid.Columns.Contains("Medicine_Id"))
@@ -120,10 +124,12 @@ namespace Clinic_Management_System
                 string medType = medicinegrid.Rows[e.RowIndex].Cells["Medicine_Type"].Value.ToString();
                 int stock = Convert.ToInt32(medicinegrid.Rows[e.RowIndex].Cells["Medicine_Stock"].Value.ToString());
                 string date = medicinegrid.Rows[e.RowIndex].Cells["Expiry_Date"].Value.ToString();
+                string purchase= medicinegrid.Rows[e.RowIndex].Cells["purchase_price"].Value.ToString();
+                string sell= medicinegrid.Rows[e.RowIndex].Cells["sell_price"].Value.ToString();
 
                 //int medicineId = 0;
                 UpdateMedicine updateMedicine = new UpdateMedicine();
-                updateMedicine.getMedicineDetails(medicineId, medicineName, cmpName, stock, date,medType);
+                updateMedicine.getMedicineDetails(medicineId, medicineName, cmpName, stock, date,medType,purchase,sell);
                 Medicine medicine = this.FindForm() as Medicine;
                 updateMedicine.UpdateCompleted += (sender, e) =>
                 {
