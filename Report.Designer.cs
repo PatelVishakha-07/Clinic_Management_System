@@ -28,31 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            leftPanel = new Panel();
+            printDocument1 = new System.Drawing.Printing.PrintDocument();
             SuspendLayout();
-            // 
-            // leftPanel
-            // 
-            leftPanel.Dock = DockStyle.Left;
-            leftPanel.Location = new Point(0, 0);
-            leftPanel.Name = "leftPanel";
-            leftPanel.Size = new Size(220, 873);
-            leftPanel.TabIndex = 0;
             // 
             // Report
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             ClientSize = new Size(1064, 873);
-            Controls.Add(leftPanel);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "Report";
-            Text = "Report";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "                 ";
             Load += Report_Load;
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Panel leftPanel;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }

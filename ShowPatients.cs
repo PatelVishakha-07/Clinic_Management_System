@@ -73,11 +73,9 @@ namespace Clinic_Management_System
             patients.ShowContent(patientDetails);
 
             if (e.ColumnIndex == dataGridView1.Columns["reportLink"].Index && e.RowIndex >= 0)
-            {
-                Form currentForm = this.FindForm();
+            {                
                 Report report = new Report();
-                report.ShowDialog();
-                currentForm.Close();
+                report.ShowDialog();                                                           
             }
 
         }
