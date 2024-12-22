@@ -10,19 +10,15 @@ using System.Windows.Forms;
 
 namespace Clinic_Management_System
 {
-    public partial class PatientDetails : UserControl
+    public partial class Admit_Patient_Details : UserControl
     {
         int patientId;
         databaseclass dbclass = new databaseclass();
-        public PatientDetails()
+
+        public Admit_Patient_Details()
         {
             InitializeComponent();
         }
-        public void getPatientDetails(int patientId)
-        {
-            this.patientId = patientId;
-        }
-
         private int DisplayData(DataSet ds, Panel panel1, int startY, string sectionTitle, string[] excludeColumns = null)
         {
             int labelSpacing = 35;
@@ -37,6 +33,7 @@ namespace Clinic_Management_System
             //    ForeColor = Color.DimGray,
             //};
             // panel1.Controls.Add(titleLabel);
+
             startY += 40;
 
             if (ds != null && ds.Tables[0].Rows.Count > 0)
@@ -51,11 +48,6 @@ namespace Clinic_Management_System
                         string columnName = col.ColumnName.ToUpper();
                         string columnValue = row[col].ToString();
 
-                        // Check for the "usage" column and translate values
-                        if (col.ColumnName.Equals("usage", StringComparison.OrdinalIgnoreCase))
-                        {
-                            columnValue = TranslateUsageToBars(columnValue);
-                        }
 
                         Label keyLabel = new Label()
                         {
@@ -97,71 +89,40 @@ namespace Clinic_Management_System
             return startY;
         }
 
-        // Helper method to translate usage values to bars
-        private string TranslateUsageToBars(string usage)
+        public void getPatientDetails(int patientId)
         {
-            switch (usage.ToUpper())
-            {
-                case "OD":
-                    return "| ";  // Once a day
-                case "BD":
-                    return "| |"; // Twice a day
-                case "TD":
-                    return "| | |"; // Thrice a day
-                case "QD":
-                    return "| | | |"; // Four times a day
-                default:
-                    return usage; // If no match, return original value
-            }
+            this.patientId = patientId;
         }
 
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            string query = $"select * from patients where patient_id={patientId}";
-            DataSet ds = dbclass.Getdata(query);
-            string name = ds.Tables[0].Rows[0]["name"].ToString();
-            int age = int.Parse(ds.Tables[0].Rows[0]["age"].ToString());
-            string address = ds.Tables[0].Rows[0]["address"].ToString();
-            string contact = ds.Tables[0].Rows[0]["contact_no"].ToString();
-            string gender = ds.Tables[0].Rows[0]["gender"].ToString();
-
-            AddPrescription addPrescription = new AddPrescription();
-            addPrescription.getPatientDetails(patientId, name, address, age, contact, gender);
-            Patients patients = this.FindForm() as Patients;                                   
-            patients.ShowContent(addPrescription);
-        }
-
-        private void panel1_Paint_1(object sender, PaintEventArgs e)
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void PatientDetails_Load(object sender, EventArgs e)
+        private void Admit_Patient_Details_Load(object sender, EventArgs e)
         {
-            // Fetch and display patient details
             string patientQuery = $"select Distinct * from patients WHERE patient_id={patientId}";
             DataSet patientData = dbclass.Getdata(patientQuery);
             int currentY = 200;
             currentY = DisplayData(patientData, panel1, currentY, "Patient Details", excludeColumns: new[] { "patient_id" });
 
             // Fetch and display prescription details and their associated prescribed medicines immediately
-            string prescriptionQuery = $"select * from prescription where patient_id={patientId}";
-            DataSet prescriptionData = dbclass.Getdata(prescriptionQuery);
+            string ipd_data = $"select * from ipd_table where patient_id={patientId}";
+            DataSet ipd = dbclass.Getdata(ipd_data);
 
-            if (prescriptionData != null && prescriptionData.Tables[0].Rows.Count > 0)
+            if (ipd != null && ipd.Tables[0].Rows.Count > 0)
             {
-                foreach (DataRow prescriptionRow in prescriptionData.Tables[0].Rows)
+                foreach (DataRow ipdrow in ipd.Tables[0].Rows)
                 {
-                    int prescriptionId = Convert.ToInt32(prescriptionRow["prescription_id"]);
+                    int ipd_id = Convert.ToInt32(ipdrow["ipd_id"]);
 
-                    string query = $"select * from prescription where prescription_id={prescriptionId}";
+                    string query = $"select * from ipd_treatment_table where ipd_id={ipd_id}";
                     DataSet currentprescription = dbclass.Getdata(query);
                     // Display prescription details
                     currentY = DisplayData(currentprescription, panel1, currentY, "Prescription Details", excludeColumns: new[] { "patient_id", "prescription_id" });
 
                     // Fetch and display prescribed medicines for this prescription
-                    string medicineQuery = $"select * from Prescribed_Medicine where prescription_id={prescriptionId}";
+                    string medicineQuery = $"select * from ipd_treatment_table where ipd_id= {ipd_id}";
                     DataSet medicineData = dbclass.Getdata(medicineQuery);
 
                     // Display the medicines immediately below the current prescription
@@ -189,6 +150,7 @@ namespace Clinic_Management_System
         {
             Report report = new Report(patientId);
             report.ShowDialog();
+            
         }
     }
 }

@@ -21,18 +21,18 @@ namespace Clinic_Management_System
         private void LoadGridView()
         {
             string query = @"
-        SELECT ipd.ipd_id, ipd.bed_number, p.name, p.contact_no 
+        SELECT ipd.ipd_id, ipd.bed_number,ipd.patient_id, p.name, p.contact_no 
         FROM ipd_table ipd 
         JOIN patients p ON ipd.patient_id = p.patient_id";
 
             DataSet ds = databaseclass.Getdata(query);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            {                
+            {
                 populategridview(ds);
             }
             else
             {
-                MessageBox.Show("No data found!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // MessageBox.Show("No data found!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -57,7 +57,7 @@ namespace Clinic_Management_System
             dataGridView1.Columns["Bed_Number"].DataPropertyName = "bed_number";
             dataGridView1.Columns["Name"].DataPropertyName = "name";
             dataGridView1.Columns["Contact_No"].DataPropertyName = "contact_no";
-
+            dataGridView1.Columns["Patient_id"].DataPropertyName = "patient_id";
             dataGridView1.DataSource = ds.Tables[0];
         }
 
@@ -69,7 +69,7 @@ namespace Clinic_Management_System
             if (!string.IsNullOrEmpty(value))
             {
                 query = $@"
-                    SELECT ipd.ipd_id, ipd.bed_number, p.name, p.contact_no 
+                    SELECT ipd.ipd_id, ipd.bed_number,ipd.patient_id, p.name, p.contact_no 
                     FROM ipd_table ipd 
                     JOIN patients p ON ipd.patient_id = p.patient_id 
                     WHERE ipd.bed_number LIKE '%{value}%' 
@@ -79,7 +79,7 @@ namespace Clinic_Management_System
             else
             {
                 query = @"
-                    SELECT ipd.ipd_id, ipd.bed_number, p.name, p.contact_no 
+                    SELECT ipd.ipd_id, ipd.bed_number,ipd.patient_id, p.name, p.contact_no 
                     FROM ipd_table ipd 
                     JOIN patients p ON ipd.patient_id = p.patient_id";
             }
@@ -96,6 +96,15 @@ namespace Clinic_Management_System
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             LoadGridView();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int patientId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["patient_id"].Value.ToString());
+            Admit_Patient_Details patientDetails = new Admit_Patient_Details();
+            patientDetails.getPatientDetails(patientId);
+            Patients patients = this.FindForm() as Patients;
+            patients.ShowContent(patientDetails);
         }
     }
 }

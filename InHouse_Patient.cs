@@ -136,8 +136,15 @@ namespace Clinic_Management_System
 
         private void btnAdmit_Click(object sender, EventArgs e)
         {
-            string query = $"insert into ipd_table(bed_number,patient_id) values({txtBed.Text},{patientId})";
+            string date=DateTime.Now.ToString();
+            string query = $"insert into ipd_table(bed_number,admit_date,patient_id) values({txtBed.Text},'{date}',{patientId})";
             dbclass.databaseoperations(query);
+            string getquery = $"select ipd_id from ipd_table where patient_id={patientId} and admit_date='{date}'";
+            DataSet ds = dbclass.Getdata(getquery);
+            Diagnosis diagnosis = new Diagnosis(int.Parse(ds.Tables[0].Rows[0]["ipd_id"].ToString()));
+            //Diagnosis.GetPrescriptionDetails(int.Parse(ds.Tables[0].Rows[0]["prescription_id"].ToString()), int.Parse(txtmedqty.Text), int.Parse(txtCharges.Text));
+            Patients patients = this.FindForm() as Patients;
+            patients.ShowContent(diagnosis);
         }
     }
 

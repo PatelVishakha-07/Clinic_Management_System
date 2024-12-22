@@ -35,6 +35,7 @@
             dataGridView1 = new DataGridView();
             label1 = new Label();
             Name = new DataGridViewTextBoxColumn();
+            Patient_id = new DataGridViewTextBoxColumn();
             ipd_id = new DataGridViewTextBoxColumn();
             Contact_No = new DataGridViewTextBoxColumn();
             Bed_Number = new DataGridViewTextBoxColumn();
@@ -89,13 +90,14 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Name, ipd_id, Contact_No, Bed_Number });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Name, Patient_id, ipd_id, Contact_No, Bed_Number });
             dataGridView1.Location = new Point(155, 263);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
             dataGridView1.Size = new Size(778, 457);
             dataGridView1.TabIndex = 5;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // label1
             // 
@@ -114,6 +116,14 @@
             Name.HeaderText = "Name";
             Name.MinimumWidth = 6;
             Name.Name = "Name";
+            // 
+            // Patient_id
+            // 
+            Patient_id.HeaderText = "Patient_id";
+            Patient_id.MinimumWidth = 6;
+            Patient_id.Name = "Patient_id";
+            Patient_id.Visible = false;
+            Patient_id.Width = 125;
             // 
             // ipd_id
             // 
@@ -142,7 +152,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel1);
-           // Name = "ShowAdmittedPatient";
+//            Name = "ShowAdmittedPatient";
             Size = new Size(1100, 763);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -158,6 +168,7 @@
         private TextBox txtSearch;
         private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn Name;
+        private DataGridViewTextBoxColumn Patient_id;
         private DataGridViewTextBoxColumn ipd_id;
         private DataGridViewTextBoxColumn Contact_No;
         private DataGridViewTextBoxColumn Bed_Number;
