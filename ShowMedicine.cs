@@ -53,23 +53,30 @@ namespace Clinic_Management_System
 
                 if (int.TryParse(value, out int stock))
                 {
-                    query = $"select Medicine_Name,Company_Name,Medicine_Type,Medicine_Stock,Expiry_Date from Medicines where Medicine_Stock={int.Parse(value)};";
+                    query = $"select m.Medicine_Name, m.Company_Name, m.Medicine_Type, md.Medicine_Stock, md.Expiry_Date, md.purchase_price" +
+                        $", md.sell_price from Medicines m join medicine_details md on m.medicine_id = md.medicine_id" +
+                        $" where md.Medicine_Stock={int.Parse(value)};";
                 }
                 else if (DateOnly.TryParse(value, out DateOnly expiry_date))
                 {
                     string formated_date = expiry_date.ToString("MM-dd-yyyy");
-                    query = $"select Medicine_Name,Company_Name,Medicine_Type,Medicine_Stock,Expiry_Date from Medicines where Expiry_Date='{formated_date}';";
+                    query = $"select m.Medicine_Name, m.Company_Name, m.Medicine_Type, md.Medicine_Stock, md.Expiry_Date, md.purchase_price, " +
+                        $" md.sell_price from Medicines m join medicine_details md on m.medicine_id = md.medicine_id " +
+                        $"where md.Expiry_Date='{formated_date}';";
                 }
                 else
                 {
-                    query = $"select Medicine_Name,Company_Name,Medicine_Type,Medicine_Stock,Expiry_Date from Medicines where Medicine_Name='{value}' or Company_Name='{value}';";
+                    query = $"select m.Medicine_Name, m.Company_Name, m.Medicine_Type, md.Medicine_Stock, md.Expiry_Date, md.purchase_price, " +
+                        $" md.sell_price from Medicines m join medicine_details md on m.medicine_id = md.medicine_id " +
+                        $"where Medicine_Name='{value}' or Company_Name='{value}';";
 
                 }
 
             }
             else
             {
-                query = "select Medicine_Name,Company_Name,Medicine_Type,Medicine_Stock,Expiry_Date from Medicines;";
+                query = "select m.Medicine_Name, m.Company_Name, m.Medicine_Type, md.Medicine_Stock, md.Expiry_Date, md.purchase_price, " +
+                    "md.sell_price from Medicines m join medicine_details md on m.medicine_id = md.medicine_id ;";
             }
             DataSet ds = dbClass.Getdata(query);
             populategridview(ds);

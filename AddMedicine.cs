@@ -49,17 +49,21 @@ namespace Clinic_Management_System
             string purchase=txtPurchase.Text;
             string sell = txtSell.Text;
 
-            if (string.IsNullOrEmpty(medicineName) && string.IsNullOrEmpty(cmpName) && string.IsNullOrEmpty(stock))
+            if (string.IsNullOrEmpty(medicineName) && string.IsNullOrEmpty(cmpName) && string.IsNullOrEmpty(stock) && string.IsNullOrEmpty(purchase) && string.IsNullOrEmpty(sell))
+            {
+                LabelVisisble(true, true, true,true, true);
+            }
+            else if (string.IsNullOrEmpty(medicineName) && string.IsNullOrEmpty(cmpName) && string.IsNullOrEmpty(stock) && string.IsNullOrEmpty(purchase))
+            {
+                LabelVisisble(true, true, true,true);
+            }
+            else if (string.IsNullOrEmpty(stock) && string.IsNullOrEmpty(cmpName) && string.IsNullOrEmpty(stock))
             {
                 LabelVisisble(true, true, true);
             }
             else if (string.IsNullOrEmpty(medicineName) && string.IsNullOrEmpty(cmpName))
             {
-                LabelVisisble(true, true, false);
-            }
-            else if (string.IsNullOrEmpty(stock) && string.IsNullOrEmpty(cmpName))
-            {
-                LabelVisisble(false, true, true);
+                LabelVisisble(true, true);
             }
             else if (string.IsNullOrEmpty(medicineName))
             {
@@ -73,6 +77,14 @@ namespace Clinic_Management_System
             {
                 lblStock.Visible = true;
             }
+            else if (string.IsNullOrEmpty(purchase))
+            {
+                lblPurchase.Visible = true;
+            }
+            else if (string.IsNullOrEmpty(sell))
+            {
+                lblSell.Visible = true;
+            }
             else
             {
                 LabelVisisble();
@@ -85,8 +97,10 @@ namespace Clinic_Management_System
                 lblName.Visible = !Regex.IsMatch(medicineName, medicinePattern);
                 lblCmp.Visible = !Regex.IsMatch(cmpName, cmpPattern);
                 lblStock.Visible = !Regex.IsMatch(stock, stockPattern);
+                lblSell.Visible = !Regex.IsMatch(sell, stockPattern);
+                lblPurchase.Visible = !Regex.IsMatch(purchase, stockPattern);
 
-                if (!lblName.Visible && !lblCmp.Visible && !lblStock.Visible)
+                if (!lblName.Visible && !lblCmp.Visible && !lblStock.Visible && !lblPurchase.Visible && !lblSell.Visible)
                 {
                     string medicineDetails = "select * from medicines where medicine_name='"+ medicineName + "' and company_name='" + 
                         cmpName + "' and medicine_type='"+ type +"'";
@@ -156,15 +170,9 @@ namespace Clinic_Management_System
             medicine.ShowControl(new ShowMedicine());
         }
 
-        private void label6_Click(object sender, EventArgs e)
-        {
+        private void label6_Click(object sender, EventArgs e)        {        }
 
-        }
-
-        private void comboType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        private void comboType_SelectedIndexChanged(object sender, EventArgs e)        {        }
 
         private void label8_Click(object sender, EventArgs e)        {}
     }

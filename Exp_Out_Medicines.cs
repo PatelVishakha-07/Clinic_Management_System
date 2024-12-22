@@ -34,7 +34,8 @@ namespace Clinic_Management_System
             label1.Text = "Expired Medicines";
             DateTime date = DateTime.Now;
             string formattedDate = date.ToString("yyyy-MM-dd");
-            string q = "select * from medicines where expiry_date < '" + formattedDate + "'" ;
+            string q = "select m.medicine_id, m.medicine_name, m.company_name, m.medicine_type, md.medicine_stock, md.expiry_date, md.purchase_price" +
+                ", md.sell_price from medicines m join medicine_details md on m.medicine_id = md.medicine_id where md.expiry_date < '" + formattedDate + "'" ;
             
             DataSet ds=dbClass.Getdata(q);
             PopulateGridView(ds);
@@ -42,7 +43,8 @@ namespace Clinic_Management_System
 
         private void OutOfStock() {
             label1.Text = "Out Of Stock Medicines";
-            string q = "select * from medicines where medicine_stock = 0";
+            string q = "select m.medicine_id,m.medicine_name, m.company_name, m.medicine_type, md.medicine_stock, md.expiry_date, md.purchase_price" +
+                ", md.sell_price from medicines m join medicine_details md on m.medicine_id = md.medicine_id where md.medicine_stock=" + 0;
 
             DataSet ds = dbClass.Getdata(q);
             PopulateGridView(ds);
@@ -53,9 +55,11 @@ namespace Clinic_Management_System
             if (e.ColumnIndex == dataGridView1.Columns["delete"].Index && e.RowIndex >= 0)
             {
                 int medicineId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["Medicine_Id"].Value.ToString());
-                string query = "delete from medicines where medicine_id=" + medicineId;
+                string query = "delete from medicine_details where medicine_id=" + medicineId;
                 databaseclass dbClass = new databaseclass();
                 dbClass.databaseoperations(query);
+                string q2 = "delete from medicines where medicine_id=" + medicineId;
+                dbClass.databaseoperations(q2);
                 MessageBox.Show("Record Deleted Successfully");
                 if (st == "expire")
                 {

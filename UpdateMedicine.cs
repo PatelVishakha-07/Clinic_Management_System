@@ -49,18 +49,23 @@ namespace Clinic_Management_System
             string expiryDate = dateTimePicker1.Text;
             string purchase = txtPurchase.Text;
             string sell = txtSell.Text;
+            string type=comboType.SelectedItem.ToString();
 
-            if (string.IsNullOrEmpty(medicineName) && string.IsNullOrEmpty(companyName) && string.IsNullOrEmpty(stock))
+            if (string.IsNullOrEmpty(medicineName) && string.IsNullOrEmpty(companyName) && string.IsNullOrEmpty(stock) && string.IsNullOrEmpty(purchase) && string.IsNullOrEmpty(sell))
+            {
+                LabelVisisble(true, true, true, true, true);
+            }
+            else if (string.IsNullOrEmpty(medicineName) && string.IsNullOrEmpty(companyName) && string.IsNullOrEmpty(stock) && string.IsNullOrEmpty(purchase))
+            {
+                LabelVisisble(true, true, true, true);
+            }
+            else if (string.IsNullOrEmpty(stock) && string.IsNullOrEmpty(companyName) && string.IsNullOrEmpty(stock))
             {
                 LabelVisisble(true, true, true);
             }
             else if (string.IsNullOrEmpty(medicineName) && string.IsNullOrEmpty(companyName))
             {
-                LabelVisisble(true, true, false);
-            }
-            else if (string.IsNullOrEmpty(stock) && string.IsNullOrEmpty(companyName))
-            {
-                LabelVisisble(false, true, true);
+                LabelVisisble(true, true);
             }
             else if (string.IsNullOrEmpty(medicineName))
             {
@@ -74,6 +79,14 @@ namespace Clinic_Management_System
             {
                 lblStock.Visible = true;
             }
+            else if (string.IsNullOrEmpty(purchase))
+            {
+                lblPurchase.Visible = true;
+            }
+            else if (string.IsNullOrEmpty(sell))
+            {
+                lblSell.Visible = true;
+            }
             else
             {
                 LabelVisisble();
@@ -86,14 +99,21 @@ namespace Clinic_Management_System
                 lblName.Visible = !Regex.IsMatch(medicineName, medicinePattern);
                 lblCmp.Visible = !Regex.IsMatch(companyName, cmpPattern);
                 lblStock.Visible = !Regex.IsMatch(stock, stockPattern);
+                lblSell.Visible = !Regex.IsMatch(sell, stockPattern);
+                lblPurchase.Visible = !Regex.IsMatch(purchase, stockPattern);
 
-                if (!lblName.Visible && !lblCmp.Visible && !lblStock.Visible)
+                if (!lblName.Visible && !lblCmp.Visible && !lblStock.Visible && !lblPurchase.Visible && !lblSell.Visible)
                 {
                     string query = "update Medicines set Medicine_Name= '" + medicineName + "', Company_Name= '" + companyName +
-                        "', Medicine_Stock= " + int.Parse(stock) + ", Expiry_Date= '" + expiryDate + "', purchase_price=" + int.Parse(purchase) +
-                        ", sell_price= " + int.Parse(sell) + " where Medicine_Id= " + medicineId;
+                        "',  medicine_type='"+ type + "' where Medicine_Id= " + medicineId;
+
                     databaseclass dbClass = new databaseclass();
                     dbClass.databaseoperations(query);
+
+                    string q2 = "update Medicine_Details set Medicine_Stock= " + int.Parse(stock) + ", Expiry_Date= '" + expiryDate + "', purchase_price=" + int.Parse(purchase) +
+                        ", sell_price= " + int.Parse(sell) + " where Medicine_Id= " + medicineId;
+                    dbClass.databaseoperations(q2);
+
                     Medicine medicine = new Medicine();
                     MessageBox.Show("Record Updated Successfully");
                     UpdateCompleted?.Invoke(this, EventArgs.Empty);

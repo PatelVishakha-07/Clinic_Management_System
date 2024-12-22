@@ -33,11 +33,11 @@
             btnSearch = new Button();
             txtSearch = new TextBox();
             dataGridView1 = new DataGridView();
-            Bed_Number = new DataGridViewTextBoxColumn();
+            label1 = new Label();
             Name = new DataGridViewTextBoxColumn();
             ipd_id = new DataGridViewTextBoxColumn();
             Contact_No = new DataGridViewTextBoxColumn();
-            label1 = new Label();
+            Bed_Number = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -89,7 +89,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Bed_Number, Name, ipd_id, Contact_No });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Name, ipd_id, Contact_No, Bed_Number });
             dataGridView1.Location = new Point(155, 263);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
@@ -97,12 +97,16 @@
             dataGridView1.Size = new Size(778, 457);
             dataGridView1.TabIndex = 5;
             // 
-            // Bed_Number
+            // label1
             // 
-            Bed_Number.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Bed_Number.HeaderText = "Bed_Number";
-            Bed_Number.MinimumWidth = 6;
-            Bed_Number.Name = "Bed_Number";
+            label1.Anchor = AnchorStyles.Top;
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            label1.Location = new Point(298, 28);
+            label1.Name = "label1";
+            label1.Size = new Size(439, 41);
+            label1.TabIndex = 3;
+            label1.Text = "Admitted Patient Information";
             // 
             // Name
             // 
@@ -126,16 +130,12 @@
             Contact_No.MinimumWidth = 6;
             Contact_No.Name = "Contact_No";
             // 
-            // label1
+            // Bed_Number
             // 
-            label1.Anchor = AnchorStyles.Top;
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            label1.Location = new Point(298, 28);
-            label1.Name = "label1";
-            label1.Size = new Size(439, 41);
-            label1.TabIndex = 3;
-            label1.Text = "Admitted Patient Information";
+            Bed_Number.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Bed_Number.HeaderText = "Bed Number";
+            Bed_Number.MinimumWidth = 6;
+            Bed_Number.Name = "Bed_Number";
             // 
             // ShowAdmittedPatient
             // 
@@ -157,9 +157,9 @@
         private Button btnSearch;
         private TextBox txtSearch;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn Bed_Number;
         private DataGridViewTextBoxColumn Name;
         private DataGridViewTextBoxColumn ipd_id;
         private DataGridViewTextBoxColumn Contact_No;
+        private DataGridViewTextBoxColumn Bed_Number;
     }
 }
