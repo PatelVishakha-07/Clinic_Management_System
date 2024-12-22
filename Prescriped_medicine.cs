@@ -212,7 +212,7 @@ namespace Clinic_Management_System
                                 purchase_price = Convert.ToInt32(row["purchase_price"]);
                                 sell_price = Convert.ToInt32(row["sell_price"]);
                                 med_price += ((sell_price - purchase_price) * quantity);
-                                ttl_pres_charges += sell_price;
+                                ttl_pres_charges += (sell_price * quantity);
                             }
                             else
                             {
