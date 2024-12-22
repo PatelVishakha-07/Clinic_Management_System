@@ -7,7 +7,7 @@ using System.Windows.Forms;
 namespace Clinic_Management_System
 {
     public partial class Prescriped_medicine : UserControl
-    {
+    {        
         int prescription_id, medicine_qty, charges, purchase_price, sell_price, profit, med_price, ttl_pres_charges;
         List<TextBox> medicineNameTextBoxes = new List<TextBox>();
         List<TextBox> quantityTextBoxes = new List<TextBox>();
@@ -239,13 +239,25 @@ namespace Clinic_Management_System
             }
             profit = charges + med_price;
             ttl_pres_charges += charges;
-            string pres_query=$"UPDATE prescription SET total_charge = {ttl_pres_charges} WHERE prescription_id = {prescription_id}";
-            dbclass.databaseoperations (pres_query);    
+            string pres_query = $"UPDATE prescription SET total_charge = {ttl_pres_charges} WHERE prescription_id = {prescription_id}";
+            dbclass.databaseoperations(pres_query);
             string query = $"INSERT INTO profit(profit_date, amount) VALUES ('{DateTime.Now}', {profit})";
             dbclass.databaseoperations(query);
+            MessageBox.Show("Medicine Added");    
+            this.Hide();
+            ShowPatients details = new ShowPatients();
+            Parent.Controls.Add(details);
+            details.Dock= DockStyle.Fill;
+            Parent.Controls.Remove( this);
+            this.Dispose();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnSave_Click_1(object sender, EventArgs e)
         {
 
         }

@@ -29,27 +29,27 @@ namespace Clinic_Management_System
 
             printPanel = new Panel
             {
-                Size = new Size(1082, 860),
-                BackColor = Color.LightBlue,
-                Location= new Point(10,10)                
+                Size = new Size(1064, 873),
+                BackColor = Color.White,
+                Location = new Point(10, 10)
             };
 
             Label label = new Label
             {
-                Text="Clinic Name",
-                AutoSize= true,
-                Location= new Point(10,10)
+                Text = "Clinic Name",
+                AutoSize = true,
+                Location = new Point(10, 10)
             };
 
-            printPanel.Controls.Add(label);
+            panel1.Controls.Add(label);
             printButton = new Button
             {
-                Text="Print Report",
-                Location=new Point(30,900)
+                Text = "Print Report",
+                Location = new Point(30, 900)
             };
             printButton.Click += PrintButton_Click;
 
-            printDocument=new PrintDocument();
+            printDocument = new PrintDocument();
             printDocument.PrintPage += PrintDocument_PrintPage;
 
             Controls.Add(printPanel);
@@ -190,7 +190,7 @@ namespace Clinic_Management_System
                         // Check for the "usage" column and translate values
                         if (col.ColumnName.Equals("usage", StringComparison.OrdinalIgnoreCase))
                         {
-                            columnValue = TranslateUsageToBars(columnValue);                            
+                            columnValue = TranslateUsageToBars(columnValue);
                         }
 
                         Label keyLabel = new Label()
@@ -233,5 +233,9 @@ namespace Clinic_Management_System
             return startY;
         }
 
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

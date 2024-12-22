@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            btnprint = new Button();
             button1 = new Button();
             label1 = new Label();
-            btnprint = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -44,16 +44,27 @@
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(2, 2, 2, 2);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
             panel1.Size = new Size(1100, 763);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint_1;
             // 
+            // btnprint
+            // 
+            btnprint.Location = new Point(940, 198);
+            btnprint.Margin = new Padding(2);
+            btnprint.Name = "btnprint";
+            btnprint.Size = new Size(108, 54);
+            btnprint.TabIndex = 3;
+            btnprint.Text = "Print";
+            btnprint.UseVisualStyleBackColor = true;
+            btnprint.Click += btnprint_Click;
+            // 
             // button1
             // 
             button1.Location = new Point(940, 102);
-            button1.Margin = new Padding(2, 2, 2, 2);
+            button1.Margin = new Padding(2);
             button1.Name = "button1";
             button1.Size = new Size(108, 54);
             button1.TabIndex = 2;
@@ -71,16 +82,6 @@
             label1.Size = new Size(115, 41);
             label1.TabIndex = 1;
             label1.Text = "Details";
-            // 
-            // btnprint
-            // 
-            btnprint.Location = new Point(940, 198);
-            btnprint.Margin = new Padding(2);
-            btnprint.Name = "btnprint";
-            btnprint.Size = new Size(108, 54);
-            btnprint.TabIndex = 3;
-            btnprint.Text = "Print";
-            btnprint.UseVisualStyleBackColor = true;
             // 
             // PatientDetails
             // 

@@ -187,7 +187,7 @@ namespace Clinic_Management_System
             //    Font = new Font("Arial", 16, FontStyle.Bold),
             //    ForeColor = Color.DimGray,
             //};
-           // panel1.Controls.Add(titleLabel);
+            // panel1.Controls.Add(titleLabel);
             startY += 40;
 
             if (ds != null && ds.Tables[0].Rows.Count > 0)
@@ -276,9 +276,10 @@ namespace Clinic_Management_System
             string address = ds.Tables[0].Rows[0]["address"].ToString();
             string contact = ds.Tables[0].Rows[0]["contact_no"].ToString();
             string gender = ds.Tables[0].Rows[0]["gender"].ToString();
+
             AddPrescription addPrescription = new AddPrescription();
             addPrescription.getPatientDetails(patientId, name, address, age, contact, gender);
-            Patients patients = this.FindForm() as Patients;
+            Patients patients = this.FindForm() as Patients;                                   
             patients.ShowContent(addPrescription);
         }
 
@@ -306,7 +307,7 @@ namespace Clinic_Management_System
                     int prescriptionId = Convert.ToInt32(prescriptionRow["prescription_id"]);
 
                     string query = $"select * from prescription where prescription_id={prescriptionId}";
-                    DataSet currentprescription= dbclass.Getdata(query);    
+                    DataSet currentprescription = dbclass.Getdata(query);
                     // Display prescription details
                     currentY = DisplayData(currentprescription, panel1, currentY, "Prescription Details", excludeColumns: new[] { "patient_id", "prescription_id" });
 
@@ -335,6 +336,10 @@ namespace Clinic_Management_System
             }
         }
 
-
+        private void btnprint_Click(object sender, EventArgs e)
+        {
+            Report report = new Report(patientId);
+            report.ShowDialog();
+        }
     }
 }

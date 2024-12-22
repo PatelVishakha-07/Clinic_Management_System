@@ -34,11 +34,11 @@
             // 
             // panel1
             // 
-            panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1064, 873);
+            panel1.Size = new Size(1064, 843);
             panel1.TabIndex = 0;
+            panel1.Paint += panel1_Paint;
             // 
             // Report
             // 
