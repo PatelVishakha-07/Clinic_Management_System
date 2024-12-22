@@ -39,7 +39,7 @@ namespace Clinic_Management_System
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtPres.Text) || string.IsNullOrEmpty(txtmedqty.Text))
+            if (string.IsNullOrEmpty(txtDisease.Text) || string.IsNullOrEmpty(txtPres.Text) || string.IsNullOrEmpty(txtmedqty.Text) || string.IsNullOrEmpty(txtCharges.Text))
             {
                 lbldisease.Visible = true;
             }
@@ -48,12 +48,12 @@ namespace Clinic_Management_System
                 lbldisease.Visible = false;
                 DateTime date = System.DateTime.Now;
                 string dateFormatted = date.ToString("yyyy-MM-dd HH:mm:ss").Replace("'", "''");
-                string query = $"insert into Prescription(prescription_date,disease,prescription,patient_id) values('{dateFormatted}','{txtDisease.Text}','{txtPres.Text}',{patient_id})";
+                string query = $"insert into Prescription(prescription_date,disease,prescription,patient_id,charges) values('{dateFormatted}','{txtDisease.Text}','{txtPres.Text}',{patient_id},{int.Parse(txtCharges.Text)})";
                 dbclass.Getdata(query);
                 string data = $"select * from Prescription where patient_id={patient_id} and prescription_date='{dateFormatted}'";
                 DataSet ds = dbclass.Getdata(data);
                 Prescriped_medicine prescriped_Medicine = new Prescriped_medicine();
-                prescriped_Medicine.GetPrescriptionDetails(int.Parse(ds.Tables[0].Rows[0]["prescription_id"].ToString()), int.Parse(txtmedqty.Text));
+                prescriped_Medicine.GetPrescriptionDetails(int.Parse(ds.Tables[0].Rows[0]["prescription_id"].ToString()), int.Parse(txtmedqty.Text),int.Parse(txtCharges.Text));
                 Patients patients = this.FindForm() as Patients;
                 patients.ShowContent(prescriped_Medicine);
             }
@@ -71,6 +71,16 @@ namespace Clinic_Management_System
         }
 
         private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCharges_TextChanged(object sender, EventArgs e)
         {
 
         }

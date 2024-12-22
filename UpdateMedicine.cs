@@ -131,7 +131,7 @@ namespace Clinic_Management_System
             lblSell.Visible = sell;
         }
 
-        public void getMedicineDetails(int medicineId, string medicineName, string companyName, int stock, string expiryDate, string medType, string pur, string medSell)
+        public void getMedicineDetails(int medicineId, string medicineName, string medType, string companyName, int stock, string expiryDate, string pur, string medSell)
         {
             this.medicineId = medicineId;
             txtName.Text = medicineName;
@@ -145,7 +145,7 @@ namespace Clinic_Management_System
             cpName = companyName;
             st = stock;
             expDate = expiryDate;
-            type = medType;
+           type = medType;
             medPurchase = pur;
             sell = medSell;
         }

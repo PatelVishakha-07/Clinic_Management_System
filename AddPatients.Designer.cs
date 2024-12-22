@@ -197,7 +197,7 @@
             label6.AutoSize = true;
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(350, 497);
+            label6.Location = new Point(350, 499);
             label6.Name = "label6";
             label6.Size = new Size(225, 33);
             label6.TabIndex = 26;
@@ -208,7 +208,7 @@
             btnClear.BackColor = Color.LightSteelBlue;
             btnClear.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnClear.ForeColor = Color.Black;
-            btnClear.Location = new Point(646, 632);
+            btnClear.Location = new Point(613, 603);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(179, 69);
             btnClear.TabIndex = 25;
@@ -221,7 +221,7 @@
             btnSave.BackColor = Color.LightSteelBlue;
             btnSave.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnSave.ForeColor = Color.Black;
-            btnSave.Location = new Point(327, 632);
+            btnSave.Location = new Point(350, 603);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(179, 69);
             btnSave.TabIndex = 23;
