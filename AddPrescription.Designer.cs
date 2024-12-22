@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            txtCharges = new TextBox();
+            label11 = new Label();
             txtmedqty = new TextBox();
             label10 = new Label();
             lbldisease = new Label();
@@ -51,8 +53,6 @@
             txtName = new TextBox();
             label2 = new Label();
             label1 = new Label();
-            txtCharges = new TextBox();
-            label11 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -90,6 +90,29 @@
             panel1.Size = new Size(1100, 834);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
+            // 
+            // txtCharges
+            // 
+            txtCharges.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtCharges.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            txtCharges.Location = new Point(579, 633);
+            txtCharges.Name = "txtCharges";
+            txtCharges.Size = new Size(457, 41);
+            txtCharges.TabIndex = 61;
+            txtCharges.TextChanged += txtCharges_TextChanged;
+            // 
+            // label11
+            // 
+            label11.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label11.AutoSize = true;
+            label11.BackColor = Color.Transparent;
+            label11.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            label11.Location = new Point(315, 639);
+            label11.Name = "label11";
+            label11.Size = new Size(150, 33);
+            label11.TabIndex = 60;
+            label11.Text = "Charges: ";
+            label11.Click += label11_Click;
             // 
             // txtmedqty
             // 
@@ -335,27 +358,6 @@
             label1.Size = new Size(188, 41);
             label1.TabIndex = 0;
             label1.Text = "Prescription";
-            // 
-            // txtCharges
-            // 
-            txtCharges.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtCharges.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            txtCharges.Location = new Point(579, 633);
-            txtCharges.Name = "txtCharges";
-            txtCharges.Size = new Size(457, 41);
-            txtCharges.TabIndex = 61;
-            // 
-            // label11
-            // 
-            label11.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label11.AutoSize = true;
-            label11.BackColor = Color.Transparent;
-            label11.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            label11.Location = new Point(315, 639);
-            label11.Name = "label11";
-            label11.Size = new Size(150, 33);
-            label11.TabIndex = 60;
-            label11.Text = "Charges: ";
             // 
             // AddPrescription
             // 

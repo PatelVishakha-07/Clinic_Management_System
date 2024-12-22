@@ -32,18 +32,18 @@ namespace Clinic_Management_System
                 dataGridView1.DataSource = ds.Tables[0];
             }
 
-            if (!dataGridView1.Columns.Contains("reportLink"))
-            {
-                DataGridViewLinkColumn reportLink = new DataGridViewLinkColumn
-                {
-                    HeaderText = "Action",
-                    Name = "reportLink",
-                    Text = "Report",
-                    UseColumnTextForLinkValue = true,
-                };
+            //if (!dataGridView1.Columns.Contains("reportLink"))
+            //{
+            //    DataGridViewLinkColumn reportLink = new DataGridViewLinkColumn
+            //    {
+            //        HeaderText = "Action",
+            //        Name = "reportLink",
+            //        Text = "Report",
+            //        UseColumnTextForLinkValue = true,
+            //    };
 
-                dataGridView1.Columns.Add(reportLink);
-            }
+            //    dataGridView1.Columns.Add(reportLink);
+            //}
 
         }
         private void panel2_Paint_1(object sender, PaintEventArgs e)
@@ -72,11 +72,11 @@ namespace Clinic_Management_System
             Patients patients = this.FindForm() as Patients;
             patients.ShowContent(patientDetails);
 
-            if (e.ColumnIndex == dataGridView1.Columns["reportLink"].Index && e.RowIndex >= 0)
-            {                
-                Report report = new Report();
-                report.ShowDialog();                                                           
-            }
+            //if (e.ColumnIndex == dataGridView1.Columns["reportLink"].Index && e.RowIndex >= 0)
+            //{                
+            //    Report report = new Report();
+            //    report.ShowDialog();                                                           
+            //}
 
         }
 

@@ -179,15 +179,15 @@ namespace Clinic_Management_System
             int labelSpacing = 35;
             int keyValueSpacing = 250;
 
-            Label titleLabel = new Label()
-            {
-                Text = sectionTitle,
-                Location = new Point(40, startY),
-                AutoSize = true,
-                Font = new Font("Arial", 16, FontStyle.Bold),
-                ForeColor = Color.DimGray,
-            };
-            panel1.Controls.Add(titleLabel);
+            //Label titleLabel = new Label()
+            //{
+            //    Text = sectionTitle,
+            //    Location = new Point(40, startY),
+            //    AutoSize = true,
+            //    Font = new Font("Arial", 16, FontStyle.Bold),
+            //    ForeColor = Color.DimGray,
+            //};
+           // panel1.Controls.Add(titleLabel);
             startY += 40;
 
             if (ds != null && ds.Tables[0].Rows.Count > 0)
@@ -304,6 +304,7 @@ namespace Clinic_Management_System
                 foreach (DataRow prescriptionRow in prescriptionData.Tables[0].Rows)
                 {
                     int prescriptionId = Convert.ToInt32(prescriptionRow["prescription_id"]);
+
                     string query = $"select * from prescription where prescription_id={prescriptionId}";
                     DataSet currentprescription= dbclass.Getdata(query);    
                     // Display prescription details

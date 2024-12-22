@@ -138,7 +138,7 @@ namespace Clinic_Management_System
 
                 //int medicineId = 0;
                 UpdateMedicine updateMedicine = new UpdateMedicine();
-                updateMedicine.getMedicineDetails(medicineId, medicineName, cmpName, stock, date,medType,purchase,sell);
+                updateMedicine.getMedicineDetails(medicineId, medicineName, medType,cmpName, stock, date,purchase,sell);
                 Medicine medicine = this.FindForm() as Medicine;
                 updateMedicine.UpdateCompleted += (sender, e) =>
                 {

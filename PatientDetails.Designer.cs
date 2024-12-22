@@ -31,6 +31,7 @@
             panel1 = new Panel();
             button1 = new Button();
             label1 = new Label();
+            btnprint = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -38,20 +39,23 @@
             // 
             panel1.AutoScroll = true;
             panel1.BackColor = SystemColors.GradientInactiveCaption;
+            panel1.Controls.Add(btnprint);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(2, 2, 2, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1375, 954);
+            panel1.Size = new Size(1100, 763);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint_1;
             // 
             // button1
             // 
-            button1.Location = new Point(1175, 127);
+            button1.Location = new Point(940, 102);
+            button1.Margin = new Padding(2, 2, 2, 2);
             button1.Name = "button1";
-            button1.Size = new Size(135, 67);
+            button1.Size = new Size(108, 54);
             button1.TabIndex = 2;
             button1.Text = "Add Prescription";
             button1.UseVisualStyleBackColor = true;
@@ -62,22 +66,30 @@
             label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(610, 35);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(488, 28);
             label1.Name = "label1";
-            label1.Size = new Size(135, 48);
+            label1.Size = new Size(115, 41);
             label1.TabIndex = 1;
             label1.Text = "Details";
             // 
+            // btnprint
+            // 
+            btnprint.Location = new Point(940, 198);
+            btnprint.Margin = new Padding(2);
+            btnprint.Name = "btnprint";
+            btnprint.Size = new Size(108, 54);
+            btnprint.TabIndex = 3;
+            btnprint.Text = "Print";
+            btnprint.UseVisualStyleBackColor = true;
+            // 
             // PatientDetails
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             Controls.Add(panel1);
-            Margin = new Padding(4);
             Name = "PatientDetails";
-            Size = new Size(1375, 954);
+            Size = new Size(1100, 763);
             Load += PatientDetails_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -89,5 +101,6 @@
         private Panel panel1;
         private Button button1;
         private Label label1;
+        private Button btnprint;
     }
 }
