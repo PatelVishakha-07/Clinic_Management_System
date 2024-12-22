@@ -183,7 +183,8 @@ namespace Clinic_Management_System
 
                 if (!string.IsNullOrEmpty(medicineName) && int.TryParse(quantityText, out int quantity))
                 {
-                    string queryStock = $"SELECT medicine_stock FROM Medicines WHERE medicine_name = '{medicineName}'";
+                    string queryStock = $"SELECT md.medicine_stock FROM Medicine_Details md join medicines m on md.medicine_id=m.medicine_id" +
+                        $" WHERE m.medicine_name = '{medicineName}'";
                     DataSet ds = dbclass.Getdata(queryStock);
 
                     if (ds.Tables[0].Rows.Count > 0)
@@ -198,8 +199,14 @@ namespace Clinic_Management_System
                             dbclass.databaseoperations(queryInsert);
 
                             // Update stock
-                            string queryUpdateStock = $"UPDATE Medicines SET medicine_stock = medicine_stock - {quantity} " +
-                                                      $"WHERE medicine_name = '{medicineName}'";
+                            //string queryUpdateStock = $"UPDATE Medicine_Details join medicines on medicine_detail.medicine_id = medicines.medicine_id " +
+                            //    $" SET medicine_details.medicine_stock = medicine_details.medicine_stock - {quantity} " +
+                            //                         $"WHERE medicines.medicine_name = '{medicineName}'";
+
+                            string queryUpdateStock = $"UPDATE SET Medicine_Details.medicine_stock = Medicine_Details.medicine_stock - { quantity} " +
+                                $"FROM Medicines WHERE Medicine_Details.medicine_id = Medicines.medicine_id " +
+                                $"AND Medicines.medicine_name = '{medicineName}';";
+
                             dbclass.databaseoperations(queryUpdateStock);
 
                         }

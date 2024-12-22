@@ -44,5 +44,10 @@ namespace Clinic_Management_System
         {
             ShowForm(new AdmittedPatients());
         }
+
+        private void btnIncome_Click(object sender, EventArgs e)
+        {
+            ShowForm(new Income());
+        }
     }
 }

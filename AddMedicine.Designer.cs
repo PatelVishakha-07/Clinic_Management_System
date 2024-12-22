@@ -41,7 +41,6 @@
             lblName = new Label();
             lblCmp = new Label();
             btnClear = new Button();
-            btnCancel = new Button();
             btnSave = new Button();
             dateTimePicker1 = new DateTimePicker();
             label4 = new Label();
@@ -73,7 +72,6 @@
             panel1.Controls.Add(lblName);
             panel1.Controls.Add(lblCmp);
             panel1.Controls.Add(btnClear);
-            panel1.Controls.Add(btnCancel);
             panel1.Controls.Add(btnSave);
             panel1.Controls.Add(dateTimePicker1);
             panel1.Controls.Add(label4);
@@ -228,7 +226,7 @@
             btnClear.BackColor = Color.Coral;
             btnClear.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnClear.ForeColor = Color.DarkBlue;
-            btnClear.Location = new Point(435, 770);
+            btnClear.Location = new Point(646, 768);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(176, 69);
             btnClear.TabIndex = 12;
@@ -236,27 +234,13 @@
             btnClear.UseVisualStyleBackColor = false;
             btnClear.Click += btnClear_Click;
             // 
-            // btnCancel
-            // 
-            btnCancel.Anchor = AnchorStyles.Bottom;
-            btnCancel.BackColor = Color.Coral;
-            btnCancel.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCancel.ForeColor = Color.DarkBlue;
-            btnCancel.Location = new Point(698, 770);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(176, 69);
-            btnCancel.TabIndex = 11;
-            btnCancel.Text = "Cancel";
-            btnCancel.UseVisualStyleBackColor = false;
-            btnCancel.Click += btnCancel_Click;
-            // 
             // btnSave
             // 
             btnSave.Anchor = AnchorStyles.Bottom;
             btnSave.BackColor = Color.Coral;
             btnSave.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnSave.ForeColor = Color.DarkBlue;
-            btnSave.Location = new Point(145, 770);
+            btnSave.Location = new Point(356, 768);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(176, 69);
             btnSave.TabIndex = 10;
@@ -339,9 +323,9 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.medicine__1_;
-            pictureBox1.Location = new Point(18, 150);
+            pictureBox1.Location = new Point(19, 271);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(286, 296);
+            pictureBox1.Size = new Size(302, 377);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
@@ -400,7 +384,6 @@
         private PictureBox pictureBox1;
         private Label label2;
         private Button btnClear;
-        private Button btnCancel;
         private Button btnSave;
         private Label lblCmp;
         private Label lblName;

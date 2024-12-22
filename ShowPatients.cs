@@ -74,7 +74,7 @@ namespace Clinic_Management_System
 
             if (e.ColumnIndex == dataGridView1.Columns["reportLink"].Index && e.RowIndex >= 0)
             {                
-                Report report = new Report();
+                Report report = new Report(patientId);
                 report.ShowDialog();                                                           
             }
 

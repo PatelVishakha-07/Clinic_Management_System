@@ -162,13 +162,7 @@ namespace Clinic_Management_System
             txtPurchase.Text = "";
             txtSell.Text = "";
             dateTimePicker1.Text = DateTime.Today.ToString();
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            Medicine medicine = new Medicine();
-            medicine.ShowControl(new ShowMedicine());
-        }
+        }       
 
         private void label6_Click(object sender, EventArgs e)        {        }
 

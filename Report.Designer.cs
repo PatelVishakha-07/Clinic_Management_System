@@ -29,7 +29,16 @@
         private void InitializeComponent()
         {
             printDocument1 = new System.Drawing.Printing.PrintDocument();
+            panel1 = new Panel();
             SuspendLayout();
+            // 
+            // panel1
+            // 
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1064, 873);
+            panel1.TabIndex = 0;
             // 
             // Report
             // 
@@ -37,6 +46,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             ClientSize = new Size(1064, 873);
+            Controls.Add(panel1);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "Report";
@@ -48,5 +58,6 @@
 
         #endregion
         private System.Drawing.Printing.PrintDocument printDocument1;
+        private Panel panel1;
     }
 }
