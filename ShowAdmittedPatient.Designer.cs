@@ -54,6 +54,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1100, 763);
             panel1.TabIndex = 0;
+            panel1.Paint += panel1_Paint;
             // 
             // btnSearch
             // 
@@ -98,32 +99,32 @@
             // 
             // Bed_Number
             // 
+            Bed_Number.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Bed_Number.HeaderText = "Bed_Number";
             Bed_Number.MinimumWidth = 6;
             Bed_Number.Name = "Bed_Number";
-            Bed_Number.Width = 125;
             // 
             // Name
             // 
+            Name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Name.HeaderText = "Name";
             Name.MinimumWidth = 6;
             Name.Name = "Name";
-            Name.Width = 300;
             // 
             // ipd_id
             // 
+            ipd_id.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             ipd_id.HeaderText = "ipd_id";
             ipd_id.MinimumWidth = 6;
             ipd_id.Name = "ipd_id";
             ipd_id.Visible = false;
-            ipd_id.Width = 125;
             // 
             // Contact_No
             // 
+            Contact_No.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Contact_No.HeaderText = "Contact_No";
             Contact_No.MinimumWidth = 6;
             Contact_No.Name = "Contact_No";
-            Contact_No.Width = 300;
             // 
             // label1
             // 
@@ -141,7 +142,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel1);
-            //Name = "ShowAdmittedPatient";
+           // Name = "ShowAdmittedPatient";
             Size = new Size(1100, 763);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

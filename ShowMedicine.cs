@@ -26,7 +26,9 @@ namespace Clinic_Management_System
             {
                 DateTime date = DateTime.Now;
                 string formattedDate = date.ToString("yyyy-MM-dd");
-                string query = "select * from Medicines where expiry_date >= '" + formattedDate + "' and medicine_stock > " + 0;
+                string query = "select m.medicine_id, m.medicine_name, m.company_name, m.medicine_type, md.medicine_stock," +
+                    " md.expiry_date, md.purchase_price, md.sell_price from Medicines m join Medicine_Details md on " +
+                    "m.medicine_id = md.medicine_id where md.expiry_date >= '" + formattedDate + "' and md.medicine_stock > " + 0;
                 DataSet ds = dbClass.Getdata(query);
                 populategridview(ds);
             }

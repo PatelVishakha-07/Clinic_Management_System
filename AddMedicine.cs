@@ -88,10 +88,33 @@ namespace Clinic_Management_System
 
                 if (!lblName.Visible && !lblCmp.Visible && !lblStock.Visible)
                 {
-                    string query = "insert into Medicines(medicine_name, company_name,medicine_type, medicine_stock, expiry_date, purchase_price, sell_price) values ('" 
-                        + medicineName + "', '" + cmpName + "', '" + type + "', " + int.Parse(stock) + ", '" + date + "', " + int.Parse(purchase) 
-                        + ", " + int.Parse(sell) + ");";
-                    dbClass.databaseoperations(query);
+                    string medicineDetails = "select * from medicines where medicine_name='"+ medicineName + "' and company_name='" + 
+                        cmpName + "' and medicine_type='"+ type +"'";
+                    DataSet ds=new DataSet();
+                    ds = dbClass.Getdata(medicineDetails);
+                    
+                    if(ds.Tables[0].Rows.Count > 0)
+                    {
+                        int medID = Convert.ToInt32(ds.Tables[0].Rows[0]["medicine_id"].ToString());
+                        string q2 = "insert into Medicine_Details(medicine_stock, expiry_date, purchase_price, sell_price, medicine_id) values(" +
+                            int.Parse(stock) + ", '" + date + "', " + int.Parse(purchase) + ", " + int.Parse(sell) + "," + medID + ");";
+                        dbClass.databaseoperations(q2);
+                    }
+                    else
+                    {
+                        string query = "insert into Medicines(medicine_name, company_name,medicine_type) values ('"
+                        + medicineName + "', '" + cmpName + "', '" + type + "');";
+                        dbClass.databaseoperations(query);
+
+                        DataSet dataSet = new DataSet();
+                        dataSet = dbClass.Getdata(medicineDetails);
+
+                        int medID = Convert.ToInt32(dataSet.Tables[0].Rows[0]["medicine_id"].ToString());
+                        string q2 = "insert into Medicine_Details(medicine_stock, expiry_date, purchase_price, sell_price, medicine_id) values(" +
+                            int.Parse(stock) + ", '" + date + "', " + int.Parse(purchase) + ", " + int.Parse(sell) + ", " + medID + ");";
+                        dbClass.databaseoperations(q2);
+                    }                    
+                    
                     MessageBox.Show("Record Inserted Successfully");
                     ClearText();
                     Medicine medicine = new Medicine();

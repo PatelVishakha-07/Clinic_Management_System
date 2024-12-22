@@ -15,7 +15,7 @@ namespace Clinic_Management_System
 
         private void ShowAdmittedPatient_Load(object sender, EventArgs e)
         {
-            LoadGridView(); // Load the grid on form load
+            // Load the grid on form load
         }
 
         private void LoadGridView()
@@ -27,7 +27,7 @@ namespace Clinic_Management_System
 
             DataSet ds = databaseclass.Getdata(query);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            {
+            {                
                 populategridview(ds);
             }
             else
@@ -91,6 +91,11 @@ namespace Clinic_Management_System
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             btnSearch.Enabled = !string.IsNullOrEmpty(txtSearch.Text);
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            LoadGridView();
         }
     }
 }
