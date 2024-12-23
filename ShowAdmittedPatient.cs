@@ -103,7 +103,8 @@ namespace Clinic_Management_System
             int patientId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["patient_id"].Value.ToString());
             Admit_Patient_Details patientDetails = new Admit_Patient_Details();
             patientDetails.getPatientDetails(patientId);
-            Patients patients = this.FindForm() as Patients;
+            AdmittedPatients patients=new AdmittedPatients();
+            patients = this.FindForm() as AdmittedPatients;
             patients.ShowContent(patientDetails);
         }
     }

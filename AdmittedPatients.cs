@@ -33,7 +33,7 @@ namespace Clinic_Management_System
 
         }
 
-        private void ShowContent(UserControl control)
+        public void ShowContent(UserControl control)
         {
             panel2.Controls.Clear();
             control.Dock = DockStyle.Fill;
