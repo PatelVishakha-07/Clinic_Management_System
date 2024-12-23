@@ -141,9 +141,15 @@ namespace Clinic_Management_System
             dbclass.databaseoperations(query);
             string getquery = $"select ipd_id from ipd_table where patient_id={patientId} and admit_date='{date}'";
             DataSet ds = dbclass.Getdata(getquery);
-            Diagnosis diagnosis = new Diagnosis(int.Parse(ds.Tables[0].Rows[0]["ipd_id"].ToString()));
-            //Diagnosis.GetPrescriptionDetails(int.Parse(ds.Tables[0].Rows[0]["prescription_id"].ToString()), int.Parse(txtmedqty.Text), int.Parse(txtCharges.Text));
-            Patients patients = this.FindForm() as Patients;
+            //Diagnosis diagnosis = new Diagnosis(int.Parse(ds.Tables[0].Rows[0]["ipd_id"].ToString()));
+            ////Diagnosis.GetPrescriptionDetails(int.Parse(ds.Tables[0].Rows[0]["prescription_id"].ToString()), int.Parse(txtmedqty.Text), int.Parse(txtCharges.Text));
+            //Patients patients = this.FindForm() as Patients;
+            //patients.ShowContent(diagnosis);
+
+            Diagnosis diagnosis= new Diagnosis(int.Parse(ds.Tables[0].Rows[0]["ipd_id"].ToString()));
+          //  patientDetails.getPatientDetails(patientId);
+            AdmittedPatients patients = new AdmittedPatients();
+            patients = this.FindForm() as AdmittedPatients;
             patients.ShowContent(diagnosis);
         }
     }
