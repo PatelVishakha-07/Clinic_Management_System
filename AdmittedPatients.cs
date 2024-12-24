@@ -23,7 +23,7 @@ namespace Clinic_Management_System
         private void AdmittedPatients_Load(object sender, EventArgs e)
         {
             panel2.Controls.Clear();
-            ShowAdmittedPatient showAdmittedPatient=new ShowAdmittedPatient();
+            ShowAdmittedPatient showAdmittedPatient = new ShowAdmittedPatient();
             showAdmittedPatient.Dock = DockStyle.Fill;
             panel2.Controls.Add(showAdmittedPatient);
         }
@@ -48,6 +48,11 @@ namespace Clinic_Management_System
         private void admitPatientsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowContent(new InHouse_Patient());
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

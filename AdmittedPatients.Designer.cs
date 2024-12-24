@@ -61,6 +61,7 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(1076, 674);
             panel2.TabIndex = 7;
+            panel2.Paint += panel2_Paint;
             // 
             // topPanel
             // 
@@ -75,7 +76,7 @@
             // 
             menuStrip1.BackColor = Color.FromArgb(255, 255, 192);
             menuStrip1.Dock = DockStyle.Fill;
-            menuStrip1.Font = new Font("Cinzel Black", 13.1999989F, FontStyle.Bold, GraphicsUnit.Point);
+            menuStrip1.Font = new Font("Microsoft Sans Serif", 13.1999989F, FontStyle.Bold, GraphicsUnit.Point);
             menuStrip1.ImageScalingSize = new Size(20, 20);
             menuStrip1.Items.AddRange(new ToolStripItem[] { showAdmittedToolStripMenuItem, admitPatientsToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
@@ -88,14 +89,14 @@
             // showAdmittedToolStripMenuItem
             // 
             showAdmittedToolStripMenuItem.Name = "showAdmittedToolStripMenuItem";
-            showAdmittedToolStripMenuItem.Size = new Size(322, 67);
+            showAdmittedToolStripMenuItem.Size = new Size(281, 67);
             showAdmittedToolStripMenuItem.Text = "Show Admitted Patients";
             showAdmittedToolStripMenuItem.Click += showAdmittedToolStripMenuItem_Click;
             // 
             // admitPatientsToolStripMenuItem
             // 
             admitPatientsToolStripMenuItem.Name = "admitPatientsToolStripMenuItem";
-            admitPatientsToolStripMenuItem.Size = new Size(208, 67);
+            admitPatientsToolStripMenuItem.Size = new Size(182, 67);
             admitPatientsToolStripMenuItem.Text = "Admit Patients";
             admitPatientsToolStripMenuItem.Click += admitPatientsToolStripMenuItem_Click;
             // 
