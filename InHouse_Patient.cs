@@ -136,22 +136,42 @@ namespace Clinic_Management_System
 
         private void btnAdmit_Click(object sender, EventArgs e)
         {
-            string date=DateTime.Now.ToString();
-            string query = $"insert into ipd_table(bed_number,admit_date,patient_id) values({txtBed.Text},'{date}',{patientId})";
-            dbclass.databaseoperations(query);
-            string getquery = $"select ipd_id from ipd_table where patient_id={patientId} and admit_date='{date}'";
-            DataSet ds = dbclass.Getdata(getquery);
-            //Diagnosis diagnosis = new Diagnosis(int.Parse(ds.Tables[0].Rows[0]["ipd_id"].ToString()));
-            ////Diagnosis.GetPrescriptionDetails(int.Parse(ds.Tables[0].Rows[0]["prescription_id"].ToString()), int.Parse(txtmedqty.Text), int.Parse(txtCharges.Text));
-            //Patients patients = this.FindForm() as Patients;
-            //patients.ShowContent(diagnosis);
+            string date = DateTime.Now.ToString();
 
-            Diagnosis diagnosis= new Diagnosis(int.Parse(ds.Tables[0].Rows[0]["ipd_id"].ToString()));
-          //  patientDetails.getPatientDetails(patientId);
-            AdmittedPatients patients = new AdmittedPatients();
-            patients = this.FindForm() as AdmittedPatients;
-            patients.ShowContent(diagnosis);
+            // Query to check if the patient is already in the ipd_table
+            string checkQuery = $"SELECT COUNT(*) FROM ipd_table WHERE patient_id = {patientId}";
+
+            try
+            {
+                DataSet checkDs = dbclass.Getdata(checkQuery);
+                int count = int.Parse(checkDs.Tables[0].Rows[0][0].ToString());
+
+                if (count > 0)
+                {
+                    MessageBox.Show("Patient is already admitted.");
+                    return;
+                }
+
+               
+                string insertQuery = $"INSERT INTO ipd_table(bed_number, admit_date, patient_id) VALUES({txtBed.Text}, '{date}', {patientId})";
+                dbclass.databaseoperations(insertQuery);
+
+               
+                string getquery = $"SELECT ipd_id FROM ipd_table WHERE patient_id = {patientId} AND admit_date = '{date}'";
+                DataSet ds = dbclass.Getdata(getquery);
+
+              
+                Diagnosis diagnosis = new Diagnosis(int.Parse(ds.Tables[0].Rows[0]["ipd_id"].ToString()));
+                AdmittedPatients patients = this.FindForm() as AdmittedPatients;
+                patients.Visible = false;
+                patients?.Show(diagnosis);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
         }
+
     }
 
     // Class to hold patient data
