@@ -43,7 +43,7 @@ namespace Clinic_Management_System
         {
             if (!string.IsNullOrEmpty(txttreat.Text) && !string.IsNullOrEmpty(txtdiag.Text) && !string.IsNullOrEmpty(txtcharge.Text))
             {
-                string query = $"insert into ipd_treatment_table(diagnosis,treatment,charge,ipd_id) values ('{txtdiag.Text}','{txttreat.Text}',{txtcharge.Text},{ipd_id}) ";
+                string query = $"insert into ipd_treatment_table(diagnosis,treatment,charges,ipd_id) values ('{txtdiag.Text}','{txttreat.Text}',{txtcharge.Text},{ipd_id}) ";
                 databaseclass dbclass = new databaseclass();
                 dbclass.databaseoperations(query);
             }
