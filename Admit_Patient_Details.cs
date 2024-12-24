@@ -164,7 +164,7 @@ namespace Clinic_Management_System
                 Diagnosis diagnosis = new Diagnosis(ipd_id);
                 AdmittedPatients patients = this.FindForm() as AdmittedPatients;
                 //    //patients.Visible = false;
-                //    //patients?.Show(diagnosis);
+                //   //patients?.Show(diagnosis);
                  patients.ShowContent(diagnosis);
             }
         }
