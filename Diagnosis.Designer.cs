@@ -175,6 +175,7 @@
             Controls.Add(panel1);
             Name = "Diagnosis";
             Size = new Size(1178, 871);
+            Load += Diagnosis_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);

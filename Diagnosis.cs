@@ -13,16 +13,12 @@ namespace Clinic_Management_System
     public partial class Diagnosis : UserControl
     {
         int ipd_id;
-        public Diagnosis()
-        {
-            InitializeComponent();
-        }
-
         public Diagnosis(int ipd_id)
         {
+            InitializeComponent();
             this.ipd_id = ipd_id;
         }
-
+        
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -56,8 +52,13 @@ namespace Clinic_Management_System
         private void btnClear_Click(object sender, EventArgs e)
         {
             txtcharge.Text = string.Empty;
-            txtdiag.Text= string.Empty;
-            txtcharge.Text= string.Empty;
+            txtdiag.Text = string.Empty;
+            txtcharge.Text = string.Empty;
+        }
+
+        private void Diagnosis_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

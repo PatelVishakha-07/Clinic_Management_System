@@ -163,8 +163,9 @@ namespace Clinic_Management_System
               
                 Diagnosis diagnosis = new Diagnosis(int.Parse(ds.Tables[0].Rows[0]["ipd_id"].ToString()));
                 AdmittedPatients patients = this.FindForm() as AdmittedPatients;
-                patients.Visible = false;
-                patients?.Show(diagnosis);
+                //patients.Visible = false;
+                //patients?.Show(diagnosis);
+                patients.ShowContent(new Diagnosis(int.Parse(ds.Tables[0].Rows[0]["ipd_id"].ToString())));
             }
             catch (Exception ex)
             {
