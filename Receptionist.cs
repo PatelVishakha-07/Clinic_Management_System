@@ -20,11 +20,7 @@ namespace Clinic_Management_System
             InitializeComponent();
             InitializeDataGridView();
             lastCheckedTime = DateTime.MinValue;
-
-            //timer = new System.Windows.Forms.Timer();
-            //timer.Interval = 5000; // Poll every 5 seconds
-            //timer.Tick += Timer_Tick;
-            //timer.Start();
+            
         }
 
         private void InitializeDataGridView()

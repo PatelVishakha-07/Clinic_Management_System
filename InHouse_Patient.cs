@@ -159,12 +159,8 @@ namespace Clinic_Management_System
                
                 string getquery = $"SELECT ipd_id FROM ipd_table WHERE patient_id = {patientId} AND admit_date = '{date}'";
                 DataSet ds = dbclass.Getdata(getquery);
-
-              
-                Diagnosis diagnosis = new Diagnosis(int.Parse(ds.Tables[0].Rows[0]["ipd_id"].ToString()));
-                AdmittedPatients patients = this.FindForm() as AdmittedPatients;
-                //patients.Visible = false;
-                //patients?.Show(diagnosis);
+                            
+                AdmittedPatients patients = this.FindForm() as AdmittedPatients;                
                 patients.ShowContent(new Diagnosis(int.Parse(ds.Tables[0].Rows[0]["ipd_id"].ToString())));
             }
             catch (Exception ex)

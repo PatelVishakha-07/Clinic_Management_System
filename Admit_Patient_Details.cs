@@ -150,7 +150,13 @@ namespace Clinic_Management_System
         {
             Report report = new Report(patientId);
             report.ShowDialog();
-            
+
+        }
+
+        private void btn_add_Click(object sender, EventArgs e)
+        {
+            AdmittedPatients admittedPatients =this.FindForm() as AdmittedPatients;
+            admittedPatients.ShowContent(new Diagnosis(patientId));
         }
     }
 }

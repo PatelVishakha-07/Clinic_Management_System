@@ -76,7 +76,7 @@
             // 
             // btnSave
             // 
-            btnSave.Anchor = AnchorStyles.Bottom;
+            btnSave.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnSave.BackColor = Color.LightSteelBlue;
             btnSave.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnSave.ForeColor = Color.Black;
@@ -94,7 +94,6 @@
             txtcharge.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             txtcharge.Location = new Point(567, 371);
             txtcharge.Name = "txtcharge";
-            txtcharge.ReadOnly = true;
             txtcharge.Size = new Size(457, 41);
             txtcharge.TabIndex = 58;
             // 
