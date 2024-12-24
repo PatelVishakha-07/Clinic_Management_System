@@ -21,10 +21,21 @@ namespace Clinic_Management_System
         }
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Patients patients = new Patients();
-            patients.ShowDialog();
-            this.Close();
+            if(txtUsername.Text == "Client" && txtPassword.Text == "1234")
+            {
+                this.Hide();
+                Receptionist receptionist = new Receptionist();
+                receptionist.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                this.Hide();
+                Patients patients = new Patients();
+                patients.ShowDialog();
+                this.Close();
+            }
+            
         }
     }
 }
