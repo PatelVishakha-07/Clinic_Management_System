@@ -54,5 +54,10 @@ namespace Clinic_Management_System
         {
 
         }
+
+        private void dischargedStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ShowContent(new Discharged());
+        }
     }
 }

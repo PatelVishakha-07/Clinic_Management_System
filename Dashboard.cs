@@ -49,5 +49,7 @@ namespace Clinic_Management_System
         {
             ShowForm(new Income());
         }
+
+      
     }
 }

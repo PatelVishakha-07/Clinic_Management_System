@@ -35,6 +35,7 @@
             showAdmittedToolStripMenuItem = new ToolStripMenuItem();
             admitPatientsToolStripMenuItem = new ToolStripMenuItem();
             leftPanel = new Panel();
+            dischargedStripMenuItem1 = new ToolStripMenuItem();
             panel1.SuspendLayout();
             topPanel.SuspendLayout();
             menuStrip1.SuspendLayout();
@@ -78,7 +79,7 @@
             menuStrip1.Dock = DockStyle.Fill;
             menuStrip1.Font = new Font("Microsoft Sans Serif", 13.1999989F, FontStyle.Bold, GraphicsUnit.Point);
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { showAdmittedToolStripMenuItem, admitPatientsToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { showAdmittedToolStripMenuItem, admitPatientsToolStripMenuItem, dischargedStripMenuItem1 });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(1076, 71);
@@ -107,6 +108,13 @@
             leftPanel.Name = "leftPanel";
             leftPanel.Size = new Size(225, 745);
             leftPanel.TabIndex = 5;
+            // 
+            // dischargedStripMenuItem1
+            // 
+            dischargedStripMenuItem1.Name = "dischargedStripMenuItem1";
+            dischargedStripMenuItem1.Size = new Size(153, 67);
+            dischargedStripMenuItem1.Text = "Discharged ";
+            dischargedStripMenuItem1.Click += dischargedStripMenuItem1_Click;
             // 
             // AdmittedPatients
             // 
@@ -137,5 +145,6 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem showAdmittedToolStripMenuItem;
         private ToolStripMenuItem admitPatientsToolStripMenuItem;
+        private ToolStripMenuItem dischargedStripMenuItem1;
     }
 }

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             PanelDashboard = new Panel();
+            panel1 = new Panel();
+            btnIncome = new Button();
             panel5 = new Panel();
             pictureBox3 = new PictureBox();
             btnInHouse = new Button();
@@ -40,9 +42,8 @@
             btnPatients = new Button();
             panel2 = new Panel();
             pictureBox4 = new PictureBox();
-            panel1 = new Panel();
-            btnIncome = new Button();
             PanelDashboard.SuspendLayout();
+            panel1.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             panel4.SuspendLayout();
@@ -51,7 +52,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // PanelDashboard
@@ -67,6 +67,32 @@
             PanelDashboard.Name = "PanelDashboard";
             PanelDashboard.Size = new Size(241, 864);
             PanelDashboard.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(btnIncome);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 470);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(241, 100);
+            panel1.TabIndex = 3;
+            // 
+            // btnIncome
+            // 
+            btnIncome.BackgroundImageLayout = ImageLayout.Zoom;
+            btnIncome.FlatStyle = FlatStyle.Popup;
+            btnIncome.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnIncome.ForeColor = Color.White;
+            btnIncome.ImageAlign = ContentAlignment.TopLeft;
+            btnIncome.Location = new Point(12, 22);
+            btnIncome.Name = "btnIncome";
+            btnIncome.Padding = new Padding(2, 0, 0, 0);
+            btnIncome.Size = new Size(202, 55);
+            btnIncome.TabIndex = 1;
+            btnIncome.Text = "Income";
+            btnIncome.TextAlign = ContentAlignment.MiddleRight;
+            btnIncome.UseVisualStyleBackColor = true;
+            btnIncome.Click += btnIncome_Click;
             // 
             // panel5
             // 
@@ -198,32 +224,6 @@
             pictureBox4.TabIndex = 0;
             pictureBox4.TabStop = false;
             // 
-            // panel1
-            // 
-            panel1.Controls.Add(btnIncome);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 470);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(241, 100);
-            panel1.TabIndex = 3;
-            // 
-            // btnIncome
-            // 
-            btnIncome.BackgroundImageLayout = ImageLayout.Zoom;
-            btnIncome.FlatStyle = FlatStyle.Popup;
-            btnIncome.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnIncome.ForeColor = Color.White;
-            btnIncome.ImageAlign = ContentAlignment.TopLeft;
-            btnIncome.Location = new Point(12, 22);
-            btnIncome.Name = "btnIncome";
-            btnIncome.Padding = new Padding(2, 0, 0, 0);
-            btnIncome.Size = new Size(202, 55);
-            btnIncome.TabIndex = 1;
-            btnIncome.Text = "Income";
-            btnIncome.TextAlign = ContentAlignment.MiddleRight;
-            btnIncome.UseVisualStyleBackColor = true;
-            btnIncome.Click += btnIncome_Click;
-            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -234,6 +234,7 @@
             Size = new Size(1536, 864);
             Load += Dashboard_Load;
             PanelDashboard.ResumeLayout(false);
+            panel1.ResumeLayout(false);
             panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             panel4.ResumeLayout(false);
@@ -242,7 +243,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 

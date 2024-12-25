@@ -47,9 +47,8 @@
             PatientsPanel.Controls.Add(PanelLeft);
             PatientsPanel.Dock = DockStyle.Fill;
             PatientsPanel.Location = new Point(0, 0);
-            PatientsPanel.Margin = new Padding(4);
             PatientsPanel.Name = "PatientsPanel";
-            PatientsPanel.Size = new Size(1678, 1050);
+            PatientsPanel.Size = new Size(1342, 840);
             PatientsPanel.TabIndex = 0;
             // 
             // MainPanel
@@ -57,10 +56,9 @@
             MainPanel.AutoScroll = true;
             MainPanel.AutoScrollMargin = new Size(3, 4);
             MainPanel.Dock = DockStyle.Fill;
-            MainPanel.Location = new Point(309, 78);
-            MainPanel.Margin = new Padding(4);
+            MainPanel.Location = new Point(247, 62);
             MainPanel.Name = "MainPanel";
-            MainPanel.Size = new Size(1369, 972);
+            MainPanel.Size = new Size(1095, 778);
             MainPanel.TabIndex = 2;
             MainPanel.Paint += MainPanel_Paint;
             // 
@@ -69,10 +67,9 @@
             PanelTop.AutoScroll = true;
             PanelTop.Controls.Add(menuStrip1);
             PanelTop.Dock = DockStyle.Top;
-            PanelTop.Location = new Point(309, 0);
-            PanelTop.Margin = new Padding(4);
+            PanelTop.Location = new Point(247, 0);
             PanelTop.Name = "PanelTop";
-            PanelTop.Size = new Size(1369, 78);
+            PanelTop.Size = new Size(1095, 62);
             PanelTop.TabIndex = 1;
             // 
             // menuStrip1
@@ -85,8 +82,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { showPatientsToolStripMenuItem, addPatientsToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(4, 2, 0, 2);
-            menuStrip1.Size = new Size(1369, 78);
+            menuStrip1.Size = new Size(1095, 62);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             menuStrip1.ItemClicked += menuStrip1_ItemClicked;
@@ -95,7 +91,7 @@
             // 
             showPatientsToolStripMenuItem.ForeColor = Color.Black;
             showPatientsToolStripMenuItem.Name = "showPatientsToolStripMenuItem";
-            showPatientsToolStripMenuItem.Size = new Size(207, 36);
+            showPatientsToolStripMenuItem.Size = new Size(182, 58);
             showPatientsToolStripMenuItem.Text = "Show Patients";
             showPatientsToolStripMenuItem.Click += showPatientsToolStripMenuItem_Click;
             // 
@@ -103,7 +99,7 @@
             // 
             addPatientsToolStripMenuItem.ForeColor = Color.Black;
             addPatientsToolStripMenuItem.Name = "addPatientsToolStripMenuItem";
-            addPatientsToolStripMenuItem.Size = new Size(207, 36);
+            addPatientsToolStripMenuItem.Size = new Size(170, 58);
             addPatientsToolStripMenuItem.Text = "Add Patients";
             addPatientsToolStripMenuItem.Click += addPatientsToolStripMenuItem_Click;
             // 
@@ -111,20 +107,19 @@
             // 
             PanelLeft.Dock = DockStyle.Left;
             PanelLeft.Location = new Point(0, 0);
-            PanelLeft.Margin = new Padding(4);
             PanelLeft.Name = "PanelLeft";
-            PanelLeft.Size = new Size(309, 1050);
+            PanelLeft.Size = new Size(247, 840);
             PanelLeft.TabIndex = 0;
+            PanelLeft.Paint += PanelLeft_Paint;
             // 
             // Patients
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             BackColor = Color.LightGray;
-            ClientSize = new Size(1678, 1050);
+            ClientSize = new Size(1342, 840);
             Controls.Add(PatientsPanel);
-            Margin = new Padding(4);
             Name = "Patients";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Patients";

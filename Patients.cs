@@ -71,5 +71,10 @@ namespace Clinic_Management_System
         {
 
         }
+
+        private void PanelLeft_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
