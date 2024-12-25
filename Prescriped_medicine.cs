@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Clinic_Management_System
 {
@@ -272,8 +273,12 @@ namespace Clinic_Management_System
             }
             else
             {
-                pres_query = $"update ipd_table set total_pay=total_pay+{ttl_pres_charges} where patient_id={patient_id}";
+               
+
+                pres_query = $" UPDATE ipd_table SET total_pay = COALESCE(total_pay, 0) + { ttl_pres_charges} WHERE patient_id = { patient_id };";
                 dbclass.databaseoperations(pres_query);
+                string profitQuery = $"INSERT INTO ipd_profit (profit_date, amount) VALUES ('{DateTime.Now}', {profit})";
+                dbclass.databaseoperations(profitQuery);
             }
            
 
