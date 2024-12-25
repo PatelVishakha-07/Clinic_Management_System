@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iTextSharp.text.pdf.fonts.cmaps;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -155,8 +156,17 @@ namespace Clinic_Management_System
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            AdmittedPatients admittedPatients =this.FindForm() as AdmittedPatients;
-            admittedPatients.ShowContent(new Diagnosis(patientId));
+            string ipd_data = $"select ipd_id from ipd_table where patient_id={patientId}";
+            DataSet ds = dbclass.Getdata(ipd_data);
+            if (ds != null)
+            {
+                int ipd_id = int.Parse(ds.Tables[0].Rows[0]["ipd_id"].ToString());
+                Diagnosis diagnosis = new Diagnosis(ipd_id);
+                AdmittedPatients patients = this.FindForm() as AdmittedPatients;
+                //    //patients.Visible = false;
+                //   //patients?.Show(diagnosis);
+                 patients.ShowContent(diagnosis);
+            }
         }
     }
 }
