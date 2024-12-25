@@ -29,50 +29,136 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            panel4 = new Panel();
+            pictureBox2 = new PictureBox();
+            btnMedicine = new Button();
+            panel3 = new Panel();
+            pictureBox1 = new PictureBox();
+            btnPrescription = new Button();
+            panel5 = new Panel();
+            pictureBox4 = new PictureBox();
             panel2 = new Panel();
-            dataGridView1 = new DataGridView();
-            btnRefresh = new Button();
-            panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            panel1.SuspendLayout();
+            panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.BackColor = Color.FromArgb(64, 64, 64);
+            panel1.Controls.Add(panel4);
+            panel1.Controls.Add(panel3);
+            panel1.Controls.Add(panel5);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(204, 756);
+            panel1.Size = new Size(248, 756);
             panel1.TabIndex = 0;
+            // 
+            // panel4
+            // 
+            panel4.Controls.Add(pictureBox2);
+            panel4.Controls.Add(btnMedicine);
+            panel4.Dock = DockStyle.Top;
+            panel4.Location = new Point(0, 270);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(248, 100);
+            panel4.TabIndex = 5;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = Properties.Resources.medicine;
+            pictureBox2.Location = new Point(19, 22);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(56, 56);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 2;
+            pictureBox2.TabStop = false;
+            // 
+            // btnMedicine
+            // 
+            btnMedicine.BackgroundImageLayout = ImageLayout.Zoom;
+            btnMedicine.FlatStyle = FlatStyle.Popup;
+            btnMedicine.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnMedicine.ForeColor = Color.White;
+            btnMedicine.ImageAlign = ContentAlignment.TopLeft;
+            btnMedicine.Location = new Point(19, 22);
+            btnMedicine.Name = "btnMedicine";
+            btnMedicine.Padding = new Padding(2, 0, 0, 0);
+            btnMedicine.Size = new Size(202, 55);
+            btnMedicine.TabIndex = 3;
+            btnMedicine.Text = "Medicines";
+            btnMedicine.TextAlign = ContentAlignment.MiddleRight;
+            btnMedicine.UseVisualStyleBackColor = true;
+            btnMedicine.Click += btnMedicine_Click;
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(pictureBox1);
+            panel3.Controls.Add(btnPrescription);
+            panel3.Dock = DockStyle.Top;
+            panel3.Location = new Point(0, 170);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(248, 100);
+            panel3.TabIndex = 4;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.patient;
+            pictureBox1.Location = new Point(12, 22);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(56, 56);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
+            // 
+            // btnPrescription
+            // 
+            btnPrescription.BackgroundImageLayout = ImageLayout.Zoom;
+            btnPrescription.FlatStyle = FlatStyle.Popup;
+            btnPrescription.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnPrescription.ForeColor = Color.White;
+            btnPrescription.ImageAlign = ContentAlignment.TopLeft;
+            btnPrescription.Location = new Point(12, 22);
+            btnPrescription.Name = "btnPrescription";
+            btnPrescription.Padding = new Padding(2, 0, 0, 0);
+            btnPrescription.Size = new Size(202, 55);
+            btnPrescription.TabIndex = 1;
+            btnPrescription.Text = "Prescription";
+            btnPrescription.TextAlign = ContentAlignment.MiddleRight;
+            btnPrescription.UseVisualStyleBackColor = true;
+            btnPrescription.Click += btnPrescription_Click;
+            // 
+            // panel5
+            // 
+            panel5.Controls.Add(pictureBox4);
+            panel5.Dock = DockStyle.Top;
+            panel5.Location = new Point(0, 0);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(248, 170);
+            panel5.TabIndex = 3;
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.Image = Properties.Resources.doctor;
+            pictureBox4.Location = new Point(30, 25);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(162, 118);
+            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox4.TabIndex = 0;
+            pictureBox4.TabStop = false;
             // 
             // panel2
             // 
-            panel2.Controls.Add(btnRefresh);
-            panel2.Controls.Add(dataGridView1);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(204, 0);
+            panel2.Location = new Point(248, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(981, 756);
+            panel2.Size = new Size(937, 756);
             panel2.TabIndex = 1;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(63, 287);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(843, 401);
-            dataGridView1.TabIndex = 0;
-            // 
-            // btnRefresh
-            // 
-            btnRefresh.Location = new Point(574, 84);
-            btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(94, 29);
-            btnRefresh.TabIndex = 1;
-            btnRefresh.Text = "button1";
-            btnRefresh.UseVisualStyleBackColor = true;
-            btnRefresh.Click += btnRefresh_Click;
             // 
             // Receptionist
             // 
@@ -84,8 +170,13 @@
             Name = "Receptionist";
             Text = "Receptionist";
             Load += Receptionist_Load;
-            panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            panel1.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ResumeLayout(false);
         }
 
@@ -93,7 +184,13 @@
 
         private Panel panel1;
         private Panel panel2;
-        private DataGridView dataGridView1;
-        private Button btnRefresh;
+        private Panel panel4;
+        private PictureBox pictureBox2;
+        private Button btnMedicine;
+        private Panel panel3;
+        private PictureBox pictureBox1;
+        private Button btnPrescription;
+        private Panel panel5;
+        private PictureBox pictureBox4;
     }
 }
