@@ -52,7 +52,7 @@ namespace Clinic_Management_System
                 dbclass.Getdata(query);
                 string data = $"select * from Prescription where patient_id={patient_id} and prescription_date='{dateFormatted}'";
                 DataSet ds = dbclass.Getdata(data);
-                Prescriped_medicine prescriped_Medicine = new Prescriped_medicine();
+                Prescriped_medicine prescriped_Medicine = new Prescriped_medicine("Prescription");
                 prescriped_Medicine.GetPrescriptionDetails(int.Parse(ds.Tables[0].Rows[0]["prescription_id"].ToString()), int.Parse(txtmedqty.Text),int.Parse(txtCharges.Text));
                 Patients patients = this.FindForm() as Patients;
                 patients.ShowContent(prescriped_Medicine);

@@ -7,24 +7,27 @@ using System.Windows.Forms;
 namespace Clinic_Management_System
 {
     public partial class Prescriped_medicine : UserControl
-    {        
-        int prescription_id, medicine_qty, charges, purchase_price, sell_price, profit, med_price, ttl_pres_charges;
+    {
+        int prescription_id, medicine_qty, charges, purchase_price, sell_price, profit, med_price, ttl_pres_charges,patient_id;
+        string dialog;
         List<TextBox> medicineNameTextBoxes = new List<TextBox>();
         List<TextBox> quantityTextBoxes = new List<TextBox>();
         List<ComboBox> usageComboBoxes = new List<ComboBox>();
         List<ListBox> suggestionListBoxes = new List<ListBox>();
         databaseclass dbclass = new databaseclass();
 
-        public Prescriped_medicine()
+        public Prescriped_medicine(string dialog)
         {
             InitializeComponent();
+            this.dialog = dialog;
         }
 
-        public void GetPrescriptionDetails(int prescription_id, int medicine_qty, int charges)
+        public void GetPrescriptionDetails(int prescription_id, int medicine_qty, int charges,int patient_id=0)
         {
             this.prescription_id = prescription_id;
             this.medicine_qty = medicine_qty;
             this.charges = charges;
+            this.patient_id = patient_id;
             GenerateDynamicControls();
         }
 
@@ -213,9 +216,15 @@ namespace Clinic_Management_System
                                 remainingQuantity -= quantityToDeduct;
 
                                 // Insert prescribed medicine record
-                                string queryInsert = $@"
-                            INSERT INTO Prescribed_Medicine (medicine_name, quantity, usage, prescription_id) 
-                            VALUES ('{medicineName}', {quantityToDeduct}, '{usage}', {prescription_id})";
+                                string queryInsert;
+                                if (dialog == "Prescription")
+                                {
+                                     queryInsert = $@"INSERT INTO Prescribed_Medicine (medicine_name, quantity, usage, prescription_id)  VALUES ('{medicineName}', {quantityToDeduct}, '{usage}', {prescription_id})";
+                                }
+                                else
+                                {
+                                    queryInsert = $"insert into ipd_prescribed_medicine(medicine_name,quantity,usage,treatment_id) values ('{medicineName}', {quantityToDeduct}, '{usage}', {prescription_id})";
+                                }
                                 dbclass.databaseoperations(queryInsert);
 
                                 // Update stock
@@ -253,12 +262,20 @@ namespace Clinic_Management_System
 
             profit = charges + med_price;
             ttl_pres_charges += charges;
-
-            string pres_query = $"UPDATE prescription SET total_charge = {ttl_pres_charges} WHERE prescription_id = {prescription_id}";
-            dbclass.databaseoperations(pres_query);
-
-            string profitQuery = $"INSERT INTO profit (profit_date, amount) VALUES ('{DateTime.Now}', {profit})";
-            dbclass.databaseoperations(profitQuery);
+            string pres_query;
+            if (dialog == "Prescription")
+            {
+                pres_query = $"UPDATE prescription SET total_charge = {ttl_pres_charges} WHERE prescription_id = {prescription_id}";
+                dbclass.databaseoperations(pres_query);
+                string profitQuery = $"INSERT INTO profit (profit_date, amount) VALUES ('{DateTime.Now}', {profit})";
+                dbclass.databaseoperations(profitQuery);
+            }
+            else
+            {
+                pres_query = $"update ipd_table set total_pay=total_pay+{ttl_pres_charges} where patient_id={patient_id}";
+                dbclass.databaseoperations(pres_query);
+            }
+           
 
             MessageBox.Show("Medicine Added");
             this.Hide();
@@ -271,6 +288,16 @@ namespace Clinic_Management_System
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnSave_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_generate_Click(object sender, EventArgs e)
         {
 
         }

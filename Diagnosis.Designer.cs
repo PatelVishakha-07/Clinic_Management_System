@@ -29,25 +29,27 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            button1 = new Button();
             btnClear = new Button();
             btnSave = new Button();
-            txtcharge = new TextBox();
-            label4 = new Label();
             txttreat = new TextBox();
             label3 = new Label();
             txtdiag = new TextBox();
             label2 = new Label();
             label1 = new Label();
+            txtmedqty = new TextBox();
+            label10 = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.GradientInactiveCaption;
+            panel1.Controls.Add(txtmedqty);
+            panel1.Controls.Add(label10);
+            panel1.Controls.Add(button1);
             panel1.Controls.Add(btnClear);
             panel1.Controls.Add(btnSave);
-            panel1.Controls.Add(txtcharge);
-            panel1.Controls.Add(label4);
             panel1.Controls.Add(txttreat);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(txtdiag);
@@ -60,13 +62,27 @@
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
             // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            button1.BackColor = Color.LightSteelBlue;
+            button1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.ForeColor = Color.Black;
+            button1.Location = new Point(567, 626);
+            button1.Name = "button1";
+            button1.Size = new Size(179, 89);
+            button1.TabIndex = 61;
+            button1.Text = "Add Medicine";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // btnClear
             // 
             btnClear.Anchor = AnchorStyles.Bottom;
             btnClear.BackColor = Color.LightSteelBlue;
             btnClear.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnClear.ForeColor = Color.Black;
-            btnClear.Location = new Point(663, 534);
+            btnClear.Location = new Point(714, 414);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(179, 69);
             btnClear.TabIndex = 60;
@@ -80,35 +96,13 @@
             btnSave.BackColor = Color.LightSteelBlue;
             btnSave.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnSave.ForeColor = Color.Black;
-            btnSave.Location = new Point(411, 534);
+            btnSave.Location = new Point(413, 414);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(179, 69);
             btnSave.TabIndex = 59;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += btnSave_Click;
-            // 
-            // txtcharge
-            // 
-            txtcharge.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtcharge.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            txtcharge.Location = new Point(567, 371);
-            txtcharge.Name = "txtcharge";
-            txtcharge.Size = new Size(457, 41);
-            txtcharge.TabIndex = 58;
-            // 
-            // label4
-            // 
-            label4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label4.AutoSize = true;
-            label4.BackColor = Color.Transparent;
-            label4.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(316, 379);
-            label4.Name = "label4";
-            label4.Size = new Size(135, 33);
-            label4.TabIndex = 57;
-            label4.Text = "Charges:";
-            label4.Click += label4_Click;
             // 
             // txttreat
             // 
@@ -167,6 +161,27 @@
             label1.Text = "Diagnosis";
             label1.Click += label1_Click;
             // 
+            // txtmedqty
+            // 
+            txtmedqty.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtmedqty.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            txtmedqty.Location = new Point(567, 567);
+            txtmedqty.Name = "txtmedqty";
+            txtmedqty.Size = new Size(186, 41);
+            txtmedqty.TabIndex = 63;
+            // 
+            // label10
+            // 
+            label10.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label10.AutoSize = true;
+            label10.BackColor = Color.Transparent;
+            label10.Font = new Font("Cascadia Code", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label10.Location = new Point(467, 544);
+            label10.Name = "label10";
+            label10.Size = new Size(441, 20);
+            label10.TabIndex = 62;
+            label10.Text = "How many types of medicine you want to describe?";
+            // 
             // Diagnosis
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -188,9 +203,10 @@
         private TextBox txttreat;
         private Label label3;
         private TextBox txtdiag;
-        private TextBox txtcharge;
-        private Label label4;
         private Button btnClear;
         private Button btnSave;
+        private Button button1;
+        private TextBox txtmedqty;
+        private Label label10;
     }
 }

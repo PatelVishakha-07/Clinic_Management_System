@@ -158,7 +158,7 @@ namespace Clinic_Management_System
                     string query = $"select * from prescription where prescription_id={prescriptionId}";
                     DataSet currentprescription = dbclass.Getdata(query);
                     // Display prescription details
-                    currentY = DisplayData(currentprescription, panel1, currentY, "Prescription Details", excludeColumns: new[] { "patient_id", "prescription_id" });
+                    currentY = DisplayData(currentprescription, panel1, currentY, "Prescription Details", excludeColumns: new[] { "patient_id", "prescription_id","charges" });
 
                     // Fetch and display prescribed medicines for this prescription
                     string medicineQuery = $"select * from Prescribed_Medicine where prescription_id={prescriptionId}";

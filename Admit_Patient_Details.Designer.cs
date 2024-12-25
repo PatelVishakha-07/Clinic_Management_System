@@ -32,6 +32,7 @@
             btnprint = new Button();
             btn_add = new Button();
             label1 = new Label();
+            btn_discharge = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -39,6 +40,7 @@
             // 
             panel1.AutoScroll = true;
             panel1.BackColor = SystemColors.GradientInactiveCaption;
+            panel1.Controls.Add(btn_discharge);
             panel1.Controls.Add(btnprint);
             panel1.Controls.Add(btn_add);
             panel1.Controls.Add(label1);
@@ -52,7 +54,7 @@
             // 
             // btnprint
             // 
-            btnprint.Location = new Point(940, 198);
+            btnprint.Location = new Point(940, 269);
             btnprint.Margin = new Padding(2);
             btnprint.Name = "btnprint";
             btnprint.Size = new Size(108, 54);
@@ -63,12 +65,12 @@
             // 
             // btn_add
             // 
-            btn_add.Location = new Point(940, 102);
+            btn_add.Location = new Point(940, 192);
             btn_add.Margin = new Padding(2);
             btn_add.Name = "btn_add";
             btn_add.Size = new Size(108, 54);
             btn_add.TabIndex = 2;
-            btn_add.Text = "Add";
+            btn_add.Text = "Add Diagnosis";
             btn_add.UseVisualStyleBackColor = true;
             btn_add.Click += btn_add_Click;
             // 
@@ -82,6 +84,16 @@
             label1.Size = new Size(115, 41);
             label1.TabIndex = 1;
             label1.Text = "Details";
+            // 
+            // btn_discharge
+            // 
+            btn_discharge.Location = new Point(940, 115);
+            btn_discharge.Margin = new Padding(2);
+            btn_discharge.Name = "btn_discharge";
+            btn_discharge.Size = new Size(108, 54);
+            btn_discharge.TabIndex = 5;
+            btn_discharge.Text = "Discharge";
+            btn_discharge.UseVisualStyleBackColor = true;
             // 
             // Admit_Patient_Details
             // 
@@ -102,5 +114,6 @@
         private Button btnprint;
         private Button btn_add;
         private Label label1;
+        private Button btn_discharge;
     }
 }
