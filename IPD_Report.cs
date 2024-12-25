@@ -5,31 +5,28 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
-using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
-using Document = iTextSharp.text.Document;
 
 namespace Clinic_Management_System
 {
-    public partial class Report : Form
+    public partial class IPD_Report : Form
     {
         Panel printPanel;
         Button printButton;
         PrintDocument printDocument;
         int patientId;
         databaseclass dbclass = new databaseclass();
-        public Report(int patientId)
+
+        public IPD_Report(int pid)
         {
             InitializeComponent();
-            this.patientId = patientId;
+            this.patientId = pid;
 
             printPanel = new Panel
             {
-                Size = new Size(1064, 873),
+                Size = new Size(700, 835),
                 BackColor = Color.White,
                 Location = new Point(10, 10)
             };
@@ -45,7 +42,7 @@ namespace Clinic_Management_System
             printButton = new Button
             {
                 Text = "Print Report",
-                Location = new Point(950, 680)
+                Location = new Point(630, 810)
             };
             printButton.Click += PrintButton_Click;
 
@@ -53,75 +50,57 @@ namespace Clinic_Management_System
             printDocument.PrintPage += PrintDocument_PrintPage;
 
             Controls.Add(printPanel);
-            printPanel.Dock = DockStyle.Fill;
+            printPanel.Dock= DockStyle.Fill;
+            printPanel.AutoScroll = true;
             //printPanel.Dock = DockStyle.Fill;
             printPanel.Controls.Add(printButton);
 
-            Size = new Size(1082, 920);
-            Text = "Print Report Example";
+            Size = new Size(759, 835);
+            Text = "IPD Report";
         }
 
-        private void Report_Load(object sender, EventArgs e)
+        private void IPD_Report_Load(object sender, EventArgs e)
         {
-
-            // Fetch and display patient details
-            string patientQuery = $"select Distinct * from patients WHERE patient_id={patientId}";
+            string patientQuery = $"SELECT DISTINCT * FROM patients WHERE patient_id={patientId}";
             DataSet patientData = dbclass.Getdata(patientQuery);
             int currentY = 50;
             currentY = DisplayData(patientData, printPanel, currentY, "Patient Details", excludeColumns: new[] { "patient_id" });
 
-            // Fetch and display prescription details and their associated prescribed medicines immediately
-            string prescriptionQuery = $"select * from prescription where patient_id={patientId} order by prescription_date desc limit 1";
-            DataSet prescriptionData = dbclass.Getdata(prescriptionQuery);
+            // Fetch the latest IPD entry for the patient
+            string latestIpdQuery = $@"SELECT * FROM ipd_table WHERE patient_id={patientId} ORDER BY ipd_id DESC limit 1";
+            DataSet ipd = dbclass.Getdata(latestIpdQuery);
 
-            if (prescriptionData != null && prescriptionData.Tables[0].Rows.Count > 0)
+            if (ipd != null && ipd.Tables[0].Rows.Count > 0)
             {
-                // Display the latest prescription details
-                DataRow prescriptionRow = prescriptionData.Tables[0].Rows[0];
-                int prescriptionId = Convert.ToInt32(prescriptionRow["prescription_id"]);
+                DataRow latestIpdRow = ipd.Tables[0].Rows[0];
+                int ipd_id = Convert.ToInt32(latestIpdRow["ipd_id"]);
 
-                string query = $"select * from prescription where prescription_id={prescriptionId}";
-                DataSet currentprescription = dbclass.Getdata(query);
-                // Display prescription details
-                currentY = DisplayData(currentprescription, printPanel, currentY, "Prescription Details", excludeColumns: new[] { "patient_id", "prescription_id" });
+                // Fetch and display the treatments associated with the latest IPD entry
+                string treatmentQuery = $"SELECT * FROM ipd_treatment_table WHERE ipd_id={ipd_id}";
+                DataSet treatmentData = dbclass.Getdata(treatmentQuery);
 
-                // Fetch and display prescribed medicines for this latest prescription
-                string medicineQuery = $"select * from Prescribed_Medicine where prescription_id={prescriptionId}";
-                DataSet medicineData = dbclass.Getdata(medicineQuery);
-
-                // Display the medicines immediately below the current prescription
-                currentY = DisplayData(medicineData, printPanel, currentY + 50, "Prescribed Medicine Details", excludeColumns: new[] { "pres_med_id", "prescription_id" });
-                currentY += 20; // Adjust for next prescription and medicine set
+                // Include "treatment_id" in the excludeColumns array
+                currentY = DisplayData(treatmentData, printPanel, currentY, "Latest Prescription Details", excludeColumns: new[] { "treatment_id", "patient_id", "prescription_id" });
             }
             else
             {
-                // Handle case where no prescriptions are found
+                // Handle case where no IPD records are found
                 Label noDataLabel = new Label()
                 {
-                    Text = "No prescriptions available.",
+                    Text = "No IPD records available.",
                     Location = new Point(40, currentY),
                     AutoSize = true,
-                    Font = new System.Drawing.Font("Arial", 12, FontStyle.Italic),
+                    Font = new Font("Arial", 12, FontStyle.Italic),
                     ForeColor = Color.Gray
                 };
                 printPanel.Controls.Add(noDataLabel);
                 currentY += 35; // Adjust for next section
             }
+
         }
 
         private void PrintButton_Click(object sender, EventArgs e)
-        {
-            // Trigger the print dialog
-            /* PrintDialog printDialog = new PrintDialog
-             {
-                 Document = printDocument
-             };
-
-             if (printDialog.ShowDialog() == DialogResult.OK)
-             {
-                 printDocument.Print();
-             }   */
-
+        {           
             try
             {
                 printDocument.Print(); // This sends the content to the default printer
@@ -130,7 +109,6 @@ namespace Clinic_Management_System
             {
                 MessageBox.Show($"An error occurred while printing: {ex.Message}", "Print Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
@@ -143,37 +121,11 @@ namespace Clinic_Management_System
             e.Graphics.DrawImage(bitmap, 0, 0);
         }
 
-        private string TranslateUsageToBars(string usage)
-        {
-            switch (usage.ToUpper())
-            {
-                case "OD":
-                    return "| ";  // Once a day
-                case "BD":
-                    return "| |"; // Twice a day
-                case "TD":
-                    return "| | |"; // Thrice a day
-                case "QD":
-                    return "| | | |"; // Four times a day
-                default:
-                    return usage; // If no match, return original value
-            }
-        }
-
         private int DisplayData(DataSet ds, Panel panel1, int startY, string sectionTitle, string[] excludeColumns = null)
         {
             int labelSpacing = 35;
             int keyValueSpacing = 250;
 
-            Label titleLabel = new Label()
-            {
-                Text = sectionTitle,
-                Location = new Point(40, startY),
-                AutoSize = true,
-                Font = new System.Drawing.Font("Arial", 16, FontStyle.Bold),
-                ForeColor = Color.DimGray,
-            };
-            panel1.Controls.Add(titleLabel);
             startY += 40;
 
             if (ds != null && ds.Tables[0].Rows.Count > 0)
@@ -188,18 +140,12 @@ namespace Clinic_Management_System
                         string columnName = col.ColumnName.ToUpper();
                         string columnValue = row[col].ToString();
 
-                        // Check for the "usage" column and translate values
-                        if (col.ColumnName.Equals("usage", StringComparison.OrdinalIgnoreCase))
-                        {
-                            columnValue = TranslateUsageToBars(columnValue);
-                        }
-
                         Label keyLabel = new Label()
                         {
                             Text = $"{columnName}:",
                             Location = new Point(40, startY),
                             AutoSize = true,
-                            Font = new System.Drawing.Font("Arial", 12, FontStyle.Bold)
+                            Font = new Font("Arial", 12, FontStyle.Bold)
                         };
 
                         Label valueLabel = new Label()
@@ -207,14 +153,17 @@ namespace Clinic_Management_System
                             Text = columnValue,
                             Location = new Point(40 + keyValueSpacing, startY),
                             AutoSize = true,
-                            Font = new System.Drawing.Font("Arial", 12, FontStyle.Regular)
+                            Font = new Font("Arial", 12, FontStyle.Regular)
                         };
 
-                        printPanel.Controls.Add(keyLabel);
-                        printPanel.Controls.Add(valueLabel);
+                        panel1.Controls.Add(keyLabel);
+                        panel1.Controls.Add(valueLabel);
 
                         startY += labelSpacing;
                     }
+
+                    // Add extra space after each treatment's data
+                    startY += 20; // Additional spacing
                 }
             }
             else
@@ -224,19 +173,14 @@ namespace Clinic_Management_System
                     Text = "No data available.",
                     Location = new Point(40, startY),
                     AutoSize = true,
-                    Font = new System.Drawing.Font("Arial", 12, FontStyle.Italic),
+                    Font = new Font("Arial", 12, FontStyle.Italic),
                     ForeColor = Color.Gray
                 };
-                printPanel.Controls.Add(noDataLabel);
+                panel1.Controls.Add(noDataLabel);
                 startY += labelSpacing;
             }
-
             return startY;
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

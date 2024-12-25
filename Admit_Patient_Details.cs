@@ -120,14 +120,7 @@ namespace Clinic_Management_System
                     string query = $"select * from ipd_treatment_table where ipd_id={ipd_id}";
                     DataSet currentprescription = dbclass.Getdata(query);
                     // Display prescription details
-                    currentY = DisplayData(currentprescription, panel1, currentY, "Prescription Details", excludeColumns: new[] { "patient_id", "prescription_id" });
-
-                    // Fetch and display prescribed medicines for this prescription
-                    string medicineQuery = $"select * from ipd_treatment_table where ipd_id= {ipd_id}";
-                    DataSet medicineData = dbclass.Getdata(medicineQuery);
-
-                    // Display the medicines immediately below the current prescription
-                    currentY = DisplayData(medicineData, panel1, currentY + 50, "Prescribed Medicine Details", excludeColumns: new[] { "pres_med_id", "prescription_id" });
+                    currentY = DisplayData(currentprescription, panel1, currentY, "Prescription Details", excludeColumns: new[] { "patient_id", "prescription_id" });                    
                     currentY += 20; // Adjust for next prescription and medicine set
                 }
             }
@@ -149,7 +142,7 @@ namespace Clinic_Management_System
 
         private void btnprint_Click(object sender, EventArgs e)
         {
-            Report report = new Report(patientId);
+            IPD_Report report = new IPD_Report(patientId);
             report.ShowDialog();
 
         }
