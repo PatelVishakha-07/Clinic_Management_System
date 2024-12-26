@@ -46,7 +46,7 @@
             label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            label1.Location = new Point(300, 36);
+            label1.Location = new Point(289, 36);
             label1.Name = "label1";
             label1.Size = new Size(439, 41);
             label1.TabIndex = 4;
@@ -58,19 +58,21 @@
             txtSearch.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             txtSearch.Location = new Point(125, 145);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(769, 41);
+            txtSearch.Size = new Size(748, 41);
             txtSearch.TabIndex = 7;
+            txtSearch.TextChanged += txtSearch_TextChanged;
             // 
             // btnSearch
             // 
             btnSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnSearch.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            btnSearch.Location = new Point(940, 145);
+            btnSearch.Location = new Point(919, 145);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(124, 41);
             btnSearch.TabIndex = 8;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
             // 
             // dataGridView1
             // 
@@ -89,7 +91,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(778, 457);
+            dataGridView1.Size = new Size(757, 457);
             dataGridView1.TabIndex = 9;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -139,8 +141,9 @@
             Controls.Add(btnSearch);
             Controls.Add(txtSearch);
             Controls.Add(label1);
-            Name = "Discharged";
-            Size = new Size(1100, 763);
+          //  Name = "Discharged";
+            Size = new Size(1079, 763);
+            Load += Discharged_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();

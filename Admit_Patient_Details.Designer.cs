@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            btn_discharge = new Button();
             btnprint = new Button();
             btn_add = new Button();
             label1 = new Label();
-            btn_discharge = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -51,6 +51,17 @@
             panel1.Size = new Size(1100, 763);
             panel1.TabIndex = 1;
             panel1.Paint += panel1_Paint;
+            // 
+            // btn_discharge
+            // 
+            btn_discharge.Location = new Point(940, 115);
+            btn_discharge.Margin = new Padding(2);
+            btn_discharge.Name = "btn_discharge";
+            btn_discharge.Size = new Size(108, 54);
+            btn_discharge.TabIndex = 5;
+            btn_discharge.Text = "Discharge";
+            btn_discharge.UseVisualStyleBackColor = true;
+            btn_discharge.Click += btn_discharge_Click;
             // 
             // btnprint
             // 
@@ -84,16 +95,6 @@
             label1.Size = new Size(115, 41);
             label1.TabIndex = 1;
             label1.Text = "Details";
-            // 
-            // btn_discharge
-            // 
-            btn_discharge.Location = new Point(940, 115);
-            btn_discharge.Margin = new Padding(2);
-            btn_discharge.Name = "btn_discharge";
-            btn_discharge.Size = new Size(108, 54);
-            btn_discharge.TabIndex = 5;
-            btn_discharge.Text = "Discharge";
-            btn_discharge.UseVisualStyleBackColor = true;
             // 
             // Admit_Patient_Details
             // 

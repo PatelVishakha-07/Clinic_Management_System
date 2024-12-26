@@ -8,12 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Clinic_Management_System
 {
     public partial class Admit_Patient_Details : UserControl
     {
-        int patientId;
+        int patientId,amount;
         databaseclass dbclass = new databaseclass();
 
         public Admit_Patient_Details()
@@ -199,5 +200,110 @@ namespace Clinic_Management_System
         {
 
         }
+
+        public void Getcharge(int amount)
+        {
+            this.amount = amount;
+        }
+
+        private void btn_discharge_Click(object sender, EventArgs e)
+        {
+            try
+            {
+              
+                Discharge_Charge dischargeForm = new Discharge_Charge();
+                dischargeForm.AmountConfirmed += (confirmedAmount) =>
+                {
+                  
+                    this.amount = confirmedAmount;
+                    string updatepay=$"UPDATE ipd_table SET total_pay = COALESCE(total_pay, 0) + {amount} WHERE patient_id = {patientId}; ";
+                    dbclass.databaseoperations(updatepay);
+                    ExecuteDischargeProcess();
+                };
+                dischargeForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+        }
+
+        private void ExecuteDischargeProcess()
+        {
+            try
+            {
+                // Fetch IPD record
+                string ipdQuery = $"SELECT * FROM ipd_table WHERE patient_id={patientId}";
+                DataSet ipdData = dbclass.Getdata(ipdQuery);
+
+                if (ipdData != null && ipdData.Tables[0].Rows.Count > 0)
+                {
+                    DataRow ipdRow = ipdData.Tables[0].Rows[0];
+
+                    // Insert into discharged table
+                    string insertDischargedQuery = $"INSERT INTO discharged (bed_number, admit_date, total_pay, patient_id) " +
+                                                   $"VALUES ({ipdRow["bed_number"]}, '{ipdRow["admit_date"]}', {amount}, {ipdRow["patient_id"]}) " +
+                                                   $"RETURNING discharge_id";
+                    DataSet dischargeResult = dbclass.Getdata(insertDischargedQuery);
+                    int dischargeId = Convert.ToInt32(dischargeResult.Tables[0].Rows[0]["discharge_id"]);
+
+                    // Fetch and move treatments
+                    string treatmentQuery = $"SELECT * FROM ipd_treatment_table WHERE ipd_id={ipdRow["ipd_id"]}";
+                    DataSet treatmentData = dbclass.Getdata(treatmentQuery);
+
+                    if (treatmentData != null && treatmentData.Tables[0].Rows.Count > 0)
+                    {
+                        foreach (DataRow treatmentRow in treatmentData.Tables[0].Rows)
+                        {
+                            // Insert into discharge_treatment_table
+                            string insertTreatmentQuery = $"INSERT INTO discharge_treatment_table (diagnosis, treatment, treatment_date, discharge_id) " +
+                                                          $"VALUES ('{treatmentRow["diagnosis"]}', '{treatmentRow["treatment"]}', '{treatmentRow["treatment_date"]}', {dischargeId})";
+                            dbclass.databaseoperations(insertTreatmentQuery);
+
+                            // Fetch and move prescribed medicines
+                            string medicineQuery = $"SELECT * FROM ipd_prescribed_medicine WHERE treatment_id={treatmentRow["treatment_id"]}";
+                            DataSet medicineData = dbclass.Getdata(medicineQuery);
+
+                            if (medicineData != null && medicineData.Tables[0].Rows.Count > 0)
+                            {
+                                foreach (DataRow medicineRow in medicineData.Tables[0].Rows)
+                                {
+                                    string insertMedicineQuery = $"INSERT INTO discharge_prescribed_medicine (medicine_name, quantity, usage, discharge_treatment_id) " +
+                                                                  $"VALUES ('{medicineRow["medicine_name"]}', '{medicineRow["quantity"]}', '{medicineRow["usage"]}', {dischargeId})";
+                                    dbclass.databaseoperations(insertMedicineQuery);
+                                }
+                            }
+
+                            // Delete from ipd_prescribed_medicine
+                            string deleteMedicineQuery = $"DELETE FROM ipd_prescribed_medicine WHERE treatment_id={treatmentRow["treatment_id"]}";
+                            dbclass.databaseoperations(deleteMedicineQuery);
+                        }
+                    }
+
+                    // Delete from ipd_treatment_table
+                    string deleteTreatmentQuery = $"DELETE FROM ipd_treatment_table WHERE ipd_id={ipdRow["ipd_id"]}";
+                    dbclass.databaseoperations(deleteTreatmentQuery);
+
+                    // Delete from ipd_table
+                    string deleteIpdQuery = $"DELETE FROM ipd_table WHERE ipd_id={ipdRow["ipd_id"]}";
+                    dbclass.databaseoperations(deleteIpdQuery);
+
+                    MessageBox.Show("Patient discharged successfully!");
+                    Discharged discharged = new Discharged();
+                    AdmittedPatients patients = this.FindForm() as AdmittedPatients;
+                    patients.ShowContent(discharged);
+                }
+                else
+                {
+                    MessageBox.Show("No IPD records found for the patient.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+        }
+
+
     }
 }
