@@ -24,7 +24,13 @@ namespace Clinic_Management_System
 
         private void OutputCertificate_Load(object sender, EventArgs e)
         {
-            label1.Text = $"This is to Certify {name} is/was under my treatment for {disease} from {fromDate} to {toDate}." +
+            string dateTimePart = DateTime.Now.ToString("yyyyMMddHHmmss"); // Current date and time
+            string randomPart = new Random().Next(1000, 9999).ToString();
+
+            lblNo.Text = "Certificate No. : " + dateTimePart + randomPart;
+            label1.Text = $"This is to Certify that {name} \n\n" +
+                $"is/was under my treatment for {disease} \n\n" +
+                $"from {fromDate} to {toDate}.\n\n" +
                 $"He/She is fully fit to resume duty";
         }
     }

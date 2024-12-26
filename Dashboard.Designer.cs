@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             PanelDashboard = new Panel();
+            panel6 = new Panel();
+            btnCertificate = new Button();
             panel1 = new Panel();
             btnIncome = new Button();
             panel5 = new Panel();
@@ -42,9 +44,10 @@
             btnPatients = new Button();
             panel2 = new Panel();
             pictureBox4 = new PictureBox();
-            panel6 = new Panel();
-            btnCertificate = new Button();
+            pictureBox5 = new PictureBox();
+            pictureBox6 = new PictureBox();
             PanelDashboard.SuspendLayout();
+            panel6.SuspendLayout();
             panel1.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -54,7 +57,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             SuspendLayout();
             // 
             // PanelDashboard
@@ -72,8 +76,36 @@
             PanelDashboard.Size = new Size(241, 864);
             PanelDashboard.TabIndex = 0;
             // 
+            // panel6
+            // 
+            panel6.Controls.Add(pictureBox6);
+            panel6.Controls.Add(btnCertificate);
+            panel6.Dock = DockStyle.Top;
+            panel6.Location = new Point(0, 570);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(241, 100);
+            panel6.TabIndex = 4;
+            // 
+            // btnCertificate
+            // 
+            btnCertificate.BackgroundImageLayout = ImageLayout.Zoom;
+            btnCertificate.FlatStyle = FlatStyle.Popup;
+            btnCertificate.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCertificate.ForeColor = Color.White;
+            btnCertificate.ImageAlign = ContentAlignment.TopLeft;
+            btnCertificate.Location = new Point(12, 22);
+            btnCertificate.Name = "btnCertificate";
+            btnCertificate.Padding = new Padding(2, 0, 0, 0);
+            btnCertificate.Size = new Size(202, 55);
+            btnCertificate.TabIndex = 1;
+            btnCertificate.Text = "Certificate";
+            btnCertificate.TextAlign = ContentAlignment.MiddleRight;
+            btnCertificate.UseVisualStyleBackColor = true;
+            btnCertificate.Click += btnCertificate_Click;
+            // 
             // panel1
             // 
+            panel1.Controls.Add(pictureBox5);
             panel1.Controls.Add(btnIncome);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 470);
@@ -228,31 +260,25 @@
             pictureBox4.TabIndex = 0;
             pictureBox4.TabStop = false;
             // 
-            // panel6
+            // pictureBox5
             // 
-            panel6.Controls.Add(btnCertificate);
-            panel6.Dock = DockStyle.Top;
-            panel6.Location = new Point(0, 570);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(241, 100);
-            panel6.TabIndex = 4;
+            pictureBox5.Image = Properties.Resources.income;
+            pictureBox5.Location = new Point(12, 22);
+            pictureBox5.Name = "pictureBox5";
+            pictureBox5.Size = new Size(56, 56);
+            pictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox5.TabIndex = 5;
+            pictureBox5.TabStop = false;
             // 
-            // btnCertificate
+            // pictureBox6
             // 
-            btnCertificate.BackgroundImageLayout = ImageLayout.Zoom;
-            btnCertificate.FlatStyle = FlatStyle.Popup;
-            btnCertificate.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCertificate.ForeColor = Color.White;
-            btnCertificate.ImageAlign = ContentAlignment.TopLeft;
-            btnCertificate.Location = new Point(12, 22);
-            btnCertificate.Name = "btnCertificate";
-            btnCertificate.Padding = new Padding(2, 0, 0, 0);
-            btnCertificate.Size = new Size(202, 55);
-            btnCertificate.TabIndex = 1;
-            btnCertificate.Text = "Certificate";
-            btnCertificate.TextAlign = ContentAlignment.MiddleRight;
-            btnCertificate.UseVisualStyleBackColor = true;
-            btnCertificate.Click += btnCertificate_Click;
+            pictureBox6.Image = Properties.Resources.gym;
+            pictureBox6.Location = new Point(12, 21);
+            pictureBox6.Name = "pictureBox6";
+            pictureBox6.Size = new Size(56, 56);
+            pictureBox6.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox6.TabIndex = 5;
+            pictureBox6.TabStop = false;
             // 
             // Dashboard
             // 
@@ -264,6 +290,7 @@
             Size = new Size(1536, 864);
             Load += Dashboard_Load;
             PanelDashboard.ResumeLayout(false);
+            panel6.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -273,7 +300,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             ResumeLayout(false);
         }
 
@@ -295,5 +323,7 @@
         private Button btnIncome;
         private Panel panel6;
         private Button btnCertificate;
+        private PictureBox pictureBox6;
+        private PictureBox pictureBox5;
     }
 }
