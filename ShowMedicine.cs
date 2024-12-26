@@ -13,10 +13,11 @@ namespace Clinic_Management_System
     public partial class ShowMedicine : UserControl
     {
         databaseclass dbClass = new databaseclass();
-        public ShowMedicine()
+        string str;
+        public ShowMedicine(string s)
         {
             InitializeComponent();
-
+            str = s;
         }
 
 
@@ -34,15 +35,9 @@ namespace Clinic_Management_System
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
+        private void textBox1_TextChanged(object sender, EventArgs e)        {}
 
-        }
-
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)        {}
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -107,7 +102,7 @@ namespace Clinic_Management_System
                     medicinegrid.Columns.Add(idColumn);
                 }
 
-                if (!medicinegrid.Columns.Contains("updateLink"))
+                if (!medicinegrid.Columns.Contains("updateLink") && str=="Doctor")
                 {
                     DataGridViewLinkColumn updateLink = new DataGridViewLinkColumn
                     {
@@ -142,7 +137,7 @@ namespace Clinic_Management_System
                 Medicine medicine = this.FindForm() as Medicine;
                 updateMedicine.UpdateCompleted += (sender, e) =>
                 {
-                    medicine.ShowControl(new ShowMedicine());
+                    medicine.ShowControl(new ShowMedicine("Doctor"));
                 };
                 medicine.ShowControl(updateMedicine);
             }

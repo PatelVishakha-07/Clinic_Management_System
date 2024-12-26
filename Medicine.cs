@@ -23,7 +23,7 @@ namespace Clinic_Management_System
 
         private void Medicine_Load(object sender, EventArgs e)
         {
-            ShowControl(new ShowMedicine());
+            ShowControl(new ShowMedicine("Doctor"));
 
         }
 
@@ -54,7 +54,7 @@ namespace Clinic_Management_System
 
         private void showMedicinesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ShowControl(new ShowMedicine());
+            ShowControl(new ShowMedicine("Doctor"));
         }
 
         private void addMedicineToolStripMenuItem_Click(object sender, EventArgs e)

@@ -97,7 +97,6 @@ namespace Clinic_Management_System
             txtAge.Text = string.Empty;
             txtContact.Text = string.Empty;
             txtName.Text = string.Empty;
-            //comboBox1.Text = string.Empty;
             comboBox1.SelectedItem = "Male";
         }
 

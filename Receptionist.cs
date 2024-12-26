@@ -40,7 +40,7 @@ namespace Clinic_Management_System
 
         private void btnMedicine_Click(object sender, EventArgs e)
         {
-            ShowControl(new ShowMedicine());
+            ShowControl(new ShowMedicine("Receptionist"));
         }
 
         private void btnInHouse_Click(object sender, EventArgs e)

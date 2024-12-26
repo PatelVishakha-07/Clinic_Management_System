@@ -52,6 +52,7 @@
             pictureBox1 = new PictureBox();
             label2 = new Label();
             label1 = new Label();
+            listBox1 = new ListBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -60,6 +61,7 @@
             // 
             panel1.BackColor = SystemColors.GradientActiveCaption;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(listBox1);
             panel1.Controls.Add(lblSell);
             panel1.Controls.Add(txtSell);
             panel1.Controls.Add(label10);
@@ -319,6 +321,7 @@
             txtName.Name = "txtName";
             txtName.Size = new Size(457, 41);
             txtName.TabIndex = 3;
+            txtName.TextChanged += txtName_TextChanged;
             // 
             // pictureBox1
             // 
@@ -355,6 +358,17 @@
             label1.TabIndex = 0;
             label1.Text = "Add Medicine";
             label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // listBox1
+            // 
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 20;
+            listBox1.Location = new Point(620, 184);
+            listBox1.Margin = new Padding(2);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(457, 104);
+            listBox1.TabIndex = 37;
+            listBox1.Visible = false;
             // 
             // AddMedicine
             // 
@@ -396,5 +410,6 @@
         private Label lblSell;
         private TextBox txtSell;
         private Label label10;
+        private ListBox listBox1;
     }
 }
