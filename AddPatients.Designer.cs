@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            listBox1 = new ListBox();
             lblall = new Label();
             lblage = new Label();
             lbladd = new Label();
@@ -57,7 +56,6 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.InactiveCaption;
-            panel1.Controls.Add(listBox1);
             panel1.Controls.Add(lblall);
             panel1.Controls.Add(lblage);
             panel1.Controls.Add(lbladd);
@@ -83,18 +81,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1100, 763);
             panel1.TabIndex = 0;
-            // 
-            // listBox1
-            // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 20;
-            listBox1.Location = new Point(614, 182);
-            listBox1.Margin = new Padding(2);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(457, 104);
-            listBox1.TabIndex = 36;
-            listBox1.Visible = false;
-            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // lblall
             // 
@@ -277,7 +263,7 @@
             txtName.Name = "txtName";
             txtName.Size = new Size(457, 41);
             txtName.TabIndex = 16;
-            txtName.TextChanged += txtName_TextChanged;
+//            txtName.TextChanged += txtName_TextChanged;
             // 
             // pictureBox1
             // 
@@ -353,6 +339,5 @@
         private Label lbladd;
         private Label lblall;
         private ComboBox comboBox1;
-        private ListBox listBox1;
     }
 }

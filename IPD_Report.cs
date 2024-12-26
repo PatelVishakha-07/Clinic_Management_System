@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Clinic_Management_System.AddMedicine;
 
 namespace Clinic_Management_System
 {
@@ -16,7 +17,7 @@ namespace Clinic_Management_System
         Panel printPanel;
         Button printButton;
         PrintDocument printDocument;
-        int patientId;
+        int patientId,ipd_id;
         databaseclass dbclass = new databaseclass();
 
         public IPD_Report(int pid)
@@ -73,14 +74,39 @@ namespace Clinic_Management_System
             if (ipd != null && ipd.Tables[0].Rows.Count > 0)
             {
                 DataRow latestIpdRow = ipd.Tables[0].Rows[0];
-                int ipd_id = Convert.ToInt32(latestIpdRow["ipd_id"]);
+                 ipd_id = Convert.ToInt32(latestIpdRow["ipd_id"]);
 
                 // Fetch and display the treatments associated with the latest IPD entry
-                string treatmentQuery = $"SELECT * FROM ipd_treatment_table WHERE ipd_id={ipd_id}";
+                string treatmentQuery = $"SELECT diagnosis,treatment,treatment_date FROM ipd_treatment_table WHERE ipd_id={ipd_id}";
                 DataSet treatmentData = dbclass.Getdata(treatmentQuery);
 
+                DataGridView gridView = new DataGridView
+                {
+                    DataSource = treatmentData.Tables[0],
+                    AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill, // Adjusts column width to fit panel
+                    AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells,   // Adjusts row height for wrapped text
+                    Location = new Point(10, currentY),
+                    Size = new Size(printPanel.Width - 40, 400),
+                    AllowUserToAddRows = false,
+                    ReadOnly = true,
+                    ColumnHeadersDefaultCellStyle = new DataGridViewCellStyle
+                    {
+                        Font = new System.Drawing.Font("Arial", 12, FontStyle.Bold),
+                        ForeColor = Color.Black,
+                        BackColor = Color.LightGray
+                    },
+                    DefaultCellStyle = new DataGridViewCellStyle
+                    {
+                        Font = new System.Drawing.Font("Arial", 12, FontStyle.Regular),
+                        ForeColor = Color.Black,
+                        BackColor = Color.White,
+                        WrapMode = DataGridViewTriState.True // Enables text wrapping in cells
+                    }
+                };
+                printPanel.Controls.Add(gridView);
+                currentY += gridView.Height + 20;
                 // Include "treatment_id" in the excludeColumns array
-                currentY = DisplayData(treatmentData, printPanel, currentY, "Latest Prescription Details", excludeColumns: new[] { "treatment_id", "patient_id", "prescription_id" });
+                //  currentY = DisplayData(treatmentData, printPanel, currentY, "Latest Prescription Details", excludeColumns: new[] { "treatment_id", "patient_id", "prescription_id" });
             }
             else
             {
@@ -104,6 +130,9 @@ namespace Clinic_Management_System
             try
             {
                 printDocument.Print(); // This sends the content to the default printer
+                ipd_medicine_report report = new ipd_medicine_report(ipd_id);
+                this.Hide();
+                report.ShowDialog();
             }
             catch (Exception ex)
             {

@@ -29,7 +29,7 @@ namespace Clinic_Management_System
         {
             InitializeComponent();
             changingname = "";
-            txtName.TextChanged += txtName_TextChanged;
+           // txtName.TextChanged += txtName_TextChanged;
         }
 
         private void AddPatients_Load(object sender, EventArgs e)
@@ -100,48 +100,7 @@ namespace Clinic_Management_System
             comboBox1.SelectedItem = "Male";
         }
 
-        private void txtName_TextChanged(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(txtName.Text))
-            {
-                if (listBox1.Visible == false)
-                {
-                    listBox1.Visible = true;
-                }
-
-                changingname = txtName.Text;
-                string query = "select name from Patients where name like @value";
-                NpgsqlConnection conn = new NpgsqlConnection("Host=localhost;Port=5432;Username=postgres;Password=2002;Database=Clinic_Management;");
-                conn.Open();
-                NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(query, conn);
-                adapter.SelectCommand.Parameters.AddWithValue("@value", "%" + changingname + "%");
-                DataSet ds = new DataSet();
-                adapter.Fill(ds);
-                listBox1.Items.Clear();
-                if (ds.Tables[0].Rows.Count > 0)
-                {
-                    foreach (DataRow row in ds.Tables[0].Rows)
-                    {
-                        listBox1.Items.Add(row["name"]);
-                    }
-                }
-                else
-                {
-                    listBox1.Visible = false;
-                }
-
-            }
-            else
-            {
-                listBox1.Visible = false;
-            }
-
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txtName.Text = listBox1.SelectedItem.ToString();
-        }
+      
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {

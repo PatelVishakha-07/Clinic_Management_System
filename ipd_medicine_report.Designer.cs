@@ -1,6 +1,6 @@
 ﻿namespace Clinic_Management_System
 {
-    partial class IPD_Report
+    partial class ipd_medicine_report
     {
         /// <summary>
         /// Required designer variable.
@@ -30,15 +30,14 @@
         {
             SuspendLayout();
             // 
-            // IPD_Report
+            // ipd_medicine_report
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            AutoScroll = true;
-            ClientSize = new Size(1064, 873);
-            Name = "IPD_Report";
-            StartPosition = FormStartPosition.CenterScreen;
-            Load += IPD_Report_Load;
+            ClientSize = new Size(641, 788);
+            Name = "ipd_medicine_report";
+            Text = "ipd_medicine_report";
+            Load += ipd_medicine_report_Load;
             ResumeLayout(false);
         }
 

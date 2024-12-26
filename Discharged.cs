@@ -23,7 +23,7 @@ namespace Clinic_Management_System
         private void LoadGridView()
         {
             string query = @"
-                SELECT ipd.discharge_id, ipd.bed_number, ipd.patient_id, p.name, p.contact_no 
+                SELECT ipd.discharge_id, ipd.bed_number, ipd.admit_date,ipd.discharge_date,ipd.patient_id, p.name, p.contact_no 
                 FROM discharged ipd 
                 JOIN patients p ON ipd.patient_id = p.patient_id";
 
@@ -48,7 +48,8 @@ namespace Clinic_Management_System
             dataGridView1.Columns["Name"].DataPropertyName = "name";
             dataGridView1.Columns["Contact_No"].DataPropertyName = "contact_no";
             dataGridView1.Columns["Patient_id"].DataPropertyName = "patient_id";
-
+            dataGridView1.Columns["Admit_Date"].DataPropertyName = "admit_date";
+            dataGridView1.Columns["Discharge_Date"].DataPropertyName = "discharge_date";
             dataGridView1.DataSource = ds.Tables[0];
         }
 
@@ -61,7 +62,7 @@ namespace Clinic_Management_System
             if (!string.IsNullOrEmpty(value))
             {
                 query = $@"
-                    SELECT ipd.discharge_id, ipd.bed_number, ipd.patient_id, p.name, p.contact_no 
+                    SELECT ipd.discharge_id, ipd.bed_number,ipd.admit_date,ipd.discharge_date, ipd.patient_id, p.name, p.contact_no 
                     FROM discharged ipd 
                     JOIN patients p ON ipd.patient_id = p.patient_id 
                     WHERE ipd.bed_number::TEXT LIKE '%{value}%' 
@@ -71,7 +72,7 @@ namespace Clinic_Management_System
             else
             {
                 query = @"
-                    SELECT ipd.discharge_id, ipd.bed_number, ipd.patient_id, p.name, p.contact_no 
+                    SELECT ipd.discharge_id, ipd.bed_number,ipd.admit_date,ipd.discharge_date, ipd.patient_id, p.name, p.contact_no 
                     FROM discharged ipd 
                     JOIN patients p ON ipd.patient_id = p.patient_id";
             }
