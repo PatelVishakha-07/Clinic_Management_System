@@ -34,14 +34,6 @@ namespace Clinic_Management_System
                 Location = new Point(10, 10)
             };
 
-            Label label = new Label
-            {
-                Text = "Dhanvantari Clinic",
-                AutoSize = true,
-                Location = new Point(10, 10)
-            };
-
-            printPanel.Controls.Add(label);
             printButton = new Button
             {
                 Text = "Print Report",
@@ -63,52 +55,149 @@ namespace Clinic_Management_System
 
         private void Report_Load(object sender, EventArgs e)
         {
+            int currentY = 20;
 
-            // Fetch and display patient details
-            string patientQuery = $"select Distinct * from patients WHERE patient_id={patientId}";
+            // Clinic Title
+            Label clinicLabel = new Label
+            {
+                Text = "Dhanvantari Clinic",
+                Font = new System.Drawing.Font("Arial", 20, FontStyle.Bold),
+                ForeColor = Color.DarkBlue,
+                AutoSize = true,
+                Location = new Point(40, currentY)
+            };
+            printPanel.Controls.Add(clinicLabel);
+            currentY += 50;
+            int  currentY1=currentY;
+            // Fetch patient details
+            string patientQuery = $"SELECT * FROM patients WHERE patient_id={patientId}";
             DataSet patientData = dbclass.Getdata(patientQuery);
-            int currentY = 50;
-            currentY = DisplayData(patientData, printPanel, currentY, "Patient Details", excludeColumns: new[] { "patient_id" });
 
-            // Fetch and display prescription details and their associated prescribed medicines immediately
-            string prescriptionQuery = $"select * from prescription where patient_id={patientId} order by prescription_date desc limit 1";
+            if (patientData != null && patientData.Tables[0].Rows.Count > 0)
+            {
+                DataRow patientRow = patientData.Tables[0].Rows[0];
+
+                // Display patient details as labels
+                AddLabel($"Patient Name: {patientRow["name"]}", ref currentY);
+                AddLabel($"Age: {patientRow["age"]}   Gender: {patientRow["gender"]}", ref currentY);
+                AddLabel($"Contact: {patientRow["contact_no"]}", ref currentY);
+                AddLabel($"Address: {patientRow["address"]}", ref currentY);
+                currentY += 20; // Extra space
+            }
+
+            // Fetch prescription details
+            string prescriptionQuery = $"SELECT * FROM prescription WHERE patient_id={patientId} ORDER BY prescription_date DESC LIMIT 1";
             DataSet prescriptionData = dbclass.Getdata(prescriptionQuery);
 
             if (prescriptionData != null && prescriptionData.Tables[0].Rows.Count > 0)
             {
-                // Display the latest prescription details
                 DataRow prescriptionRow = prescriptionData.Tables[0].Rows[0];
-                int prescriptionId = Convert.ToInt32(prescriptionRow["prescription_id"]);
 
-                string query = $"select * from prescription where prescription_id={prescriptionId}";
-                DataSet currentprescription = dbclass.Getdata(query);
-                // Display prescription details
-                currentY = DisplayData(currentprescription, printPanel, currentY, "Prescription Details", excludeColumns: new[] { "patient_id", "prescription_id" });
+                // Display prescription details as labels
+              //  AddLabel($"Prescription ID: {prescriptionRow["prescription_id"]}", ref currentY);
+                AddLabel1($"Date: {Convert.ToDateTime(prescriptionRow["prescription_date"]).ToString("dd/MM/yyyy HH:mm")}", ref currentY1);
+                AddLabel1($"Disease: {prescriptionRow["disease"]}", ref currentY1);
+                AddLabel1($"Prescription: {prescriptionRow["prescription"]}", ref currentY1);
+               // AddLabel($"Charges: Rs. {prescriptionRow["charges"]}", ref currentY);
+                AddLabel1($"Total Charge: Rs. {prescriptionRow["total_charge"]}", ref currentY1);
+                currentY += 20; // Extra space
 
-                // Fetch and display prescribed medicines for this latest prescription
-                string medicineQuery = $"select * from Prescribed_Medicine where prescription_id={prescriptionId}";
+                // Fetch prescribed medicines in DataGridView format
+                //string medicineQuery = $"SELECT medicine_name AS 'Medicine', dosage AS 'Dosage', frequency AS 'Frequency', duration AS 'Duration' FROM Prescribed_Medicine WHERE prescription_id={prescriptionRow["prescription_id"]}";
+                string medicineQuery = $"select medicine_name,quantity,usage from prescribed_medicine where prescription_id={prescriptionRow["prescription_id"]}";
                 DataSet medicineData = dbclass.Getdata(medicineQuery);
 
-                // Display the medicines immediately below the current prescription
-                currentY = DisplayData(medicineData, printPanel, currentY + 50, "Prescribed Medicine Details", excludeColumns: new[] { "pres_med_id", "prescription_id" });
-                currentY += 20; // Adjust for next prescription and medicine set
+                if (medicineData != null && medicineData.Tables[0].Rows.Count > 0)
+                {
+                    Label medicinesLabel = new Label
+                    {
+                        Text = "Prescribed Medicines",
+                        Font = new System.Drawing.Font("Arial", 14, FontStyle.Bold),
+                        ForeColor = Color.Black,
+                        AutoSize = true,
+                        Location = new Point(40, currentY)
+                    };
+                    printPanel.Controls.Add(medicinesLabel);
+                    currentY += 30;
+
+                    // Create and display DataGridView
+                    DataGridView gridView = new DataGridView
+                    {
+                        DataSource = medicineData.Tables[0],
+                        AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
+                        Location = new Point(40, currentY),
+                        Size = new Size(printPanel.Width - 80, 200),
+                        AllowUserToAddRows = false,
+                        ReadOnly = true,
+                        ColumnHeadersDefaultCellStyle = new DataGridViewCellStyle
+                        {
+                            Font = new System.Drawing.Font("Arial", 12, FontStyle.Bold),
+                            ForeColor = Color.Black,
+                            BackColor = Color.LightGray
+                        },
+                        DefaultCellStyle = new DataGridViewCellStyle
+                        {
+                            Font = new System.Drawing.Font("Arial", 12, FontStyle.Regular),
+                            ForeColor = Color.Black,
+                            BackColor = Color.White
+                        }
+                    };
+                    gridView.CellFormatting += GridView_CellFormatting;
+
+                    //printPanel.Controls.Add(gridView);
+                    printPanel.Controls.Add(gridView);
+                    currentY += gridView.Height + 20;
+                }
+                else
+                {
+                    AddLabel("No prescribed medicines found.", ref currentY);
+                }
             }
             else
             {
-                // Handle case where no prescriptions are found
-                Label noDataLabel = new Label()
-                {
-                    Text = "No prescriptions available.",
-                    Location = new Point(40, currentY),
-                    AutoSize = true,
-                    Font = new System.Drawing.Font("Arial", 12, FontStyle.Italic),
-                    ForeColor = Color.Gray
-                };
-                printPanel.Controls.Add(noDataLabel);
-                currentY += 35; // Adjust for next section
+                AddLabel("No prescription details found.", ref currentY);
+            }
+        }
+        private void GridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridView gridView = sender as DataGridView;
+
+            if (gridView != null && gridView.Columns[e.ColumnIndex].Name == "usage" && e.Value != null)
+            {
+                string originalValue = e.Value.ToString();
+                string formattedValue = TranslateUsageToBars(originalValue);
+                e.Value = formattedValue; // Set the formatted value for display
+                e.FormattingApplied = true; // Indicate that formatting has been applied
             }
         }
 
+        // Helper method to add labels dynamically
+        private void AddLabel(string text, ref int currentY)
+        {
+            Label label = new Label
+            {
+                Text = text,
+                Font = new System.Drawing.Font("Arial", 12, FontStyle.Regular),
+                ForeColor = Color.Black,
+                AutoSize = true,
+                Location = new Point(40, currentY)
+            };
+            printPanel.Controls.Add(label);
+            currentY += 25; // Space between labels
+        }
+        private void AddLabel1(string text, ref int currentY)
+        {
+            Label label = new Label
+            {
+                Text = text,
+                Font = new System.Drawing.Font("Arial", 12, FontStyle.Regular),
+                ForeColor = Color.Black,
+                AutoSize = true,
+                Location = new Point(500, currentY)
+            };
+            printPanel.Controls.Add(label);
+            currentY += 25; // Space between labels
+        }
         private void PrintButton_Click(object sender, EventArgs e)
         {
             // Trigger the print dialog
@@ -160,11 +249,11 @@ namespace Clinic_Management_System
             }
         }
 
-        private int DisplayData(DataSet ds, Panel panel1, int startY, string sectionTitle, string[] excludeColumns = null)
+        private int DisplayData(DataSet ds, Panel panel1, int startY, string sectionTitle)
         {
-            int labelSpacing = 35;
-            int keyValueSpacing = 250;
+            int sectionSpacing = 40;
 
+            // Section Title
             Label titleLabel = new Label()
             {
                 Text = sectionTitle,
@@ -174,51 +263,39 @@ namespace Clinic_Management_System
                 ForeColor = Color.DimGray,
             };
             panel1.Controls.Add(titleLabel);
-            startY += 40;
+            startY += sectionSpacing;
 
             if (ds != null && ds.Tables[0].Rows.Count > 0)
             {
-                foreach (DataRow row in ds.Tables[0].Rows)
+                // Create a DataGridView
+                DataGridView gridView = new DataGridView()
                 {
-                    foreach (DataColumn col in ds.Tables[0].Columns)
+                    DataSource = ds.Tables[0],
+                    AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
+                    Location = new Point(40, startY),
+                    Size = new Size(panel1.Width - 80, 200), // Adjust height as needed
+                    AllowUserToAddRows = false,
+                    ReadOnly = true,
+                    ColumnHeadersDefaultCellStyle = new DataGridViewCellStyle()
                     {
-                        if (excludeColumns != null && excludeColumns.Contains(col.ColumnName))
-                            continue;
+                        Font = new System.Drawing.Font("Arial", 12, FontStyle.Bold),
+                        ForeColor = Color.Black,
+                        BackColor = Color.LightGray
+                    },
+                    DefaultCellStyle = new DataGridViewCellStyle()
+                    {
+                        Font = new System.Drawing.Font("Arial", 12, FontStyle.Regular),
+                        ForeColor = Color.Black,
+                        BackColor = Color.White
+                    },
+                };
 
-                        string columnName = col.ColumnName.ToUpper();
-                        string columnValue = row[col].ToString();
-
-                        // Check for the "usage" column and translate values
-                        if (col.ColumnName.Equals("usage", StringComparison.OrdinalIgnoreCase))
-                        {
-                            columnValue = TranslateUsageToBars(columnValue);
-                        }
-
-                        Label keyLabel = new Label()
-                        {
-                            Text = $"{columnName}:",
-                            Location = new Point(40, startY),
-                            AutoSize = true,
-                            Font = new System.Drawing.Font("Arial", 12, FontStyle.Bold)
-                        };
-
-                        Label valueLabel = new Label()
-                        {
-                            Text = columnValue,
-                            Location = new Point(40 + keyValueSpacing, startY),
-                            AutoSize = true,
-                            Font = new System.Drawing.Font("Arial", 12, FontStyle.Regular)
-                        };
-
-                        printPanel.Controls.Add(keyLabel);
-                        printPanel.Controls.Add(valueLabel);
-
-                        startY += labelSpacing;
-                    }
-                }
+                panel1.Controls.Add(gridView);
+                startY += gridView.Height + sectionSpacing; // Adjust for the next section
             }
             else
             {
+                // No data available
                 Label noDataLabel = new Label()
                 {
                     Text = "No data available.",
@@ -227,12 +304,13 @@ namespace Clinic_Management_System
                     Font = new System.Drawing.Font("Arial", 12, FontStyle.Italic),
                     ForeColor = Color.Gray
                 };
-                printPanel.Controls.Add(noDataLabel);
-                startY += labelSpacing;
+                panel1.Controls.Add(noDataLabel);
+                startY += sectionSpacing;
             }
 
             return startY;
         }
+
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
