@@ -26,12 +26,33 @@ namespace Clinic_Management_System
 
         private void btnDone_Click(object sender, EventArgs e)
         {
+            lblDiseaseError.Visible = false;
+            lblNameError.Visible = false;
             string name = txtName.Text;
             string disease = txtDisease.Text;
             string fromDate = dtpFromDate.Text;
             string toDate = dtpToDate.Text;
-            CertificateOutput certificateOutput = new CertificateOutput(name, disease, fromDate, toDate);
-            certificateOutput.ShowDialog();
+
+            if(name == "" && disease == "")
+            {
+                lblDiseaseError.Visible=true;
+                lblNameError.Visible=true;
+            }
+            else if(name == "")
+            {
+                lblNameError.Visible = true;
+            }
+            else if(disease == "")
+            {
+                lblDiseaseError.Visible = true;
+            }
+            else
+            {
+                lblDiseaseError.Visible = false;
+                lblNameError.Visible = false;
+                CertificateOutput certificateOutput = new CertificateOutput(name, disease, fromDate, toDate);
+                certificateOutput.ShowDialog();
+            }
         }
 
         private void btnClear_Click(object sender, EventArgs e)

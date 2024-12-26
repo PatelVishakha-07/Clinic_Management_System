@@ -46,11 +46,10 @@ namespace Clinic_Management_System
 
             Controls.Add(printPanel);
             printPanel.Dock = DockStyle.Fill;
-            //printPanel.Dock = DockStyle.Fill;
             printPanel.Controls.Add(printButton);
 
             Size = new Size(1082, 920);
-            Text = "Print Report Example";
+            Text = "Print Report";
         }
 
         private void Report_Load(object sender, EventArgs e)
