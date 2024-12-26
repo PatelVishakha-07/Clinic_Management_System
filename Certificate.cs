@@ -22,16 +22,7 @@ namespace Clinic_Management_System
 
         private void Certificate_Load(object sender, EventArgs e)
         {
-            ShowControl(new InputCertificate());
-
-        }
-
-        public void ShowControl(UserControl userControl)
-        {
-            userControl.Dock = DockStyle.Fill;
-            panel1.Controls.Clear();
-            panel1.Controls.Add(userControl);
-        }
+        }        
 
         private void btnDone_Click(object sender, EventArgs e)
         {
