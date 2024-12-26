@@ -7,13 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Clinic_Management_System
 {
-    public partial class OutputCertificate : UserControl
+    public partial class CertificateOutput : Form
     {
         string name, disease, fromDate, toDate;
-        public OutputCertificate(string n, string d, string fd, string td)
+        public CertificateOutput(string n, string d, string fd, string td)
         {
             InitializeComponent();
             name = n;
@@ -22,7 +23,7 @@ namespace Clinic_Management_System
             toDate = td;
         }
 
-        private void OutputCertificate_Load(object sender, EventArgs e)
+        private void CertificateOutput_Load(object sender, EventArgs e)
         {
             string dateTimePart = DateTime.Now.ToString("yyyyMMddHHmmss"); // Current date and time
             string randomPart = new Random().Next(1000, 9999).ToString();
