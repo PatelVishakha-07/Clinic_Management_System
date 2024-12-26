@@ -284,12 +284,23 @@ namespace Clinic_Management_System
 
             MessageBox.Show("Medicine Added");
             this.Hide();
-
-            ShowPatients details = new ShowPatients();
-            Parent.Controls.Add(details);
-            details.Dock = DockStyle.Fill;
-            Parent.Controls.Remove(this);
-            this.Dispose();
+            if(dialog == "Prescription")
+            {
+                ShowPatients details = new ShowPatients();
+                Parent.Controls.Add(details);
+                details.Dock = DockStyle.Fill;
+                Parent.Controls.Remove(this);
+                this.Dispose();
+            }
+            else
+            {
+                ShowAdmittedPatient details = new ShowAdmittedPatient("Doctor");
+                Parent.Controls.Add(details);
+                details.Dock = DockStyle.Fill;
+                Parent.Controls.Remove(this);
+                this.Dispose();
+            }
+            
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

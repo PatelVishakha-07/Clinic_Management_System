@@ -38,6 +38,9 @@
             panel5 = new Panel();
             pictureBox4 = new PictureBox();
             panel2 = new Panel();
+            panel6 = new Panel();
+            pictureBox3 = new PictureBox();
+            btnInHouse = new Button();
             panel1.SuspendLayout();
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -45,11 +48,14 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(64, 64, 64);
+            panel1.Controls.Add(panel6);
             panel1.Controls.Add(panel4);
             panel1.Controls.Add(panel3);
             panel1.Controls.Add(panel5);
@@ -160,6 +166,43 @@
             panel2.Size = new Size(937, 756);
             panel2.TabIndex = 1;
             // 
+            // panel6
+            // 
+            panel6.Controls.Add(pictureBox3);
+            panel6.Controls.Add(btnInHouse);
+            panel6.Dock = DockStyle.Top;
+            panel6.Location = new Point(0, 370);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(248, 100);
+            panel6.TabIndex = 6;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Image = Properties.Resources.add;
+            pictureBox3.Location = new Point(19, 22);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(56, 56);
+            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox3.TabIndex = 4;
+            pictureBox3.TabStop = false;
+            // 
+            // btnInHouse
+            // 
+            btnInHouse.BackgroundImageLayout = ImageLayout.Zoom;
+            btnInHouse.FlatStyle = FlatStyle.Popup;
+            btnInHouse.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnInHouse.ForeColor = Color.White;
+            btnInHouse.ImageAlign = ContentAlignment.TopLeft;
+            btnInHouse.Location = new Point(19, 22);
+            btnInHouse.Name = "btnInHouse";
+            btnInHouse.Padding = new Padding(2, 0, 0, 0);
+            btnInHouse.Size = new Size(202, 56);
+            btnInHouse.TabIndex = 5;
+            btnInHouse.Text = "In-House Patients";
+            btnInHouse.TextAlign = ContentAlignment.MiddleRight;
+            btnInHouse.UseVisualStyleBackColor = true;
+            btnInHouse.Click += btnInHouse_Click;
+            // 
             // Receptionist
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -177,6 +220,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
         }
 
@@ -192,5 +237,8 @@
         private Button btnPrescription;
         private Panel panel5;
         private PictureBox pictureBox4;
+        private Panel panel6;
+        private PictureBox pictureBox3;
+        private Button btnInHouse;
     }
 }

@@ -48,9 +48,9 @@
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
             label1.Location = new Point(289, 36);
             label1.Name = "label1";
-            label1.Size = new Size(439, 41);
+            label1.Size = new Size(462, 41);
             label1.TabIndex = 4;
-            label1.Text = "Admitted Patient Information";
+            label1.Text = "Discharged Patient Information";
             // 
             // txtSearch
             // 
@@ -141,7 +141,7 @@
             Controls.Add(btnSearch);
             Controls.Add(txtSearch);
             Controls.Add(label1);
-          //  Name = "Discharged";
+            //Name = "Discharged";
             Size = new Size(1079, 763);
             Load += Discharged_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

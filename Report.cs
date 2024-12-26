@@ -36,7 +36,7 @@ namespace Clinic_Management_System
 
             Label label = new Label
             {
-                Text = "Clinic Name",
+                Text = "Dhanvantari Clinic",
                 AutoSize = true,
                 Location = new Point(10, 10)
             };

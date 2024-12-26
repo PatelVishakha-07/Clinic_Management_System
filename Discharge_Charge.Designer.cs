@@ -68,6 +68,8 @@
             Controls.Add(btn_enter);
             Controls.Add(txtamount);
             Controls.Add(label1);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "Discharge_Charge";
             Text = "Discharge_Charge";
             ResumeLayout(false);

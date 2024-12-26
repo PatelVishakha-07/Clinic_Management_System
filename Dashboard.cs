@@ -50,6 +50,9 @@ namespace Clinic_Management_System
             ShowForm(new Income());
         }
 
-      
+        private void btnCertificate_Click(object sender, EventArgs e)
+        {
+            ShowForm(new Certificate());
+        }
     }
 }

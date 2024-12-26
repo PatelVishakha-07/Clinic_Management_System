@@ -37,7 +37,7 @@
             dataGridView1 = new DataGridView();
             profit_date = new DataGridViewTextBoxColumn();
             amount = new DataGridViewTextBoxColumn();
-            total_charge = new DataGridViewTextBoxColumn();
+            total_pay = new DataGridViewTextBoxColumn();
             button1 = new Button();
             comboBox1 = new ComboBox();
             panel1.SuspendLayout();
@@ -60,16 +60,18 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
-            label1.Font = new Font("Sylfaen", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(391, 32);
+            label1.Font = new Font("Sylfaen", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(390, 12);
             label1.Name = "label1";
-            label1.Size = new Size(142, 29);
+            label1.Size = new Size(167, 36);
             label1.TabIndex = 12;
             label1.Text = "IPD Income";
             // 
             // lblCharge
             // 
+            lblCharge.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblCharge.AutoSize = true;
             lblCharge.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             lblCharge.Location = new Point(27, 644);
@@ -80,6 +82,7 @@
             // 
             // lblProfit
             // 
+            lblProfit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblProfit.AutoSize = true;
             lblProfit.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             lblProfit.Location = new Point(27, 584);
@@ -90,6 +93,7 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
             dataGridViewCellStyle1.Font = new Font("Stencil Std", 10.7999992F, FontStyle.Bold, GraphicsUnit.Point);
@@ -99,7 +103,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { profit_date, amount, total_charge });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { profit_date, amount, total_pay });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Segoe UI Historic", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
@@ -129,15 +133,16 @@
             amount.MinimumWidth = 6;
             amount.Name = "amount";
             // 
-            // total_charge
+            // total_pay
             // 
-            total_charge.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            total_charge.HeaderText = "Charge";
-            total_charge.MinimumWidth = 6;
-            total_charge.Name = "total_charge";
+            total_pay.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            total_pay.HeaderText = "Charge";
+            total_pay.MinimumWidth = 6;
+            total_pay.Name = "total_pay";
             // 
             // button1
             // 
+            button1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button1.Location = new Point(635, 115);
             button1.Name = "button1";
@@ -145,9 +150,11 @@
             button1.TabIndex = 8;
             button1.Text = "Show";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // comboBox1
             // 
+            comboBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             comboBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Today's Income", "Monthly Income", "Yearly Income" });
@@ -177,10 +184,10 @@
         private Label lblCharge;
         private Label lblProfit;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn profit_date;
-        private DataGridViewTextBoxColumn amount;
-        private DataGridViewTextBoxColumn total_charge;
         private Button button1;
         private ComboBox comboBox1;
+        private DataGridViewTextBoxColumn profit_date;
+        private DataGridViewTextBoxColumn amount;
+        private DataGridViewTextBoxColumn total_pay;
     }
 }

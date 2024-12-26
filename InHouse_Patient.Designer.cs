@@ -96,7 +96,7 @@
             // 
             // btnClear
             // 
-            btnClear.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnClear.Anchor = AnchorStyles.Bottom;
             btnClear.BackColor = Color.SandyBrown;
             btnClear.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnClear.ForeColor = SystemColors.InactiveCaptionText;
@@ -110,7 +110,7 @@
             // 
             // btnAdmit
             // 
-            btnAdmit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnAdmit.Anchor = AnchorStyles.Bottom;
             btnAdmit.BackColor = Color.SandyBrown;
             btnAdmit.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnAdmit.ForeColor = SystemColors.InactiveCaptionText;

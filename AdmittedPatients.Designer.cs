@@ -34,8 +34,8 @@
             menuStrip1 = new MenuStrip();
             showAdmittedToolStripMenuItem = new ToolStripMenuItem();
             admitPatientsToolStripMenuItem = new ToolStripMenuItem();
-            leftPanel = new Panel();
             dischargedStripMenuItem1 = new ToolStripMenuItem();
+            leftPanel = new Panel();
             panel1.SuspendLayout();
             topPanel.SuspendLayout();
             menuStrip1.SuspendLayout();
@@ -51,7 +51,7 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1301, 745);
+            panel1.Size = new Size(1301, 860);
             panel1.TabIndex = 0;
             // 
             // panel2
@@ -60,7 +60,7 @@
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(225, 71);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1076, 674);
+            panel2.Size = new Size(1076, 789);
             panel2.TabIndex = 7;
             panel2.Paint += panel2_Paint;
             // 
@@ -101,14 +101,6 @@
             admitPatientsToolStripMenuItem.Text = "Admit Patients";
             admitPatientsToolStripMenuItem.Click += admitPatientsToolStripMenuItem_Click;
             // 
-            // leftPanel
-            // 
-            leftPanel.Dock = DockStyle.Left;
-            leftPanel.Location = new Point(0, 0);
-            leftPanel.Name = "leftPanel";
-            leftPanel.Size = new Size(225, 745);
-            leftPanel.TabIndex = 5;
-            // 
             // dischargedStripMenuItem1
             // 
             dischargedStripMenuItem1.Name = "dischargedStripMenuItem1";
@@ -116,12 +108,20 @@
             dischargedStripMenuItem1.Text = "Discharged ";
             dischargedStripMenuItem1.Click += dischargedStripMenuItem1_Click;
             // 
+            // leftPanel
+            // 
+            leftPanel.Dock = DockStyle.Left;
+            leftPanel.Location = new Point(0, 0);
+            leftPanel.Name = "leftPanel";
+            leftPanel.Size = new Size(225, 860);
+            leftPanel.TabIndex = 5;
+            // 
             // AdmittedPatients
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(1301, 745);
+            ClientSize = new Size(1301, 860);
             Controls.Add(panel1);
             MainMenuStrip = menuStrip1;
             Name = "AdmittedPatients";

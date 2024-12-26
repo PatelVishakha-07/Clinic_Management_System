@@ -60,16 +60,18 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
-            label1.Font = new Font("Sylfaen", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(383, 28);
+            label1.Font = new Font("Sylfaen", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(378, 11);
             label1.Name = "label1";
-            label1.Size = new Size(151, 29);
+            label1.Size = new Size(178, 36);
             label1.TabIndex = 13;
             label1.Text = "OPD Income";
             // 
             // lblCharge
             // 
+            lblCharge.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblCharge.AutoSize = true;
             lblCharge.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             lblCharge.Location = new Point(27, 633);
@@ -80,6 +82,7 @@
             // 
             // lblProfit
             // 
+            lblProfit.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblProfit.AutoSize = true;
             lblProfit.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             lblProfit.Location = new Point(27, 573);
@@ -90,6 +93,7 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
             dataGridViewCellStyle1.Font = new Font("Stencil Std", 10.7999992F, FontStyle.Bold, GraphicsUnit.Point);
@@ -138,6 +142,7 @@
             // 
             // button1
             // 
+            button1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             button1.Location = new Point(634, 107);
             button1.Name = "button1";
@@ -149,6 +154,7 @@
             // 
             // comboBox1
             // 
+            comboBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             comboBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Today's Income", "Monthly Income", "Yearly Income" });

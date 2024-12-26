@@ -7,10 +7,12 @@ namespace Clinic_Management_System
     public partial class ShowAdmittedPatient : UserControl
     {
         databaseclass databaseclass = new databaseclass();
+        string str;
 
-        public ShowAdmittedPatient()
+        public ShowAdmittedPatient(string s)
         {
             InitializeComponent();
+            str = s;
         }
 
         private void ShowAdmittedPatient_Load(object sender, EventArgs e)
@@ -101,11 +103,23 @@ namespace Clinic_Management_System
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int patientId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["patient_id"].Value.ToString());
-            Admit_Patient_Details patientDetails = new Admit_Patient_Details();
-            patientDetails.getPatientDetails(patientId);
-            AdmittedPatients patients=new AdmittedPatients();
-            patients = this.FindForm() as AdmittedPatients;
-            patients.ShowContent(patientDetails);
+            if(str == "Doctor")
+            {
+                Admit_Patient_Details patientDetails = new Admit_Patient_Details();
+                patientDetails.getPatientDetails(patientId);
+                AdmittedPatients patients = new AdmittedPatients();
+                patients = this.FindForm() as AdmittedPatients;
+                patients.ShowContent(patientDetails);
+            }
+            else if(str == "Receptionist")
+            {
+                Admit_Patient_Details patientDetails = new Admit_Patient_Details();
+                patientDetails.getPatientDetails(patientId);
+                Receptionist receptionist = new Receptionist();
+                receptionist = this.FindForm() as Receptionist;
+                receptionist.ShowControl(patientDetails);
+            }
+            
         }
     }
 }

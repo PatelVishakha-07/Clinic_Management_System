@@ -42,5 +42,10 @@ namespace Clinic_Management_System
         {
             ShowControl(new ShowMedicine());
         }
+
+        private void btnInHouse_Click(object sender, EventArgs e)
+        {
+            ShowControl(new ShowAdmittedPatient("Receptionist"));
+        }
     }
 }

@@ -42,6 +42,8 @@
             btnPatients = new Button();
             panel2 = new Panel();
             pictureBox4 = new PictureBox();
+            panel6 = new Panel();
+            btnCertificate = new Button();
             PanelDashboard.SuspendLayout();
             panel1.SuspendLayout();
             panel5.SuspendLayout();
@@ -52,11 +54,13 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            panel6.SuspendLayout();
             SuspendLayout();
             // 
             // PanelDashboard
             // 
             PanelDashboard.BackColor = Color.FromArgb(64, 64, 64);
+            PanelDashboard.Controls.Add(panel6);
             PanelDashboard.Controls.Add(panel1);
             PanelDashboard.Controls.Add(panel5);
             PanelDashboard.Controls.Add(panel4);
@@ -224,6 +228,32 @@
             pictureBox4.TabIndex = 0;
             pictureBox4.TabStop = false;
             // 
+            // panel6
+            // 
+            panel6.Controls.Add(btnCertificate);
+            panel6.Dock = DockStyle.Top;
+            panel6.Location = new Point(0, 570);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(241, 100);
+            panel6.TabIndex = 4;
+            // 
+            // btnCertificate
+            // 
+            btnCertificate.BackgroundImageLayout = ImageLayout.Zoom;
+            btnCertificate.FlatStyle = FlatStyle.Popup;
+            btnCertificate.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCertificate.ForeColor = Color.White;
+            btnCertificate.ImageAlign = ContentAlignment.TopLeft;
+            btnCertificate.Location = new Point(12, 22);
+            btnCertificate.Name = "btnCertificate";
+            btnCertificate.Padding = new Padding(2, 0, 0, 0);
+            btnCertificate.Size = new Size(202, 55);
+            btnCertificate.TabIndex = 1;
+            btnCertificate.Text = "Certificate";
+            btnCertificate.TextAlign = ContentAlignment.MiddleRight;
+            btnCertificate.UseVisualStyleBackColor = true;
+            btnCertificate.Click += btnCertificate_Click;
+            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -243,6 +273,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            panel6.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -262,5 +293,7 @@
         private PictureBox pictureBox4;
         private Panel panel1;
         private Button btnIncome;
+        private Panel panel6;
+        private Button btnCertificate;
     }
 }
