@@ -16,10 +16,18 @@ namespace Clinic_Management_System
     {
         int patientId,amount;
         databaseclass dbclass = new databaseclass();
-
-        public Admit_Patient_Details()
+        public Admit_Patient_Details(string s)
         {
             InitializeComponent();
+            if(s == "Receptionist")
+            {
+                btnprint.Enabled = false;
+                btnprint.Visible = false;
+                btn_discharge.Enabled = false;
+                btn_discharge.Visible = false;
+                btn_add.Enabled=false;
+                btn_add.Visible=false;
+            }
         }
         private int DisplayData(DataSet ds, Panel panel1, int startY, string sectionTitle, string[] excludeColumns = null)
         {
