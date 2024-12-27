@@ -38,6 +38,8 @@
             ipd_id = new DataGridViewTextBoxColumn();
             Contact_No = new DataGridViewTextBoxColumn();
             Bed_Number = new DataGridViewTextBoxColumn();
+            Admit_Date = new DataGridViewTextBoxColumn();
+            Discharge_Date = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -86,12 +88,12 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Name, Patient_id, ipd_id, Contact_No, Bed_Number });
-            dataGridView1.Location = new Point(125, 238);
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Name, Patient_id, ipd_id, Contact_No, Bed_Number, Admit_Date, Discharge_Date });
+            dataGridView1.Location = new Point(102, 237);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(757, 457);
+            dataGridView1.Size = new Size(856, 457);
             dataGridView1.TabIndex = 9;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -132,6 +134,20 @@
             Bed_Number.MinimumWidth = 6;
             Bed_Number.Name = "Bed_Number";
             // 
+            // Admit_Date
+            // 
+            Admit_Date.HeaderText = "Admit_Date";
+            Admit_Date.MinimumWidth = 6;
+            Admit_Date.Name = "Admit_Date";
+            Admit_Date.Width = 150;
+            // 
+            // Discharge_Date
+            // 
+            Discharge_Date.HeaderText = "Discharge_Date";
+            Discharge_Date.MinimumWidth = 6;
+            Discharge_Date.Name = "Discharge_Date";
+            Discharge_Date.Width = 200;
+            // 
             // Discharged
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -141,7 +157,7 @@
             Controls.Add(btnSearch);
             Controls.Add(txtSearch);
             Controls.Add(label1);
-            //Name = "Discharged";
+          //  Name = "Discharged";
             Size = new Size(1079, 763);
             Load += Discharged_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -160,5 +176,7 @@
         private DataGridViewTextBoxColumn ipd_id;
         private DataGridViewTextBoxColumn Contact_No;
         private DataGridViewTextBoxColumn Bed_Number;
+        private DataGridViewTextBoxColumn Admit_Date;
+        private DataGridViewTextBoxColumn Discharge_Date;
     }
 }

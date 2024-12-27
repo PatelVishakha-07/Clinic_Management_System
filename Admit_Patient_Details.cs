@@ -249,8 +249,8 @@ namespace Clinic_Management_System
                     DataRow ipdRow = ipdData.Tables[0].Rows[0];
 
                     // Insert into discharged table
-                    string insertDischargedQuery = $"INSERT INTO discharged (bed_number, admit_date, total_pay, patient_id) " +
-                                                   $"VALUES ({ipdRow["bed_number"]}, '{ipdRow["admit_date"]}', {amount}, {ipdRow["patient_id"]}) " +
+                    string insertDischargedQuery = $"INSERT INTO discharged (bed_number, admit_date, total_pay,discharge_date,patient_id) " +
+                                                   $"VALUES ({ipdRow["bed_number"]}, '{ipdRow["admit_date"]}', {amount},'{DateTime.Now}', {ipdRow["patient_id"]}) " +
                                                    $"RETURNING discharge_id";
                     DataSet dischargeResult = dbclass.Getdata(insertDischargedQuery);
                     int dischargeId = Convert.ToInt32(dischargeResult.Tables[0].Rows[0]["discharge_id"]);
