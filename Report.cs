@@ -54,7 +54,7 @@ namespace Clinic_Management_System
 
         private void Report_Load(object sender, EventArgs e)
         {
-            int currentY = 20;
+            int currentY = 120;
 
             // Clinic Title
             Label clinicLabel = new Label

@@ -64,7 +64,7 @@ namespace Clinic_Management_System
         {
             string patientQuery = $"SELECT DISTINCT * FROM patients WHERE patient_id={patientId}";
             DataSet patientData = dbclass.Getdata(patientQuery);
-            int currentY = 50;
+            int currentY = 150;
             currentY = DisplayData(patientData, printPanel, currentY, "Patient Details", excludeColumns: new[] { "patient_id" });
 
             // Fetch the latest IPD entry for the patient

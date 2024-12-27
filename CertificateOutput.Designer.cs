@@ -29,11 +29,10 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            pictureBox2 = new PictureBox();
             label3 = new Label();
             lblNo = new Label();
             label1 = new Label();
-            label6 = new Label();
-            pictureBox1 = new PictureBox();
             label8 = new Label();
             lblToDate = new Label();
             lblFromDate = new Label();
@@ -44,16 +43,15 @@
             lblName = new Label();
             printDocument1 = new System.Drawing.Printing.PrintDocument();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.Controls.Add(pictureBox2);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(lblNo);
             panel1.Controls.Add(label1);
-            panel1.Controls.Add(label6);
-            panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label8);
             panel1.Controls.Add(lblToDate);
             panel1.Controls.Add(lblFromDate);
@@ -64,15 +62,26 @@
             panel1.Controls.Add(lblName);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(996, 717);
+            panel1.Size = new Size(996, 580);
             panel1.TabIndex = 0;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Dock = DockStyle.Top;
+            pictureBox2.Image = Properties.Resources.clinic_logo_2;
+            pictureBox2.Location = new Point(0, 0);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(996, 103);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 30;
+            pictureBox2.TabStop = false;
             // 
             // label3
             // 
             label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Variable Display", 16.2F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            label3.Location = new Point(303, 242);
+            label3.Location = new Point(339, 172);
             label3.Name = "label3";
             label3.Size = new Size(272, 37);
             label3.TabIndex = 19;
@@ -83,7 +92,7 @@
             // 
             lblNo.AutoSize = true;
             lblNo.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblNo.Location = new Point(26, 89);
+            lblNo.Location = new Point(12, 133);
             lblNo.Name = "lblNo";
             lblNo.Size = new Size(110, 20);
             lblNo.TabIndex = 18;
@@ -94,40 +103,19 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Century Schoolbook", 17F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(150, 341);
+            label1.Location = new Point(150, 273);
             label1.Name = "label1";
             label1.Size = new Size(313, 34);
             label1.TabIndex = 17;
             label1.Text = "This is to Certify that ";
             label1.TextAlign = ContentAlignment.TopCenter;
             // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(26, 123);
-            label6.Name = "label6";
-            label6.Size = new Size(157, 23);
-            label6.TabIndex = 29;
-            label6.Text = "Dhanvantari Clinic";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pictureBox1.Image = Properties.Resources.user;
-            pictureBox1.Location = new Point(773, 28);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(192, 140);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 28;
-            pictureBox1.TabStop = false;
-            // 
             // label8
             // 
             label8.Anchor = AnchorStyles.None;
             label8.AutoSize = true;
             label8.Font = new Font("Century Schoolbook", 17F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(150, 562);
+            label8.Location = new Point(150, 494);
             label8.Name = "label8";
             label8.Size = new Size(471, 34);
             label8.TabIndex = 27;
@@ -139,7 +127,7 @@
             lblToDate.Anchor = AnchorStyles.None;
             lblToDate.AutoSize = true;
             lblToDate.Font = new Font("Century Schoolbook", 17F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            lblToDate.Location = new Point(505, 485);
+            lblToDate.Location = new Point(505, 417);
             lblToDate.Name = "lblToDate";
             lblToDate.Size = new Size(106, 34);
             lblToDate.TabIndex = 26;
@@ -150,7 +138,7 @@
             lblFromDate.Anchor = AnchorStyles.None;
             lblFromDate.AutoSize = true;
             lblFromDate.Font = new Font("Century Schoolbook", 17F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            lblFromDate.Location = new Point(158, 485);
+            lblFromDate.Location = new Point(158, 417);
             lblFromDate.Name = "lblFromDate";
             lblFromDate.Size = new Size(106, 34);
             lblFromDate.TabIndex = 25;
@@ -161,7 +149,7 @@
             label5.Anchor = AnchorStyles.None;
             label5.AutoSize = true;
             label5.Font = new Font("Century Schoolbook", 17F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(458, 485);
+            label5.Location = new Point(458, 417);
             label5.Name = "label5";
             label5.Size = new Size(41, 34);
             label5.TabIndex = 24;
@@ -173,7 +161,7 @@
             label4.Anchor = AnchorStyles.None;
             label4.AutoSize = true;
             label4.Font = new Font("Century Schoolbook", 17F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(78, 485);
+            label4.Location = new Point(78, 417);
             label4.Name = "label4";
             label4.Size = new Size(79, 34);
             label4.TabIndex = 23;
@@ -185,7 +173,7 @@
             lblDisease.Anchor = AnchorStyles.None;
             lblDisease.AutoSize = true;
             lblDisease.Font = new Font("Century Schoolbook", 17F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            lblDisease.Location = new Point(512, 415);
+            lblDisease.Location = new Point(512, 347);
             lblDisease.Name = "lblDisease";
             lblDisease.Size = new Size(106, 34);
             lblDisease.TabIndex = 22;
@@ -196,7 +184,7 @@
             label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
             label2.Font = new Font("Century Schoolbook", 17F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(78, 415);
+            label2.Location = new Point(78, 347);
             label2.Name = "label2";
             label2.Size = new Size(426, 34);
             label2.TabIndex = 21;
@@ -208,7 +196,7 @@
             lblName.Anchor = AnchorStyles.None;
             lblName.AutoSize = true;
             lblName.Font = new Font("Century Schoolbook", 17F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            lblName.Location = new Point(469, 341);
+            lblName.Location = new Point(469, 273);
             lblName.Name = "lblName";
             lblName.Size = new Size(106, 34);
             lblName.TabIndex = 20;
@@ -218,7 +206,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(996, 774);
+            ClientSize = new Size(996, 715);
             Controls.Add(panel1);
             MaximizeBox = false;
             MinimizeBox = false;
@@ -228,7 +216,7 @@
             Load += CertificateOutput_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
 
@@ -238,8 +226,6 @@
         private Label label3;
         private Label lblNo;
         private Label label1;
-        private Label label6;
-        private PictureBox pictureBox1;
         private Label label8;
         private Label lblToDate;
         private Label lblFromDate;
@@ -249,5 +235,6 @@
         private Label label2;
         private Label lblName;
         private System.Drawing.Printing.PrintDocument printDocument1;
+        private PictureBox pictureBox2;
     }
 }

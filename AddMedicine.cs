@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using com.itextpdf.text.pdf;
+
 using Npgsql;
 
 namespace Clinic_Management_System

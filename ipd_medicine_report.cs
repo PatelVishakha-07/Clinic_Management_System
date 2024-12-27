@@ -93,7 +93,7 @@ namespace Clinic_Management_System
                     main_ds.Merge(ds1);
                 }
             }
-            int currentY = 50;
+            int currentY = 150;
             DataGridView gridView = new DataGridView
             { 
                 DataSource = main_ds.Tables[0],

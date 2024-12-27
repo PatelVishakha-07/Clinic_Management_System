@@ -28,7 +28,7 @@ namespace Clinic_Management_System
             printButton = new Button
             {
                 Text = "Print Report",
-                Location = new Point(900, 740)
+                Location = new Point(900, 640)
             };
 
             printButton.Click += PrintButton_Click;

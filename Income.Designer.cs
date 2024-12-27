@@ -103,6 +103,7 @@
             Controls.Add(leftPanel);
             MainMenuStrip = menuStrip1;
             Name = "Income";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Income";
             Load += Income_Load;
             topPanel.ResumeLayout(false);

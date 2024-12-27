@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            label1 = new Label();
             dataGridView1 = new DataGridView();
             name = new DataGridViewTextBoxColumn();
             disease = new DataGridViewTextBoxColumn();
             from_Date = new DataGridViewTextBoxColumn();
             to_Date = new DataGridViewTextBoxColumn();
-            label1 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -49,15 +49,25 @@
             panel1.Size = new Size(801, 743);
             panel1.TabIndex = 0;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(218, 33);
+            label1.Name = "label1";
+            label1.Size = new Size(327, 31);
+            label1.TabIndex = 1;
+            label1.Text = "Certificate Details of Patients";
+            // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { name, disease, from_Date, to_Date });
-            dataGridView1.Location = new Point(32, 213);
+            dataGridView1.Location = new Point(27, 99);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(735, 503);
+            dataGridView1.Size = new Size(747, 551);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -88,16 +98,6 @@
             to_Date.HeaderText = "To Date";
             to_Date.MinimumWidth = 6;
             to_Date.Name = "to_Date";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(213, 27);
-            label1.Name = "label1";
-            label1.Size = new Size(327, 31);
-            label1.TabIndex = 1;
-            label1.Text = "Certificate Details of Patients";
             // 
             // CertificateShow
             // 
