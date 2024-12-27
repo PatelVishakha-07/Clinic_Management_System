@@ -22,45 +22,28 @@ namespace Clinic_Management_System
 
         private void Certificate_Load(object sender, EventArgs e)
         {
-        }        
-
-        private void btnDone_Click(object sender, EventArgs e)
-        {
-            lblDiseaseError.Visible = false;
-            lblNameError.Visible = false;
-            string name = txtName.Text;
-            string disease = txtDisease.Text;
-            string fromDate = dtpFromDate.Text;
-            string toDate = dtpToDate.Text;
-
-            if(name == "" && disease == "")
-            {
-                lblDiseaseError.Visible=true;
-                lblNameError.Visible=true;
-            }
-            else if(name == "")
-            {
-                lblNameError.Visible = true;
-            }
-            else if(disease == "")
-            {
-                lblDiseaseError.Visible = true;
-            }
-            else
-            {
-                lblDiseaseError.Visible = false;
-                lblNameError.Visible = false;
-                CertificateOutput certificateOutput = new CertificateOutput(name, disease, fromDate, toDate);
-                certificateOutput.ShowDialog();
-            }
+            ShowControl(new CertificateInput());
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
+        public void ShowControl(UserControl userControl)
         {
-            txtName.Text = string.Empty;
-            txtDisease.Text = string.Empty;
-            dtpFromDate.Text = DateTime.Now.ToString();
-            dtpToDate.Text = DateTime.Now.ToString();                   
+            panel1.Controls.Clear();
+            userControl.Dock = DockStyle.Fill;
+            panel1.Controls.Add(userControl);
+        }
+
+        private void btnDone_Click(object sender, EventArgs e) { }
+
+        private void btnClear_Click(object sender, EventArgs e) { }
+
+        private void createCertificateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowControl(new CertificateInput());
+        }
+
+        private void showToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowControl(new CertificateShow());
         }
     }
 }
