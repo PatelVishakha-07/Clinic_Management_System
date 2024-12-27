@@ -1,9 +1,9 @@
-﻿using Npgsql;
+﻿using System.Data.OleDb;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+
 
 namespace Clinic_Management_System
 {
@@ -149,10 +149,10 @@ namespace Clinic_Management_System
 
             if (!string.IsNullOrEmpty(txtBox.Text))
             {
-                using (NpgsqlConnection conn = new NpgsqlConnection("Host=localhost;Port=5432;Username=postgres;Password=2002;Database=Clinic_Management;"))
+                using (OleDbConnection conn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Application.StartupPath + "/Clinic_Management.mdb"))
                 {
                     conn.Open();
-                    NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(query, conn);
+                    OleDbDataAdapter adapter = new OleDbDataAdapter(query, conn);
                     adapter.SelectCommand.Parameters.AddWithValue("@value", "%" + txtBox.Text + "%");
                     DataSet ds = new DataSet();
                     adapter.Fill(ds);

@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using com.itextpdf.text.pdf;
-using Npgsql;
+using System.Data.OleDb;
 
 namespace Clinic_Management_System
 {
@@ -187,12 +187,12 @@ namespace Clinic_Management_System
                 changingname = txtName.Text;
 
                 string query = "SELECT medicine_id, medicine_name, company_name, medicine_type FROM Medicines WHERE medicine_name ILIKE @value";
-                NpgsqlConnection conn = new NpgsqlConnection("Host=localhost;Port=5432;Username=postgres;Password=2002;Database=Clinic_Management;");
+                OleDbConnection conn = new OleDbConnection("Provider = Microsoft.ACE.OLEDB.12.0; Data Source = "+Application.StartupPath + "/Clinic_Management.mdb");
                 try
                 {
                     conn.Open();
 
-                    NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(query, conn);
+                    OleDbDataAdapter adapter = new OleDbDataAdapter(query, conn);
                     adapter.SelectCommand.Parameters.AddWithValue("@value", "%" + changingname + "%");
                     DataSet ds = new DataSet();
                     adapter.Fill(ds);

@@ -4,19 +4,18 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Npgsql;
-
+using System.Data.OleDb;
 namespace Clinic_Management_System
 {
     internal class databaseclass
     {
-       NpgsqlConnection conn;
-       NpgsqlCommand cmd;
-       NpgsqlDataAdapter dataAdapter;
+       OleDbConnection conn;
+       OleDbCommand cmd;
+        OleDbDataAdapter dataAdapter;
         DataSet ds;
         public databaseclass()
         {
-            conn = new NpgsqlConnection("Host=localhost;Port=5432;Username=postgres;Password=2002;Database=Clinic_Management;");  
+            conn = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source="+Application.StartupPath + "/Clinic_Management.mdb");  
             conn.Open();
         }
         public DataSet Getdata(string query)
@@ -26,7 +25,7 @@ namespace Clinic_Management_System
             }
             if (!string.IsNullOrEmpty(query))
             {
-                dataAdapter = new NpgsqlDataAdapter(query, conn);
+                dataAdapter = new OleDbDataAdapter(query, conn);
                 ds = new DataSet();
                 dataAdapter.Fill(ds);
                 conn.Close();
@@ -42,7 +41,7 @@ namespace Clinic_Management_System
             }
             if (!string.IsNullOrEmpty(query))
             {
-                cmd=new NpgsqlCommand(query, conn);
+                cmd=new OleDbCommand(query, conn);
                 cmd.ExecuteNonQuery();
                 conn.Close();
             }

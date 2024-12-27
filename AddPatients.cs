@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using Microsoft.VisualBasic;
-using Npgsql;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Net;
 using System.Xml.Linq;

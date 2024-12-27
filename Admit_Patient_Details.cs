@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+
 
 namespace Clinic_Management_System
 {
