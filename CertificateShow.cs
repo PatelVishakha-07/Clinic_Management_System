@@ -35,6 +35,7 @@ namespace Clinic_Management_System
                 dataGridView1.Columns["disease"].DataPropertyName = "disease";
                 dataGridView1.Columns["from_Date"].DataPropertyName = "from_Date";
                 dataGridView1.Columns["to_Date"].DataPropertyName = "to_Date";
+                dataGridView1.Columns["resume_Date"].DataPropertyName = "resume_Date";
                 dataGridView1.DataSource = ds.Tables[0];
 
                 if (!dataGridView1.Columns.Contains("certificate_id"))
@@ -57,8 +58,18 @@ namespace Clinic_Management_System
             string disease = dataGridView1.Rows[e.RowIndex].Cells["disease"].Value.ToString();
             string from_Date = dataGridView1.Rows[e.RowIndex].Cells["from_Date"].Value.ToString();
             string to_Date = dataGridView1.Rows[e.RowIndex].Cells["to_Date"].Value.ToString();
+            string resume_Date = dataGridView1.Rows[e.RowIndex].Cells["resume_Date"].Value.ToString();
 
-            CertificateOutput certificate = new CertificateOutput(name,disease,from_Date,to_Date);
+            DateTime resumeDateTime = DateTime.Parse(resume_Date);
+            string formattedResumeDate = resumeDateTime.ToString("yyyy-MM-dd");
+
+            DateTime fromDateTime = DateTime.Parse(resume_Date);
+            string formattedFromDate = fromDateTime.ToString("yyyy-MM-dd");
+
+            DateTime toDateTime = DateTime.Parse(resume_Date);
+            string formattedToDate = toDateTime.ToString("yyyy-MM-dd");
+
+            CertificateOutput certificate = new CertificateOutput(name,disease,formattedFromDate,formattedToDate,formattedResumeDate);
             certificate.ShowDialog();
         }
     }

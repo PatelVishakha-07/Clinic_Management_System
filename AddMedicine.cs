@@ -30,6 +30,7 @@ namespace Clinic_Management_System
 
         private void AddMedicine_Load(object sender, EventArgs e)
         {
+            LabelVisisble();
             txtName.TextChanged += txtName_TextChanged;
             listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
         }
@@ -41,13 +42,14 @@ namespace Clinic_Management_System
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            LabelVisisble();
+
             lblName.Text = "Medicine Name Cannot be empty";
             lblCmp.Text = "Company Name Cannot be empty";
             lblStock.Text = "Medicine Stock Cannot be empty";
             lblPurchase.Text = "Purchase Price cannot be empty";
             lblSell.Text = "Sell Price cannot be empty";
 
-            LabelVisisble();
             string medicineName = txtName.Text;
             string cmpName = txtCmp.Text;
             string stock = txtStock.Text;

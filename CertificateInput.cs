@@ -32,6 +32,7 @@ namespace Clinic_Management_System
             string disease = txtDisease.Text;
             string fromDate = dtpFromDate.Text.ToString();
             string toDate = dtpToDate.Text;
+            string resumeDate = dtpResume.Text;
 
             if (name == "" && disease == "")
             {
@@ -56,11 +57,15 @@ namespace Clinic_Management_System
                 string formattedFromDate = fromDateTime.ToString("yyyy-MM-dd");
 
                 DateTime ToDateTime = DateTime.Parse(dtpToDate.Text);
-                string formattedToDate = fromDateTime.ToString("yyyy-MM-dd");
+                string formattedToDate = ToDateTime.ToString("yyyy-MM-dd");
 
-                string inputQuery = $"insert into certificate(name,disease, from_Date, to_Date) values ('{name}', '{disease}', '{formattedFromDate}', '{formattedToDate}');";
+                DateTime resumeDateTime = DateTime.Parse(dtpResume.Text);
+                string formattedResumeDate = resumeDateTime.ToString("yyyy-MM-dd");
+
+                string inputQuery = $"insert into certificate(name,disease, from_Date, to_Date, resume_date) values " +
+                    $"('{name}', '{disease}', '{formattedFromDate}', '{formattedToDate}', '{formattedResumeDate}');";
                 dbClass.databaseoperations(inputQuery);
-                CertificateOutput certificateOutput = new CertificateOutput(name, disease, fromDate, toDate);
+                CertificateOutput certificateOutput = new CertificateOutput(name, disease, formattedFromDate, formattedToDate, formattedResumeDate);
                 certificateOutput.ShowDialog();
             }
         }
@@ -71,6 +76,7 @@ namespace Clinic_Management_System
             txtDisease.Text = string.Empty;
             dtpFromDate.Text = DateTime.Now.ToString();
             dtpToDate.Text = DateTime.Now.ToString();
+            dtpResume.Text = DateTime.Now.ToString();
         }
     }
 }

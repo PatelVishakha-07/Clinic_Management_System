@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            lblCurrentDate = new Label();
+            lblDate = new Label();
             pictureBox2 = new PictureBox();
             label3 = new Label();
             lblNo = new Label();
@@ -48,6 +50,8 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(lblCurrentDate);
+            panel1.Controls.Add(lblDate);
             panel1.Controls.Add(pictureBox2);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(lblNo);
@@ -65,6 +69,27 @@
             panel1.Size = new Size(996, 580);
             panel1.TabIndex = 0;
             // 
+            // lblCurrentDate
+            // 
+            lblCurrentDate.AutoSize = true;
+            lblCurrentDate.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            lblCurrentDate.Location = new Point(737, 131);
+            lblCurrentDate.Name = "lblCurrentDate";
+            lblCurrentDate.Size = new Size(59, 23);
+            lblCurrentDate.TabIndex = 32;
+            lblCurrentDate.Text = "label6";
+            // 
+            // lblDate
+            // 
+            lblDate.Anchor = AnchorStyles.None;
+            lblDate.AutoSize = true;
+            lblDate.Font = new Font("Century Schoolbook", 17F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            lblDate.Location = new Point(641, 487);
+            lblDate.Name = "lblDate";
+            lblDate.Size = new Size(81, 34);
+            lblDate.TabIndex = 31;
+            lblDate.Text = "date";
+            // 
             // pictureBox2
             // 
             pictureBox2.Dock = DockStyle.Top;
@@ -81,7 +106,7 @@
             label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Variable Display", 16.2F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            label3.Location = new Point(339, 172);
+            label3.Location = new Point(372, 172);
             label3.Name = "label3";
             label3.Size = new Size(272, 37);
             label3.TabIndex = 19;
@@ -115,11 +140,11 @@
             label8.Anchor = AnchorStyles.None;
             label8.AutoSize = true;
             label8.Font = new Font("Century Schoolbook", 17F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(150, 494);
+            label8.Location = new Point(104, 487);
             label8.Name = "label8";
-            label8.Size = new Size(471, 34);
+            label8.Size = new Size(543, 34);
             label8.TabIndex = 27;
-            label8.Text = "He/She is fully fit to resume duty.";
+            label8.Text = "He/She is fully fit to resume duty from ";
             label8.TextAlign = ContentAlignment.TopCenter;
             // 
             // lblToDate
@@ -127,29 +152,29 @@
             lblToDate.Anchor = AnchorStyles.None;
             lblToDate.AutoSize = true;
             lblToDate.Font = new Font("Century Schoolbook", 17F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            lblToDate.Location = new Point(505, 417);
+            lblToDate.Location = new Point(469, 409);
             lblToDate.Name = "lblToDate";
-            lblToDate.Size = new Size(106, 34);
+            lblToDate.Size = new Size(133, 34);
             lblToDate.TabIndex = 26;
-            lblToDate.Text = "label2";
+            lblToDate.Text = "To Date";
             // 
             // lblFromDate
             // 
             lblFromDate.Anchor = AnchorStyles.None;
             lblFromDate.AutoSize = true;
             lblFromDate.Font = new Font("Century Schoolbook", 17F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            lblFromDate.Location = new Point(158, 417);
+            lblFromDate.Location = new Point(184, 409);
             lblFromDate.Name = "lblFromDate";
-            lblFromDate.Size = new Size(106, 34);
+            lblFromDate.Size = new Size(166, 34);
             lblFromDate.TabIndex = 25;
-            lblFromDate.Text = "label2";
+            lblFromDate.Text = "from Date";
             // 
             // label5
             // 
             label5.Anchor = AnchorStyles.None;
             label5.AutoSize = true;
             label5.Font = new Font("Century Schoolbook", 17F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(458, 417);
+            label5.Location = new Point(422, 409);
             label5.Name = "label5";
             label5.Size = new Size(41, 34);
             label5.TabIndex = 24;
@@ -161,7 +186,7 @@
             label4.Anchor = AnchorStyles.None;
             label4.AutoSize = true;
             label4.Font = new Font("Century Schoolbook", 17F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(78, 417);
+            label4.Location = new Point(104, 409);
             label4.Name = "label4";
             label4.Size = new Size(79, 34);
             label4.TabIndex = 23;
@@ -173,18 +198,18 @@
             lblDisease.Anchor = AnchorStyles.None;
             lblDisease.AutoSize = true;
             lblDisease.Font = new Font("Century Schoolbook", 17F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            lblDisease.Location = new Point(512, 347);
+            lblDisease.Location = new Point(538, 339);
             lblDisease.Name = "lblDisease";
-            lblDisease.Size = new Size(106, 34);
+            lblDisease.Size = new Size(127, 34);
             lblDisease.TabIndex = 22;
-            lblDisease.Text = "label2";
+            lblDisease.Text = "disease";
             // 
             // label2
             // 
             label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
             label2.Font = new Font("Century Schoolbook", 17F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(78, 347);
+            label2.Location = new Point(104, 339);
             label2.Name = "label2";
             label2.Size = new Size(426, 34);
             label2.TabIndex = 21;
@@ -198,9 +223,9 @@
             lblName.Font = new Font("Century Schoolbook", 17F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
             lblName.Location = new Point(469, 273);
             lblName.Name = "lblName";
-            lblName.Size = new Size(106, 34);
+            lblName.Size = new Size(98, 34);
             lblName.TabIndex = 20;
-            lblName.Text = "label2";
+            lblName.Text = "name";
             // 
             // CertificateOutput
             // 
@@ -236,5 +261,7 @@
         private Label lblName;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private PictureBox pictureBox2;
+        private Label lblDate;
+        private Label lblCurrentDate;
     }
 }

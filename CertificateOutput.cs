@@ -14,16 +14,17 @@ namespace Clinic_Management_System
 {
     public partial class CertificateOutput : Form
     {
-        string name, disease, fromDate, toDate;
+        string name, disease, fromDate, toDate, resumeDate;
         Button printButton;
         PrintDocument printDocument;
-        public CertificateOutput(string n, string d, string fd, string td)
+        public CertificateOutput(string n, string d, string fd, string td, string rd)
         {
             InitializeComponent();
             name = n;
             disease = d;
             fromDate = fd;
             toDate = td;
+            resumeDate = rd;
 
             printButton = new Button
             {
@@ -46,10 +47,13 @@ namespace Clinic_Management_System
             string randomPart = new Random().Next(1000, 9999).ToString();
 
             lblNo.Text = "Certificate No. : " + dateTimePart + randomPart;
-            lblName.Text = name;
-            lblDisease.Text = disease;
-            lblFromDate.Text = fromDate;
-            lblToDate.Text = toDate;
+            lblName.Text ="__" + name + "_______";
+            lblDisease.Text ="__" + disease + "____";
+            lblFromDate.Text ="__" + fromDate + "__";
+            lblToDate.Text = "__" + toDate + "__";
+            lblDate.Text = "__" + resumeDate + "__";
+
+            lblCurrentDate.Text = "Date: " + DateTime.Now.ToString("yyyy-MM-dd");
         }
 
         private void PrintButton_Click(object sender, EventArgs e)

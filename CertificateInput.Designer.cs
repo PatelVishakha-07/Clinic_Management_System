@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            dtpResume = new DateTimePicker();
+            label6 = new Label();
             lblDiseaseError = new Label();
             lblNameError = new Label();
             btnClear = new Button();
@@ -47,6 +49,8 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(dtpResume);
+            panel1.Controls.Add(label6);
             panel1.Controls.Add(lblDiseaseError);
             panel1.Controls.Add(lblNameError);
             panel1.Controls.Add(btnClear);
@@ -66,12 +70,32 @@
             panel1.Size = new Size(801, 743);
             panel1.TabIndex = 0;
             // 
+            // dtpResume
+            // 
+            dtpResume.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            dtpResume.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpResume.Location = new Point(261, 466);
+            dtpResume.Name = "dtpResume";
+            dtpResume.Size = new Size(469, 38);
+            dtpResume.TabIndex = 51;
+            // 
+            // label6
+            // 
+            label6.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.Location = new Point(70, 473);
+            label6.Name = "label6";
+            label6.Size = new Size(165, 31);
+            label6.TabIndex = 50;
+            label6.Text = "Resume Date :";
+            // 
             // lblDiseaseError
             // 
             lblDiseaseError.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lblDiseaseError.AutoSize = true;
             lblDiseaseError.ForeColor = Color.Red;
-            lblDiseaseError.Location = new Point(262, 341);
+            lblDiseaseError.Location = new Point(261, 266);
             lblDiseaseError.Name = "lblDiseaseError";
             lblDiseaseError.Size = new Size(144, 20);
             lblDiseaseError.TabIndex = 49;
@@ -83,7 +107,7 @@
             lblNameError.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lblNameError.AutoSize = true;
             lblNameError.ForeColor = Color.Red;
-            lblNameError.Location = new Point(262, 255);
+            lblNameError.Location = new Point(261, 180);
             lblNameError.Name = "lblNameError";
             lblNameError.Size = new Size(133, 20);
             lblNameError.TabIndex = 48;
@@ -94,7 +118,7 @@
             // 
             btnClear.Anchor = AnchorStyles.Bottom;
             btnClear.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            btnClear.Location = new Point(414, 597);
+            btnClear.Location = new Point(414, 595);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(146, 62);
             btnClear.TabIndex = 47;
@@ -106,7 +130,7 @@
             // 
             btnDone.Anchor = AnchorStyles.Bottom;
             btnDone.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            btnDone.Location = new Point(140, 597);
+            btnDone.Location = new Point(140, 595);
             btnDone.Name = "btnDone";
             btnDone.Size = new Size(146, 62);
             btnDone.TabIndex = 46;
@@ -118,7 +142,7 @@
             // 
             dtpToDate.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dtpToDate.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            dtpToDate.Location = new Point(260, 473);
+            dtpToDate.Location = new Point(259, 398);
             dtpToDate.Name = "dtpToDate";
             dtpToDate.Size = new Size(469, 38);
             dtpToDate.TabIndex = 45;
@@ -127,7 +151,7 @@
             // 
             dtpFromDate.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dtpFromDate.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            dtpFromDate.Location = new Point(260, 392);
+            dtpFromDate.Location = new Point(259, 317);
             dtpFromDate.Name = "dtpFromDate";
             dtpFromDate.Size = new Size(469, 38);
             dtpFromDate.TabIndex = 44;
@@ -137,7 +161,7 @@
             label5.Anchor = AnchorStyles.Top;
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(140, 84);
+            label5.Location = new Point(127, 42);
             label5.Name = "label5";
             label5.Size = new Size(589, 38);
             label5.TabIndex = 43;
@@ -147,7 +171,7 @@
             // 
             txtDisease.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtDisease.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            txtDisease.Location = new Point(260, 300);
+            txtDisease.Location = new Point(259, 225);
             txtDisease.Name = "txtDisease";
             txtDisease.Size = new Size(469, 38);
             txtDisease.TabIndex = 42;
@@ -156,7 +180,7 @@
             // 
             txtName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtName.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            txtName.Location = new Point(260, 214);
+            txtName.Location = new Point(259, 139);
             txtName.Name = "txtName";
             txtName.Size = new Size(469, 38);
             txtName.TabIndex = 41;
@@ -166,7 +190,7 @@
             label4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(71, 476);
+            label4.Location = new Point(70, 401);
             label4.Name = "label4";
             label4.Size = new Size(107, 31);
             label4.TabIndex = 40;
@@ -177,7 +201,7 @@
             label3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(71, 399);
+            label3.Location = new Point(70, 324);
             label3.Name = "label3";
             label3.Size = new Size(144, 31);
             label3.TabIndex = 39;
@@ -188,7 +212,7 @@
             label2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(71, 307);
+            label2.Location = new Point(70, 232);
             label2.Name = "label2";
             label2.Size = new Size(106, 31);
             label2.TabIndex = 38;
@@ -199,7 +223,7 @@
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(71, 221);
+            label1.Location = new Point(70, 146);
             label1.Name = "label1";
             label1.Size = new Size(95, 31);
             label1.TabIndex = 37;
@@ -234,5 +258,7 @@
         private Label label3;
         private Label label2;
         private Label label1;
+        private DateTimePicker dtpResume;
+        private Label label6;
     }
 }

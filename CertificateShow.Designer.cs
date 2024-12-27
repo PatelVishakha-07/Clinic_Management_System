@@ -35,6 +35,7 @@
             disease = new DataGridViewTextBoxColumn();
             from_Date = new DataGridViewTextBoxColumn();
             to_Date = new DataGridViewTextBoxColumn();
+            resume_date = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -62,7 +63,7 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { name, disease, from_Date, to_Date });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { name, disease, from_Date, to_Date, resume_date });
             dataGridView1.Location = new Point(27, 99);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
@@ -99,6 +100,13 @@
             to_Date.MinimumWidth = 6;
             to_Date.Name = "to_Date";
             // 
+            // resume_date
+            // 
+            resume_date.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            resume_date.HeaderText = "Resume Date";
+            resume_date.MinimumWidth = 6;
+            resume_date.Name = "resume_date";
+            // 
             // CertificateShow
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -117,10 +125,11 @@
 
         private Panel panel1;
         private DataGridView dataGridView1;
+        private Label label1;
         private DataGridViewTextBoxColumn name;
         private DataGridViewTextBoxColumn disease;
         private DataGridViewTextBoxColumn from_Date;
         private DataGridViewTextBoxColumn to_Date;
-        private Label label1;
+        private DataGridViewTextBoxColumn resume_date;
     }
 }
