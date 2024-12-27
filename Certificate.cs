@@ -22,7 +22,7 @@ namespace Clinic_Management_System
 
         private void Certificate_Load(object sender, EventArgs e)
         {
-            ShowControl(new CertificateInput());
+            ShowControl(new CertificateDetails());
         }
 
         public void ShowControl(UserControl userControl)
@@ -38,7 +38,7 @@ namespace Clinic_Management_System
 
         private void createCertificateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ShowControl(new CertificateInput());
+            ShowControl(new CertificateDetails());
         }
 
         private void showToolStripMenuItem_Click(object sender, EventArgs e)

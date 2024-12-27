@@ -65,8 +65,8 @@ namespace Clinic_Management_System
                 string inputQuery = $"insert into certificate(name,disease, from_Date, to_Date, resume_date) values " +
                     $"('{name}', '{disease}', '{formattedFromDate}', '{formattedToDate}', '{formattedResumeDate}');";
                 dbClass.databaseoperations(inputQuery);
-                CertificateOutput certificateOutput = new CertificateOutput(name, disease, formattedFromDate, formattedToDate, formattedResumeDate);
-                certificateOutput.ShowDialog();
+                //CertificateOutput certificateOutput = new CertificateOutput(name, disease, formattedFromDate, formattedToDate, formattedResumeDate);
+                //certificateOutput.ShowDialog();
             }
         }
 

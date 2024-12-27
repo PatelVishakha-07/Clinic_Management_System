@@ -14,22 +14,24 @@ namespace Clinic_Management_System
 {
     public partial class CertificateOutput : Form
     {
-        string name, disease, fromDate, toDate, resumeDate;
+        string name, disease, fromDate, toDate, resumeDate, rest_form_date, rest_to_date;
         Button printButton;
         PrintDocument printDocument;
-        public CertificateOutput(string n, string d, string fd, string td, string rd)
+        public CertificateOutput(string n, string d, string tfd, string t_td, string rest_from_d, string rest_to_d, string resume_d)
         {
             InitializeComponent();
             name = n;
             disease = d;
-            fromDate = fd;
-            toDate = td;
-            resumeDate = rd;
+            fromDate = tfd;
+            toDate = t_td;
+            resumeDate = resume_d;
+            rest_form_date = rest_from_d;
+            rest_to_date = rest_to_d;
 
             printButton = new Button
             {
                 Text = "Print Report",
-                Location = new Point(900, 640)
+                Location = new Point(900, 800)
             };
 
             printButton.Click += PrintButton_Click;
@@ -47,11 +49,13 @@ namespace Clinic_Management_System
             string randomPart = new Random().Next(1000, 9999).ToString();
 
             lblNo.Text = "Certificate No. : " + dateTimePart + randomPart;
-            lblName.Text ="__" + name + "_______";
+            lblName.Text ="__" + name + "___________";
             lblDisease.Text ="__" + disease + "____";
             lblFromDate.Text ="__" + fromDate + "__";
-            lblToDate.Text = "__" + toDate + "__";
-            lblDate.Text = "__" + resumeDate + "__";
+            lblToDate.Text = "__" + toDate + "__ .";
+            lblResumeDate.Text = "__" + resumeDate + "__ .";
+            lblRestTo.Text = "__" + rest_to_date + "__ .";
+            lblRestFrom.Text = "__" + rest_form_date + "__";
 
             lblCurrentDate.Text = "Date: " + DateTime.Now.ToString("yyyy-MM-dd");
         }

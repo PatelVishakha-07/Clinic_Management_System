@@ -26,7 +26,7 @@ namespace Clinic_Management_System
         private void PopulateGridView()
         {
             DataSet ds = new DataSet();
-            string query = "select * from certificate;";
+            string query = "select * from certificate_table;";
             ds = dbClass.Getdata(query);
             if (ds != null && ds.Tables.Count > 0)
             {
@@ -35,6 +35,8 @@ namespace Clinic_Management_System
                 dataGridView1.Columns["disease"].DataPropertyName = "disease";
                 dataGridView1.Columns["from_Date"].DataPropertyName = "from_Date";
                 dataGridView1.Columns["to_Date"].DataPropertyName = "to_Date";
+                dataGridView1.Columns["rest_from_Date"].DataPropertyName = "resume_Date";
+                dataGridView1.Columns["rest_to_Date"].DataPropertyName = "resume_Date";
                 dataGridView1.Columns["resume_Date"].DataPropertyName = "resume_Date";
                 dataGridView1.DataSource = ds.Tables[0];
 
@@ -58,6 +60,9 @@ namespace Clinic_Management_System
             string disease = dataGridView1.Rows[e.RowIndex].Cells["disease"].Value.ToString();
             string from_Date = dataGridView1.Rows[e.RowIndex].Cells["from_Date"].Value.ToString();
             string to_Date = dataGridView1.Rows[e.RowIndex].Cells["to_Date"].Value.ToString();
+
+            string rest_from_Date = dataGridView1.Rows[e.RowIndex].Cells["rest_from_Date"].Value.ToString();
+            string rest_to_Date = dataGridView1.Rows[e.RowIndex].Cells["rest_to_Date"].Value.ToString();
             string resume_Date = dataGridView1.Rows[e.RowIndex].Cells["resume_Date"].Value.ToString();
 
             DateTime resumeDateTime = DateTime.Parse(resume_Date);
@@ -69,7 +74,12 @@ namespace Clinic_Management_System
             DateTime toDateTime = DateTime.Parse(resume_Date);
             string formattedToDate = toDateTime.ToString("yyyy-MM-dd");
 
-            CertificateOutput certificate = new CertificateOutput(name,disease,formattedFromDate,formattedToDate,formattedResumeDate);
+            DateTime restToDateTime = DateTime.Parse(resume_Date);
+            string formattedRestToDate = restToDateTime.ToString("yyyy-MM-dd");
+            DateTime restFromDateTime = DateTime.Parse(resume_Date);
+            string formattedrestFromDate = restFromDateTime.ToString("yyyy-MM-dd");
+
+            CertificateOutput certificate = new CertificateOutput(name,disease,formattedFromDate,formattedToDate,formattedrestFromDate, formattedRestToDate, formattedResumeDate);
             certificate.ShowDialog();
         }
     }

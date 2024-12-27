@@ -43,7 +43,7 @@
             leftPanel.Dock = DockStyle.Left;
             leftPanel.Location = new Point(0, 0);
             leftPanel.Name = "leftPanel";
-            leftPanel.Size = new Size(254, 743);
+            leftPanel.Size = new Size(254, 778);
             leftPanel.TabIndex = 1;
             // 
             // topPanel
@@ -52,7 +52,7 @@
             topPanel.Dock = DockStyle.Top;
             topPanel.Location = new Point(254, 0);
             topPanel.Name = "topPanel";
-            topPanel.Size = new Size(801, 61);
+            topPanel.Size = new Size(823, 61);
             topPanel.TabIndex = 3;
             // 
             // menuStrip1
@@ -64,7 +64,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { createCertificateToolStripMenuItem, showToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(801, 61);
+            menuStrip1.Size = new Size(823, 61);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -87,14 +87,14 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(254, 61);
             panel1.Name = "panel1";
-            panel1.Size = new Size(801, 682);
+            panel1.Size = new Size(823, 717);
             panel1.TabIndex = 4;
             // 
             // Certificate
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1055, 743);
+            ClientSize = new Size(1077, 778);
             Controls.Add(panel1);
             Controls.Add(topPanel);
             Controls.Add(leftPanel);

@@ -35,6 +35,8 @@
             disease = new DataGridViewTextBoxColumn();
             from_Date = new DataGridViewTextBoxColumn();
             to_Date = new DataGridViewTextBoxColumn();
+            rest_from_date = new DataGridViewTextBoxColumn();
+            rest_to_date = new DataGridViewTextBoxColumn();
             resume_date = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -52,6 +54,7 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(218, 33);
@@ -62,8 +65,9 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { name, disease, from_Date, to_Date, resume_date });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { name, disease, from_Date, to_Date, rest_from_date, rest_to_date, resume_date });
             dataGridView1.Location = new Point(27, 99);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
@@ -89,16 +93,30 @@
             // from_Date
             // 
             from_Date.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            from_Date.HeaderText = "From Date";
+            from_Date.HeaderText = "Treatment From Date";
             from_Date.MinimumWidth = 6;
             from_Date.Name = "from_Date";
             // 
             // to_Date
             // 
             to_Date.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            to_Date.HeaderText = "To Date";
+            to_Date.HeaderText = "Treatment To Date";
             to_Date.MinimumWidth = 6;
             to_Date.Name = "to_Date";
+            // 
+            // rest_from_date
+            // 
+            rest_from_date.HeaderText = "Rest From Date";
+            rest_from_date.MinimumWidth = 6;
+            rest_from_date.Name = "rest_from_date";
+            rest_from_date.Width = 125;
+            // 
+            // rest_to_date
+            // 
+            rest_to_date.HeaderText = "Rest To Date";
+            rest_to_date.MinimumWidth = 6;
+            rest_to_date.Name = "rest_to_date";
+            rest_to_date.Width = 125;
             // 
             // resume_date
             // 
@@ -130,6 +148,8 @@
         private DataGridViewTextBoxColumn disease;
         private DataGridViewTextBoxColumn from_Date;
         private DataGridViewTextBoxColumn to_Date;
+        private DataGridViewTextBoxColumn rest_from_date;
+        private DataGridViewTextBoxColumn rest_to_date;
         private DataGridViewTextBoxColumn resume_date;
     }
 }
