@@ -31,19 +31,12 @@ namespace Clinic_Management_System
                 BackColor = Color.White,
                 Location = new Point(10, 10)
             };
-
-            Label label = new Label
-            {
-                Text = "Clinic Name",
-                AutoSize = true,
-                Location = new Point(10, 10)
-            };
-
-            printPanel.Controls.Add(label);
+            pictureBox1.Dock = DockStyle.Top;
+            printPanel.Controls.Add(pictureBox1);
             printButton = new Button
             {
                 Text = "Print Report",
-                Location = new Point(630, 810)
+                Location = new Point(630, 750)
             };
             printButton.Click += PrintButton_Click;
 
@@ -64,7 +57,7 @@ namespace Clinic_Management_System
         {
             string patientQuery = $"SELECT DISTINCT * FROM patients WHERE patient_id={patientId}";
             DataSet patientData = dbclass.Getdata(patientQuery);
-            int currentY = 150;
+            int currentY = 70;
             currentY = DisplayData(patientData, printPanel, currentY, "Patient Details", excludeColumns: new[] { "patient_id" });
 
             // Fetch the latest IPD entry for the patient

@@ -33,6 +33,17 @@ namespace Clinic_Management_System
             string date5=dateTimePicker5.Text;
             string date6=dateTimePicker6.Text;
 
+            //string today_date = DateOnly.ToString("yyyy-MM-dd");
+
+            DateOnly today = DateOnly.FromDateTime(DateTime.Now);
+
+            // Convert it to a string in the format "yyyy-MM-dd"
+            string today_date = today.ToString("yyyy-MM-dd");
+
+            string dateTimePart = DateTime.Now.ToString("yyyyMMddHHmmss");
+            string randomPart = new Random().Next(1000, 9999).ToString();
+            string certificate_number = dateTimePart + randomPart;
+
             DateTime fromdate1 = DateTime.Parse(dateTimePicker1.Text);
             string formattedDate1 = fromdate1.ToString("yyyy-MM-dd");
 
@@ -48,11 +59,13 @@ namespace Clinic_Management_System
             DateTime fromdate6 = DateTime.Parse(dateTimePicker6.Text);
             string formattedDate6 = fromdate6.ToString("yyyy-MM-dd");
 
-            string query = "insert into certificate_table(name, disease, from_date, to_date, rest_from_date, " +
-                $"rest_to_date, resume_date) values ('{name}', '{disease}', '{formattedDate1}', '{formattedDate2}', " +
-                $"'{formattedDate4}', '{formattedDate5}', '{formattedDate6}');";
+            string query = "insert into certificate (name, disease, from_date, to_date, rest_from_date, " +
+                $"rest_to_date, resume_date, today_date, certificate_number) values" +
+                $" ('{name}', '{disease}', '{formattedDate1}', '{formattedDate2}', " +
+                $"'{formattedDate4}', '{formattedDate5}', '{formattedDate6}', '{today_date}', '{certificate_number}');";
             dbClass.databaseoperations(query);
-            CertificateOutput certificateOutput = new CertificateOutput(name,disease,formattedDate1,formattedDate2,formattedDate4,formattedDate5,formattedDate6);
+
+            CertificateOutput certificateOutput = new CertificateOutput(name,disease,formattedDate1,formattedDate2,formattedDate4,formattedDate5,formattedDate6, certificate_number,today_date);
             certificateOutput.ShowDialog();
         }
 

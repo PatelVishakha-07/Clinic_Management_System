@@ -47,6 +47,8 @@ namespace Clinic_Management_System
             Controls.Add(printPanel);
             printPanel.Dock = DockStyle.Fill;
             printPanel.Controls.Add(printButton);
+            pictureBox1.Dock= DockStyle.Top;
+            printPanel.Controls.Add(pictureBox1);
 
             Size = new Size(1082, 920);
             Text = "Print Report";
@@ -57,16 +59,7 @@ namespace Clinic_Management_System
             int currentY = 120;
 
             // Clinic Title
-            Label clinicLabel = new Label
-            {
-                Text = "Dhanvantari Clinic",
-                Font = new System.Drawing.Font("Arial", 20, FontStyle.Bold),
-                ForeColor = Color.DarkBlue,
-                AutoSize = true,
-                Location = new Point(40, currentY)
-            };
-            printPanel.Controls.Add(clinicLabel);
-            currentY += 50;
+            //currentY += 50;
             int  currentY1=currentY;
             // Fetch patient details
             string patientQuery = $"SELECT * FROM patients WHERE patient_id={patientId}";
@@ -124,7 +117,7 @@ namespace Clinic_Management_System
                     {
                         DataSource = medicineData.Tables[0],
                         AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
-                        Location = new Point(40, currentY),
+                        Location = new Point(30, currentY),
                         Size = new Size(printPanel.Width - 80, 200),
                         AllowUserToAddRows = false,
                         ReadOnly = true,
@@ -141,6 +134,7 @@ namespace Clinic_Management_System
                             BackColor = Color.White
                         }
                     };
+                    
                     gridView.CellFormatting += GridView_CellFormatting;
 
                     //printPanel.Controls.Add(gridView);

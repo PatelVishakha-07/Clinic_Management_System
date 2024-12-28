@@ -84,6 +84,7 @@
             // 
             // lblall
             // 
+            lblall.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lblall.AutoSize = true;
             lblall.ForeColor = Color.Red;
             lblall.Location = new Point(614, 101);
@@ -96,6 +97,7 @@
             // 
             // lblage
             // 
+            lblage.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lblage.AutoSize = true;
             lblage.ForeColor = Color.Red;
             lblage.Location = new Point(614, 266);
@@ -108,6 +110,7 @@
             // 
             // lbladd
             // 
+            lbladd.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lbladd.AutoSize = true;
             lbladd.ForeColor = Color.Red;
             lbladd.Location = new Point(614, 444);
@@ -120,6 +123,7 @@
             // 
             // lblph_no
             // 
+            lblph_no.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lblph_no.AutoSize = true;
             lblph_no.ForeColor = Color.Red;
             lblph_no.Location = new Point(614, 532);
@@ -132,6 +136,7 @@
             // 
             // lblname
             // 
+            lblname.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lblname.AutoSize = true;
             lblname.ForeColor = Color.Red;
             lblname.Location = new Point(614, 177);
@@ -153,6 +158,7 @@
             // 
             // comboBox1
             // 
+            comboBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             comboBox1.AutoCompleteCustomSource.AddRange(new string[] { "Male", "Female" });
             comboBox1.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             comboBox1.FormattingEnabled = true;
@@ -164,6 +170,7 @@
             // 
             // txtaddress
             // 
+            txtaddress.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtaddress.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             txtaddress.Location = new Point(614, 403);
             txtaddress.Name = "txtaddress";
@@ -172,6 +179,7 @@
             // 
             // txtContact
             // 
+            txtContact.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtContact.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             txtContact.Location = new Point(614, 491);
             txtContact.Name = "txtContact";
@@ -191,6 +199,7 @@
             // 
             // btnClear
             // 
+            btnClear.Anchor = AnchorStyles.Bottom;
             btnClear.BackColor = Color.LightSteelBlue;
             btnClear.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnClear.ForeColor = Color.Black;
@@ -204,6 +213,7 @@
             // 
             // btnSave
             // 
+            btnSave.Anchor = AnchorStyles.Bottom;
             btnSave.BackColor = Color.LightSteelBlue;
             btnSave.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnSave.ForeColor = Color.Black;
@@ -239,6 +249,7 @@
             // 
             // txtAge
             // 
+            txtAge.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtAge.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             txtAge.Location = new Point(614, 225);
             txtAge.Name = "txtAge";
@@ -258,12 +269,12 @@
             // 
             // txtName
             // 
+            txtName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtName.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             txtName.Location = new Point(614, 138);
             txtName.Name = "txtName";
             txtName.Size = new Size(457, 41);
             txtName.TabIndex = 16;
-//            txtName.TextChanged += txtName_TextChanged;
             // 
             // pictureBox1
             // 
@@ -289,6 +300,7 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 17F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);

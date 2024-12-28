@@ -71,7 +71,7 @@
             // 
             // lblCharge
             // 
-            lblCharge.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lblCharge.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             lblCharge.AutoSize = true;
             lblCharge.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             lblCharge.Location = new Point(27, 633);
@@ -82,7 +82,7 @@
             // 
             // lblProfit
             // 
-            lblProfit.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lblProfit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             lblProfit.AutoSize = true;
             lblProfit.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             lblProfit.Location = new Point(27, 573);
@@ -93,7 +93,7 @@
             // 
             // dataGridView1
             // 
-            dataGridView1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
             dataGridViewCellStyle1.Font = new Font("Stencil Std", 10.7999992F, FontStyle.Bold, GraphicsUnit.Point);

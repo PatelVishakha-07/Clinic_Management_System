@@ -29,14 +29,6 @@ namespace Clinic_Management_System
                 Location = new Point(10, 10)
             };
 
-            Label label = new Label
-            {
-                Text = "Clinic Name",
-                AutoSize = true,
-                Location = new Point(10, 10)
-            };
-
-            printPanel.Controls.Add(label);
             printButton = new Button
             {
                 Text = "Print Report",
@@ -48,6 +40,7 @@ namespace Clinic_Management_System
             printDocument.PrintPage += PrintDocument_PrintPage;
 
             Controls.Add(printPanel);
+            printPanel.Controls.Add(pictureBox1);
             printPanel.Dock = DockStyle.Fill;
             printPanel.AutoScroll = true;
             //printPanel.Dock = DockStyle.Fill;

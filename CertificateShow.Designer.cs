@@ -38,6 +38,8 @@
             rest_from_date = new DataGridViewTextBoxColumn();
             rest_to_date = new DataGridViewTextBoxColumn();
             resume_date = new DataGridViewTextBoxColumn();
+            today_date = new DataGridViewTextBoxColumn();
+            certificate_number = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -67,7 +69,7 @@
             // 
             dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { name, disease, from_Date, to_Date, rest_from_date, rest_to_date, resume_date });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { name, disease, from_Date, to_Date, rest_from_date, rest_to_date, resume_date, today_date, certificate_number });
             dataGridView1.Location = new Point(27, 99);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
@@ -125,6 +127,22 @@
             resume_date.MinimumWidth = 6;
             resume_date.Name = "resume_date";
             // 
+            // today_date
+            // 
+            today_date.HeaderText = "Today's Date";
+            today_date.MinimumWidth = 6;
+            today_date.Name = "today_date";
+            today_date.Visible = false;
+            today_date.Width = 125;
+            // 
+            // certificate_number
+            // 
+            certificate_number.HeaderText = "Certificate Number";
+            certificate_number.MinimumWidth = 6;
+            certificate_number.Name = "certificate_number";
+            certificate_number.Visible = false;
+            certificate_number.Width = 125;
+            // 
             // CertificateShow
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -151,5 +169,7 @@
         private DataGridViewTextBoxColumn rest_from_date;
         private DataGridViewTextBoxColumn rest_to_date;
         private DataGridViewTextBoxColumn resume_date;
+        private DataGridViewTextBoxColumn today_date;
+        private DataGridViewTextBoxColumn certificate_number;
     }
 }

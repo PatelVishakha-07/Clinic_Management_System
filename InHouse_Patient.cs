@@ -165,7 +165,7 @@ namespace Clinic_Management_System
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error: {ex.Message}");
+                MessageBox.Show("Patient Not Found \nInsert Patient in OPD");
             }
         }
 

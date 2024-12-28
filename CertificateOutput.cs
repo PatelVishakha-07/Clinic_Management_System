@@ -14,10 +14,10 @@ namespace Clinic_Management_System
 {
     public partial class CertificateOutput : Form
     {
-        string name, disease, fromDate, toDate, resumeDate, rest_form_date, rest_to_date;
+        string name, disease, fromDate, toDate, resumeDate, rest_form_date, rest_to_date, certificate_number, today_date;
         Button printButton;
         PrintDocument printDocument;
-        public CertificateOutput(string n, string d, string tfd, string t_td, string rest_from_d, string rest_to_d, string resume_d)
+        public CertificateOutput(string n, string d, string tfd, string t_td, string rest_from_d, string rest_to_d, string resume_d, string certificate_no, string today_d)
         {
             InitializeComponent();
             name = n;
@@ -27,6 +27,8 @@ namespace Clinic_Management_System
             resumeDate = resume_d;
             rest_form_date = rest_from_d;
             rest_to_date = rest_to_d;
+            certificate_number = certificate_no;
+            today_date = today_d;
 
             printButton = new Button
             {
@@ -45,10 +47,9 @@ namespace Clinic_Management_System
 
         private void CertificateOutput_Load(object sender, EventArgs e)
         {
-            string dateTimePart = DateTime.Now.ToString("yyyyMMddHHmmss"); 
-            string randomPart = new Random().Next(1000, 9999).ToString();
+            
 
-            lblNo.Text = "Certificate No. : " + dateTimePart + randomPart;
+            lblNo.Text = "Certificate No. : " + certificate_number;
             lblName.Text ="__" + name + "___________";
             lblDisease.Text ="__" + disease + "____";
             lblFromDate.Text ="__" + fromDate + "__";
@@ -57,7 +58,7 @@ namespace Clinic_Management_System
             lblRestTo.Text = "__" + rest_to_date + "__ .";
             lblRestFrom.Text = "__" + rest_form_date + "__";
 
-            lblCurrentDate.Text = "Date: " + DateTime.Now.ToString("yyyy-MM-dd");
+            lblCurrentDate.Text = "Date: " + today_date;
         }
 
         private void PrintButton_Click(object sender, EventArgs e)
