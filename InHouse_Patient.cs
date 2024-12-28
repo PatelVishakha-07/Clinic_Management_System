@@ -12,7 +12,7 @@ namespace Clinic_Management_System
         string changingname = "";
         int patientId;
 
-        // Dictionary to store patient data temporarily
+      
         Dictionary<string, PatientData> patientDataDict = new Dictionary<string, PatientData>();
 
         public InHouse_Patient()
