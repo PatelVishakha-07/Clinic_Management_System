@@ -26,10 +26,11 @@ namespace Clinic_Management_System
         {
             InitializeComponent();
             this.patientId = patientId;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
             printPanel = new Panel
             {
-                Size = new Size(1064, 873),
+                Size = new Size(500,600),
                 BackColor = Color.White,
                 Location = new Point(10, 10)
             };
@@ -37,7 +38,7 @@ namespace Clinic_Management_System
             printButton = new Button
             {
                 Text = "Print Report",
-                Location = new Point(950, 680)
+                Location = new Point(400,610)
             };
             printButton.Click += PrintButton_Click;
 
@@ -50,7 +51,7 @@ namespace Clinic_Management_System
             pictureBox1.Dock= DockStyle.Top;
             printPanel.Controls.Add(pictureBox1);
 
-            Size = new Size(1082, 920);
+            Size = new Size(500,700);
             Text = "Print Report";
         }
 
@@ -104,10 +105,10 @@ namespace Clinic_Management_System
                     Label medicinesLabel = new Label
                     {
                         Text = "Prescribed Medicines",
-                        Font = new System.Drawing.Font("Arial", 14, FontStyle.Bold),
+                        Font = new System.Drawing.Font("Arial", 12, FontStyle.Bold),
                         ForeColor = Color.Black,
                         AutoSize = true,
-                        Location = new Point(40, currentY)
+                        Location = new Point(50, currentY)
                     };
                     printPanel.Controls.Add(medicinesLabel);
                     currentY += 30;
@@ -117,19 +118,19 @@ namespace Clinic_Management_System
                     {
                         DataSource = medicineData.Tables[0],
                         AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
-                        Location = new Point(30, currentY),
-                        Size = new Size(printPanel.Width - 80, 200),
+                        Location = new Point(10, currentY),
+                        Size = new Size(printPanel.Width - 20, 200),
                         AllowUserToAddRows = false,
                         ReadOnly = true,
                         ColumnHeadersDefaultCellStyle = new DataGridViewCellStyle
                         {
-                            Font = new System.Drawing.Font("Arial", 12, FontStyle.Bold),
+                            Font = new System.Drawing.Font("Arial", 10, FontStyle.Bold),
                             ForeColor = Color.Black,
                             BackColor = Color.LightGray
                         },
                         DefaultCellStyle = new DataGridViewCellStyle
                         {
-                            Font = new System.Drawing.Font("Arial", 12, FontStyle.Regular),
+                            Font = new System.Drawing.Font("Arial", 10, FontStyle.Regular),
                             ForeColor = Color.Black,
                             BackColor = Color.White
                         }
@@ -139,7 +140,7 @@ namespace Clinic_Management_System
 
                     //printPanel.Controls.Add(gridView);
                     printPanel.Controls.Add(gridView);
-                    currentY += gridView.Height + 20;
+                    currentY += gridView.Height + 15;
                 }
                 else
                 {
@@ -170,10 +171,10 @@ namespace Clinic_Management_System
             Label label = new Label
             {
                 Text = text,
-                Font = new System.Drawing.Font("Arial", 12, FontStyle.Regular),
+                Font = new System.Drawing.Font("Arial", 10, FontStyle.Regular),
                 ForeColor = Color.Black,
                 AutoSize = true,
-                Location = new Point(40, currentY)
+                Location = new Point(3, currentY)
             };
             printPanel.Controls.Add(label);
             currentY += 25; // Space between labels
@@ -183,10 +184,10 @@ namespace Clinic_Management_System
             Label label = new Label
             {
                 Text = text,
-                Font = new System.Drawing.Font("Arial", 12, FontStyle.Regular),
+                Font = new System.Drawing.Font("Arial", 10, FontStyle.Regular),
                 ForeColor = Color.Black,
                 AutoSize = true,
-                Location = new Point(500, currentY)
+                Location = new Point(232, currentY)
             };
             printPanel.Controls.Add(label);
             currentY += 25; // Space between labels

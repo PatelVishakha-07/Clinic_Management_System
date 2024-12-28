@@ -112,7 +112,7 @@
             // 
             // dateTimePicker6
             // 
-            dateTimePicker6.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            dateTimePicker6.Anchor = AnchorStyles.None;
             dateTimePicker6.CalendarFont = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             dateTimePicker6.Font = new Font("Century Schoolbook", 17F, FontStyle.Regular, GraphicsUnit.Point);
             dateTimePicker6.Format = DateTimePickerFormat.Short;
@@ -123,7 +123,7 @@
             // 
             // label9
             // 
-            label9.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label9.Anchor = AnchorStyles.None;
             label9.AutoSize = true;
             label9.Font = new Font("Century Schoolbook", 17F, FontStyle.Regular, GraphicsUnit.Point);
             label9.Location = new Point(17, 500);
@@ -135,7 +135,7 @@
             // 
             // dateTimePicker5
             // 
-            dateTimePicker5.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            dateTimePicker5.Anchor = AnchorStyles.None;
             dateTimePicker5.CalendarFont = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             dateTimePicker5.Font = new Font("Century Schoolbook", 17F, FontStyle.Regular, GraphicsUnit.Point);
             dateTimePicker5.Format = DateTimePickerFormat.Short;
@@ -146,7 +146,7 @@
             // 
             // label6
             // 
-            label6.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label6.Anchor = AnchorStyles.None;
             label6.AutoSize = true;
             label6.Font = new Font("Century Schoolbook", 17F, FontStyle.Regular, GraphicsUnit.Point);
             label6.Location = new Point(17, 428);
@@ -158,7 +158,7 @@
             // 
             // dateTimePicker4
             // 
-            dateTimePicker4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            dateTimePicker4.Anchor = AnchorStyles.None;
             dateTimePicker4.CalendarFont = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             dateTimePicker4.Font = new Font("Century Schoolbook", 17F, FontStyle.Regular, GraphicsUnit.Point);
             dateTimePicker4.Format = DateTimePickerFormat.Short;
@@ -169,7 +169,7 @@
             // 
             // label1
             // 
-            label1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Century Schoolbook", 17F, FontStyle.Regular, GraphicsUnit.Point);
             label1.Location = new Point(17, 368);
@@ -181,18 +181,18 @@
             // 
             // dateTimePicker2
             // 
-            dateTimePicker2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            dateTimePicker2.Anchor = AnchorStyles.None;
             dateTimePicker2.CalendarFont = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             dateTimePicker2.Font = new Font("Century Schoolbook", 17F, FontStyle.Regular, GraphicsUnit.Point);
             dateTimePicker2.Format = DateTimePickerFormat.Short;
-            dateTimePicker2.Location = new Point(419, 287);
+            dateTimePicker2.Location = new Point(449, 286);
             dateTimePicker2.Name = "dateTimePicker2";
             dateTimePicker2.Size = new Size(249, 42);
             dateTimePicker2.TabIndex = 36;
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            dateTimePicker1.Anchor = AnchorStyles.None;
             dateTimePicker1.CalendarFont = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             dateTimePicker1.Font = new Font("Century Schoolbook", 17F, FontStyle.Regular, GraphicsUnit.Point);
             dateTimePicker1.Format = DateTimePickerFormat.Short;
@@ -203,7 +203,7 @@
             // 
             // txtDisease
             // 
-            txtDisease.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtDisease.Anchor = AnchorStyles.None;
             txtDisease.Font = new Font("Century Schoolbook", 17F, FontStyle.Regular, GraphicsUnit.Point);
             txtDisease.Location = new Point(449, 217);
             txtDisease.Name = "txtDisease";
@@ -212,7 +212,7 @@
             // 
             // txtName
             // 
-            txtName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtName.Anchor = AnchorStyles.None;
             txtName.Font = new Font("Century Schoolbook", 17F, FontStyle.Regular, GraphicsUnit.Point);
             txtName.Location = new Point(337, 150);
             txtName.Name = "txtName";
@@ -221,7 +221,7 @@
             // 
             // label2
             // 
-            label2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
             label2.Font = new Font("Century Schoolbook", 17F, FontStyle.Regular, GraphicsUnit.Point);
             label2.Location = new Point(17, 158);
@@ -233,10 +233,10 @@
             // 
             // label5
             // 
-            label5.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label5.Anchor = AnchorStyles.None;
             label5.AutoSize = true;
             label5.Font = new Font("Century Schoolbook", 17F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(361, 295);
+            label5.Location = new Point(385, 294);
             label5.Name = "label5";
             label5.Size = new Size(41, 34);
             label5.TabIndex = 31;
@@ -245,7 +245,7 @@
             // 
             // label4
             // 
-            label4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label4.Anchor = AnchorStyles.None;
             label4.AutoSize = true;
             label4.Font = new Font("Century Schoolbook", 17F, FontStyle.Regular, GraphicsUnit.Point);
             label4.Location = new Point(17, 295);
@@ -257,7 +257,7 @@
             // 
             // label3
             // 
-            label3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
             label3.Font = new Font("Century Schoolbook", 17F, FontStyle.Regular, GraphicsUnit.Point);
             label3.Location = new Point(17, 225);
