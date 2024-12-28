@@ -37,7 +37,7 @@ namespace Clinic_Management_System
             printButton = new Button
             {
                 Text = "Print Report",
-                Location = new Point(400, 600)
+                Location = new Point(10, 600)
             };
             printButton.Click += PrintButton_Click;
 
@@ -56,7 +56,7 @@ namespace Clinic_Management_System
 
         private void Report_Load(object sender, EventArgs e)
         {
-            int currentY = 100;
+            int currentY = 120;
 
             // Clinic Title
             //currentY += 50;
@@ -89,9 +89,12 @@ namespace Clinic_Management_System
               //  AddLabel($"Prescription ID: {prescriptionRow["prescription_id"]}", ref currentY);
                 AddLabel1($"Date: {Convert.ToDateTime(prescriptionRow["prescription_date"]).ToString("dd/MM/yyyy HH:mm")}", ref currentY1);
                 AddLabel1($"Disease: {prescriptionRow["disease"]}", ref currentY1);
+
                 AddLabel1($"Prescription: {prescriptionRow["prescription"]}", ref currentY1);
-               // AddLabel($"Charges: Rs. {prescriptionRow["charges"]}", ref currentY);
+                
+                // AddLabel($"Charges: Rs. {prescriptionRow["charges"]}", ref currentY);
                 AddLabel1($"Total Charge: Rs. {prescriptionRow["total_charge"]}", ref currentY1);
+
                 currentY += 10; // Extra space
 
                 // Fetch prescribed medicines in DataGridView format
@@ -104,10 +107,10 @@ namespace Clinic_Management_System
                     Label medicinesLabel = new Label
                     {
                         Text = "Prescribed Medicines",
-                        Font = new System.Drawing.Font("Arial", 14, FontStyle.Bold),
+                        Font = new System.Drawing.Font("Arial", 11, FontStyle.Bold),
                         ForeColor = Color.Black,
                         AutoSize = true,
-                        Location = new Point(40, currentY)
+                        Location = new Point(5, currentY)
                     };
                     printPanel.Controls.Add(medicinesLabel);
                     currentY += 30;
@@ -117,19 +120,19 @@ namespace Clinic_Management_System
                     {
                         DataSource = medicineData.Tables[0],
                         AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
-                        Location = new Point(30, currentY),
-                        Size = new Size(printPanel.Width - 80, 200),
+                        Location = new Point(20, currentY),
+                        Size = new Size(printPanel.Width - 20, 270),
                         AllowUserToAddRows = false,
                         ReadOnly = true,
                         ColumnHeadersDefaultCellStyle = new DataGridViewCellStyle
                         {
-                            Font = new System.Drawing.Font("Arial", 12, FontStyle.Bold),
+                            Font = new System.Drawing.Font("Arial", 9, FontStyle.Bold),
                             ForeColor = Color.Black,
                             BackColor = Color.LightGray
                         },
                         DefaultCellStyle = new DataGridViewCellStyle
                         {
-                            Font = new System.Drawing.Font("Arial", 12, FontStyle.Regular),
+                            Font = new System.Drawing.Font("Arial", 9, FontStyle.Regular),
                             ForeColor = Color.Black,
                             BackColor = Color.White
                         }
@@ -151,6 +154,7 @@ namespace Clinic_Management_System
                 AddLabel("No prescription details found.", ref currentY);
             }
         }
+
         private void GridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             DataGridView gridView = sender as DataGridView;
@@ -170,10 +174,10 @@ namespace Clinic_Management_System
             Label label = new Label
             {
                 Text = text,
-                Font = new System.Drawing.Font("Arial", 12, FontStyle.Regular),
+                Font = new System.Drawing.Font("Arial", 11, FontStyle.Regular),
                 ForeColor = Color.Black,
                 AutoSize = true,
-                Location = new Point(40, currentY)
+                Location = new Point(5, currentY)
             };
             printPanel.Controls.Add(label);
             currentY += 25; // Space between labels
@@ -183,10 +187,10 @@ namespace Clinic_Management_System
             Label label = new Label
             {
                 Text = text,
-                Font = new System.Drawing.Font("Arial", 12, FontStyle.Regular),
+                Font = new System.Drawing.Font("Arial", 11, FontStyle.Regular),
                 ForeColor = Color.Black,
                 AutoSize = true,
-                Location = new Point(500, currentY)
+                Location = new Point(255, currentY)
             };
             printPanel.Controls.Add(label);
             currentY += 25; // Space between labels
