@@ -24,10 +24,11 @@ namespace Clinic_Management_System
         {
             InitializeComponent();
             this.patientId = pid;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
             printPanel = new Panel
             {
-                Size = new Size(700, 835),
+                Size = new Size(500, 700),
                 BackColor = Color.White,
                 Location = new Point(10, 10)
             };
@@ -36,7 +37,7 @@ namespace Clinic_Management_System
             printButton = new Button
             {
                 Text = "Print Report",
-                Location = new Point(630, 750)
+                Location = new Point(20, 615)
             };
             printButton.Click += PrintButton_Click;
 
@@ -49,7 +50,7 @@ namespace Clinic_Management_System
             //printPanel.Dock = DockStyle.Fill;
             printPanel.Controls.Add(printButton);
 
-            Size = new Size(759, 835);
+            Size = new Size(500, 700);
             Text = "IPD Report";
         }
 
@@ -57,7 +58,7 @@ namespace Clinic_Management_System
         {
             string patientQuery = $"SELECT DISTINCT * FROM patients WHERE patient_id={patientId}";
             DataSet patientData = dbclass.Getdata(patientQuery);
-            int currentY = 70;
+            int currentY = 65;
             currentY = DisplayData(patientData, printPanel, currentY, "Patient Details", excludeColumns: new[] { "patient_id" });
 
             // Fetch the latest IPD entry for the patient
@@ -78,26 +79,26 @@ namespace Clinic_Management_System
                     DataSource = treatmentData.Tables[0],
                     AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill, // Adjusts column width to fit panel
                     AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells,   // Adjusts row height for wrapped text
-                    Location = new Point(10, currentY),
-                    Size = new Size(printPanel.Width - 40, 400),
+                    Location = new Point(5, currentY),
+                    Size = new Size(printPanel.Width - 13, 360),
                     AllowUserToAddRows = false,
                     ReadOnly = true,
                     ColumnHeadersDefaultCellStyle = new DataGridViewCellStyle
                     {
-                        Font = new System.Drawing.Font("Arial", 12, FontStyle.Bold),
+                        Font = new System.Drawing.Font("Arial", 9, FontStyle.Bold),
                         ForeColor = Color.Black,
                         BackColor = Color.LightGray
                     },
                     DefaultCellStyle = new DataGridViewCellStyle
                     {
-                        Font = new System.Drawing.Font("Arial", 12, FontStyle.Regular),
+                        Font = new System.Drawing.Font("Arial", 9, FontStyle.Regular),
                         ForeColor = Color.Black,
                         BackColor = Color.White,
                         WrapMode = DataGridViewTriState.True // Enables text wrapping in cells
                     }
                 };
                 printPanel.Controls.Add(gridView);
-                currentY += gridView.Height + 20;
+                currentY += gridView.Height + 10;
                 // Include "treatment_id" in the excludeColumns array
                 //  currentY = DisplayData(treatmentData, printPanel, currentY, "Latest Prescription Details", excludeColumns: new[] { "treatment_id", "patient_id", "prescription_id" });
             }
@@ -107,13 +108,13 @@ namespace Clinic_Management_System
                 Label noDataLabel = new Label()
                 {
                     Text = "No IPD records available.",
-                    Location = new Point(40, currentY),
+                    Location = new Point(10, currentY),
                     AutoSize = true,
-                    Font = new Font("Arial", 12, FontStyle.Italic),
+                    Font = new Font("Arial", 11, FontStyle.Italic),
                     ForeColor = Color.Gray
                 };
                 printPanel.Controls.Add(noDataLabel);
-                currentY += 35; // Adjust for next section
+                currentY += 30; // Adjust for next section
             }
 
         }
@@ -145,8 +146,8 @@ namespace Clinic_Management_System
 
         private int DisplayData(DataSet ds, Panel panel1, int startY, string sectionTitle, string[] excludeColumns = null)
         {
-            int labelSpacing = 35;
-            int keyValueSpacing = 250;
+            int labelSpacing = 23;
+            int keyValueSpacing = 160;
 
             startY += 40;
 
@@ -165,17 +166,17 @@ namespace Clinic_Management_System
                         Label keyLabel = new Label()
                         {
                             Text = $"{columnName}:",
-                            Location = new Point(40, startY),
+                            Location = new Point(20, startY),
                             AutoSize = true,
-                            Font = new Font("Arial", 12, FontStyle.Bold)
+                            Font = new Font("Arial", 9, FontStyle.Bold)
                         };
 
                         Label valueLabel = new Label()
                         {
                             Text = columnValue,
-                            Location = new Point(40 + keyValueSpacing, startY),
+                            Location = new Point(20 + keyValueSpacing, startY),
                             AutoSize = true,
-                            Font = new Font("Arial", 12, FontStyle.Regular)
+                            Font = new Font("Arial", 9, FontStyle.Regular)
                         };
 
                         panel1.Controls.Add(keyLabel);

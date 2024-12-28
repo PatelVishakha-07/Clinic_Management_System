@@ -29,32 +29,33 @@ namespace Clinic_Management_System
             rest_to_date = rest_to_d;
             certificate_number = certificate_no;
             today_date = today_d;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
             printButton = new Button
             {
                 Text = "Print Report",
-                Location = new Point(900, 800)
+                Location = new Point(40, 630),
+                Size = new Size(80,35)
             };
 
             printButton.Click += PrintButton_Click;
 
             printDocument = new PrintDocument();
             printDocument.PrintPage += PrintDocument_PrintPage;
-            Controls.Add(printButton);
-            printButton.Anchor=AnchorStyles.Right & AnchorStyles.Bottom;
+            panel1.Controls.Add(printButton);
+            printButton.Anchor=AnchorStyles.Left & AnchorStyles.Bottom;
 
         }
 
         private void CertificateOutput_Load(object sender, EventArgs e)
         {
-            
 
             lblNo.Text = "Certificate No. : " + certificate_number;
             lblName.Text ="__" + name + "___________";
             lblDisease.Text ="__" + disease + "____";
             lblFromDate.Text ="__" + fromDate + "__";
             lblToDate.Text = "__" + toDate + "__ .";
-            lblResumeDate.Text = "__" + resumeDate + "__ .";
+            lblResumeDate.Text = "_" + resumeDate + "__ .";
             lblRestTo.Text = "__" + rest_to_date + "__ .";
             lblRestFrom.Text = "__" + rest_form_date + "__";
 
@@ -63,16 +64,6 @@ namespace Clinic_Management_System
 
         private void PrintButton_Click(object sender, EventArgs e)
         {
-            // Trigger the print dialog
-            /* PrintDialog printDialog = new PrintDialog
-             {
-                 Document = printDocument
-             };
-
-             if (printDialog.ShowDialog() == DialogResult.OK)
-             {
-                 printDocument.Print();
-             }   */
 
             try
             {

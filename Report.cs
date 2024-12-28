@@ -26,6 +26,7 @@ namespace Clinic_Management_System
         {
             InitializeComponent();
             this.patientId = patientId;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle; 
 
             printPanel = new Panel
             {
@@ -37,7 +38,7 @@ namespace Clinic_Management_System
             printButton = new Button
             {
                 Text = "Print Report",
-                Location = new Point(400, 600)
+                Location = new Point(10, 620)
             };
             printButton.Click += PrintButton_Click;
 
@@ -86,13 +87,17 @@ namespace Clinic_Management_System
                 DataRow prescriptionRow = prescriptionData.Tables[0].Rows[0];
 
                 // Display prescription details as labels
-              //  AddLabel($"Prescription ID: {prescriptionRow["prescription_id"]}", ref currentY);
+                presLabel($"Prescription: {prescriptionRow["prescription"]}", ref currentY);
+                //  AddLabel($"Prescription ID: {prescriptionRow["prescription_id"]}", ref currentY);
                 AddLabel1($"Date: {Convert.ToDateTime(prescriptionRow["prescription_date"]).ToString("dd/MM/yyyy HH:mm")}", ref currentY1);
                 AddLabel1($"Disease: {prescriptionRow["disease"]}", ref currentY1);
-                AddLabel1($"Prescription: {prescriptionRow["prescription"]}", ref currentY1);
-               // AddLabel($"Charges: Rs. {prescriptionRow["charges"]}", ref currentY);
+
+                //AddLabel1($"Prescription: {prescriptionRow["prescription"]}", ref currentY1);
+                
+                // AddLabel($"Charges: Rs. {prescriptionRow["charges"]}", ref currentY);
                 AddLabel1($"Total Charge: Rs. {prescriptionRow["total_charge"]}", ref currentY1);
-                currentY += 10; // Extra space
+
+                currentY += 15; // Extra space
 
                 // Fetch prescribed medicines in DataGridView format
                 //string medicineQuery = $"SELECT medicine_name AS 'Medicine', dosage AS 'Dosage', frequency AS 'Frequency', duration AS 'Duration' FROM Prescribed_Medicine WHERE prescription_id={prescriptionRow["prescription_id"]}";
@@ -104,10 +109,10 @@ namespace Clinic_Management_System
                     Label medicinesLabel = new Label
                     {
                         Text = "Prescribed Medicines",
-                        Font = new System.Drawing.Font("Arial", 14, FontStyle.Bold),
+                        Font = new System.Drawing.Font("Arial", 11, FontStyle.Bold),
                         ForeColor = Color.Black,
                         AutoSize = true,
-                        Location = new Point(40, currentY)
+                        Location = new Point(5, currentY)
                     };
                     printPanel.Controls.Add(medicinesLabel);
                     currentY += 30;
@@ -117,19 +122,19 @@ namespace Clinic_Management_System
                     {
                         DataSource = medicineData.Tables[0],
                         AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
-                        Location = new Point(30, currentY),
-                        Size = new Size(printPanel.Width - 80, 200),
+                        Location = new Point(10, currentY),
+                        Size = new Size(printPanel.Width - 20, 300),
                         AllowUserToAddRows = false,
                         ReadOnly = true,
                         ColumnHeadersDefaultCellStyle = new DataGridViewCellStyle
                         {
-                            Font = new System.Drawing.Font("Arial", 12, FontStyle.Bold),
+                            Font = new System.Drawing.Font("Arial", 9, FontStyle.Bold),
                             ForeColor = Color.Black,
                             BackColor = Color.LightGray
                         },
                         DefaultCellStyle = new DataGridViewCellStyle
                         {
-                            Font = new System.Drawing.Font("Arial", 12, FontStyle.Regular),
+                            Font = new System.Drawing.Font("Arial", 9, FontStyle.Regular),
                             ForeColor = Color.Black,
                             BackColor = Color.White
                         }
@@ -151,6 +156,7 @@ namespace Clinic_Management_System
                 AddLabel("No prescription details found.", ref currentY);
             }
         }
+
         private void GridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             DataGridView gridView = sender as DataGridView;
@@ -164,45 +170,81 @@ namespace Clinic_Management_System
             }
         }
 
+        private void presLabel(string text, ref int currentY)
+        {
+            //Label label = new Label
+            //{
+            //    Text = text,
+            //    Font = new System.Drawing.Font("Arial", 11, FontStyle.Regular),
+            //    ForeColor = Color.Black,
+            //    AutoSize = false,
+            //    Width = printPanel.Width - 40,
+            //    Location = new Point(3, currentY),
+            //    //MaximumSize = new Size(printPanel.Width - 40, 0),
+            //    TextAlign = ContentAlignment.TopLeft
+            //};
+            //Size textSize = TextRenderer.MeasureText(text, label.Font, new Size(label.Width, int.MaxValue));
+
+            //// Set the height of the label based on measured height
+            //label.Height = textSize.Height;
+            //printPanel.Controls.Add(label);
+            //currentY = label.Height + 5;
+
+            TextBox richTextBox = new TextBox
+            {
+                Text = text,
+                Font = new System.Drawing.Font("Arial", 9, FontStyle.Regular),
+                ForeColor = Color.Black,
+                ReadOnly = true,  // Prevent user editing
+                BorderStyle = BorderStyle.None,  // Make it look like a Label
+                BackColor = printPanel.BackColor,  // Match the panel's background
+                Width = printPanel.Width-10,
+                Height=60,
+                Location = new Point(3, currentY),
+                Multiline = true,
+                WordWrap = true,
+                ScrollBars = ScrollBars.None,
+            };
+
+            printPanel.Controls.Add(richTextBox);
+
+            // Update currentY for the next control
+            currentY += richTextBox.Height + 3;
+        }
+
+
         // Helper method to add labels dynamically
         private void AddLabel(string text, ref int currentY)
         {
             Label label = new Label
             {
                 Text = text,
-                Font = new System.Drawing.Font("Arial", 12, FontStyle.Regular),
+                Font = new System.Drawing.Font("Arial", 11, FontStyle.Regular),
                 ForeColor = Color.Black,
                 AutoSize = true,
-                Location = new Point(40, currentY)
+                
+                Location = new Point(3, currentY),
+                
+                TextAlign = ContentAlignment.TopLeft
             };
             printPanel.Controls.Add(label);
-            currentY += 25; // Space between labels
+            currentY += 23; // Space between labels
         }
         private void AddLabel1(string text, ref int currentY)
         {
             Label label = new Label
             {
                 Text = text,
-                Font = new System.Drawing.Font("Arial", 12, FontStyle.Regular),
+                Font = new System.Drawing.Font("Arial", 11, FontStyle.Regular),
                 ForeColor = Color.Black,
                 AutoSize = true,
-                Location = new Point(500, currentY)
+                Location = new Point(255, currentY)
             };
             printPanel.Controls.Add(label);
-            currentY += 25; // Space between labels
+            currentY += 23; // Space between labels
         }
         private void PrintButton_Click(object sender, EventArgs e)
         {
-            // Trigger the print dialog
-            /* PrintDialog printDialog = new PrintDialog
-             {
-                 Document = printDocument
-             };
-
-             if (printDialog.ShowDialog() == DialogResult.OK)
-             {
-                 printDocument.Print();
-             }   */
 
             try
             {
