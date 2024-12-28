@@ -26,11 +26,10 @@ namespace Clinic_Management_System
         {
             InitializeComponent();
             this.patientId = patientId;
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
             printPanel = new Panel
             {
-                Size = new Size(500,600),
+                Size = new Size(500, 700),
                 BackColor = Color.White,
                 Location = new Point(10, 10)
             };
@@ -38,7 +37,7 @@ namespace Clinic_Management_System
             printButton = new Button
             {
                 Text = "Print Report",
-                Location = new Point(400,610)
+                Location = new Point(400, 600)
             };
             printButton.Click += PrintButton_Click;
 
@@ -51,13 +50,13 @@ namespace Clinic_Management_System
             pictureBox1.Dock= DockStyle.Top;
             printPanel.Controls.Add(pictureBox1);
 
-            Size = new Size(500,700);
+            Size = new Size(500, 700);
             Text = "Print Report";
         }
 
         private void Report_Load(object sender, EventArgs e)
         {
-            int currentY = 120;
+            int currentY = 100;
 
             // Clinic Title
             //currentY += 50;
@@ -75,7 +74,7 @@ namespace Clinic_Management_System
                 AddLabel($"Age: {patientRow["age"]}   Gender: {patientRow["gender"]}", ref currentY);
                 AddLabel($"Contact: {patientRow["contact_no"]}", ref currentY);
                 AddLabel($"Address: {patientRow["address"]}", ref currentY);
-                currentY += 20; // Extra space
+                currentY += 10; // Extra space
             }
 
             // Fetch prescription details
@@ -93,7 +92,7 @@ namespace Clinic_Management_System
                 AddLabel1($"Prescription: {prescriptionRow["prescription"]}", ref currentY1);
                // AddLabel($"Charges: Rs. {prescriptionRow["charges"]}", ref currentY);
                 AddLabel1($"Total Charge: Rs. {prescriptionRow["total_charge"]}", ref currentY1);
-                currentY += 20; // Extra space
+                currentY += 10; // Extra space
 
                 // Fetch prescribed medicines in DataGridView format
                 //string medicineQuery = $"SELECT medicine_name AS 'Medicine', dosage AS 'Dosage', frequency AS 'Frequency', duration AS 'Duration' FROM Prescribed_Medicine WHERE prescription_id={prescriptionRow["prescription_id"]}";
@@ -105,10 +104,10 @@ namespace Clinic_Management_System
                     Label medicinesLabel = new Label
                     {
                         Text = "Prescribed Medicines",
-                        Font = new System.Drawing.Font("Arial", 12, FontStyle.Bold),
+                        Font = new System.Drawing.Font("Arial", 14, FontStyle.Bold),
                         ForeColor = Color.Black,
                         AutoSize = true,
-                        Location = new Point(50, currentY)
+                        Location = new Point(40, currentY)
                     };
                     printPanel.Controls.Add(medicinesLabel);
                     currentY += 30;
@@ -118,19 +117,19 @@ namespace Clinic_Management_System
                     {
                         DataSource = medicineData.Tables[0],
                         AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
-                        Location = new Point(10, currentY),
-                        Size = new Size(printPanel.Width - 20, 200),
+                        Location = new Point(30, currentY),
+                        Size = new Size(printPanel.Width - 80, 200),
                         AllowUserToAddRows = false,
                         ReadOnly = true,
                         ColumnHeadersDefaultCellStyle = new DataGridViewCellStyle
                         {
-                            Font = new System.Drawing.Font("Arial", 10, FontStyle.Bold),
+                            Font = new System.Drawing.Font("Arial", 12, FontStyle.Bold),
                             ForeColor = Color.Black,
                             BackColor = Color.LightGray
                         },
                         DefaultCellStyle = new DataGridViewCellStyle
                         {
-                            Font = new System.Drawing.Font("Arial", 10, FontStyle.Regular),
+                            Font = new System.Drawing.Font("Arial", 12, FontStyle.Regular),
                             ForeColor = Color.Black,
                             BackColor = Color.White
                         }
@@ -140,7 +139,7 @@ namespace Clinic_Management_System
 
                     //printPanel.Controls.Add(gridView);
                     printPanel.Controls.Add(gridView);
-                    currentY += gridView.Height + 15;
+                    currentY += gridView.Height + 20;
                 }
                 else
                 {
@@ -171,10 +170,10 @@ namespace Clinic_Management_System
             Label label = new Label
             {
                 Text = text,
-                Font = new System.Drawing.Font("Arial", 10, FontStyle.Regular),
+                Font = new System.Drawing.Font("Arial", 12, FontStyle.Regular),
                 ForeColor = Color.Black,
                 AutoSize = true,
-                Location = new Point(3, currentY)
+                Location = new Point(40, currentY)
             };
             printPanel.Controls.Add(label);
             currentY += 25; // Space between labels
@@ -184,10 +183,10 @@ namespace Clinic_Management_System
             Label label = new Label
             {
                 Text = text,
-                Font = new System.Drawing.Font("Arial", 10, FontStyle.Regular),
+                Font = new System.Drawing.Font("Arial", 12, FontStyle.Regular),
                 ForeColor = Color.Black,
                 AutoSize = true,
-                Location = new Point(232, currentY)
+                Location = new Point(500, currentY)
             };
             printPanel.Controls.Add(label);
             currentY += 25; // Space between labels

@@ -254,7 +254,7 @@
             // pictureBox2
             // 
             pictureBox2.Dock = DockStyle.Top;
-            pictureBox2.Image = Properties.Resources.clinic_logo_2;
+           // pictureBox2.Image = Properties.Resources.clinic_logo_2;
             pictureBox2.Location = new Point(0, 0);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(517, 103);
