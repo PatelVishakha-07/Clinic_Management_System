@@ -22,9 +22,11 @@ namespace Clinic_Management_System
         {
             InitializeComponent();
             this.ipd_id = ipd_id;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+
             printPanel = new Panel
             {
-                Size = new Size(700, 835),
+                Size = new Size(500, 700),
                 BackColor = Color.White,
                 Location = new Point(10, 10)
             };
@@ -32,7 +34,7 @@ namespace Clinic_Management_System
             printButton = new Button
             {
                 Text = "Print Report",
-                Location = new Point(630, 700)
+                Location = new Point(10, 610)
             };
             printButton.Click += PrintButton_Click;
 
@@ -46,7 +48,7 @@ namespace Clinic_Management_System
             //printPanel.Dock = DockStyle.Fill;
             printPanel.Controls.Add(printButton);
 
-            Size = new Size(759, 835);
+            Size = new Size(500, 700);
             Text = "IPD Report";
         }
 
@@ -86,25 +88,25 @@ namespace Clinic_Management_System
                     main_ds.Merge(ds1);
                 }
             }
-            int currentY = 150;
+            int currentY = 120;
             DataGridView gridView = new DataGridView
             { 
                 DataSource = main_ds.Tables[0],
                 AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill, 
                 AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells,  
-                Location = new Point(10, currentY),
-                Size = new Size(printPanel.Width - 40, 400),
+                Location = new Point(5, currentY),
+                Size = new Size(printPanel.Width - 20, 470),
                 AllowUserToAddRows = false,
                 ReadOnly = true,
                 ColumnHeadersDefaultCellStyle = new DataGridViewCellStyle
                 {
-                    Font = new System.Drawing.Font("Arial", 12, FontStyle.Bold),
+                    Font = new System.Drawing.Font("Arial", 10, FontStyle.Bold),
                     ForeColor = Color.Black,
                     BackColor = Color.LightGray
                 },
                 DefaultCellStyle = new DataGridViewCellStyle
                 {
-                    Font = new System.Drawing.Font("Arial", 12, FontStyle.Regular),
+                    Font = new System.Drawing.Font("Arial", 10, FontStyle.Regular),
                     ForeColor = Color.Black,
                     BackColor = Color.White,
                     WrapMode = DataGridViewTriState.True
@@ -113,7 +115,7 @@ namespace Clinic_Management_System
             gridView.CellFormatting += GridView_CellFormatting;
 
             printPanel.Controls.Add(gridView);
-            currentY += gridView.Height + 20;
+            currentY += gridView.Height + 15;
         }
 
         private void GridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

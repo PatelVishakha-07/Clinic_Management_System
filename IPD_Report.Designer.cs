@@ -35,6 +35,7 @@
             // pictureBox1
             // 
             pictureBox1.Dock = DockStyle.Top;
+            pictureBox1.Image = Properties.Resources.clinic_logo_2;
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(482, 84);
