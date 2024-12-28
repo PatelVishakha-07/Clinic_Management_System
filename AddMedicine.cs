@@ -122,13 +122,14 @@ namespace Clinic_Management_System
                         string q2 = "insert into Medicine_Details(medicine_stock, expiry_date, purchase_price, sell_price, medicine_id) values(" +
                             int.Parse(stock) + ", '" + date + "', " + int.Parse(purchase) + ", " + int.Parse(sell) + "," + medID + ");";
                         dbClass.databaseoperations(q2);
+                        MessageBox.Show("Record Inserted Successfully");
                     }
                     else
                     {
                         string query = "insert into Medicines(medicine_name, company_name,medicine_type) values ('"
                         + medicineName + "', '" + cmpName + "', '" + type + "');";
                         dbClass.databaseoperations(query);
-
+                        MessageBox.Show("Record Inserted Successfully");
                         DataSet dataSet = new DataSet();
                         dataSet = dbClass.Getdata(medicineDetails);
 
@@ -138,7 +139,7 @@ namespace Clinic_Management_System
                         dbClass.databaseoperations(q2);
                     }
 
-                    MessageBox.Show("Record Inserted Successfully");
+                   
                     ClearText();
                     Medicine medicine = new Medicine();
                     medicine.ShowControl(new ShowMedicine("Doctor"));

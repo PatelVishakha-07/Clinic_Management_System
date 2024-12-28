@@ -12,6 +12,7 @@ namespace Clinic_Management_System
 {
     public partial class LoginForm : Form
     {
+        databaseclass dbclass=new databaseclass();
         public LoginForm()
         {
             InitializeComponent();
@@ -21,19 +22,36 @@ namespace Clinic_Management_System
         }
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            if(txtUsername.Text == "Client" && txtPassword.Text == "1234")
+            if (!string.IsNullOrEmpty(txtUsername.Text) && !string.IsNullOrEmpty(txtPassword.Text))
             {
-                this.Hide();
-                Receptionist receptionist = new Receptionist();
-                receptionist.ShowDialog();
-                this.Close();
+                string query = $"select * from users where username='{txtUsername.Text}' and password='{txtPassword.Text}'";
+                DataSet ds = dbclass.Getdata(query);
+                if (ds != null && ds.Tables[0].Rows.Count > 0)
+                {
+                    string usertype = ds.Tables[0].Rows[0]["usertype"].ToString();
+                    if (usertype=="client")
+                    {
+                        this.Hide();
+                        Receptionist receptionist = new Receptionist();
+                        receptionist.ShowDialog();
+                        this.Close();
+                    }
+                    else if(usertype=="admin")
+                    {
+                        this.Hide();
+                        Patients patients = new Patients();
+                        patients.ShowDialog();
+                        this.Close();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No such user is registered");
+                }
             }
             else
             {
-                this.Hide();
-                Patients patients = new Patients();
-                patients.ShowDialog();
-                this.Close();
+                MessageBox.Show("Enter username and password");
             }
             
         }

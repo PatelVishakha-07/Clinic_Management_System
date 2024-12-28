@@ -22,12 +22,12 @@ namespace Clinic_Management_System
 
         private void showPatientsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ShowContent(new AdminPass());
         }
 
         private void addPatientsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ShowContent(new receptionpass());
         }
 
         public void ShowContent(UserControl userControl)
@@ -35,6 +35,11 @@ namespace Clinic_Management_System
             MainPanel.Controls.Clear();
             userControl.Dock = DockStyle.Fill;
             MainPanel.Controls.Add(userControl);
+        }
+
+        private void Password_Load(object sender, EventArgs e)
+        {
+            ShowContent(new AdminPass());
         }
     }
 }

@@ -35,7 +35,6 @@
             showPatientsToolStripMenuItem = new ToolStripMenuItem();
             addPatientsToolStripMenuItem = new ToolStripMenuItem();
             PanelLeft = new Panel();
-            showPatientsToolStripMenuItem1 = new ToolStripMenuItem();
             PatientsPanel.SuspendLayout();
             PanelTop.SuspendLayout();
             menuStrip1.SuspendLayout();
@@ -88,7 +87,6 @@
             // 
             // showPatientsToolStripMenuItem
             // 
-            showPatientsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { showPatientsToolStripMenuItem1 });
             showPatientsToolStripMenuItem.ForeColor = Color.Black;
             showPatientsToolStripMenuItem.Name = "showPatientsToolStripMenuItem";
             showPatientsToolStripMenuItem.Size = new Size(86, 58);
@@ -111,12 +109,6 @@
             PanelLeft.Size = new Size(247, 840);
             PanelLeft.TabIndex = 0;
             // 
-            // showPatientsToolStripMenuItem1
-            // 
-            showPatientsToolStripMenuItem1.Name = "showPatientsToolStripMenuItem1";
-            showPatientsToolStripMenuItem1.Size = new Size(254, 32);
-            showPatientsToolStripMenuItem1.Text = "Show Patients";
-            // 
             // Password
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -125,6 +117,7 @@
             Controls.Add(PatientsPanel);
             Name = "Password";
             Text = "Password";
+            Load += Password_Load;
             PatientsPanel.ResumeLayout(false);
             PanelTop.ResumeLayout(false);
             PanelTop.PerformLayout();
@@ -139,9 +132,8 @@
         private Panel MainPanel;
         private Panel PanelTop;
         private MenuStrip menuStrip1;
-        private ToolStripMenuItem showPatientsToolStripMenuItem;
         private ToolStripMenuItem addPatientsToolStripMenuItem;
         private Panel PanelLeft;
-        private ToolStripMenuItem showPatientsToolStripMenuItem1;
+        private ToolStripMenuItem showPatientsToolStripMenuItem;
     }
 }

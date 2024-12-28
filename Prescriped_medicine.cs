@@ -9,7 +9,7 @@ namespace Clinic_Management_System
 {
     public partial class Prescriped_medicine : UserControl
     {
-        int prescription_id, medicine_qty, charges, purchase_price, sell_price, profit, med_price, ttl_pres_charges,patient_id;
+        int prescription_id, medicine_qty, charges, purchase_price, sell_price, profit, med_price, ttl_pres_charges, patient_id;
         string dialog;
         List<TextBox> medicineNameTextBoxes = new List<TextBox>();
         List<TextBox> quantityTextBoxes = new List<TextBox>();
@@ -23,7 +23,7 @@ namespace Clinic_Management_System
             this.dialog = dialog;
         }
 
-        public void GetPrescriptionDetails(int prescription_id, int medicine_qty, int charges,int patient_id=0)
+        public void GetPrescriptionDetails(int prescription_id, int medicine_qty, int charges, int patient_id = 0)
         {
             this.prescription_id = prescription_id;
             this.medicine_qty = medicine_qty;
@@ -193,66 +193,79 @@ namespace Clinic_Management_System
                 FROM Medicine_details 
                 WHERE medicine_id = (SELECT medicine_id FROM Medicines WHERE medicine_name = '{medicineName}')
                 ORDER BY Expiry_Date ASC";
-                    DataSet ds = dbclass.Getdata(queryStock);
-
-                    if (ds.Tables[0].Rows.Count > 0)
+                    DataSet ds = new DataSet();
+                    try
                     {
-                        int remainingQuantity = quantity;
-                        foreach (DataRow row in ds.Tables[0].Rows)
+                        ds = dbclass.Getdata(queryStock);
+                    }
+                    catch (Exception ex)
+                    {
+                        ds = null;
+                        MessageBox.Show("Different data for a same medicine found");
+                    }
+                    if (ds != null)
+                    {
+                        if (ds.Tables[0].Rows.Count > 0)
                         {
-                            int availableStock = int.Parse(row["medicine_stock"].ToString());
-                            DateTime expiryDate = DateTime.Parse(row["Expiry_Date"].ToString());
-                            purchase_price = Convert.ToInt32(row["purchase_price"]);
-                            sell_price = Convert.ToInt32(row["sell_price"]);
-
-                            if (DateTime.Now > expiryDate)
+                            int remainingQuantity = quantity;
+                            foreach (DataRow row in ds.Tables[0].Rows)
                             {
-                                MessageBox.Show($"The medicine {medicineName} (Expiry: {expiryDate.ToShortDateString()}) has expired.", "Expiry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                continue;
-                            }
+                                int availableStock = int.Parse(row["medicine_stock"].ToString());
+                                DateTime expiryDate = DateTime.Parse(row["Expiry_Date"].ToString());
+                                purchase_price = Convert.ToInt32(row["purchase_price"]);
+                                sell_price = Convert.ToInt32(row["sell_price"]);
 
-                            if (remainingQuantity > 0 && availableStock > 0)
-                            {
-                                int quantityToDeduct = Math.Min(remainingQuantity, availableStock);
-                                remainingQuantity -= quantityToDeduct;
-
-                                // Insert prescribed medicine record
-                                string queryInsert;
-                                if (dialog == "Prescription")
+                                if (DateTime.Now >=expiryDate)
                                 {
-                                     queryInsert = $@"INSERT INTO Prescribed_Medicine (medicine_name, quantity, usage, prescription_id)  VALUES ('{medicineName}', {quantityToDeduct}, '{usage}', {prescription_id})";
+                                    MessageBox.Show($"The medicine {medicineName} (Expiry: {expiryDate.ToShortDateString()}) has expired.", "Expiry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    continue;
                                 }
-                                else
-                                {
-                                    queryInsert = $"insert into ipd_prescribed_medicine(medicine_name,quantity,usage,treatment_id) values ('{medicineName}', {quantityToDeduct}, '{usage}', {prescription_id})";
-                                }
-                                dbclass.databaseoperations(queryInsert);
 
-                                // Update stock
-                                string queryUpdateStock = $@"
+                                if (remainingQuantity > 0 && availableStock > 0)
+                                {
+                                    int quantityToDeduct = Math.Min(remainingQuantity, availableStock);
+                                    remainingQuantity -= quantityToDeduct;
+
+                                    // Insert prescribed medicine record
+                                    string queryInsert;
+                                    if (dialog == "Prescription")
+                                    {
+                                        queryInsert = $@"INSERT INTO Prescribed_Medicine (medicine_name, quantity, usage, prescription_id)  VALUES ('{medicineName}', {quantityToDeduct}, '{usage}', {prescription_id})";
+                                        
+                                    }
+                                    else
+                                    {
+                                        queryInsert = $"insert into ipd_prescribed_medicine(medicine_name,quantity,usage,treatment_id) values ('{medicineName}', {quantityToDeduct}, '{usage}', {prescription_id})";
+                                       
+                                    }
+                                    dbclass.databaseoperations(queryInsert);
+                                    MessageBox.Show("Medicine Added");
+                                    // Update stock
+                                    string queryUpdateStock = $@"
                             UPDATE Medicine_details 
                             SET medicine_stock = medicine_stock - {quantityToDeduct} 
                             WHERE medicine_id = (SELECT medicine_id FROM Medicines WHERE medicine_name = '{medicineName}')
                             AND Expiry_Date = '{expiryDate:yyyy-MM-dd}'";
-                                dbclass.databaseoperations(queryUpdateStock);
+                                    dbclass.databaseoperations(queryUpdateStock);
 
-                                // Calculate profit and charges
-                                med_price += ((sell_price - purchase_price) * quantityToDeduct);
-                                ttl_pres_charges += (sell_price * quantityToDeduct);
+                                    // Calculate profit and charges
+                                    med_price += ((sell_price - purchase_price) * quantityToDeduct);
+                                    ttl_pres_charges += (sell_price * quantityToDeduct);
 
-                                if (remainingQuantity == 0)
-                                    break;
+                                    if (remainingQuantity == 0)
+                                        break;
+                                }
+                            }
+
+                            if (remainingQuantity > 0)
+                            {
+                                MessageBox.Show($"Not enough stock for {medicineName}. Remaining Quantity: {remainingQuantity}", "Stock Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
-
-                        if (remainingQuantity > 0)
+                        else
                         {
-                            MessageBox.Show($"Not enough stock for {medicineName}. Remaining Quantity: {remainingQuantity}", "Stock Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show($"{medicineName} not found in the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show($"{medicineName} not found in the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -273,18 +286,18 @@ namespace Clinic_Management_System
             }
             else
             {
-               
 
-                pres_query = $" UPDATE ipd_table SET total_pay = COALESCE(total_pay, 0) + { ttl_pres_charges} WHERE patient_id = { patient_id };";
+
+                pres_query = $" UPDATE ipd_table SET total_pay = COALESCE(total_pay, 0) + {ttl_pres_charges} WHERE patient_id = {patient_id};";
                 dbclass.databaseoperations(pres_query);
                 string profitQuery = $"INSERT INTO ipd_profit (profit_date, amount) VALUES ('{DateTime.Now}', {profit})";
                 dbclass.databaseoperations(profitQuery);
             }
-           
 
-            MessageBox.Show("Medicine Added");
+
+            
             this.Hide();
-            if(dialog == "Prescription")
+            if (dialog == "Prescription")
             {
                 ShowPatients details = new ShowPatients();
                 Parent.Controls.Add(details);
@@ -300,7 +313,7 @@ namespace Clinic_Management_System
                 Parent.Controls.Remove(this);
                 this.Dispose();
             }
-            
+
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
