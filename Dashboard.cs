@@ -54,5 +54,10 @@ namespace Clinic_Management_System
         {
             ShowForm(new Certificate());
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ShowForm(new Password());
+        }
     }
 }
