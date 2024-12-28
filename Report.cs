@@ -29,7 +29,7 @@ namespace Clinic_Management_System
 
             printPanel = new Panel
             {
-                Size = new Size(1064, 873),
+                Size = new Size(500, 700),
                 BackColor = Color.White,
                 Location = new Point(10, 10)
             };
@@ -37,7 +37,7 @@ namespace Clinic_Management_System
             printButton = new Button
             {
                 Text = "Print Report",
-                Location = new Point(950, 680)
+                Location = new Point(400, 600)
             };
             printButton.Click += PrintButton_Click;
 
@@ -50,13 +50,13 @@ namespace Clinic_Management_System
             pictureBox1.Dock= DockStyle.Top;
             printPanel.Controls.Add(pictureBox1);
 
-            Size = new Size(1082, 920);
+            Size = new Size(500, 700);
             Text = "Print Report";
         }
 
         private void Report_Load(object sender, EventArgs e)
         {
-            int currentY = 120;
+            int currentY = 100;
 
             // Clinic Title
             //currentY += 50;
@@ -74,7 +74,7 @@ namespace Clinic_Management_System
                 AddLabel($"Age: {patientRow["age"]}   Gender: {patientRow["gender"]}", ref currentY);
                 AddLabel($"Contact: {patientRow["contact_no"]}", ref currentY);
                 AddLabel($"Address: {patientRow["address"]}", ref currentY);
-                currentY += 20; // Extra space
+                currentY += 10; // Extra space
             }
 
             // Fetch prescription details
@@ -92,7 +92,7 @@ namespace Clinic_Management_System
                 AddLabel1($"Prescription: {prescriptionRow["prescription"]}", ref currentY1);
                // AddLabel($"Charges: Rs. {prescriptionRow["charges"]}", ref currentY);
                 AddLabel1($"Total Charge: Rs. {prescriptionRow["total_charge"]}", ref currentY1);
-                currentY += 20; // Extra space
+                currentY += 10; // Extra space
 
                 // Fetch prescribed medicines in DataGridView format
                 //string medicineQuery = $"SELECT medicine_name AS 'Medicine', dosage AS 'Dosage', frequency AS 'Frequency', duration AS 'Duration' FROM Prescribed_Medicine WHERE prescription_id={prescriptionRow["prescription_id"]}";

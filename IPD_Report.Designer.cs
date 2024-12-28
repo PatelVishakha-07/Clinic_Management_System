@@ -35,10 +35,9 @@
             // pictureBox1
             // 
             pictureBox1.Dock = DockStyle.Top;
-            pictureBox1.Image = Properties.Resources.clinic_logo_2;
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1064, 84);
+            pictureBox1.Size = new Size(482, 84);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
@@ -47,8 +46,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            AutoScroll = true;
-            ClientSize = new Size(1064, 873);
+            ClientSize = new Size(482, 653);
             Controls.Add(pictureBox1);
             Name = "IPD_Report";
             StartPosition = FormStartPosition.CenterScreen;
