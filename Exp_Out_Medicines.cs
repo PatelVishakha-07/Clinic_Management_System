@@ -47,7 +47,7 @@ namespace Clinic_Management_System
         {
             label1.Text = "Out Of Stock Medicines";
             string q = "select m.medicine_id,m.medicine_name, m.company_name, m.medicine_type, md.medicine_stock, md.expiry_date, md.purchase_price" +
-                ", md.sell_price from medicines m join medicine_details md on m.medicine_id = md.medicine_id where md.medicine_stock=" + 0;
+                ", md.sell_price from medicines m join medicine_details md on m.medicine_id = md.medicine_id where md.medicine_stock='0'";
 
             DataSet ds = dbClass.Getdata(q);
             PopulateGridView(ds);
@@ -183,13 +183,13 @@ namespace Clinic_Management_System
                     string formated_date = expiry_date.ToString("MM-dd-yyyy");
                     query = $"select m.Medicine_Name, m.Company_Name, m.Medicine_Type, md.Medicine_Stock, md.Expiry_Date, md.purchase_price, " +
                         $" md.sell_price from Medicines m join medicine_details md on m.medicine_id = md.medicine_id " +
-                        $"where md.Expiry_Date='{formated_date}' and md.medicine_stock=0;";
+                        $"where md.Expiry_Date='{formated_date}' and md.medicine_stock='0';";
                 }
                 else
                 {
                     query = $"select m.Medicine_Name, m.Company_Name, m.Medicine_Type, md.Medicine_Stock, md.Expiry_Date, md.purchase_price, " +
                         $" md.sell_price from Medicines m join medicine_details md on m.medicine_id = md.medicine_id " +
-                        $"where Medicine_Name='{value}' or Company_Name='{value}' and md.medicine_stock=0;";
+                        $"where Medicine_Name='{value}' or Company_Name='{value}' and md.medicine_stock='0';";
 
                 }
 
@@ -197,7 +197,7 @@ namespace Clinic_Management_System
             else
             {
                 query = "select m.Medicine_Name, m.Company_Name, m.Medicine_Type, md.Medicine_Stock, md.Expiry_Date, md.purchase_price, " +
-                    "md.sell_price from Medicines m join medicine_details md on m.medicine_id = md.medicine_id and md.medicine_stock=0;";
+                    "md.sell_price from Medicines m join medicine_details md on m.medicine_id = md.medicine_id and md.medicine_stock='0';";
             }
             DataSet ds = dbClass.Getdata(query);
             PopulateGridView(ds);

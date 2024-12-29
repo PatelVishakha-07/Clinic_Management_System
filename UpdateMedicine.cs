@@ -110,7 +110,7 @@ namespace Clinic_Management_System
                     databaseclass dbClass = new databaseclass();
                     dbClass.databaseoperations(query);
 
-                    string q2 = "update Medicine_Details set Medicine_Stock= " + int.Parse(stock) + ", Expiry_Date= '" + expiryDate + "', purchase_price=" + int.Parse(purchase) +
+                    string q2 = "update Medicine_Details set Medicine_Stock= '" + stock + "', Expiry_Date= '" + expiryDate + "', purchase_price=" + int.Parse(purchase) +
                         ", sell_price= " + int.Parse(sell) + " where Medicine_Id= " + medicineId;
                     dbClass.databaseoperations(q2);
 

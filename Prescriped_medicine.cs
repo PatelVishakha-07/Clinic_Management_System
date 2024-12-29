@@ -243,7 +243,7 @@ namespace Clinic_Management_System
                                     // Update stock
                                     string queryUpdateStock = $@"
                             UPDATE Medicine_details 
-                            SET medicine_stock = medicine_stock - {quantityToDeduct} 
+                            SET medicine_stock = CAST(CAST(medicine_stock AS INTEGER) - {quantityToDeduct} AS TEXT)
                             WHERE medicine_id = (SELECT medicine_id FROM Medicines WHERE medicine_name = '{medicineName}')
                             AND Expiry_Date = '{expiryDate:yyyy-MM-dd}'";
                                     dbclass.databaseoperations(queryUpdateStock);

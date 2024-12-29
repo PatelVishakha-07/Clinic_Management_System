@@ -34,7 +34,7 @@ namespace Clinic_Management_System
             printButton = new Button
             {
                 Text = "Print Report",
-                Location = new Point(40, 630),
+                Location = new Point(40, 570),
                 Size = new Size(80,35)
             };
 
@@ -64,7 +64,7 @@ namespace Clinic_Management_System
 
         private void PrintButton_Click(object sender, EventArgs e)
         {
-
+            printButton.Visible=false;
             try
             {
                 printDocument.Print(); // This sends the content to the default printer

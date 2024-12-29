@@ -25,8 +25,11 @@ namespace Clinic_Management_System
         {
             InitializeComponent();
             changingname = "";
-            dateTimePicker1.MinDate = DateTime.Now;
-            
+            //dateTimePicker1.MinDate = DateTime.Now;
+            dateTimePicker1.MinDate = DateTime.Today;
+
+            // Ensure the current value falls within the valid range
+            dateTimePicker1.Value = DateTime.Today;
         }
 
         private void AddMedicine_Load(object sender, EventArgs e)
@@ -120,8 +123,8 @@ namespace Clinic_Management_System
                     if (ds.Tables[0].Rows.Count > 0)
                     {
                         int medID = Convert.ToInt32(ds.Tables[0].Rows[0]["medicine_id"].ToString());
-                        string q2 = "insert into Medicine_Details(medicine_stock, expiry_date, purchase_price, sell_price, medicine_id) values(" +
-                            int.Parse(stock) + ", '" + date + "', " + int.Parse(purchase) + ", " + int.Parse(sell) + "," + medID + ");";
+                        string q2 = "insert into Medicine_Details(medicine_stock, expiry_date, purchase_price, sell_price, medicine_id) values('" +
+                            stock + "', '" + date + "', " + int.Parse(purchase) + ", " + int.Parse(sell) + "," + medID + ");";
                         dbClass.databaseoperations(q2);
                         MessageBox.Show("Record Inserted Successfully");
                     }
@@ -135,8 +138,8 @@ namespace Clinic_Management_System
                         dataSet = dbClass.Getdata(medicineDetails);
 
                         int medID = Convert.ToInt32(dataSet.Tables[0].Rows[0]["medicine_id"].ToString());
-                        string q2 = "insert into Medicine_Details(medicine_stock, expiry_date, purchase_price, sell_price, medicine_id) values(" +
-                            int.Parse(stock) + ", '" + date + "', " + int.Parse(purchase) + ", " + int.Parse(sell) + ", " + medID + ");";
+                        string q2 = "insert into Medicine_Details(medicine_stock, expiry_date, purchase_price, sell_price, medicine_id) values('" +
+                            stock + "', '" + date + "', " + int.Parse(purchase) + ", " + int.Parse(sell) + ", " + medID + ");";
                         dbClass.databaseoperations(q2);
                     }
 
