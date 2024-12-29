@@ -37,7 +37,7 @@ namespace Clinic_Management_System
             DateTime date = DateTime.Now;
             string formattedDate = date.ToString("yyyy-MM-dd");
             string q = "select m.medicine_id, m.medicine_name, m.company_name, m.medicine_type, md.medicine_stock, md.expiry_date, md.purchase_price" +
-                ", md.sell_price from medicines m join medicine_details md on m.medicine_id = md.medicine_id where md.expiry_date < '" + formattedDate + "'";
+                ", md.sell_price from medicines m join medicine_details md on m.medicine_id = md.medicine_id where md.expiry_date <= '" + formattedDate + "'";
 
             DataSet ds = dbClass.Getdata(q);
             PopulateGridView(ds);

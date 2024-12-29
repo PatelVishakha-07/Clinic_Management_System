@@ -25,6 +25,7 @@ namespace Clinic_Management_System
         {
             InitializeComponent();
             changingname = "";
+            dateTimePicker1.MinDate = DateTime.Now;
             
         }
 
