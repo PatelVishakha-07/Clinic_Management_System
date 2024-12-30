@@ -59,7 +59,7 @@ namespace Clinic_Management_System
             DateTime fromdate6 = DateTime.Parse(dateTimePicker6.Text);
             string formattedDate6 = fromdate6.ToString("yyyy-MM-dd");
 
-            string query = "insert into certificate (name, disease, from_date, to_date, rest_from_date, " +
+            string query = "insert into certificate_table (name, disease, from_date, to_date, rest_from_date, " +
                 $"rest_to_date, resume_date, today_date, certificate_number) values" +
                 $" ('{name}', '{disease}', '{formattedDate1}', '{formattedDate2}', " +
                 $"'{formattedDate4}', '{formattedDate5}', '{formattedDate6}', '{today_date}', '{certificate_number}');";

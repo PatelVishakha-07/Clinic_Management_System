@@ -14,7 +14,7 @@ namespace Clinic_Management_System
     {
         databaseclass dbClass = new databaseclass();
         DataSet ds;
-        int totalProfit, totalCharge;
+        decimal totalProfit, totalCharge;
         public OPD_Income()
         {
             InitializeComponent();
@@ -36,8 +36,8 @@ namespace Clinic_Management_System
                 DataTable prescriptionTable = ds1.Tables[0];
                 DataTable combinedTable = new DataTable();
                 combinedTable.Columns.Add("profit_date", typeof(string));
-                combinedTable.Columns.Add("amount", typeof(int));
-                combinedTable.Columns.Add("total_charge", typeof(int));
+                combinedTable.Columns.Add("amount", typeof(decimal));
+                combinedTable.Columns.Add("total_charge", typeof(decimal));
 
                 int rowCount = Math.Max(profitTable.Rows.Count, prescriptionTable.Rows.Count);
                 for (int i = 0; i < rowCount; i++)
@@ -91,7 +91,7 @@ namespace Clinic_Management_System
             if (profitSet != null && profitSet.Tables.Count > 0)
             {
                 var totalProfitStr = profitSet.Tables[0].Rows[0]["total_profit"].ToString();
-                if (int.TryParse(totalProfitStr, out totalProfit))
+                if (decimal.TryParse(totalProfitStr, out totalProfit))
                 {
                     lblProfit.Text = "Today's Total Profit: " + totalProfit.ToString("C");
                 }
@@ -106,7 +106,7 @@ namespace Clinic_Management_System
             if (chargeSet != null && chargeSet.Tables.Count > 0)
             {
                 var totalChargeStr = chargeSet.Tables[0].Rows[0]["charge"].ToString();
-                if (int.TryParse(totalChargeStr, out totalCharge))
+                if (decimal.TryParse(totalChargeStr, out totalCharge))
                 {
                     lblCharge.Text = "Today's Total Charge: " + totalCharge.ToString("C");
                 }
@@ -138,7 +138,7 @@ namespace Clinic_Management_System
             if (totalProfitDS != null && totalProfitDS.Tables.Count > 0)
             {
                 var totalProfitStr = totalProfitDS.Tables[0].Rows[0]["total_profit"].ToString();
-                if (int.TryParse(totalProfitStr, out totalProfit))
+                if (decimal.TryParse(totalProfitStr, out totalProfit))
                 {
                     lblProfit.Text = "This Month's Total Profit: " + totalProfit.ToString("C");
                 }
@@ -155,7 +155,7 @@ namespace Clinic_Management_System
             if (chargeSet != null && chargeSet.Tables.Count > 0)
             {
                 var totalChargeStr = chargeSet.Tables[0].Rows[0]["charge"].ToString();
-                if (int.TryParse(totalChargeStr, out totalCharge))
+                if (decimal.TryParse(totalChargeStr, out totalCharge))
                 {
                     lblCharge.Text = "This Month's Total Charge: " + totalCharge.ToString("C");
                 }
@@ -184,7 +184,7 @@ namespace Clinic_Management_System
             if (totalProfitDS != null && totalProfitDS.Tables.Count > 0)
             {
                 var totalProfitStr = totalProfitDS.Tables[0].Rows[0]["total_profit"].ToString();
-                if (int.TryParse(totalProfitStr, out totalProfit))
+                if (decimal.TryParse(totalProfitStr, out totalProfit))
                 {
                     lblProfit.Text = "This Year's Total Profit: " + totalProfit.ToString("C");
                 }
@@ -200,7 +200,7 @@ namespace Clinic_Management_System
             if (chargeSet != null && chargeSet.Tables.Count > 0)
             {
                 var totalChargeStr = chargeSet.Tables[0].Rows[0]["charge"].ToString();
-                if (int.TryParse(totalChargeStr, out totalCharge))
+                if (decimal.TryParse(totalChargeStr, out totalCharge))
                 {
                     lblCharge.Text = "This Year's Total Charge: " + totalCharge.ToString("C");
                 }

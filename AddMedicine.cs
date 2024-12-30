@@ -18,7 +18,8 @@ namespace Clinic_Management_System
         databaseclass dbClass = new databaseclass();
         string cmpPattern = @"^[a-zA-Z0-9\s\.\-]+$";
         string medicinePattern = @"^[a-zA-Z0-9\s\-\(\)]+$";
-        string stockPattern = @"^\d+$";
+        string stockPattern = @"^\d+(\.\d{1,2})?$";
+
         string changingname;
         Dictionary<string, MedicineData> medicineDataDict = new Dictionary<string, MedicineData>();
         public AddMedicine()
@@ -124,7 +125,7 @@ namespace Clinic_Management_System
                     {
                         int medID = Convert.ToInt32(ds.Tables[0].Rows[0]["medicine_id"].ToString());
                         string q2 = "insert into Medicine_Details(medicine_stock, expiry_date, purchase_price, sell_price, medicine_id) values('" +
-                            stock + "', '" + date + "', " + int.Parse(purchase) + ", " + int.Parse(sell) + "," + medID + ");";
+                            stock + "', '" + date + "', " + float.Parse(purchase) + ", " + float.Parse(sell) + "," + medID + ");";
                         dbClass.databaseoperations(q2);
                         MessageBox.Show("Record Inserted Successfully");
                     }
@@ -139,7 +140,7 @@ namespace Clinic_Management_System
 
                         int medID = Convert.ToInt32(dataSet.Tables[0].Rows[0]["medicine_id"].ToString());
                         string q2 = "insert into Medicine_Details(medicine_stock, expiry_date, purchase_price, sell_price, medicine_id) values('" +
-                            stock + "', '" + date + "', " + int.Parse(purchase) + ", " + int.Parse(sell) + ", " + medID + ");";
+                            stock + "', '" + date + "', " + float.Parse(purchase) + ", " + float.Parse(sell) + ", " + medID + ");";
                         dbClass.databaseoperations(q2);
                     }
 
@@ -194,7 +195,7 @@ namespace Clinic_Management_System
                 changingname = txtName.Text;
 
                 string query = "SELECT medicine_id, medicine_name, company_name, medicine_type FROM Medicines WHERE medicine_name ILIKE @value";
-                NpgsqlConnection conn = new NpgsqlConnection("Host=192.168.237.181;Port=5432;Username=postgres;Password=2002;Database=Clinic_Management;");
+                NpgsqlConnection conn = new NpgsqlConnection("Host=localhost;Port=5432;Username=postgres;Password=2002;Database=Clinic_Management;");
                 try
                 {
                     conn.Open();

@@ -26,7 +26,7 @@ namespace Clinic_Management_System
         private void PopulateGridView()
         {
             DataSet ds = new DataSet();
-            string query = "select * from certificate;";
+            string query = "select * from certificate_table;";
             ds = dbClass.Getdata(query);
             if (ds != null && ds.Tables.Count > 0)
             {

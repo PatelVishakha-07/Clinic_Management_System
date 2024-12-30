@@ -9,7 +9,8 @@ namespace Clinic_Management_System
 {
     public partial class Prescriped_medicine : UserControl
     {
-        int prescription_id, medicine_qty, charges, purchase_price, sell_price, profit, med_price, ttl_pres_charges, patient_id;
+        int prescription_id, medicine_qty, charges,    patient_id;
+        decimal purchase_price, profit, sell_price, med_price, ttl_pres_charges;
         string dialog;
         List<TextBox> medicineNameTextBoxes = new List<TextBox>();
         List<TextBox> quantityTextBoxes = new List<TextBox>();
@@ -160,7 +161,7 @@ namespace Clinic_Management_System
 
             if (!string.IsNullOrEmpty(txtBox.Text))
             {
-                using (NpgsqlConnection conn = new NpgsqlConnection("Host=192.168.237.181;Port=5432;Username=postgres;Password=2002;Database=Clinic_Management;"))
+                using (NpgsqlConnection conn = new NpgsqlConnection("Host=localhost;Port=5432;Username=postgres;Password=2002;Database=Clinic_Management;"))
                 {
                     conn.Open();
                     NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(query, conn);
@@ -219,8 +220,8 @@ namespace Clinic_Management_System
                         {
                             int availableStock = int.Parse(row["medicine_stock"].ToString());
                             DateTime expiryDate = DateTime.Parse(row["Expiry_Date"].ToString());
-                            purchase_price = Convert.ToInt32(row["purchase_price"]);
-                            sell_price = Convert.ToInt32(row["sell_price"]);
+                            purchase_price = Convert.ToDecimal(row["purchase_price"]);
+                            sell_price = Convert.ToDecimal(row["sell_price"]);
 
                             if (DateTime.Now >= expiryDate)
                             {
@@ -268,6 +269,47 @@ namespace Clinic_Management_System
                 {
                     MessageBox.Show("Please fill out all fields correctly.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+
+                profit = charges + med_price;
+                ttl_pres_charges += charges;
+                string pres_query;
+                if (dialog == "Prescription")
+                {
+                    pres_query = $"UPDATE prescription SET total_charge = {ttl_pres_charges} WHERE prescription_id = {prescription_id}";
+                    dbclass.databaseoperations(pres_query);
+                    string profitQuery = $"INSERT INTO profit (profit_date, amount) VALUES ('{DateTime.Now}', {profit})";
+                    dbclass.databaseoperations(profitQuery);
+                }
+                else
+                {
+
+
+                    pres_query = $" UPDATE ipd_table SET total_pay = COALESCE(total_pay, 0) + {ttl_pres_charges} WHERE patient_id = {patient_id};";
+                    dbclass.databaseoperations(pres_query);
+                    string profitQuery = $"INSERT INTO ipd_profit (profit_date, amount) VALUES ('{DateTime.Now}', {profit})";
+                    dbclass.databaseoperations(profitQuery);
+                }
+
+
+                MessageBox.Show("Medicine Added");
+                this.Hide();
+                if (dialog == "Prescription")
+                {
+                    ShowPatients details = new ShowPatients();
+                    Parent.Controls.Add(details);
+                    details.Dock = DockStyle.Fill;
+                    Parent.Controls.Remove(this);
+                    this.Dispose();
+                }
+                else
+                {
+                    ShowAdmittedPatient details = new ShowAdmittedPatient("Doctor");
+                    Parent.Controls.Add(details);
+                    details.Dock = DockStyle.Fill;
+                    Parent.Controls.Remove(this);
+                    this.Dispose();
+                }
+
             }
         }
 
