@@ -194,7 +194,7 @@ namespace Clinic_Management_System
                 changingname = txtName.Text;
 
                 string query = "SELECT medicine_id, medicine_name, company_name, medicine_type FROM Medicines WHERE medicine_name ILIKE @value";
-                NpgsqlConnection conn = new NpgsqlConnection("Host=localhost;Port=5432;Username=postgres;Password=2002;Database=Clinic_Management;");
+                NpgsqlConnection conn = new NpgsqlConnection("Host=192.168.237.181;Port=5432;Username=postgres;Password=2002;Database=Clinic_Management;");
                 try
                 {
                     conn.Open();

@@ -16,7 +16,7 @@ namespace Clinic_Management_System
         DataSet ds;
         public databaseclass()
         {
-            conn = new NpgsqlConnection("Host=localhost;Port=5432;Username=postgres;Password=2002;Database=Clinic_Management;");  
+            conn = new NpgsqlConnection("Host=192.168.237.181;Port=5432;Username=postgres;Password=2002;Database=Clinic_Management;");  
             conn.Open();
         }
         public DataSet Getdata(string query)

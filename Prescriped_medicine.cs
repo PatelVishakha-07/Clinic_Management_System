@@ -149,7 +149,7 @@ namespace Clinic_Management_System
 
             if (!string.IsNullOrEmpty(txtBox.Text))
             {
-                using (NpgsqlConnection conn = new NpgsqlConnection("Host=localhost;Port=5432;Username=postgres;Password=2002;Database=Clinic_Management;"))
+                using (NpgsqlConnection conn = new NpgsqlConnection("Host=192.168.237.181;Port=5432;Username=postgres;Password=2002;Database=Clinic_Management;"))
                 {
                     conn.Open();
                     NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(query, conn);
