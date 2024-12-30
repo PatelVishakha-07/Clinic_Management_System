@@ -103,10 +103,11 @@ namespace Clinic_Management_System
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            int ipd_id = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["ipd_id"].Value.ToString());
             int patientId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["patient_id"].Value.ToString());
             if(str == "Doctor")
             {
-                Admit_Patient_Details patientDetails = new Admit_Patient_Details("Doctor");
+                Admit_Patient_Details patientDetails = new Admit_Patient_Details("Doctor",ipd_id);
                 patientDetails.getPatientDetails(patientId);
                 AdmittedPatients patients = new AdmittedPatients();
                 patients = this.FindForm() as AdmittedPatients;
@@ -114,7 +115,7 @@ namespace Clinic_Management_System
             }
             else if(str == "Receptionist")
             {
-                Admit_Patient_Details patientDetails = new Admit_Patient_Details("Receptionist");
+                Admit_Patient_Details patientDetails = new Admit_Patient_Details("Receptionist",ipd_id);
                 patientDetails.getPatientDetails(patientId);
                 Receptionist receptionist = new Receptionist();
                 receptionist = this.FindForm() as Receptionist;

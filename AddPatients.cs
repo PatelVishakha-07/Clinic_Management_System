@@ -22,13 +22,13 @@ namespace Clinic_Management_System
         databaseclass dbclass = new databaseclass();
         string namePattern = @"^[A-Za-z]+(?: [A-Za-z]+)*$";
         string agePattern = @"^\d{1,3}$";
-        string contactNoPattern = @"^(\+91[\-\s]?)?[6 - 9]\d{9}$";
+        string contactNoPattern = @"^[6-9]\d{9}$";
         string addressPattern = @"^[A-Za-z0-9\s,.-]+$";
-        string changingname;
+        //string changingname;
         public AddPatients()
         {
             InitializeComponent();
-            changingname = "";
+         //   changingname = "";
            // txtName.TextChanged += txtName_TextChanged;
         }
 

@@ -225,5 +225,10 @@ namespace Clinic_Management_System
                 YearlyIncome();
             }
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

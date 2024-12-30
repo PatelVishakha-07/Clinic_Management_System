@@ -185,13 +185,24 @@ namespace Clinic_Management_System
 
         private void OnSuggestionSelected(object sender, TextBox txtMedicineName)
         {
-            ListBox listBox = sender as ListBox;
-            txtMedicineName.Text = listBox.SelectedItem.ToString();
-            listBox.Visible = false;
+            try
+            {
+                ListBox listBox = sender as ListBox;
+                if (listBox.SelectedItem != null)
+                {
+                    txtMedicineName.Text = listBox.SelectedItem.ToString();
+                    listBox.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
+            bool anyMedicineAdded = false;
+
             for (int i = 0; i < medicine_qty; i++)
             {
                 string medicineName = medicineNameTextBoxes[i].Text;
@@ -199,7 +210,7 @@ namespace Clinic_Management_System
                 string usage = usageComboBoxes[i].SelectedItem?.ToString();
 
                 // Skip incomplete entries
-                if (string.IsNullOrWhiteSpace(medicineName) || string.IsNullOrWhiteSpace(quantityText))
+                if (string.IsNullOrEmpty(medicineName) || string.IsNullOrEmpty(quantityText))
                 {
                     continue;
                 }
@@ -241,10 +252,10 @@ namespace Clinic_Management_System
                                 dbclass.databaseoperations(queryInsert);
 
                                 string queryUpdateStock = $@"
-                    UPDATE Medicine_details 
-                    SET medicine_stock = CAST(CAST(medicine_stock AS INTEGER) - {quantityToDeduct} AS TEXT)
-                    WHERE medicine_id = (SELECT medicine_id FROM Medicines WHERE medicine_name = '{medicineName}')
-                    AND Expiry_Date = '{expiryDate:yyyy-MM-dd}'";
+                UPDATE Medicine_details 
+                SET medicine_stock = CAST(CAST(medicine_stock AS INTEGER) - {quantityToDeduct} AS TEXT)
+                WHERE medicine_id = (SELECT medicine_id FROM Medicines WHERE medicine_name = '{medicineName}')
+                AND Expiry_Date = '{expiryDate:yyyy-MM-dd}'";
                                 dbclass.databaseoperations(queryUpdateStock);
 
                                 med_price += ((sell_price - purchase_price) * quantityToDeduct);
@@ -259,6 +270,10 @@ namespace Clinic_Management_System
                         {
                             MessageBox.Show($"Not enough stock for {medicineName}. Remaining Quantity: {remainingQuantity}", "Stock Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
+                        else
+                        {
+                            anyMedicineAdded = true;
+                        }
                     }
                     else
                     {
@@ -269,10 +284,14 @@ namespace Clinic_Management_System
                 {
                     MessageBox.Show("Please fill out all fields correctly.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+            }
 
+            if (anyMedicineAdded)
+            {
                 profit = charges + med_price;
                 ttl_pres_charges += charges;
                 string pres_query;
+
                 if (dialog == "Prescription")
                 {
                     pres_query = $"UPDATE prescription SET total_charge = {ttl_pres_charges} WHERE prescription_id = {prescription_id}";
@@ -282,16 +301,15 @@ namespace Clinic_Management_System
                 }
                 else
                 {
-
-
-                    pres_query = $" UPDATE ipd_table SET total_pay = COALESCE(total_pay, 0) + {ttl_pres_charges} WHERE patient_id = {patient_id};";
+                    pres_query = $"UPDATE ipd_table SET total_pay = COALESCE(total_pay, 0) + {ttl_pres_charges} WHERE patient_id = {patient_id};";
                     dbclass.databaseoperations(pres_query);
                     string profitQuery = $"INSERT INTO ipd_profit (profit_date, amount) VALUES ('{DateTime.Now}', {profit})";
                     dbclass.databaseoperations(profitQuery);
                 }
 
+                MessageBox.Show("Medicines Added");
 
-                MessageBox.Show("Medicine Added");
+                // Navigation logic after all medicines are processed
                 this.Hide();
                 if (dialog == "Prescription")
                 {
@@ -309,7 +327,6 @@ namespace Clinic_Management_System
                     Parent.Controls.Remove(this);
                     this.Dispose();
                 }
-
             }
         }
 
