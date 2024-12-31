@@ -163,7 +163,7 @@
             comboType.FlatStyle = FlatStyle.Popup;
             comboType.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             comboType.FormattingEnabled = true;
-            comboType.Items.AddRange(new object[] { "Strips", "Injection", "Syrup", "Drops" });
+            comboType.Items.AddRange(new object[] { "Strips", "Injection", "Syrup", "Drops", "Cream", "Bandage", "Oil", "Shampoo", "Card", "Soap", "Dry Syrup", "Lotion", "Gel", "Sachet", "Ointment", "Mask", "Other" });
             comboType.Location = new Point(620, 489);
             comboType.Name = "comboType";
             comboType.Size = new Size(457, 43);

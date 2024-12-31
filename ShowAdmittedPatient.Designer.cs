@@ -34,12 +34,12 @@
             txtSearch = new TextBox();
             dataGridView1 = new DataGridView();
             label1 = new Label();
-            Admit_Date = new DataGridViewTextBoxColumn();
-            Bed_Number = new DataGridViewTextBoxColumn();
-            Contact_No = new DataGridViewTextBoxColumn();
-            ipd_id = new DataGridViewTextBoxColumn();
-            Patient_id = new DataGridViewTextBoxColumn();
             Name = new DataGridViewTextBoxColumn();
+            Patient_id = new DataGridViewTextBoxColumn();
+            ipd_id = new DataGridViewTextBoxColumn();
+            Contact_No = new DataGridViewTextBoxColumn();
+            Bed_Number = new DataGridViewTextBoxColumn();
+            Admit_Date = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -111,34 +111,12 @@
             label1.TabIndex = 3;
             label1.Text = "Admitted Patient Information";
             // 
-            // Admit_Date
+            // Name
             // 
-            Admit_Date.HeaderText = "Admit_Date";
-            Admit_Date.MinimumWidth = 6;
-            Admit_Date.Name = "Admit_Date";
-            Admit_Date.Width = 125;
-            // 
-            // Bed_Number
-            // 
-            Bed_Number.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Bed_Number.HeaderText = "Bed Number";
-            Bed_Number.MinimumWidth = 6;
-            Bed_Number.Name = "Bed_Number";
-            // 
-            // Contact_No
-            // 
-            Contact_No.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Contact_No.HeaderText = "Contact_No";
-            Contact_No.MinimumWidth = 6;
-            Contact_No.Name = "Contact_No";
-            // 
-            // ipd_id
-            // 
-            ipd_id.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            ipd_id.HeaderText = "ipd_id";
-            ipd_id.MinimumWidth = 6;
-            ipd_id.Name = "ipd_id";
-            ipd_id.Visible = false;
+            Name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Name.HeaderText = "Name";
+            Name.MinimumWidth = 6;
+            Name.Name = "Name";
             // 
             // Patient_id
             // 
@@ -148,19 +126,41 @@
             Patient_id.Visible = false;
             Patient_id.Width = 125;
             // 
-            // Name
+            // ipd_id
             // 
-            Name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Name.HeaderText = "Name";
-            Name.MinimumWidth = 6;
-            Name.Name = "Name";
+            ipd_id.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            ipd_id.HeaderText = "ipd_id";
+            ipd_id.MinimumWidth = 6;
+            ipd_id.Name = "ipd_id";
+            ipd_id.Visible = false;
+            // 
+            // Contact_No
+            // 
+            Contact_No.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Contact_No.HeaderText = "Contact_No";
+            Contact_No.MinimumWidth = 6;
+            Contact_No.Name = "Contact_No";
+            // 
+            // Bed_Number
+            // 
+            Bed_Number.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Bed_Number.HeaderText = "Bed Number";
+            Bed_Number.MinimumWidth = 6;
+            Bed_Number.Name = "Bed_Number";
+            // 
+            // Admit_Date
+            // 
+            Admit_Date.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Admit_Date.HeaderText = "Admit_Date";
+            Admit_Date.MinimumWidth = 6;
+            Admit_Date.Name = "Admit_Date";
             // 
             // ShowAdmittedPatient
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel1);
-          //  Name = "ShowAdmittedPatient";
+            Name = "ShowAdmittedPatient";
             Size = new Size(1100, 763);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
