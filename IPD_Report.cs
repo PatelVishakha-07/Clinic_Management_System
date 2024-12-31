@@ -46,7 +46,7 @@ namespace Clinic_Management_System
 
             Controls.Add(printPanel);
             printPanel.Dock= DockStyle.Fill;
-            printPanel.AutoScroll = true;
+            //printPanel.AutoScroll = true;
             //printPanel.Dock = DockStyle.Fill;
             printPanel.Controls.Add(printButton);
 
@@ -75,7 +75,7 @@ namespace Clinic_Management_System
                     string tpay = totayset.Tables[0].Rows[0]["total_pay"].ToString();
                     
                     total_label.Text = $"Total Charge : {tpay}";
-                    total_label.Location = new Point(300, 615);
+                    total_label.Location = new Point(300, 100);
                     total_label.Size = new Size(200,30);
                     printPanel.Controls.Add (total_label);
                 }
