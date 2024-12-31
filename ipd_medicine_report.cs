@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using System.Data;
 using System.Drawing.Printing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Clinic_Management_System
 {
@@ -77,14 +69,14 @@ namespace Clinic_Management_System
         private void ipd_medicine_report_Load(object sender, EventArgs e)
         {
             DataSet main_ds = new DataSet();
-            string treatment_query = $"select treatment_id from ipd_treatment_table where ipd_id={ipd_id}";
+            string treatment_query = $"select discharge_treatment_id from discharge_treatment_table where discharge_id={ipd_id}";
             DataSet ds = dbclass.Getdata(treatment_query);
             if (ds != null && ds.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow dataRow in ds.Tables[0].Rows)
                 {
-                    int treatment_id = int.Parse(dataRow["treatment_id"].ToString());
-                    string medicine_query = $"select medicine_name,quantity,usage from ipd_prescribed_medicine where treatment_id={treatment_id}";
+                    int treatment_id = int.Parse(dataRow["discharge_treatment_id"].ToString());
+                    string medicine_query = $"select medicine_name,quantity,usage from discharge_prescribed_medicine where discharge_treatment_id={treatment_id}";
                     DataSet ds1=dbclass.Getdata(medicine_query);
                     main_ds.Merge(ds1);
                 }

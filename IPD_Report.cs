@@ -46,13 +46,12 @@ namespace Clinic_Management_System
 
             Controls.Add(printPanel);
             printPanel.Dock= DockStyle.Fill;
-           // printPanel.AutoScroll = true;
+            //printPanel.AutoScroll = true;
             //printPanel.Dock = DockStyle.Fill;
             printPanel.Controls.Add(printButton);
 
             Size = new Size(500, 700);
             Text = "IPD Report";
-
         }
 
         private void IPD_Report_Load(object sender, EventArgs e)
