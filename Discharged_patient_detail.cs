@@ -136,7 +136,7 @@ namespace Clinic_Management_System
                     foreach (DataRow treatmentrow in allprescription.Tables[0].Rows)
                     {
                         int treatment_id = Convert.ToInt32(treatmentrow["discharge_treatment_id"]);
-                        string trtquery = $"select * from discharge_treatment_table where discharge_id={treatment_id}";
+                        string trtquery = $"select * from discharge_treatment_table where discharge_treatment_id={treatment_id}";
                         DataSet currentprescription = dbclass.Getdata(trtquery);
                         currentY = DisplayData(currentprescription, panel1, currentY, "Prescription Details", excludeColumns: new[] { "discharge_id", "discharge_treatment_id" });
 

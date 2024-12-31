@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            listBox1 = new ListBox();
             lblSell = new Label();
             txtSell = new TextBox();
             label10 = new Label();
@@ -52,7 +53,6 @@
             pictureBox1 = new PictureBox();
             label2 = new Label();
             label1 = new Label();
-            listBox1 = new ListBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -91,6 +91,18 @@
             panel1.Size = new Size(1100, 852);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
+            // 
+            // listBox1
+            // 
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 20;
+            listBox1.Location = new Point(620, 184);
+            listBox1.Margin = new Padding(2);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(457, 104);
+            listBox1.TabIndex = 37;
+            listBox1.Visible = false;
+          //  listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged_1;
             // 
             // lblSell
             // 
@@ -358,17 +370,6 @@
             label1.TabIndex = 0;
             label1.Text = "Add Medicine";
             label1.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // listBox1
-            // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 20;
-            listBox1.Location = new Point(620, 184);
-            listBox1.Margin = new Padding(2);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(457, 104);
-            listBox1.TabIndex = 37;
-            listBox1.Visible = false;
             // 
             // AddMedicine
             // 

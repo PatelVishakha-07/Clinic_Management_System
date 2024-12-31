@@ -92,24 +92,29 @@ namespace Clinic_Management_System
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBox1.SelectedItem != null)
+            try
             {
-                string selectedDisplay = listBox1.SelectedItem.ToString();
-
-                if (patientDataDict.ContainsKey(selectedDisplay))
+                if (listBox1.SelectedItem != null)
                 {
-                    var patientDetails = patientDataDict[selectedDisplay];
+                    string selectedDisplay = listBox1.SelectedItem.ToString();
 
-                    // Populate TextBoxes with selected patient's details
-                    name.Text = selectedDisplay.Split(',')[0]; // Extract the name
-                    txtContact.Text = patientDetails.ContactNo;
-                    txtAge.Text = patientDetails.Age;
-                    txtAddress.Text = patientDetails.Address;
-                    txtGender.Text = patientDetails.Gender;
-                    patientId = patientDetails.patient_id;
+                    if (patientDataDict.ContainsKey(selectedDisplay))
+                    {
+                        var patientDetails = patientDataDict[selectedDisplay];
+
+                        // Populate TextBoxes with selected patient's details
+                        name.Text = selectedDisplay.Split(',')[0]; // Extract the name
+                        txtContact.Text = patientDetails.ContactNo;
+                        txtAge.Text = patientDetails.Age;
+                        txtAddress.Text = patientDetails.Address;
+                        txtGender.Text = patientDetails.Gender;
+                        patientId = patientDetails.patient_id;
+                    }
                 }
+                listBox1.Visible = false;
             }
-            listBox1.Visible=false;
+            catch (Exception ex)
+            { }
         }
 
         private void btnClear_Click(object sender, EventArgs e)

@@ -12,28 +12,27 @@ namespace Clinic_Management_System
 {
     public partial class Discharge_Charge : Form
     {
-        public int DischargeAmount { get; private set; }
-        public event Action<int> AmountConfirmed;
+        private Admit_Patient_Details admitDetails;
 
-        public Discharge_Charge()
+        public Discharge_Charge(Admit_Patient_Details admitDetails)
         {
             InitializeComponent();
+            this.admitDetails = admitDetails;
         }
-
 
         private void btn_enter_Click(object sender, EventArgs e)
         {
             if (int.TryParse(txtamount.Text, out int amount))
             {
-                DischargeAmount = amount;
-                AmountConfirmed?.Invoke(DischargeAmount); 
-                this.Close(); 
+                admitDetails.Getcharge(amount);
+                this.Close();
             }
             else
             {
                 MessageBox.Show("Please enter a valid amount.");
             }
         }
+
     }
 
 }

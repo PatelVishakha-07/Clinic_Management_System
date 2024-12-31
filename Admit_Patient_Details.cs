@@ -1,4 +1,5 @@
 ﻿using iTextSharp.text.pdf.fonts.cmaps;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,14 +10,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Clinic_Management_System
 {
     public partial class Admit_Patient_Details : UserControl
     {
-        int patientId,amount;
+        int patientId,amount,ipd_id;
         databaseclass dbclass = new databaseclass();
-        public Admit_Patient_Details(string s)
+        decimal updatedTotalPay;
+        public Admit_Patient_Details(string s,int ipd_id)
         {
             InitializeComponent();
             if(s == "Receptionist")
@@ -28,6 +31,11 @@ namespace Clinic_Management_System
                 btn_add.Enabled=false;
                 btn_add.Visible=false;
             }
+            this.ipd_id = ipd_id;
+        }
+        public Admit_Patient_Details()
+        {
+            InitializeComponent();
         }
         private int DisplayData(DataSet ds, Panel panel1, int startY, string sectionTitle, string[] excludeColumns = null)
         {
@@ -209,32 +217,48 @@ namespace Clinic_Management_System
 
         }
 
-        public void Getcharge(int amount)
-        {
-            this.amount = amount;
-        }
+        //public void Getcharge(int amount)
+        //{
+        //    this.amount = amount;
+        //}
 
         private void btn_discharge_Click(object sender, EventArgs e)
         {
             try
             {
-              
-                Discharge_Charge dischargeForm = new Discharge_Charge();
-                dischargeForm.AmountConfirmed += (confirmedAmount) =>
-                {
-                  
-                    this.amount = confirmedAmount;
-                    string updatepay=$"UPDATE ipd_table SET total_pay = COALESCE(total_pay, 0) + {amount} WHERE patient_id = {patientId}; ";
-                    dbclass.databaseoperations(updatepay);
-                    ExecuteDischargeProcess();
-                };
+                Discharge_Charge dischargeForm = new Discharge_Charge(this);
                 dischargeForm.ShowDialog();
+                using (var connection = new NpgsqlConnection("Host = localhost; Port = 5432; Username = postgres; Password = 2002; Database = Clinic_Management;")) // Use your database connection string
+                {
+                    connection.Open();
+                    string updatepay = $"UPDATE ipd_table SET total_pay = COALESCE(total_pay, 0) + {amount} WHERE patient_id = {patientId}  and ipd_id={ipd_id} RETURNING total_pay;";
+
+                    using (var command = new NpgsqlCommand(updatepay, connection))
+                    {
+                        updatedTotalPay = (decimal)command.ExecuteScalar(); // Fetch the returned value
+                       
+                     //   Console.WriteLine($"Updated total pay: {updatedTotalPay}");
+                    }
+                }
+
+                // string updatepay = $"UPDATE ipd_table SET total_pay = COALESCE(total_pay, 0) + {amount} WHERE patient_id = {patientId};";
+                string updateprofit =$"insert into ipd_profit(profit_date,amount) values('{DateTime.Now}',{amount});";
+               // dbclass.databaseoperations(updatepay);
+                dbclass.databaseoperations(updateprofit);
+                ExecuteDischargeProcess();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred: {ex.Message}");
             }
         }
+
+
+        public void Getcharge(int amount)
+        {
+            this.amount = amount;
+        }
+
 
         private void ExecuteDischargeProcess()
         {
@@ -250,7 +274,7 @@ namespace Clinic_Management_System
 
                     // Insert into discharged table
                     string insertDischargedQuery = $"INSERT INTO discharged (bed_number, admit_date, total_pay,discharge_date,patient_id) " +
-                                                   $"VALUES ({ipdRow["bed_number"]}, '{ipdRow["admit_date"]}', {amount},'{DateTime.Now}', {ipdRow["patient_id"]}) " +
+                                                   $"VALUES ({ipdRow["bed_number"]}, '{ipdRow["admit_date"]}', {updatedTotalPay},'{DateTime.Now}', {ipdRow["patient_id"]}) " +
                                                    $"RETURNING discharge_id";
                     DataSet dischargeResult = dbclass.Getdata(insertDischargedQuery);
                     int dischargeId = Convert.ToInt32(dischargeResult.Tables[0].Rows[0]["discharge_id"]);
@@ -265,9 +289,9 @@ namespace Clinic_Management_System
                         {
                             // Insert into discharge_treatment_table
                             string insertTreatmentQuery = $"INSERT INTO discharge_treatment_table (diagnosis, treatment, treatment_date, discharge_id) " +
-                                                          $"VALUES ('{treatmentRow["diagnosis"]}', '{treatmentRow["treatment"]}', '{treatmentRow["treatment_date"]}', {dischargeId})";
-                            dbclass.databaseoperations(insertTreatmentQuery);
-
+                                                          $"VALUES ('{treatmentRow["diagnosis"]}', '{treatmentRow["treatment"]}', '{treatmentRow["treatment_date"]}', {dischargeId})" + "returning discharge_treatment_id";
+                            DataSet treatmentquery=dbclass.Getdata(insertTreatmentQuery);
+                            int treatmentid = Convert.ToInt32(treatmentquery.Tables[0].Rows[0]["discharge_treatment_id"]);
                             // Fetch and move prescribed medicines
                             string medicineQuery = $"SELECT * FROM ipd_prescribed_medicine WHERE treatment_id={treatmentRow["treatment_id"]}";
                             DataSet medicineData = dbclass.Getdata(medicineQuery);
@@ -277,7 +301,7 @@ namespace Clinic_Management_System
                                 foreach (DataRow medicineRow in medicineData.Tables[0].Rows)
                                 {
                                     string insertMedicineQuery = $"INSERT INTO discharge_prescribed_medicine (medicine_name, quantity, usage, discharge_treatment_id) " +
-                                                                  $"VALUES ('{medicineRow["medicine_name"]}', '{medicineRow["quantity"]}', '{medicineRow["usage"]}', {dischargeId})";
+                                                                  $"VALUES ('{medicineRow["medicine_name"]}', '{medicineRow["quantity"]}', '{medicineRow["usage"]}', {treatmentid})";
                                     dbclass.databaseoperations(insertMedicineQuery);
                                 }
                             }

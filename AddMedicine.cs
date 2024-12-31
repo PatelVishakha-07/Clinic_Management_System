@@ -144,7 +144,7 @@ namespace Clinic_Management_System
                         dbClass.databaseoperations(q2);
                     }
 
-                   
+
                     ClearText();
                     Medicine medicine = new Medicine();
                     medicine.ShowControl(new ShowMedicine("Doctor"));
@@ -223,7 +223,7 @@ namespace Clinic_Management_System
                             {
                                 patient_id = int.Parse(row["medicine_id"].ToString()),
                                 company_Name = row["company_name"].ToString(),
-                                strips = row["medicine_type"].ToString(),                                
+                                strips = row["medicine_type"].ToString(),
                             };
                         }
                     }
@@ -249,29 +249,38 @@ namespace Clinic_Management_System
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBox1.SelectedItem != null)
+            try
             {
-                string selectedDisplay = listBox1.SelectedItem.ToString();
-
-                if (medicineDataDict.ContainsKey(selectedDisplay))
+                if (listBox1.SelectedItem != null)
                 {
-                    var patientDetails = medicineDataDict[selectedDisplay];
+                    string selectedDisplay = listBox1.SelectedItem.ToString();
 
-                    // Populate TextBoxes with selected patient's details
-                    txtName.Text = selectedDisplay.Split(',')[0]; // Extract the name
-                    txtCmp.Text = patientDetails.company_Name;
-                    comboType.Text = patientDetails.strips;                    
+                    if (medicineDataDict.ContainsKey(selectedDisplay))
+                    {
+                        var patientDetails = medicineDataDict[selectedDisplay];
+
+                        // Populate TextBoxes with selected patient's details
+                        txtName.Text = selectedDisplay.Split(',')[0]; // Extract the name
+                        txtCmp.Text = patientDetails.company_Name;
+                        comboType.Text = patientDetails.strips;
+                    }
+                    listBox1.Visible = false;
                 }
             }
-            listBox1.Visible = false;
+            catch (Exception ex) { }
+           
         }
 
         public class MedicineData
         {
             public int patient_id { get; set; }
             public string strips { get; set; }
-            public string company_Name { get; set; }            
+            public string company_Name { get; set; }
         }
 
+        //private void listBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        //{
+
+        //}
     }
 }
