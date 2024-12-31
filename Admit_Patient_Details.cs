@@ -24,8 +24,8 @@ namespace Clinic_Management_System
             InitializeComponent();
             if(s == "Receptionist")
             {
-                btnprint.Enabled = false;
-                btnprint.Visible = false;
+                //btnprint.Enabled = false;
+                //btnprint.Visible = false;
                 btn_discharge.Enabled = false;
                 btn_discharge.Visible = false;
                 btn_add.Enabled=false;
@@ -192,8 +192,7 @@ namespace Clinic_Management_System
 
         private void btnprint_Click(object sender, EventArgs e)
         {
-            IPD_Report report = new IPD_Report(patientId);
-            report.ShowDialog();
+            
 
         }
 

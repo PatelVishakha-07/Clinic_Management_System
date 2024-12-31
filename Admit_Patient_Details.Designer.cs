@@ -30,7 +30,6 @@
         {
             panel1 = new Panel();
             btn_discharge = new Button();
-            btnprint = new Button();
             btn_add = new Button();
             label1 = new Label();
             panel1.SuspendLayout();
@@ -41,7 +40,6 @@
             panel1.AutoScroll = true;
             panel1.BackColor = SystemColors.GradientInactiveCaption;
             panel1.Controls.Add(btn_discharge);
-            panel1.Controls.Add(btnprint);
             panel1.Controls.Add(btn_add);
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Fill;
@@ -62,17 +60,6 @@
             btn_discharge.Text = "Discharge";
             btn_discharge.UseVisualStyleBackColor = true;
             btn_discharge.Click += btn_discharge_Click;
-            // 
-            // btnprint
-            // 
-            btnprint.Location = new Point(940, 269);
-            btnprint.Margin = new Padding(2);
-            btnprint.Name = "btnprint";
-            btnprint.Size = new Size(108, 54);
-            btnprint.TabIndex = 3;
-            btnprint.Text = "Print";
-            btnprint.UseVisualStyleBackColor = true;
-            btnprint.Click += btnprint_Click;
             // 
             // btn_add
             // 
@@ -112,7 +99,6 @@
         #endregion
 
         private Panel panel1;
-        private Button btnprint;
         private Button btn_add;
         private Label label1;
         private Button btn_discharge;

@@ -62,16 +62,28 @@ namespace Clinic_Management_System
             currentY = DisplayData(patientData, printPanel, currentY, "Patient Details", excludeColumns: new[] { "patient_id" });
 
             // Fetch the latest IPD entry for the patient
-            string latestIpdQuery = $@"SELECT * FROM ipd_table WHERE patient_id={patientId} ORDER BY ipd_id DESC limit 1";
+            string latestIpdQuery = $@"SELECT * FROM discharged WHERE patient_id={patientId} ORDER BY discharge_id DESC limit 1";
             DataSet ipd = dbclass.Getdata(latestIpdQuery);
-
+           
             if (ipd != null && ipd.Tables[0].Rows.Count > 0)
             {
+                string ipd_query = $"select total_pay from discharged where discharge_id={ipd.Tables[0].Rows[0]["discharge_id"]}";
+                DataSet totayset = dbclass.Getdata(ipd_query);
+                if(totayset!=null && totayset.Tables[0].Rows.Count > 0)
+                {
+                    Label total_label = new Label();
+                    string tpay = totayset.Tables[0].Rows[0]["total_pay"].ToString();
+                    
+                    total_label.Text = $"Total Charge : {tpay}";
+                    total_label.Location = new Point(300, 615);
+                    total_label.Size = new Size(200,30);
+                    printPanel.Controls.Add (total_label);
+                }
                 DataRow latestIpdRow = ipd.Tables[0].Rows[0];
-                 ipd_id = Convert.ToInt32(latestIpdRow["ipd_id"]);
+                 ipd_id = Convert.ToInt32(latestIpdRow["discharge_id"]);
 
                 // Fetch and display the treatments associated with the latest IPD entry
-                string treatmentQuery = $"SELECT diagnosis,treatment,treatment_date FROM ipd_treatment_table WHERE ipd_id={ipd_id}";
+                string treatmentQuery = $"SELECT diagnosis,treatment,treatment_date FROM discharge_treatment_table WHERE discharge_id={ipd_id}";
                 DataSet treatmentData = dbclass.Getdata(treatmentQuery);
 
                 DataGridView gridView = new DataGridView

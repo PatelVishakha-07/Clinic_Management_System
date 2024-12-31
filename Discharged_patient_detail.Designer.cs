@@ -30,12 +30,14 @@
         {
             panel1 = new Panel();
             label1 = new Label();
+            button1 = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.AutoScroll = true;
+            panel1.Controls.Add(button1);
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
@@ -55,6 +57,16 @@
             label1.TabIndex = 3;
             label1.Text = "Details";
             // 
+            // button1
+            // 
+            button1.Location = new Point(925, 63);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 60);
+            button1.TabIndex = 4;
+            button1.Text = "Print";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // Discharged_patient_detail
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -73,5 +85,6 @@
 
         private Panel panel1;
         private Label label1;
+        private Button button1;
     }
 }
