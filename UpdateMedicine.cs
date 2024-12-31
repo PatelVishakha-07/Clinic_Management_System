@@ -18,7 +18,7 @@ namespace Clinic_Management_System
         int medicineId;
         string cmpPattern = @"^[a-zA-Z0-9\s\.\-]+$";
         string medicinePattern = @"^[a-zA-Z0-9\s\-\(\)]+$";
-        string stockPattern = @"^\d+$";
+        string stockPattern = @"^\d+(\.\d{1,2})?$";
         string medName, cpName, expDate, type, medPurchase, sell;
         int st;
         public UpdateMedicine()
@@ -110,8 +110,8 @@ namespace Clinic_Management_System
                     databaseclass dbClass = new databaseclass();
                     dbClass.databaseoperations(query);
 
-                    string q2 = "update Medicine_Details set Medicine_Stock= '" + stock + "', Expiry_Date= '" + expiryDate + "', purchase_price=" + int.Parse(purchase) +
-                        ", sell_price= " + int.Parse(sell) + " where Medicine_Id= " + medicineId;
+                    string q2 = "update Medicine_Details set Medicine_Stock= '" + stock + "', Expiry_Date= '" + expiryDate + "', purchase_price=" + decimal.Parse(purchase) +
+                        ", sell_price= " + decimal.Parse(sell) + " where Medicine_Id= " + medicineId;
                     dbClass.databaseoperations(q2);
 
                     Medicine medicine = new Medicine();
