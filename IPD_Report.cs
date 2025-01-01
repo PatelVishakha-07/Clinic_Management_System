@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using System.Data;
 using System.Drawing.Printing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static Clinic_Management_System.AddMedicine;
 
 namespace Clinic_Management_System
 {
@@ -46,8 +37,6 @@ namespace Clinic_Management_System
 
             Controls.Add(printPanel);
             printPanel.Dock= DockStyle.Fill;
-            //printPanel.AutoScroll = true;
-            //printPanel.Dock = DockStyle.Fill;
             printPanel.Controls.Add(printButton);
 
             Size = new Size(500, 700);
@@ -60,37 +49,33 @@ namespace Clinic_Management_System
             DataSet patientData = dbclass.Getdata(patientQuery);
             int currentY = 65;
             currentY = DisplayData(patientData, printPanel, currentY, "Patient Details", excludeColumns: new[] { "patient_id" });
-
-            // Fetch the latest IPD entry for the patient
             string latestIpdQuery = $@"SELECT * FROM discharged WHERE patient_id={patientId} ORDER BY discharge_id DESC limit 1";
             DataSet ipd = dbclass.Getdata(latestIpdQuery);
-           
+
             if (ipd != null && ipd.Tables[0].Rows.Count > 0)
             {
                 string ipd_query = $"select total_pay from discharged where discharge_id={ipd.Tables[0].Rows[0]["discharge_id"]}";
                 DataSet totayset = dbclass.Getdata(ipd_query);
-                if(totayset!=null && totayset.Tables[0].Rows.Count > 0)
+                if (totayset != null && totayset.Tables[0].Rows.Count > 0)
                 {
                     Label total_label = new Label();
                     string tpay = totayset.Tables[0].Rows[0]["total_pay"].ToString();
-                    
+
                     total_label.Text = $"Total Charge : {tpay}";
                     total_label.Location = new Point(300, 100);
-                    total_label.Size = new Size(200,30);
-                    printPanel.Controls.Add (total_label);
+                    total_label.Size = new Size(200, 30);
+                    printPanel.Controls.Add(total_label);
                 }
                 DataRow latestIpdRow = ipd.Tables[0].Rows[0];
-                 ipd_id = Convert.ToInt32(latestIpdRow["discharge_id"]);
-
-                // Fetch and display the treatments associated with the latest IPD entry
+                ipd_id = Convert.ToInt32(latestIpdRow["discharge_id"]);
                 string treatmentQuery = $"SELECT diagnosis,treatment,treatment_date FROM discharge_treatment_table WHERE discharge_id={ipd_id}";
                 DataSet treatmentData = dbclass.Getdata(treatmentQuery);
 
                 DataGridView gridView = new DataGridView
                 {
                     DataSource = treatmentData.Tables[0],
-                    AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill, // Adjusts column width to fit panel
-                    AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells,   // Adjusts row height for wrapped text
+                    AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
+                    AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells,
                     Location = new Point(5, currentY),
                     Size = new Size(printPanel.Width - 13, 360),
                     AllowUserToAddRows = false,
@@ -106,17 +91,14 @@ namespace Clinic_Management_System
                         Font = new System.Drawing.Font("Arial", 9, FontStyle.Regular),
                         ForeColor = Color.Black,
                         BackColor = Color.White,
-                        WrapMode = DataGridViewTriState.True // Enables text wrapping in cells
+                        WrapMode = DataGridViewTriState.True
                     }
                 };
                 printPanel.Controls.Add(gridView);
                 currentY += gridView.Height + 10;
-                // Include "treatment_id" in the excludeColumns array
-                //  currentY = DisplayData(treatmentData, printPanel, currentY, "Latest Prescription Details", excludeColumns: new[] { "treatment_id", "patient_id", "prescription_id" });
             }
             else
             {
-                // Handle case where no IPD records are found
                 Label noDataLabel = new Label()
                 {
                     Text = "No IPD records available.",
@@ -126,7 +108,7 @@ namespace Clinic_Management_System
                     ForeColor = Color.Gray
                 };
                 printPanel.Controls.Add(noDataLabel);
-                currentY += 30; // Adjust for next section
+                currentY += 30;
             }
 
         }
@@ -136,7 +118,7 @@ namespace Clinic_Management_System
             printButton.Visible = false;
             try
             {
-                printDocument.Print(); // This sends the content to the default printer
+                printDocument.Print(); 
                 ipd_medicine_report report = new ipd_medicine_report(ipd_id);
                 this.Hide();
                 report.ShowDialog();
@@ -149,11 +131,9 @@ namespace Clinic_Management_System
 
         private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
         {
-            // Render the panel to a bitmap
             Bitmap bitmap = new Bitmap(printPanel.Width, printPanel.Height);
             printPanel.DrawToBitmap(bitmap, new System.Drawing.Rectangle(0, 0, printPanel.Width, printPanel.Height));
 
-            // Draw the bitmap on the paper
             e.Graphics.DrawImage(bitmap, 0, 0);
         }
 
@@ -197,9 +177,7 @@ namespace Clinic_Management_System
 
                         startY += labelSpacing;
                     }
-
-                    // Add extra space after each treatment's data
-                    startY += 20; // Additional spacing
+                    startY += 20; 
                 }
             }
             else

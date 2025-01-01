@@ -148,7 +148,7 @@ namespace Clinic_Management_System
         {
             TextBox txtBox = sender as TextBox;
             string query = @"
-        SELECT medicine_name 
+        SELECT medicine_name, medicine_type
         FROM Medicines 
         WHERE medicine_name LIKE @value
         AND EXISTS (
@@ -172,7 +172,8 @@ namespace Clinic_Management_System
                     listBoxSuggestions.Items.Clear();
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
-                        listBoxSuggestions.Items.Add(row["medicine_name"]);
+                        string displayText = $"{row["medicine_name"]}, {row["medicine_type"]}";
+                        listBoxSuggestions.Items.Add(displayText);
                     }
                     listBoxSuggestions.Visible = ds.Tables[0].Rows.Count > 0;
                 }
@@ -190,14 +191,15 @@ namespace Clinic_Management_System
                 ListBox listBox = sender as ListBox;
                 if (listBox.SelectedItem != null)
                 {
-                    txtMedicineName.Text = listBox.SelectedItem.ToString();
+                    string selectedItem = listBox.SelectedItem.ToString();
+                    string medicineName = selectedItem.Split(',')[0].Trim(); 
+                    txtMedicineName.Text = medicineName;
                     listBox.Visible = false;
                 }
             }
-            catch (Exception ex)
-            {
-            }
+            catch (Exception ex){ }
         }
+
 
         private void BtnSave_Click(object sender, EventArgs e)
         {

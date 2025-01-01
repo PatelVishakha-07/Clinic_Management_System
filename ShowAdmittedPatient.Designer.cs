@@ -160,7 +160,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel1);
-            Name = "ShowAdmittedPatient";
+           // Name = "ShowAdmittedPatient";
             Size = new Size(1100, 763);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
