@@ -79,16 +79,16 @@ namespace Clinic_Management_System
 
                 if (medicineData != null && medicineData.Tables[0].Rows.Count > 0)
                 {
-                    Label medicinesLabel = new Label
-                    {
-                        Text = "Prescribed Medicines",
-                        Font = new System.Drawing.Font("Arial", 11, FontStyle.Bold),
-                        ForeColor = Color.Black,
-                        AutoSize = true,
-                        Location = new Point(5, currentY)
-                    };
-                    printPanel.Controls.Add(medicinesLabel);
-                    currentY += 30;
+                    //Label medicinesLabel = new Label
+                    //{
+                    //    Text = "Prescribed Medicines",
+                    //    Font = new System.Drawing.Font("Arial", 11, FontStyle.Bold),
+                    //    ForeColor = Color.Black,
+                    //    AutoSize = true,
+                    //    Location = new Point(5, currentY)
+                    //};
+                    //printPanel.Controls.Add(medicinesLabel);
+                    //currentY += 30;
 
                     DataGridView gridView = new DataGridView
                     {
@@ -155,7 +155,7 @@ namespace Clinic_Management_System
                 BorderStyle = BorderStyle.None, 
                 BackColor = printPanel.BackColor,
                 Width = printPanel.Width-10,
-                Height=50,
+                Height=45,
                 Location = new Point(3, currentY),
                 Multiline = true,
                 WordWrap = true,
