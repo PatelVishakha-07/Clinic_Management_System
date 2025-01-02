@@ -29,14 +29,15 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            label1 = new Label();
             pictureBox1 = new PictureBox();
+            label1 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.AutoScroll = true;
             panel1.BackColor = SystemColors.InactiveCaption;
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label1);
@@ -47,16 +48,6 @@
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(407, 33);
-            label1.Name = "label1";
-            label1.Size = new Size(304, 41);
-            label1.TabIndex = 1;
-            label1.Text = "Prescribed Medicine";
-            // 
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.medicine;
@@ -66,6 +57,16 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 56;
             pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(407, 33);
+            label1.Name = "label1";
+            label1.Size = new Size(304, 41);
+            label1.TabIndex = 1;
+            label1.Text = "Prescribed Medicine";
             // 
             // Prescriped_medicine
             // 

@@ -14,7 +14,7 @@ namespace Clinic_Management_System
     {
         int patient_id, pres_id, pres_med_id;
         databaseclass dbclass = new databaseclass();
-        public Recep_Patient_Details(int patient_id, int pres_id, int pres_med_id)
+        public Recep_Patient_Details(int patient_id)
         {
             InitializeComponent();
             this.patient_id = patient_id;
@@ -97,11 +97,6 @@ namespace Clinic_Management_System
                         string columnName = col.ColumnName.ToUpper();
                         string columnValue = row[col].ToString();
 
-                        // Check for the "usage" column and translate values
-                        if (col.ColumnName.Equals("usage", StringComparison.OrdinalIgnoreCase))
-                        {
-                            columnValue = TranslateUsageToBars(columnValue);
-                        }
 
                         Label keyLabel = new Label()
                         {
@@ -141,23 +136,6 @@ namespace Clinic_Management_System
             }
 
             return startY;
-        }
-
-        private string TranslateUsageToBars(string usage)
-        {
-            switch (usage.ToUpper())
-            {
-                case "OD":
-                    return "| ";  // Once a day
-                case "BD":
-                    return "| |"; // Twice a day
-                case "TD":
-                    return "| | |"; // Thrice a day
-                case "QD":
-                    return "| | | |"; // Four times a day
-                default:
-                    return usage; // If no match, return original value
-            }
         }
 
     }

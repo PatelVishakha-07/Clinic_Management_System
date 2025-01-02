@@ -76,7 +76,7 @@ namespace Clinic_Management_System
                 foreach (DataRow dataRow in ds.Tables[0].Rows)
                 {
                     int treatment_id = int.Parse(dataRow["discharge_treatment_id"].ToString());
-                    string medicine_query = $"select medicine_name,quantity,usage from discharge_prescribed_medicine where discharge_treatment_id={treatment_id}";
+                    string medicine_query = $"select medicine_name,quantity from discharge_prescribed_medicine where discharge_treatment_id={treatment_id}";
                     DataSet ds1=dbclass.Getdata(medicine_query);
                     main_ds.Merge(ds1);
                 }
@@ -113,32 +113,9 @@ namespace Clinic_Management_System
 
         private void GridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            DataGridView gridView = sender as DataGridView;
-
-            if (gridView != null && gridView.Columns[e.ColumnIndex].Name == "usage" && e.Value != null)
-            {
-                string originalValue = e.Value.ToString();
-                string formattedValue = TranslateUsageToBars(originalValue);
-                e.Value = formattedValue; // Set the formatted value for display
-                e.FormattingApplied = true; // Indicate that formatting has been applied
-            }
+           
         }
 
-        private string TranslateUsageToBars(string usage)
-        {
-            switch (usage.ToUpper())
-            {
-                case "OD":
-                    return "| ";  // Once a day
-                case "BD":
-                    return "| |"; // Twice a day
-                case "TD":
-                    return "| | |"; // Thrice a day
-                case "QD":
-                    return "| | | |"; // Four times a day
-                default:
-                    return usage; // If no match, return original value
-            }
-        }
+
     }
 }

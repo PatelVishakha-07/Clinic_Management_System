@@ -14,7 +14,7 @@ namespace Clinic_Management_System
         string dialog;
         List<TextBox> medicineNameTextBoxes = new List<TextBox>();
         List<TextBox> quantityTextBoxes = new List<TextBox>();
-        List<ComboBox> usageComboBoxes = new List<ComboBox>();
+        
         List<ListBox> suggestionListBoxes = new List<ListBox>();
         databaseclass dbclass = new databaseclass();
 
@@ -22,6 +22,7 @@ namespace Clinic_Management_System
         {
             InitializeComponent();
             this.dialog = dialog;
+            this.AutoScroll = true;
         }
 
         public void GetPrescriptionDetails(int prescription_id, int medicine_qty, int charges, int patient_id = 0)
@@ -35,11 +36,12 @@ namespace Clinic_Management_System
 
         private void GenerateDynamicControls()
         {
+            panel1.AutoScroll = true;
             // Clear any existing controls
             this.Controls.Clear();
             medicineNameTextBoxes.Clear();
             quantityTextBoxes.Clear();
-            usageComboBoxes.Clear();
+
             suggestionListBoxes.Clear();
 
             // Title label
@@ -108,27 +110,6 @@ namespace Clinic_Management_System
                 };
                 this.Controls.Add(txtQuantity);
                 quantityTextBoxes.Add(txtQuantity);
-
-                // Usage Label
-                Label lblUsage = new Label
-                {
-                    Text = "Usage:",
-                    Location = new System.Drawing.Point(460, startY),
-                    AutoSize = true
-                };
-                this.Controls.Add(lblUsage);
-
-                // Usage ComboBox
-                ComboBox comboUsage = new ComboBox
-                {
-                    Name = $"comboUsage{i}",
-                    Location = new System.Drawing.Point(520, startY),
-                    Width = 80
-                };
-                comboUsage.Items.AddRange(new string[] { "OD", "BD", "TD", "QD" });
-                comboUsage.SelectedIndex = 0; // Default selection
-                this.Controls.Add(comboUsage);
-                usageComboBoxes.Add(comboUsage);
 
                 startY += 90; // Adjust Y position for the next set of controls
             }
@@ -209,7 +190,6 @@ namespace Clinic_Management_System
             {
                 string medicineName = medicineNameTextBoxes[i].Text;
                 string quantityText = quantityTextBoxes[i].Text;
-                string usage = usageComboBoxes[i].SelectedItem?.ToString();
 
                 // Skip incomplete entries
                 if (string.IsNullOrEmpty(medicineName) || string.IsNullOrEmpty(quantityText))
@@ -248,8 +228,8 @@ namespace Clinic_Management_System
                                 remainingQuantity -= quantityToDeduct;
 
                                 string queryInsert = dialog == "Prescription"
-                                    ? $@"INSERT INTO Prescribed_Medicine (medicine_name, quantity, usage, prescription_id) VALUES ('{medicineName}', {quantityToDeduct}, '{usage}', {prescription_id})"
-                                    : $"INSERT INTO ipd_prescribed_medicine(medicine_name, quantity, usage, treatment_id) VALUES ('{medicineName}', {quantityToDeduct}, '{usage}', {prescription_id})";
+                                    ? $@"INSERT INTO Prescribed_Medicine (medicine_name, quantity, prescription_id) VALUES ('{medicineName}', {quantityToDeduct},  {prescription_id})"
+                                    : $"INSERT INTO ipd_prescribed_medicine(medicine_name, quantity, treatment_id) VALUES ('{medicineName}', {quantityToDeduct},  {prescription_id})";
 
                                 dbclass.databaseoperations(queryInsert);
 
@@ -335,7 +315,7 @@ namespace Clinic_Management_System
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-
+            panel1.AutoScroll = true;
         }
 
         private void btnSave_Click_1(object sender, EventArgs e)

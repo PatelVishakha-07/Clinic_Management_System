@@ -74,7 +74,7 @@ namespace Clinic_Management_System
                 AddLabel1($"Total Charge: Rs. {prescriptionRow["total_charge"]}", ref currentY1);
 
                 currentY += 15;
-                string medicineQuery = $"select medicine_name,quantity,usage from prescribed_medicine where prescription_id={prescriptionRow["prescription_id"]}";
+                string medicineQuery = $"select medicine_name,quantity from prescribed_medicine where prescription_id={prescriptionRow["prescription_id"]}";
                 DataSet medicineData = dbclass.Getdata(medicineQuery);
 
                 if (medicineData != null && medicineData.Tables[0].Rows.Count > 0)
@@ -132,15 +132,7 @@ namespace Clinic_Management_System
 
         private void GridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            DataGridView gridView = sender as DataGridView;
-
-            if (gridView != null && gridView.Columns[e.ColumnIndex].Name == "usage" && e.Value != null)
-            {
-                string originalValue = e.Value.ToString();
-                string formattedValue = TranslateUsageToBars(originalValue);
-                e.Value = formattedValue; 
-                e.FormattingApplied = true; 
-            }
+            
         }
 
         private void presLabel(string text, ref int currentY)
@@ -218,23 +210,6 @@ namespace Clinic_Management_System
 
             // Draw the bitmap on the paper
             e.Graphics.DrawImage(bitmap, 0, 0);
-        }
-
-        private string TranslateUsageToBars(string usage)
-        {
-            switch (usage.ToUpper())
-            {
-                case "OD":
-                    return "| ";  
-                case "BD":
-                    return "| |"; 
-                case "TD":
-                    return "| | |"; 
-                case "QD":
-                    return "| | | |"; 
-                default:
-                    return usage; 
-            }
         }
 
 

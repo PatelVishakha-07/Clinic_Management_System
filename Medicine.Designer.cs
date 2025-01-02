@@ -35,10 +35,10 @@
             menuStrip1 = new MenuStrip();
             showMedicinesToolStripMenuItem = new ToolStripMenuItem();
             addMedicineToolStripMenuItem = new ToolStripMenuItem();
-            panel1 = new Panel();
-            leftPanel = new Panel();
             expiredMedicineToolStripMenuItem = new ToolStripMenuItem();
             outOfStockMedicineToolStripMenuItem = new ToolStripMenuItem();
+            panel1 = new Panel();
+            leftPanel = new Panel();
             MedicinePanel.SuspendLayout();
             panel3.SuspendLayout();
             topPanel.SuspendLayout();
@@ -70,6 +70,7 @@
             // 
             // MainPanel
             // 
+            MainPanel.AutoScroll = true;
             MainPanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             MainPanel.Dock = DockStyle.Fill;
             MainPanel.Location = new Point(0, 0);
@@ -118,6 +119,18 @@
             addMedicineToolStripMenuItem.Text = "Add Medicine";
             addMedicineToolStripMenuItem.Click += addMedicineToolStripMenuItem_Click;
             // 
+            // expiredMedicineToolStripMenuItem
+            // 
+            expiredMedicineToolStripMenuItem.Name = "expiredMedicineToolStripMenuItem";
+            expiredMedicineToolStripMenuItem.Size = new Size(218, 52);
+            expiredMedicineToolStripMenuItem.Text = "Expired Medicine";
+            // 
+            // outOfStockMedicineToolStripMenuItem
+            // 
+            outOfStockMedicineToolStripMenuItem.Name = "outOfStockMedicineToolStripMenuItem";
+            outOfStockMedicineToolStripMenuItem.Size = new Size(278, 52);
+            outOfStockMedicineToolStripMenuItem.Text = "Out Of Stock Medicine";
+            // 
             // panel1
             // 
             panel1.Location = new Point(6, 60);
@@ -134,22 +147,11 @@
             leftPanel.Size = new Size(241, 873);
             leftPanel.TabIndex = 0;
             // 
-            // expiredMedicineToolStripMenuItem
-            // 
-            expiredMedicineToolStripMenuItem.Name = "expiredMedicineToolStripMenuItem";
-            expiredMedicineToolStripMenuItem.Size = new Size(218, 52);
-            expiredMedicineToolStripMenuItem.Text = "Expired Medicine";
-            // 
-            // outOfStockMedicineToolStripMenuItem
-            // 
-            outOfStockMedicineToolStripMenuItem.Name = "outOfStockMedicineToolStripMenuItem";
-            outOfStockMedicineToolStripMenuItem.Size = new Size(278, 52);
-            outOfStockMedicineToolStripMenuItem.Text = "Out Of Stock Medicine";
-            // 
             // Medicine
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             AutoValidate = AutoValidate.EnablePreventFocusChange;
             BackColor = Color.LightGray;
             ClientSize = new Size(1327, 873);
