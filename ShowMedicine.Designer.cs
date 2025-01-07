@@ -171,7 +171,7 @@
             label1.Size = new Size(370, 46);
             label1.TabIndex = 3;
             label1.Text = "Medicine Information";
-            label1.Click += label1_Click;
+            //label1.Click += label1_Click;
             // 
             // btnSearch
             // 

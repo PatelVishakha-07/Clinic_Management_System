@@ -44,32 +44,36 @@ namespace Clinic_Management_System
 
             if (!string.IsNullOrEmpty(value))
             {
+                DateTime date = DateTime.Now;
+                string formattedDate = date.ToString("yyyy-MM-dd");
                 // Build the query based on the input
                 if (int.TryParse(value, out int stock))
                 {
-                    query = $"SELECT m.Medicine_Id, m.Medicine_Name, m.Company_Name, m.Medicine_Type, md.Medicine_Stock, md.Expiry_Date, md.Purchase_Price, md.Sell_Price " +
+                    query = $"SELECT m.Medicine_Id, m.Medicine_Name, m.Company_Name, m.Medicine_Type, md.md_id,md.Medicine_Stock, md.Expiry_Date, md.Purchase_Price, md.Sell_Price " +
                             $"FROM Medicines m JOIN Medicine_Details md ON m.medicine_id = md.medicine_id " +
-                            $"WHERE md.Medicine_Stock = {stock};";
+                            $"WHERE md.Medicine_Stock = {stock} and  md.expiry_date > '" + formattedDate + "';";
                 }
                 else if (DateOnly.TryParse(value, out DateOnly expiryDate))
                 {
-                    string formattedDate = expiryDate.ToString("yyyy-MM-dd");
-                    query = $"SELECT m.Medicine_Id, m.Medicine_Name, m.Company_Name, m.Medicine_Type, md.Medicine_Stock, md.Expiry_Date, md.Purchase_Price, md.Sell_Price " +
+                    string formattedDate1 = expiryDate.ToString("yyyy-MM-dd");
+                    query = $"SELECT m.Medicine_Id, m.Medicine_Name, m.Company_Name, m.Medicine_Type,md.md_id, md.Medicine_Stock, md.Expiry_Date, md.Purchase_Price, md.Sell_Price " +
                             $"FROM Medicines m JOIN Medicine_Details md ON m.medicine_id = md.medicine_id " +
-                            $"WHERE md.Expiry_Date = '{formattedDate}';";
+                            $"WHERE md.Expiry_Date = '{formattedDate1}' and CAST(md.medicine_stock AS INTEGER) > 0;";
                 }
                 else
                 {
-                    query = $"SELECT m.Medicine_Id, m.Medicine_Name, m.Company_Name, m.Medicine_Type, md.Medicine_Stock, md.Expiry_Date, md.Purchase_Price, md.Sell_Price " +
+                    query = $"SELECT m.Medicine_Id, m.Medicine_Name, m.Company_Name, m.Medicine_Type,md.md_id, md.Medicine_Stock, md.Expiry_Date, md.Purchase_Price, md.Sell_Price " +
                             $"FROM Medicines m JOIN Medicine_Details md ON m.medicine_id = md.medicine_id " +
-                            $"WHERE m.Medicine_Name LIKE '%{value}%' OR m.Company_Name LIKE '%{value}%';";
+                            $"WHERE m.Medicine_Name LIKE '%{value}%' OR m.Company_Name LIKE '%{value}%' and md.expiry_date > '" + formattedDate + "' AND CAST(md.medicine_stock AS INTEGER) > 0 ";                           
                 }
             }
             else
             {
+                DateTime date = DateTime.Now;
+                string formattedDate = date.ToString("yyyy-MM-dd");
                 // If the input is empty, fetch all records
-                query = "SELECT m.Medicine_Id, m.Medicine_Name, m.Company_Name, m.Medicine_Type, md.Medicine_Stock, md.Expiry_Date, md.Purchase_Price, md.Sell_Price " +
-                        "FROM Medicines m JOIN Medicine_Details md ON m.medicine_id = md.medicine_id;";
+                query = "SELECT m.Medicine_Id, m.Medicine_Name, m.Company_Name, m.Medicine_Type,md.md_id, md.Medicine_Stock, md.Expiry_Date, md.Purchase_Price, md.Sell_Price " +
+                        "FROM Medicines m JOIN Medicine_Details md ON m.medicine_id = md.medicine_id WHERE md.expiry_date > '" + formattedDate + "' AND CAST(md.medicine_stock AS INTEGER) > 0";                             
             }
 
             // Fetch and populate the data
@@ -107,6 +111,16 @@ namespace Clinic_Management_System
                     };
                     medicinegrid.Columns.Add(idColumn);
                 }
+                if (!medicinegrid.Columns.Contains("MD_ID"))
+                {
+                    var idColumn1 = new DataGridViewTextBoxColumn
+                    {
+                        Name = "Md_Id",
+                        DataPropertyName = "md_id",
+                        Visible = false
+                    };
+                    medicinegrid.Columns.Add(idColumn1);
+                }
 
                 if (!medicinegrid.Columns.Contains("updateLink") && str == "Doctor")
                 {
@@ -115,6 +129,20 @@ namespace Clinic_Management_System
                         HeaderText = "Action",
                         Name = "updateLink",
                         Text = "Update",
+                        UseColumnTextForLinkValue = true,
+                    };
+
+                    medicinegrid.Columns.Add(updateLink);
+                }
+
+
+                if (!medicinegrid.Columns.Contains("deletelink") && str == "Doctor")
+                {
+                    DataGridViewLinkColumn updateLink = new DataGridViewLinkColumn
+                    {
+                        HeaderText = "Action",
+                        Name = "deletelink",
+                        Text = "Delete",
                         UseColumnTextForLinkValue = true,
                     };
 
@@ -148,9 +176,62 @@ namespace Clinic_Management_System
                     };
                     medicine.ShowControl(updateMedicine);
                 }
+                else if (e.ColumnIndex == medicinegrid.Columns["deletelink"].Index && e.RowIndex >= 0)
+                {
+                    int medicineId = Convert.ToInt32(medicinegrid.Rows[e.RowIndex].Cells["Medicine_Id"].Value);
+                    int batchId = Convert.ToInt32(medicinegrid.Rows[e.RowIndex].Cells["Md_Id"].Value);
+
+                    // Check the number of related batches
+                    string countQuery = $"select count(*) AS BatchCount from Medicine_Details WHERE medicine_id = {medicineId};";
+                    DataSet ds1 = dbClass.Getdata(countQuery);
+
+                    int batchCount = ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0
+                        ? Convert.ToInt32(ds1.Tables[0].Rows[0]["BatchCount"])
+                        : 0;
+
+                    try
+                    {
+                        if (batchCount == 1)
+                        {
+                            // Delete related batch first
+                            string deleteBatchQuery = $"DELETE FROM Medicine_Details WHERE medicine_id = {medicineId};";
+                            dbClass.databaseoperations(deleteBatchQuery);
+
+                            // Then delete the medicine
+                            string deleteMedicineQuery = $"DELETE FROM Medicines WHERE medicine_id = {medicineId};";
+                            dbClass.databaseoperations(deleteMedicineQuery);
+
+                          //  MessageBox.Show("Medicine and its last batch deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            // Delete only the batch
+                            string deleteBatchQuery = $"DELETE FROM Medicine_Details WHERE md_id = {batchId};";
+                            dbClass.databaseoperations(deleteBatchQuery);
+
+                            MessageBox.Show("Batch deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        DateTime date = DateTime.Now;
+                        string formattedDate = date.ToString("yyyy-MM-dd");
+                        // Refresh the grid
+                        string refreshQuery = "SELECT m.Medicine_Id, m.Medicine_Name, m.Company_Name, m.Medicine_Type, " +
+                                              "md.Md_Id, md.Medicine_Stock, md.Expiry_Date, md.Purchase_Price, md.Sell_Price " +
+                                              "FROM Medicines m JOIN Medicine_Details md ON m.medicine_id = md.medicine_id WHERE md.expiry_date > '" + formattedDate + "' AND CAST(md.medicine_stock AS INTEGER) > 0;";
+                        DataSet ds = dbClass.Getdata(refreshQuery);
+                        populategridview(ds);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error while deleting: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
             }
         }
 
-        private void label1_Click(object sender, EventArgs e) { }
     }
 }
+
+//        private void label1_Click(object sender, EventArgs e) { }
+//    }
+//}
