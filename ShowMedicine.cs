@@ -42,38 +42,40 @@ namespace Clinic_Management_System
             string value = txtSearch.Text;
             string query;
 
+            DateTime date = DateTime.Now;
+            string formattedDate = date.ToString("yyyy-MM-dd");
+
             if (!string.IsNullOrEmpty(value))
             {
-                DateTime date = DateTime.Now;
-                string formattedDate = date.ToString("yyyy-MM-dd");
                 // Build the query based on the input
                 if (int.TryParse(value, out int stock))
                 {
-                    query = $"SELECT m.Medicine_Id, m.Medicine_Name, m.Company_Name, m.Medicine_Type, md.md_id,md.Medicine_Stock, md.Expiry_Date, md.Purchase_Price, md.Sell_Price " +
-                            $"FROM Medicines m JOIN Medicine_Details md ON m.medicine_id = md.medicine_id " +
-                            $"WHERE md.Medicine_Stock = {stock} and  md.expiry_date > '" + formattedDate + "';";
+                    query = $"SELECT m.Medicine_Id, m.Medicine_Name, m.Company_Name, m.Medicine_Type, md.md_id, md.Medicine_Stock, md.Expiry_Date, md.Purchase_Price, md.Sell_Price " +
+          $"FROM Medicines m JOIN Medicine_Details md ON m.medicine_id = md.medicine_id " +
+          $"WHERE CAST(md.Medicine_Stock AS INTEGER) = {stock} AND md.Expiry_Date > '{formattedDate}';";
+
                 }
                 else if (DateOnly.TryParse(value, out DateOnly expiryDate))
                 {
-                    string formattedDate1 = expiryDate.ToString("yyyy-MM-dd");
-                    query = $"SELECT m.Medicine_Id, m.Medicine_Name, m.Company_Name, m.Medicine_Type,md.md_id, md.Medicine_Stock, md.Expiry_Date, md.Purchase_Price, md.Sell_Price " +
+                    string formattedExpiryDate = expiryDate.ToString("yyyy-MM-dd");
+                    query = $"SELECT m.Medicine_Id, m.Medicine_Name, m.Company_Name, m.Medicine_Type, md.md_id, md.Medicine_Stock, md.Expiry_Date, md.Purchase_Price, md.Sell_Price " +
                             $"FROM Medicines m JOIN Medicine_Details md ON m.medicine_id = md.medicine_id " +
-                            $"WHERE md.Expiry_Date = '{formattedDate1}' and CAST(md.medicine_stock AS INTEGER) > 0;";
+                            $"WHERE md.Expiry_Date = '{formattedExpiryDate}' AND md.expiry_date > '{formattedDate}' AND CAST(md.medicine_stock AS INTEGER) > 0;";
                 }
                 else
                 {
-                    query = $"SELECT m.Medicine_Id, m.Medicine_Name, m.Company_Name, m.Medicine_Type,md.md_id, md.Medicine_Stock, md.Expiry_Date, md.Purchase_Price, md.Sell_Price " +
+                    query = $"SELECT m.Medicine_Id, m.Medicine_Name, m.Company_Name, m.Medicine_Type, md.md_id, md.Medicine_Stock, md.Expiry_Date, md.Purchase_Price, md.Sell_Price " +
                             $"FROM Medicines m JOIN Medicine_Details md ON m.medicine_id = md.medicine_id " +
-                            $"WHERE m.Medicine_Name LIKE '%{value}%' OR m.Company_Name LIKE '%{value}%' and md.expiry_date > '" + formattedDate + "' AND CAST(md.medicine_stock AS INTEGER) > 0 ";                           
+                            $"WHERE (m.Medicine_Name LIKE '%{value}%' OR m.Company_Name LIKE '%{value}%') " +
+                            $"AND md.expiry_date > '{formattedDate}' AND CAST(md.medicine_stock AS INTEGER) > 0;";
                 }
             }
             else
             {
-                DateTime date = DateTime.Now;
-                string formattedDate = date.ToString("yyyy-MM-dd");
-                // If the input is empty, fetch all records
-                query = "SELECT m.Medicine_Id, m.Medicine_Name, m.Company_Name, m.Medicine_Type,md.md_id, md.Medicine_Stock, md.Expiry_Date, md.Purchase_Price, md.Sell_Price " +
-                        "FROM Medicines m JOIN Medicine_Details md ON m.medicine_id = md.medicine_id WHERE md.expiry_date > '" + formattedDate + "' AND CAST(md.medicine_stock AS INTEGER) > 0";                             
+                // If the input is empty, fetch all valid records
+                query = $"SELECT m.Medicine_Id, m.Medicine_Name, m.Company_Name, m.Medicine_Type, md.md_id, md.Medicine_Stock, md.Expiry_Date, md.Purchase_Price, md.Sell_Price " +
+                        $"FROM Medicines m JOIN Medicine_Details md ON m.medicine_id = md.medicine_id " +
+                        $"WHERE md.expiry_date > '{formattedDate}' AND CAST(md.medicine_stock AS INTEGER) > 0;";
             }
 
             // Fetch and populate the data
