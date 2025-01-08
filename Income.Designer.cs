@@ -85,6 +85,7 @@
             // 
             // panel1
             // 
+            panel1.AutoScroll = true;
             panel1.BackColor = SystemColors.GradientInactiveCaption;
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(246, 69);
@@ -97,6 +98,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             ClientSize = new Size(1227, 754);
             Controls.Add(panel1);
             Controls.Add(topPanel);

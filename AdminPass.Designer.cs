@@ -149,6 +149,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             Controls.Add(panel1);
             Name = "AdminPass";
             Size = new Size(1079, 763);

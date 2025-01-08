@@ -45,6 +45,7 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Bottom;
+            panel1.AutoScroll = true;
             panel1.BackColor = SystemColors.GradientInactiveCaption;
             panel1.Controls.Add(txtmedqty);
             panel1.Controls.Add(label10);
@@ -186,6 +187,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             Controls.Add(panel1);
             Name = "Diagnosis";
             Size = new Size(1178, 871);

@@ -374,6 +374,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             Controls.Add(panel1);
             Name = "AddMedicine";
             Size = new Size(1100, 852);

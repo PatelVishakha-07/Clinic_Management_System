@@ -46,6 +46,7 @@
             // 
             // panel1
             // 
+            panel1.AutoScroll = true;
             panel1.Controls.Add(label1);
             panel1.Controls.Add(lblCharge);
             panel1.Controls.Add(lblProfit);

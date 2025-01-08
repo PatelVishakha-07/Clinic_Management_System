@@ -46,6 +46,7 @@
             // 
             // panel1
             // 
+            panel1.AutoScroll = true;
             panel1.BackColor = SystemColors.InactiveCaption;
             panel1.Controls.Add(btnSearch);
             panel1.Controls.Add(txtSearch);

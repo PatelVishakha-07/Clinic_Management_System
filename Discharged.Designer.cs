@@ -152,12 +152,13 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             BackColor = SystemColors.ScrollBar;
             Controls.Add(dataGridView1);
             Controls.Add(btnSearch);
             Controls.Add(txtSearch);
             Controls.Add(label1);
-          //  Name = "Discharged";
+            //Name = "Discharged";
             Size = new Size(1079, 763);
             Load += Discharged_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

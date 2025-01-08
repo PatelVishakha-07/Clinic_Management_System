@@ -33,6 +33,7 @@
             // 
             // panel1
             // 
+            panel1.AutoScroll = true;
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
