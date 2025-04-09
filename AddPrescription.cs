@@ -27,11 +27,21 @@ namespace Clinic_Management_System
         {
             DateTime date = DateTime.Now;
             string formattedDate = date.ToString("yyyy-MM-dd");
-            String query = "SELECT m.medicine_id, m.medicine_name, m.company_name, m.medicine_type, md.medicine_stock, " +
-                               "md.expiry_date, md.purchase_price, md.sell_price, md.md_id " +
-                               "FROM Medicines m JOIN Medicine_Details md ON m.medicine_id = md.medicine_id " +
-                               "WHERE md.expiry_date > '" + formattedDate + "' AND CAST(md.medicine_stock AS INTEGER) > 0 " +
-                               "ORDER BY medicine_name;";
+            string query = "SELECT m.medicine_id, m.medicine_name, m.company_name, m.medicine_type, " +
+               "md.medicine_stock, md.expiry_date, md.purchase_price, md.sell_price, md.md_id " +
+               "FROM Medicines m " +
+               "JOIN Medicine_Details md ON m.medicine_id = md.medicine_id " +
+               "WHERE md.expiry_date > '" + formattedDate + "' " +
+               "AND CAST(md.medicine_stock AS INTEGER) > 0 " +
+               "AND md.expiry_date = (" +
+                   "SELECT MIN(md2.expiry_date) " +
+                   "FROM Medicine_Details md2 " +
+                   "WHERE md2.medicine_id = m.medicine_id " +
+                   "AND md2.expiry_date > '" + formattedDate + "' " +
+                   "AND CAST(md2.medicine_stock AS INTEGER) > 0" +
+               ") " +
+               "ORDER BY m.medicine_name;";
+
             DataSet ds = dbclass.Getdata(query);
             allMedicines.Clear();
             foreach (DataRow row in ds.Tables[0].Rows)
