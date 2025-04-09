@@ -16,6 +16,8 @@ namespace Clinic_Management_System
     {
         int patient_id;
         databaseclass dbclass = new databaseclass();
+        List<string> allMedicines = new List<string>();
+
         public AddPrescription()
         {
             InitializeComponent();
@@ -23,7 +25,20 @@ namespace Clinic_Management_System
 
         private void AddPrescription_Load(object sender, EventArgs e)
         {
-
+            DateTime date = DateTime.Now;
+            string formattedDate = date.ToString("yyyy-MM-dd");
+            String query = "SELECT m.medicine_id, m.medicine_name, m.company_name, m.medicine_type, md.medicine_stock, " +
+                               "md.expiry_date, md.purchase_price, md.sell_price, md.md_id " +
+                               "FROM Medicines m JOIN Medicine_Details md ON m.medicine_id = md.medicine_id " +
+                               "WHERE md.expiry_date > '" + formattedDate + "' AND CAST(md.medicine_stock AS INTEGER) > 0 " +
+                               "ORDER BY medicine_name;";
+            DataSet ds = dbclass.Getdata(query);
+            allMedicines.Clear();
+            foreach (DataRow row in ds.Tables[0].Rows)
+            {
+                allMedicines.Add(row["medicine_name"].ToString());
+            }
+            listMedicine.DataSource = new BindingSource(allMedicines, null);
         }
 
         public void getPatientDetails(int patient_id, string name, string address, int age, string contact, string gender)
@@ -39,7 +54,7 @@ namespace Clinic_Management_System
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtDisease.Text) || string.IsNullOrEmpty(txtPres.Text) || string.IsNullOrEmpty(txtmedqty.Text) || string.IsNullOrEmpty(txtCharges.Text))
+            if (string.IsNullOrEmpty(txtDisease.Text) || string.IsNullOrEmpty(txtMedicine.Text) ||  string.IsNullOrEmpty(txtCharges.Text))
             {
                 lbldisease.Visible = true;
             }
@@ -48,12 +63,12 @@ namespace Clinic_Management_System
                 lbldisease.Visible = false;
                 DateTime date = System.DateTime.Now;
                 string dateFormatted = date.ToString("yyyy-MM-dd HH:mm:ss").Replace("'", "''");
-                string query = $"insert into Prescription(prescription_date,disease,prescription,patient_id,charges) values('{dateFormatted}','{txtDisease.Text}','{txtPres.Text}',{patient_id},{int.Parse(txtCharges.Text)})";
+                string query = $"insert into Prescription(prescription_date,disease,prescription,patient_id,charges) values('{dateFormatted}','{txtDisease.Text}','{txtMedicine.Text}',{patient_id},{int.Parse(txtCharges.Text)})";
                 dbclass.Getdata(query);
                 string data = $"select * from Prescription where patient_id={patient_id} and prescription_date='{dateFormatted}'";
                 DataSet ds = dbclass.Getdata(data);
                 Prescriped_medicine prescriped_Medicine = new Prescriped_medicine("Prescription");
-                prescriped_Medicine.GetPrescriptionDetails(int.Parse(ds.Tables[0].Rows[0]["prescription_id"].ToString()), int.Parse(txtmedqty.Text),int.Parse(txtCharges.Text));
+                //prescriped_Medicine.GetPrescriptionDetails(int.Parse(ds.Tables[0].Rows[0]["prescription_id"].ToString()), int.Parse(txtCharges.Text));
                 Patients patients = this.FindForm() as Patients;
                 patients.ShowContent(prescriped_Medicine);
             }
@@ -61,7 +76,7 @@ namespace Clinic_Management_System
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            txtPres.Text = string.Empty;
+            txtMedicine.Text = string.Empty;
             txtDisease.Text = string.Empty;
         }
 
@@ -83,6 +98,42 @@ namespace Clinic_Management_System
         private void txtCharges_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void listMedicine_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string search = txtSearch.Text.ToLower();
+            var filtered = allMedicines
+                .Where(m => m.ToLower().Contains(search))
+                .ToList();
+
+            listMedicine.DataSource = new BindingSource(filtered, null);
+        }
+
+        private void txtMedicine_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listMedicine_Click(object sender, EventArgs e)
+        {
+            if (listMedicine.SelectedItem != null)
+            {
+                string selectedMedicine = listMedicine.SelectedItem.ToString();
+                var lines = txtMedicine.Lines.ToList();
+
+                // Prevent duplicates (optional)
+                if (!lines.Contains(selectedMedicine))
+                {
+                    txtMedicine.AppendText(selectedMedicine + Environment.NewLine);
+                }
+            }
         }
     }
 }

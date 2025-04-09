@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            numericUpDown1 = new NumericUpDown();
+            txtSearch = new TextBox();
+            listMedicine = new ListBox();
             txtCharges = new TextBox();
             label11 = new Label();
-            txtmedqty = new TextBox();
-            label10 = new Label();
             lbldisease = new Label();
-            pictureBox1 = new PictureBox();
             txtDisease = new TextBox();
-            txtPres = new TextBox();
+            txtMedicine = new TextBox();
             label8 = new Label();
             label9 = new Label();
             txtGender = new TextBox();
@@ -54,20 +54,20 @@
             label2 = new Label();
             label1 = new Label();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.InactiveCaption;
+            panel1.Controls.Add(numericUpDown1);
+            panel1.Controls.Add(txtSearch);
+            panel1.Controls.Add(listMedicine);
             panel1.Controls.Add(txtCharges);
             panel1.Controls.Add(label11);
-            panel1.Controls.Add(txtmedqty);
-            panel1.Controls.Add(label10);
             panel1.Controls.Add(lbldisease);
-            panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(txtDisease);
-            panel1.Controls.Add(txtPres);
+            panel1.Controls.Add(txtMedicine);
             panel1.Controls.Add(label8);
             panel1.Controls.Add(label9);
             panel1.Controls.Add(txtGender);
@@ -91,13 +91,44 @@
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
             // 
+            // numericUpDown1
+            // 
+            numericUpDown1.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            numericUpDown1.Location = new Point(918, 476);
+            numericUpDown1.Name = "numericUpDown1";
+            numericUpDown1.Size = new Size(131, 41);
+            numericUpDown1.TabIndex = 64;
+            // 
+            // txtSearch
+            // 
+            txtSearch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtSearch.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            txtSearch.Location = new Point(662, 400);
+            txtSearch.Name = "txtSearch";
+            txtSearch.PlaceholderText = "Search....";
+            txtSearch.Size = new Size(420, 41);
+            txtSearch.TabIndex = 63;
+            txtSearch.TextChanged += txtSearch_TextChanged;
+            // 
+            // listMedicine
+            // 
+            listMedicine.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            listMedicine.FormattingEnabled = true;
+            listMedicine.ItemHeight = 35;
+            listMedicine.Location = new Point(662, 476);
+            listMedicine.Name = "listMedicine";
+            listMedicine.Size = new Size(222, 319);
+            listMedicine.TabIndex = 62;
+            listMedicine.Click += listMedicine_Click;
+            listMedicine.SelectedIndexChanged += listMedicine_SelectedIndexChanged;
+            // 
             // txtCharges
             // 
             txtCharges.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtCharges.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            txtCharges.Location = new Point(579, 633);
+            txtCharges.Location = new Point(875, 292);
             txtCharges.Name = "txtCharges";
-            txtCharges.Size = new Size(457, 41);
+            txtCharges.Size = new Size(207, 41);
             txtCharges.TabIndex = 61;
             txtCharges.TextChanged += txtCharges_TextChanged;
             // 
@@ -107,75 +138,44 @@
             label11.AutoSize = true;
             label11.BackColor = Color.Transparent;
             label11.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            label11.Location = new Point(315, 639);
+            label11.Location = new Point(653, 300);
             label11.Name = "label11";
             label11.Size = new Size(150, 33);
             label11.TabIndex = 60;
             label11.Text = "Charges: ";
             label11.Click += label11_Click;
             // 
-            // txtmedqty
-            // 
-            txtmedqty.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtmedqty.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            txtmedqty.Location = new Point(579, 739);
-            txtmedqty.Name = "txtmedqty";
-            txtmedqty.Size = new Size(186, 41);
-            txtmedqty.TabIndex = 59;
-            // 
-            // label10
-            // 
-            label10.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label10.AutoSize = true;
-            label10.BackColor = Color.Transparent;
-            label10.Font = new Font("Cascadia Code", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label10.Location = new Point(579, 716);
-            label10.Name = "label10";
-            label10.Size = new Size(441, 20);
-            label10.TabIndex = 58;
-            label10.Text = "How many types of medicine you want to describe?";
-            label10.Click += label10_Click;
-            // 
             // lbldisease
             // 
             lbldisease.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lbldisease.AutoSize = true;
             lbldisease.ForeColor = Color.Red;
-            lbldisease.Location = new Point(579, 86);
+            lbldisease.Location = new Point(286, 66);
             lbldisease.Name = "lbldisease";
             lbldisease.Size = new Size(289, 20);
             lbldisease.TabIndex = 57;
             lbldisease.Text = "* Please enter the disease and prescription";
             lbldisease.Visible = false;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = Properties.Resources.prescription;
-            pictureBox1.Location = new Point(32, 184);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(236, 330);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 55;
-            pictureBox1.TabStop = false;
-            // 
             // txtDisease
             // 
             txtDisease.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtDisease.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            txtDisease.Location = new Point(579, 437);
+            txtDisease.Location = new Point(286, 228);
             txtDisease.Name = "txtDisease";
-            txtDisease.Size = new Size(457, 41);
+            txtDisease.Size = new Size(331, 41);
             txtDisease.TabIndex = 54;
             // 
-            // txtPres
+            // txtMedicine
             // 
-            txtPres.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtPres.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            txtPres.Location = new Point(579, 504);
-            txtPres.Multiline = true;
-            txtPres.Name = "txtPres";
-            txtPres.Size = new Size(457, 76);
-            txtPres.TabIndex = 53;
+            txtMedicine.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtMedicine.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            txtMedicine.Location = new Point(286, 292);
+            txtMedicine.Multiline = true;
+            txtMedicine.Name = "txtMedicine";
+            txtMedicine.Size = new Size(331, 348);
+            txtMedicine.TabIndex = 53;
+            txtMedicine.Click += txtMedicine_Click;
             // 
             // label8
             // 
@@ -183,11 +183,11 @@
             label8.AutoSize = true;
             label8.BackColor = Color.Transparent;
             label8.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(315, 510);
+            label8.Location = new Point(22, 300);
             label8.Name = "label8";
-            label8.Size = new Size(225, 33);
+            label8.Size = new Size(180, 33);
             label8.TabIndex = 52;
-            label8.Text = "Prescription: ";
+            label8.Text = "Medicines :";
             // 
             // label9
             // 
@@ -195,7 +195,7 @@
             label9.AutoSize = true;
             label9.BackColor = Color.Transparent;
             label9.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            label9.Location = new Point(315, 443);
+            label9.Location = new Point(22, 234);
             label9.Name = "label9";
             label9.Size = new Size(135, 33);
             label9.TabIndex = 51;
@@ -205,16 +205,16 @@
             // 
             txtGender.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtGender.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            txtGender.Location = new Point(579, 248);
+            txtGender.Location = new Point(875, 164);
             txtGender.Name = "txtGender";
             txtGender.ReadOnly = true;
-            txtGender.Size = new Size(457, 41);
+            txtGender.Size = new Size(207, 41);
             txtGender.TabIndex = 50;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(579, 291);
+            label7.Location = new Point(902, 207);
             label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
             label7.Size = new Size(0, 20);
@@ -224,20 +224,20 @@
             // 
             txtaddress.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtaddress.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            txtaddress.Location = new Point(579, 307);
+            txtaddress.Location = new Point(286, 166);
             txtaddress.Name = "txtaddress";
             txtaddress.ReadOnly = true;
-            txtaddress.Size = new Size(457, 41);
+            txtaddress.Size = new Size(331, 41);
             txtaddress.TabIndex = 47;
             // 
             // txtContact
             // 
             txtContact.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtContact.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            txtContact.Location = new Point(579, 374);
+            txtContact.Location = new Point(875, 226);
             txtContact.Name = "txtContact";
             txtContact.ReadOnly = true;
-            txtContact.Size = new Size(457, 41);
+            txtContact.Size = new Size(207, 41);
             txtContact.TabIndex = 46;
             // 
             // label6
@@ -246,7 +246,7 @@
             label6.AutoSize = true;
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(315, 380);
+            label6.Location = new Point(644, 226);
             label6.Name = "label6";
             label6.Size = new Size(225, 33);
             label6.TabIndex = 45;
@@ -258,7 +258,7 @@
             btnClear.BackColor = Color.LightSteelBlue;
             btnClear.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnClear.ForeColor = Color.Black;
-            btnClear.Location = new Point(45, 603);
+            btnClear.Location = new Point(46, 667);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(179, 69);
             btnClear.TabIndex = 44;
@@ -272,7 +272,7 @@
             btnSave.BackColor = Color.LightSteelBlue;
             btnSave.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnSave.ForeColor = Color.Black;
-            btnSave.Location = new Point(45, 716);
+            btnSave.Location = new Point(46, 542);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(179, 69);
             btnSave.TabIndex = 43;
@@ -286,7 +286,7 @@
             label4.AutoSize = true;
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(315, 313);
+            label4.Location = new Point(22, 172);
             label4.Name = "label4";
             label4.Size = new Size(135, 33);
             label4.TabIndex = 42;
@@ -298,7 +298,7 @@
             label5.AutoSize = true;
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(315, 248);
+            label5.Location = new Point(644, 164);
             label5.Name = "label5";
             label5.Size = new Size(135, 33);
             label5.TabIndex = 41;
@@ -308,10 +308,10 @@
             // 
             txtAge.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtAge.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            txtAge.Location = new Point(579, 179);
+            txtAge.Location = new Point(875, 97);
             txtAge.Name = "txtAge";
             txtAge.ReadOnly = true;
-            txtAge.Size = new Size(457, 41);
+            txtAge.Size = new Size(207, 41);
             txtAge.TabIndex = 40;
             // 
             // label3
@@ -320,7 +320,7 @@
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(315, 184);
+            label3.Location = new Point(653, 97);
             label3.Name = "label3";
             label3.Size = new Size(90, 33);
             label3.TabIndex = 39;
@@ -330,10 +330,10 @@
             // 
             txtName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtName.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            txtName.Location = new Point(579, 120);
+            txtName.Location = new Point(286, 100);
             txtName.Name = "txtName";
             txtName.ReadOnly = true;
-            txtName.Size = new Size(457, 41);
+            txtName.Size = new Size(331, 41);
             txtName.TabIndex = 38;
             // 
             // label2
@@ -342,7 +342,7 @@
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(315, 125);
+            label2.Location = new Point(22, 105);
             label2.Name = "label2";
             label2.Size = new Size(225, 33);
             label2.TabIndex = 37;
@@ -353,7 +353,7 @@
             label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(426, 23);
+            label1.Location = new Point(400, 13);
             label1.Name = "label1";
             label1.Size = new Size(188, 41);
             label1.TabIndex = 0;
@@ -370,7 +370,7 @@
             Load += AddPrescription_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);
         }
 
@@ -392,14 +392,14 @@
         private Label label2;
         private TextBox txtGender;
         private TextBox txtDisease;
-        private TextBox txtPres;
+        private TextBox txtMedicine;
         private Label label8;
         private Label label9;
-        private PictureBox pictureBox1;
         private Label lbldisease;
-        private TextBox txtmedqty;
-        private Label label10;
         private TextBox txtCharges;
         private Label label11;
+        private ListBox listMedicine;
+        private TextBox txtSearch;
+        private NumericUpDown numericUpDown1;
     }
 }
