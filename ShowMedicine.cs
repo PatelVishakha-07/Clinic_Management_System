@@ -28,7 +28,7 @@ namespace Clinic_Management_System
                 DateTime date = DateTime.Now;
                 string formattedDate = date.ToString("yyyy-MM-dd");
                 string query = "SELECT m.medicine_id, m.medicine_name, m.company_name, m.medicine_type, md.medicine_stock, " +
-                               "md.expiry_date, md.purchase_price, md.sell_price " +
+                               "md.expiry_date, md.purchase_price, md.sell_price, md.md_id " +
                                "FROM Medicines m JOIN Medicine_Details md ON m.medicine_id = md.medicine_id " +
                                "WHERE md.expiry_date > '" + formattedDate + "' AND CAST(md.medicine_stock AS INTEGER) > 0 " +
                                "ORDER BY medicine_name;";
@@ -113,11 +113,11 @@ namespace Clinic_Management_System
                     };
                     medicinegrid.Columns.Add(idColumn);
                 }
-                if (!medicinegrid.Columns.Contains("MD_ID"))
+                if (!medicinegrid.Columns.Contains("md_id"))
                 {
                     var idColumn1 = new DataGridViewTextBoxColumn
                     {
-                        Name = "Md_Id",
+                        Name = "md_id",
                         DataPropertyName = "md_id",
                         Visible = false
                     };
@@ -161,6 +161,7 @@ namespace Clinic_Management_System
                 {
                     // Ensure the Medicine_Id column is accessible for the update action
                     int medicineId = Convert.ToInt32(medicinegrid.Rows[e.RowIndex].Cells["Medicine_Id"].Value);
+                    int md_id = Convert.ToInt32(medicinegrid.Rows[e.RowIndex].Cells["md_id"].Value);
                     string medicineName = medicinegrid.Rows[e.RowIndex].Cells["medicine_name"].Value.ToString();
                     string cmpName = medicinegrid.Rows[e.RowIndex].Cells["company_name"].Value.ToString();
                     string medType = medicinegrid.Rows[e.RowIndex].Cells["medicine_type"].Value.ToString();
@@ -170,7 +171,7 @@ namespace Clinic_Management_System
                     string sell = medicinegrid.Rows[e.RowIndex].Cells["sell_price"].Value.ToString();
 
                     UpdateMedicine updateMedicine = new UpdateMedicine();
-                    updateMedicine.getMedicineDetails(medicineId, medicineName, medType, cmpName, stock, date, purchase, sell);
+                    updateMedicine.getMedicineDetails(medicineId, medicineName, medType, cmpName, stock, date, purchase, sell,md_id);
                     Medicine medicine = this.FindForm() as Medicine;
                     updateMedicine.UpdateCompleted += (sender, e) =>
                     {

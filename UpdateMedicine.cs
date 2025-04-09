@@ -15,7 +15,7 @@ namespace Clinic_Management_System
     public partial class UpdateMedicine : UserControl
     {
         public event EventHandler UpdateCompleted;
-        int medicineId;
+        int medicineId, md_id;
         string cmpPattern = @"^[a-zA-Z0-9\s\.\-]+$";
         string medicinePattern = @"^[a-zA-Z0-9\s\-\(\)]+$";
         string stockPattern = @"^\d+(\.\d{1,2})?$";
@@ -111,7 +111,8 @@ namespace Clinic_Management_System
                     dbClass.databaseoperations(query);
 
                     string q2 = "update Medicine_Details set Medicine_Stock= '" + stock + "', Expiry_Date= '" + expiryDate + "', purchase_price=" + decimal.Parse(purchase) +
-                        ", sell_price= " + decimal.Parse(sell) + " where Medicine_Id= " + medicineId;
+                        ", sell_price= " + decimal.Parse(sell) + " where Medicine_Id= " + medicineId + " and md_id = " + md_id ;
+                    
                     dbClass.databaseoperations(q2);
 
                     Medicine medicine = new Medicine();
@@ -131,9 +132,10 @@ namespace Clinic_Management_System
             lblSell.Visible = sell;
         }
 
-        public void getMedicineDetails(int medicineId, string medicineName, string medType, string companyName, int stock, string expiryDate, string pur, string medSell)
+        public void getMedicineDetails(int medicineId, string medicineName, string medType, string companyName, int stock, string expiryDate, string pur, string medSell, int mdID)
         {
             this.medicineId = medicineId;
+            md_id = mdID;
             txtName.Text = medicineName;
             txtCmp.Text = companyName;
             txtStock.Text = stock.ToString();
