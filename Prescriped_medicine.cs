@@ -234,10 +234,11 @@ namespace Clinic_Management_System
                                 dbclass.databaseoperations(queryInsert);
 
                                 string queryUpdateStock = $@"
-                UPDATE Medicine_details 
-                SET medicine_stock = CAST(CAST(medicine_stock AS INTEGER) - {quantityToDeduct} AS TEXT)
-                WHERE medicine_id = (SELECT medicine_id FROM Medicines WHERE medicine_name = '{medicineName}')
-                AND Expiry_Date = '{expiryDate:yyyy-MM-dd}'";
+    UPDATE Medicine_details 
+    SET medicine_stock = medicine_stock - {quantityToDeduct}
+    WHERE medicine_id = (SELECT medicine_id FROM Medicines WHERE medicine_name = '{medicineName}')
+    AND Expiry_Date = '{expiryDate:yyyy-MM-dd}'";
+
                                 dbclass.databaseoperations(queryUpdateStock);
 
                                 med_price += ((sell_price - purchase_price) * quantityToDeduct);

@@ -53,7 +53,7 @@
             // btnprint
             // 
             btnprint.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnprint.Location = new Point(940, 198);
+            btnprint.Location = new Point(940, 143);
             btnprint.Margin = new Padding(2);
             btnprint.Name = "btnprint";
             btnprint.Size = new Size(108, 54);
@@ -65,7 +65,7 @@
             // button1
             // 
             button1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button1.Location = new Point(940, 102);
+            button1.Location = new Point(940, 73);
             button1.Margin = new Padding(2);
             button1.Name = "button1";
             button1.Size = new Size(108, 54);

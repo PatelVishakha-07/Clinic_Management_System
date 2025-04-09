@@ -22,7 +22,7 @@ namespace Clinic_Management_System
 
         private void btn_enter_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(txtamount.Text, out int amount))
+            if (decimal.TryParse(txtamount.Text, out decimal amount))
             {
                 admitDetails.Getcharge(amount);
                 this.Close();
@@ -31,6 +31,7 @@ namespace Clinic_Management_System
             {
                 MessageBox.Show("Please enter a valid amount.");
             }
+
         }
 
     }

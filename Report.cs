@@ -68,7 +68,7 @@ namespace Clinic_Management_System
             if (prescriptionData != null && prescriptionData.Tables[0].Rows.Count > 0)
             {
                 DataRow prescriptionRow = prescriptionData.Tables[0].Rows[0];
-                presLabel($"Prescription: {prescriptionRow["prescription"]}", ref currentY);
+                //presLabel($"Prescription: {prescriptionRow["prescription"]}", ref currentY);
                 AddLabel1($"Date: {Convert.ToDateTime(prescriptionRow["prescription_date"]).ToString("dd/MM/yyyy HH:mm")}", ref currentY1);
                 AddLabel1($"Disease: {prescriptionRow["disease"]}", ref currentY1);
                 AddLabel1($"Total Charge: Rs. {prescriptionRow["total_charge"]}", ref currentY1);

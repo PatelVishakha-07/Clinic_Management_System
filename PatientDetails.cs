@@ -4,8 +4,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Clinic_Management_System
@@ -14,30 +12,32 @@ namespace Clinic_Management_System
     {
         int patientId;
         databaseclass dbclass = new databaseclass();
+
         public PatientDetails()
         {
             InitializeComponent();
         }
+
         public void getPatientDetails(int patientId)
         {
             this.patientId = patientId;
         }
 
-        private int DisplayData(DataSet ds, Panel panel1, int startY, string sectionTitle, string[] excludeColumns = null)
+        private int DisplayData(DataSet ds, Control container, int startY, string sectionTitle, string[] excludeColumns = null)
         {
-            int labelSpacing = 35;
-            int keyValueSpacing = 250;
+            int labelSpacing = 30;
+            int keyValueSpacing = 200;
 
-            //Label titleLabel = new Label()
-            //{
-            //    Text = sectionTitle,
-            //    Location = new Point(40, startY),
-            //    AutoSize = true,
-            //    Font = new Font("Arial", 16, FontStyle.Bold),
-            //    ForeColor = Color.DimGray,
-            //};
-            // panel1.Controls.Add(titleLabel);
-            startY += 40;
+            Label titleLabel = new Label()
+            {
+                Text = sectionTitle,
+                Location = new Point(10, startY),
+                AutoSize = true,
+                Font = new Font("Arial", 12, FontStyle.Bold),
+                ForeColor = Color.DarkBlue
+            };
+            container.Controls.Add(titleLabel);
+            startY += 30;
 
             if (ds != null && ds.Tables[0].Rows.Count > 0)
             {
@@ -51,25 +51,24 @@ namespace Clinic_Management_System
                         string columnName = col.ColumnName.ToUpper();
                         string columnValue = row[col].ToString();
 
-
                         Label keyLabel = new Label()
                         {
                             Text = $"{columnName}:",
-                            Location = new Point(40, startY),
+                            Location = new Point(10, startY),
                             AutoSize = true,
-                            Font = new Font("Arial", 12, FontStyle.Bold)
+                            Font = new Font("Arial", 10, FontStyle.Bold)
                         };
 
                         Label valueLabel = new Label()
                         {
                             Text = columnValue,
-                            Location = new Point(40 + keyValueSpacing, startY),
+                            Location = new Point(10 + keyValueSpacing, startY),
                             AutoSize = true,
-                            Font = new Font("Arial", 12, FontStyle.Regular)
+                            Font = new Font("Arial", 10, FontStyle.Regular)
                         };
 
-                        panel1.Controls.Add(keyLabel);
-                        panel1.Controls.Add(valueLabel);
+                        container.Controls.Add(keyLabel);
+                        container.Controls.Add(valueLabel);
 
                         startY += labelSpacing;
                     }
@@ -80,50 +79,41 @@ namespace Clinic_Management_System
                 Label noDataLabel = new Label()
                 {
                     Text = "No data available.",
-                    Location = new Point(40, startY),
+                    Location = new Point(10, startY),
                     AutoSize = true,
-                    Font = new Font("Arial", 12, FontStyle.Italic),
+                    Font = new Font("Arial", 10, FontStyle.Italic),
                     ForeColor = Color.Gray
                 };
-                panel1.Controls.Add(noDataLabel);
+                container.Controls.Add(noDataLabel);
                 startY += labelSpacing;
             }
 
             return startY;
         }
 
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            string query = $"select * from patients where patient_id={patientId}";
-            DataSet ds = dbclass.Getdata(query);
-            string name = ds.Tables[0].Rows[0]["name"].ToString();
-            int age = int.Parse(ds.Tables[0].Rows[0]["age"].ToString());
-            string address = ds.Tables[0].Rows[0]["address"].ToString();
-            string contact = ds.Tables[0].Rows[0]["contact_no"].ToString();
-            string gender = ds.Tables[0].Rows[0]["gender"].ToString();
-
-            AddPrescription addPrescription = new AddPrescription();
-            addPrescription.getPatientDetails(patientId, name, address, age, contact, gender);
-            Patients patients = this.FindForm() as Patients;                                   
-            patients.ShowContent(addPrescription);
-        }
-
-        private void panel1_Paint_1(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void PatientDetails_Load(object sender, EventArgs e)
         {
-            // Fetch and display patient details
-            string patientQuery = $"select Distinct * from patients WHERE patient_id={patientId}";
-            DataSet patientData = dbclass.Getdata(patientQuery);
-            int currentY = 200;
-            currentY = DisplayData(patientData, panel1, currentY, "Patient Details", excludeColumns: new[] { "patient_id" });
+            // Only remove dynamic content, not buttons
+            for (int i = panel1.Controls.Count - 1; i >= 0; i--)
+            {
+                Control ctrl = panel1.Controls[i];
+                if (ctrl.Name != "btnprint" && ctrl.Name != "button1")
+                {
+                    panel1.Controls.RemoveAt(i);
+                }
+            }
 
-            // Fetch and display prescription details and their associated prescribed medicines immediately
-            string prescriptionQuery = $"select * from prescription where patient_id={patientId}";
+            int currentY = 20;
+
+            // Fetch and display patient details
+            string patientQuery = $"SELECT * FROM patients WHERE patient_id={patientId}";
+            DataSet patientData = dbclass.Getdata(patientQuery);
+
+            currentY = DisplayData(patientData, panel1, currentY, "Patient Details", excludeColumns: new[] { "patient_id" });
+            currentY += 20;
+
+            // Fetch prescriptions
+            string prescriptionQuery = $"SELECT * FROM prescription WHERE patient_id={patientId} ORDER BY prescription_id DESC";
             DataSet prescriptionData = dbclass.Getdata(prescriptionQuery);
 
             if (prescriptionData != null && prescriptionData.Tables[0].Rows.Count > 0)
@@ -132,24 +122,36 @@ namespace Clinic_Management_System
                 {
                     int prescriptionId = Convert.ToInt32(prescriptionRow["prescription_id"]);
 
-                    string query = $"select * from prescription where prescription_id={prescriptionId}";
-                    DataSet currentprescription = dbclass.Getdata(query);
-                    // Display prescription details
-                    currentY = DisplayData(currentprescription, panel1, currentY, "Prescription Details", excludeColumns: new[] { "patient_id", "prescription_id","charges" });
+                    Panel groupPanel = new Panel()
+                    {
+                        BorderStyle = BorderStyle.FixedSingle,
+                        Location = new Point(30, currentY),
+                        Width = panel1.Width - 60,
+                        AutoSize = true,
+                        BackColor = Color.WhiteSmoke
+                    };
 
-                    // Fetch and display prescribed medicines for this prescription
-                    string medicineQuery = $"select * from Prescribed_Medicine where prescription_id={prescriptionId}";
+                    int yOffset = 10;
+
+                    // Prescription details
+                    string query = $"SELECT * FROM prescription WHERE prescription_id={prescriptionId}";
+                    DataSet currentPrescription = dbclass.Getdata(query);
+                    yOffset = DisplayData(currentPrescription, groupPanel, yOffset, "Prescription Details", excludeColumns: new[] { "patient_id", "prescription_id", "charges" });
+
+                    // Medicines
+                    string medicineQuery = $"SELECT * FROM Prescribed_Medicine WHERE prescription_id={prescriptionId}";
                     DataSet medicineData = dbclass.Getdata(medicineQuery);
+                    yOffset = DisplayData(medicineData, groupPanel, yOffset + 20, "Prescribed Medicines", excludeColumns: new[] { "prescription_id", "pres_med_id" });
 
-                    // Display the medicines immediately below the current prescription
-                    currentY = DisplayData(medicineData, panel1, currentY + 50, "Prescribed Medicine Details", excludeColumns: new[] { "pres_med_id", "prescription_id" });
-                    currentY += 20; // Adjust for next prescription and medicine set
+                    groupPanel.Height = yOffset + 10;
+                    panel1.Controls.Add(groupPanel);
+
+                    currentY += groupPanel.Height + 20;
                 }
             }
             else
             {
-                // Handle case where no prescriptions are found
-                Label noDataLabel = new Label()
+                Label noPresc = new Label()
                 {
                     Text = "No prescriptions available.",
                     Location = new Point(40, currentY),
@@ -157,8 +159,27 @@ namespace Clinic_Management_System
                     Font = new Font("Arial", 12, FontStyle.Italic),
                     ForeColor = Color.Gray
                 };
-                panel1.Controls.Add(noDataLabel);
-                currentY += 35; // Adjust for next section
+                panel1.Controls.Add(noPresc);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string query = $"select * from patients where patient_id={patientId}";
+            DataSet ds = dbclass.Getdata(query);
+
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
+            {
+                string name = ds.Tables[0].Rows[0]["name"].ToString();
+                int age = int.Parse(ds.Tables[0].Rows[0]["age"].ToString());
+                string address = ds.Tables[0].Rows[0]["address"].ToString();
+                string contact = ds.Tables[0].Rows[0]["contact_no"].ToString();
+                string gender = ds.Tables[0].Rows[0]["gender"].ToString();
+
+                AddPrescription addPrescription = new AddPrescription();
+                addPrescription.getPatientDetails(patientId, name, address, age, contact, gender);
+                Patients patients = this.FindForm() as Patients;
+                patients.ShowContent(addPrescription);
             }
         }
 
@@ -166,6 +187,11 @@ namespace Clinic_Management_System
         {
             Report report = new Report(patientId);
             report.ShowDialog();
+        }
+
+        private void panel1_Paint_1(object sender, PaintEventArgs e)
+        {
+            // Optional: custom paint logic
         }
     }
 }

@@ -48,7 +48,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1100, 763);
             panel1.TabIndex = 1;
-            panel1.Paint += panel1_Paint;
+           // panel1.Paint += panel1_Paint;
             // 
             // btn_discharge
             // 

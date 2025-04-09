@@ -29,14 +29,13 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            numericUpDown1 = new NumericUpDown();
+            dataGridView1 = new DataGridView();
             txtSearch = new TextBox();
             listMedicine = new ListBox();
             txtCharges = new TextBox();
             label11 = new Label();
             lbldisease = new Label();
             txtDisease = new TextBox();
-            txtMedicine = new TextBox();
             label8 = new Label();
             label9 = new Label();
             txtGender = new TextBox();
@@ -54,20 +53,19 @@
             label2 = new Label();
             label1 = new Label();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.InactiveCaption;
-            panel1.Controls.Add(numericUpDown1);
+            panel1.Controls.Add(dataGridView1);
             panel1.Controls.Add(txtSearch);
             panel1.Controls.Add(listMedicine);
             panel1.Controls.Add(txtCharges);
             panel1.Controls.Add(label11);
             panel1.Controls.Add(lbldisease);
             panel1.Controls.Add(txtDisease);
-            panel1.Controls.Add(txtMedicine);
             panel1.Controls.Add(label8);
             panel1.Controls.Add(label9);
             panel1.Controls.Add(txtGender);
@@ -91,22 +89,25 @@
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
             // 
-            // numericUpDown1
+            // dataGridView1
             // 
-            numericUpDown1.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            numericUpDown1.Location = new Point(918, 476);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(131, 41);
-            numericUpDown1.TabIndex = 64;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(653, 378);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.RowTemplate.Height = 29;
+            dataGridView1.Size = new Size(429, 304);
+            dataGridView1.TabIndex = 65;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // txtSearch
             // 
             txtSearch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtSearch.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            txtSearch.Location = new Point(662, 400);
+            txtSearch.Location = new Point(286, 300);
             txtSearch.Name = "txtSearch";
             txtSearch.PlaceholderText = "Search....";
-            txtSearch.Size = new Size(420, 41);
+            txtSearch.Size = new Size(331, 41);
             txtSearch.TabIndex = 63;
             txtSearch.TextChanged += txtSearch_TextChanged;
             // 
@@ -115,9 +116,9 @@
             listMedicine.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             listMedicine.FormattingEnabled = true;
             listMedicine.ItemHeight = 35;
-            listMedicine.Location = new Point(662, 476);
+            listMedicine.Location = new Point(286, 347);
             listMedicine.Name = "listMedicine";
-            listMedicine.Size = new Size(222, 319);
+            listMedicine.Size = new Size(331, 319);
             listMedicine.TabIndex = 62;
             listMedicine.Click += listMedicine_Click;
             listMedicine.SelectedIndexChanged += listMedicine_SelectedIndexChanged;
@@ -165,17 +166,6 @@
             txtDisease.Name = "txtDisease";
             txtDisease.Size = new Size(331, 41);
             txtDisease.TabIndex = 54;
-            // 
-            // txtMedicine
-            // 
-            txtMedicine.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtMedicine.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            txtMedicine.Location = new Point(286, 292);
-            txtMedicine.Multiline = true;
-            txtMedicine.Name = "txtMedicine";
-            txtMedicine.Size = new Size(331, 348);
-            txtMedicine.TabIndex = 53;
-            txtMedicine.Click += txtMedicine_Click;
             // 
             // label8
             // 
@@ -258,7 +248,7 @@
             btnClear.BackColor = Color.LightSteelBlue;
             btnClear.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnClear.ForeColor = Color.Black;
-            btnClear.Location = new Point(46, 667);
+            btnClear.Location = new Point(23, 539);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(179, 69);
             btnClear.TabIndex = 44;
@@ -272,7 +262,7 @@
             btnSave.BackColor = Color.LightSteelBlue;
             btnSave.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnSave.ForeColor = Color.Black;
-            btnSave.Location = new Point(46, 542);
+            btnSave.Location = new Point(23, 445);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(179, 69);
             btnSave.TabIndex = 43;
@@ -370,7 +360,7 @@
             Load += AddPrescription_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -392,7 +382,6 @@
         private Label label2;
         private TextBox txtGender;
         private TextBox txtDisease;
-        private TextBox txtMedicine;
         private Label label8;
         private Label label9;
         private Label lbldisease;
@@ -400,6 +389,6 @@
         private Label label11;
         private ListBox listMedicine;
         private TextBox txtSearch;
-        private NumericUpDown numericUpDown1;
+        private DataGridView dataGridView1;
     }
 }
