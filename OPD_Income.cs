@@ -44,6 +44,12 @@ namespace Clinic_Management_System
                 {
                     DataRow combinedRow = combinedTable.NewRow();
 
+                    if (i < prescriptionTable.Rows.Count)
+                    {
+                        combinedRow["total_charge"] = prescriptionTable.Rows[i]["total_charge"];
+                    }
+
+
                     // Add data from profitTable (if available)
                     if (i < profitTable.Rows.Count)
                     {
@@ -52,11 +58,7 @@ namespace Clinic_Management_System
                     }
 
                     // Add data from prescriptionTable (if available)
-                    if (i < prescriptionTable.Rows.Count)
-                    {
-                        combinedRow["total_charge"] = prescriptionTable.Rows[i]["total_charge"];
-                    }
-
+                    
                     combinedTable.Rows.Add(combinedRow);
                 }
 
@@ -74,15 +76,15 @@ namespace Clinic_Management_System
             {
                 MessageBox.Show("No data found.");
             }
-
         }
+
 
         private void TodayIncome()
         {
             string q1 = "select profit_date, amount from profit where DATE(profit_date) = CURRENT_DATE";
             ds = new DataSet();
             ds = dbClass.Getdata(q1);
-            string q2 = "select total_charge from prescription WHERE DATE(prescription_date) = CURRENT_DATE";
+            string q2 = "select prescription_date, total_charge from prescription WHERE DATE(prescription_date) = CURRENT_DATE";
             DataSet ds1 = new DataSet();
             ds1 = dbClass.Getdata(q2);
 
@@ -126,7 +128,7 @@ namespace Clinic_Management_System
             ds = new DataSet();
             ds = dbClass.Getdata(q1);
 
-            string q2 = "select total_charge from prescription WHERE EXTRACT(MONTH FROM prescription_date) = EXTRACT(MONTH FROM CURRENT_DATE) AND " +
+            string q2 = "select prescription_date, total_charge from prescription WHERE EXTRACT(MONTH FROM prescription_date) = EXTRACT(MONTH FROM CURRENT_DATE) AND " +
                         "EXTRACT(YEAR FROM prescription_date) = EXTRACT(YEAR FROM CURRENT_DATE);";
             DataSet ds1 = new DataSet();
             ds1 = dbClass.Getdata(q2);
@@ -174,7 +176,7 @@ namespace Clinic_Management_System
             ds = new DataSet();
             ds = dbClass.Getdata(q1);
 
-            string q2 = "select total_charge from prescription WHERE EXTRACT(YEAR FROM prescription_date) = EXTRACT(YEAR FROM CURRENT_DATE);";
+            string q2 = "select prescription_date, total_charge from prescription WHERE EXTRACT(YEAR FROM prescription_date) = EXTRACT(YEAR FROM CURRENT_DATE);";
             DataSet ds1 = new DataSet();
             ds1 = dbClass.Getdata(q2);
 

@@ -91,6 +91,7 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(653, 378);
             dataGridView1.Name = "dataGridView1";
@@ -102,7 +103,6 @@
             // 
             // txtSearch
             // 
-            txtSearch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtSearch.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             txtSearch.Location = new Point(286, 300);
             txtSearch.Name = "txtSearch";
@@ -113,6 +113,7 @@
             // 
             // listMedicine
             // 
+            listMedicine.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             listMedicine.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             listMedicine.FormattingEnabled = true;
             listMedicine.ItemHeight = 35;
@@ -125,7 +126,7 @@
             // 
             // txtCharges
             // 
-            txtCharges.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtCharges.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txtCharges.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             txtCharges.Location = new Point(875, 292);
             txtCharges.Name = "txtCharges";
@@ -135,7 +136,7 @@
             // 
             // label11
             // 
-            label11.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label11.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label11.AutoSize = true;
             label11.BackColor = Color.Transparent;
             label11.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
@@ -160,7 +161,6 @@
             // 
             // txtDisease
             // 
-            txtDisease.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtDisease.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             txtDisease.Location = new Point(286, 228);
             txtDisease.Name = "txtDisease";
@@ -169,7 +169,6 @@
             // 
             // label8
             // 
-            label8.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label8.AutoSize = true;
             label8.BackColor = Color.Transparent;
             label8.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
@@ -181,7 +180,6 @@
             // 
             // label9
             // 
-            label9.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label9.AutoSize = true;
             label9.BackColor = Color.Transparent;
             label9.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
@@ -193,7 +191,7 @@
             // 
             // txtGender
             // 
-            txtGender.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtGender.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txtGender.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             txtGender.Location = new Point(875, 164);
             txtGender.Name = "txtGender";
@@ -203,6 +201,7 @@
             // 
             // label7
             // 
+            label7.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label7.AutoSize = true;
             label7.Location = new Point(902, 207);
             label7.Margin = new Padding(2, 0, 2, 0);
@@ -212,7 +211,6 @@
             // 
             // txtaddress
             // 
-            txtaddress.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtaddress.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             txtaddress.Location = new Point(286, 166);
             txtaddress.Name = "txtaddress";
@@ -222,7 +220,7 @@
             // 
             // txtContact
             // 
-            txtContact.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtContact.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txtContact.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             txtContact.Location = new Point(875, 226);
             txtContact.Name = "txtContact";
@@ -232,7 +230,7 @@
             // 
             // label6
             // 
-            label6.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label6.AutoSize = true;
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
@@ -244,7 +242,6 @@
             // 
             // btnClear
             // 
-            btnClear.Anchor = AnchorStyles.Bottom;
             btnClear.BackColor = Color.LightSteelBlue;
             btnClear.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnClear.ForeColor = Color.Black;
@@ -258,7 +255,6 @@
             // 
             // btnSave
             // 
-            btnSave.Anchor = AnchorStyles.Bottom;
             btnSave.BackColor = Color.LightSteelBlue;
             btnSave.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             btnSave.ForeColor = Color.Black;
@@ -272,7 +268,6 @@
             // 
             // label4
             // 
-            label4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label4.AutoSize = true;
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
@@ -284,7 +279,7 @@
             // 
             // label5
             // 
-            label5.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label5.AutoSize = true;
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
@@ -296,7 +291,7 @@
             // 
             // txtAge
             // 
-            txtAge.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtAge.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txtAge.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             txtAge.Location = new Point(875, 97);
             txtAge.Name = "txtAge";
@@ -306,7 +301,7 @@
             // 
             // label3
             // 
-            label3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);
@@ -318,7 +313,6 @@
             // 
             // txtName
             // 
-            txtName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtName.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             txtName.Location = new Point(286, 100);
             txtName.Name = "txtName";
@@ -328,7 +322,6 @@
             // 
             // label2
             // 
-            label2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Cascadia Code", 15F, FontStyle.Bold, GraphicsUnit.Point);

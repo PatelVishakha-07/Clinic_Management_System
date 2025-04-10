@@ -36,7 +36,7 @@ namespace Clinic_Management_System
                    "FROM Medicine_Details md2 " +
                    "WHERE md2.medicine_id = m.medicine_id " +
                    "AND md2.expiry_date > '" + formattedDate + "' " +
-                   "AND CAST(md2.medicine_stock AS INTEGER) > 0" +
+                   "AND CAST(md2.medicine_stock AS BIGINT) > 0" +
                ") " +
                "ORDER BY m.medicine_name;";
 
@@ -108,7 +108,7 @@ namespace Clinic_Management_System
                 int requestedQty = int.Parse(row["Quantity"].ToString());
 
                 string queryStock = $@"
-SELECT SUM(CAST(medicine_stock AS INTEGER)) 
+SELECT SUM(CAST(medicine_stock AS BIGINT)) 
 FROM Medicine_Details 
 WHERE medicine_id = (SELECT medicine_id FROM Medicines WHERE medicine_name = '{medicineName}')
 AND expiry_date > '{DateTime.Now:yyyy-MM-dd}'";
@@ -148,6 +148,7 @@ FROM Medicine_details
 WHERE medicine_id = (SELECT medicine_id FROM Medicines WHERE medicine_name = '{medicineName}')
 AND expiry_date > '{DateTime.Now:yyyy-MM-dd}'
 ORDER BY Expiry_Date ASC";
+                
 
                 DataSet ds = dbclass.Getdata(queryStock);
 
@@ -169,11 +170,10 @@ ORDER BY Expiry_Date ASC";
 VALUES ('{medicineName}', {quantityToDeduct}, {prescription_id})";
                             dbclass.databaseoperations(insertMedQuery);
 
-                            string updateStockQuery = $@"
-UPDATE Medicine_details 
-SET medicine_stock = medicine_stock - {quantityToDeduct}
-WHERE medicine_id = (SELECT medicine_id FROM Medicines WHERE medicine_name = '{medicineName}')
-AND Expiry_Date = '{expiryDate:yyyy-MM-dd}'";
+                            string updateStockQuery = $@" UPDATE Medicine_details 
+                        SET medicine_stock = CAST(medicine_stock AS BIGINT) - {quantityToDeduct}
+                        WHERE medicine_id = (SELECT medicine_id FROM Medicines WHERE medicine_name = '{medicineName}')
+                        AND Expiry_Date = '{expiryDate:yyyy-MM-dd}'";
 
                             dbclass.databaseoperations(updateStockQuery);
 
