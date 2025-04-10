@@ -160,16 +160,16 @@ namespace Clinic_Management_System
         {
             TextBox txtBox = sender as TextBox;
             string query = @"
-                SELECT medicine_name, medicine_type
-                FROM Medicines 
-                WHERE medicine_name LIKE @value
-                AND EXISTS (
-                    SELECT 1 
-                    FROM Medicine_details 
-                    WHERE Medicine_details.medicine_id = Medicines.medicine_id 
-                    AND CAST(medicine_stock AS BIGINT) > 0 
-                    AND Expiry_Date > CURRENT_DATE
-                )";
+    SELECT medicine_name, medicine_type
+    FROM Medicines 
+    WHERE medicine_name ILIKE @value
+    AND EXISTS (
+        SELECT 1 
+        FROM Medicine_details 
+        WHERE Medicine_details.medicine_id = Medicines.medicine_id 
+        AND CAST(medicine_stock AS BIGINT) > 0 
+        AND Expiry_Date > CURRENT_DATE
+    )";
 
             if (!string.IsNullOrEmpty(txtBox.Text))
             {

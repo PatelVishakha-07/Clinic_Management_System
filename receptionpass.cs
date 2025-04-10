@@ -20,12 +20,12 @@ namespace Clinic_Management_System
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtusername.Text) && !string.IsNullOrEmpty(txtpass.Text) && !string.IsNullOrEmpty(txtName.Text) && ! string.IsNullOrEmpty(txtName.Text))
+            if (!string.IsNullOrEmpty(txtusername.Text) && !string.IsNullOrEmpty(txtpass.Text) && !string.IsNullOrEmpty(txtName.Text) && !string.IsNullOrEmpty(txtrecpass.Text))
             {
                 string query1 = $"select * from users where username='{txtusername.Text}' and password='{txtpass.Text}' and usertype='admin'";
                 DataSet ds = dbclass.Getdata(query1);
-                
-                if (ds != null && ds.Tables[0].Rows.Count>0)
+
+                if (ds != null && ds.Tables[0].Rows.Count > 0)
                 {
                     string query = $"select * from users where username='{txtName.Text}';";
                     DataSet ds1 = dbclass.Getdata(query);
@@ -34,6 +34,12 @@ namespace Clinic_Management_System
                         string insertquery = $"update users set password='{txtrecpass.Text}' where username='{txtName.Text}'";
                         dbclass.databaseoperations(insertquery);
                         MessageBox.Show($"Password updated for {txtName.Text}");
+
+                        // Clear the textboxes
+                        txtusername.Text = "";
+                        txtpass.Text = "";
+                        txtName.Text = "";
+                        txtrecpass.Text = "";
                     }
                     else
                     {
