@@ -90,23 +90,30 @@ namespace Clinic_Management_System
         {
             string value = txtSearch.Text;
             string query;
+
             if (!string.IsNullOrEmpty(value))
             {
-
                 if (int.TryParse(value, out int age))
                 {
-                    query = $"select* from Patients where age={int.Parse(value)}";
+                    query = $"SELECT * FROM Patients WHERE age = {age}";
                 }
                 else
                 {
-                    query = $"select * from Patients where name='{value}' or gender='{value}' or contact_no='{value}' or address='{value}'";
+                    // Use ILIKE for case-insensitive partial match
+                    string escapedValue = value.Replace("'", "''"); // Prevent SQL errors if ' in input
+                    query = $@"
+                SELECT * FROM Patients 
+                WHERE name ILIKE '%{escapedValue}%' 
+                   OR gender ILIKE '%{escapedValue}%' 
+                   OR CAST(contact_no AS TEXT) ILIKE '%{escapedValue}%' 
+                   OR address ILIKE '%{escapedValue}%'";
                 }
-
             }
             else
             {
-                query = "select * from Patients";
+                query = "SELECT * FROM Patients";
             }
+
             DataSet ds = databaseclass.Getdata(query);
             populategridview(ds);
         }

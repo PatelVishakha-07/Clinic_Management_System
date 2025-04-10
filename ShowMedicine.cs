@@ -51,9 +51,8 @@ namespace Clinic_Management_System
                 if (int.TryParse(value, out int stock))
                 {
                     query = $"SELECT m.Medicine_Id, m.Medicine_Name, m.Company_Name, m.Medicine_Type, md.md_id, md.Medicine_Stock, md.Expiry_Date, md.Purchase_Price, md.Sell_Price " +
-          $"FROM Medicines m JOIN Medicine_Details md ON m.medicine_id = md.medicine_id " +
-          $"WHERE CAST(md.Medicine_Stock AS INTEGER) = {stock} AND md.Expiry_Date > '{formattedDate}';";
-
+                            $"FROM Medicines m JOIN Medicine_Details md ON m.medicine_id = md.medicine_id " +
+                            $"WHERE CAST(md.Medicine_Stock AS INTEGER) = {stock} AND md.Expiry_Date > '{formattedDate}';";
                 }
                 else if (DateOnly.TryParse(value, out DateOnly expiryDate))
                 {
@@ -64,15 +63,16 @@ namespace Clinic_Management_System
                 }
                 else
                 {
+                    // Use LOWER() on both sides to ensure case-insensitive search
+                    string loweredValue = value.ToLower();
                     query = $"SELECT m.Medicine_Id, m.Medicine_Name, m.Company_Name, m.Medicine_Type, md.md_id, md.Medicine_Stock, md.Expiry_Date, md.Purchase_Price, md.Sell_Price " +
                             $"FROM Medicines m JOIN Medicine_Details md ON m.medicine_id = md.medicine_id " +
-                            $"WHERE (m.Medicine_Name LIKE '%{value}%' OR m.Company_Name LIKE '%{value}%') " +
+                            $"WHERE (LOWER(m.Medicine_Name) LIKE '%{loweredValue}%' OR LOWER(m.Company_Name) LIKE '%{loweredValue}%') " +
                             $"AND md.expiry_date > '{formattedDate}' AND CAST(md.medicine_stock AS INTEGER) > 0;";
                 }
             }
             else
             {
-                // If the input is empty, fetch all valid records
                 query = $"SELECT m.Medicine_Id, m.Medicine_Name, m.Company_Name, m.Medicine_Type, md.md_id, md.Medicine_Stock, md.Expiry_Date, md.Purchase_Price, md.Sell_Price " +
                         $"FROM Medicines m JOIN Medicine_Details md ON m.medicine_id = md.medicine_id " +
                         $"WHERE md.expiry_date > '{formattedDate}' AND CAST(md.medicine_stock AS INTEGER) > 0;";

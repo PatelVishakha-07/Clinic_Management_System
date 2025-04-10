@@ -71,21 +71,23 @@ namespace Clinic_Management_System
 
             if (!string.IsNullOrEmpty(value))
             {
+                string loweredValue = value.ToLower();
                 query = $@"
-                    SELECT ipd.ipd_id, ipd.bed_number,ipd.admit_date,ipd.patient_id, p.name, p.contact_no 
-                    FROM ipd_table ipd 
-                    JOIN patients p ON ipd.patient_id = p.patient_id 
-                    WHERE ipd.bed_number LIKE '%{value}%' 
-                       OR p.name LIKE '%{value}%' 
-                       OR p.contact_no LIKE '%{value}%'";
+        SELECT ipd.ipd_id, ipd.bed_number, ipd.admit_date, ipd.patient_id, p.name, p.contact_no 
+        FROM ipd_table ipd 
+        JOIN patients p ON ipd.patient_id = p.patient_id 
+        WHERE LOWER(CAST(ipd.bed_number AS TEXT)) LIKE '%{loweredValue}%' 
+           OR LOWER(p.name) LIKE '%{loweredValue}%' 
+           OR LOWER(CAST(p.contact_no AS TEXT)) LIKE '%{loweredValue}%'";
             }
             else
             {
                 query = @"
-                    SELECT ipd.ipd_id, ipd.bed_number,ipd.admit_date,ipd.patient_id, p.name, p.contact_no 
-                    FROM ipd_table ipd 
-                    JOIN patients p ON ipd.patient_id = p.patient_id";
+        SELECT ipd.ipd_id, ipd.bed_number, ipd.admit_date, ipd.patient_id, p.name, p.contact_no 
+        FROM ipd_table ipd 
+        JOIN patients p ON ipd.patient_id = p.patient_id";
             }
+
 
             DataSet ds = databaseclass.Getdata(query);
             populategridview(ds);
