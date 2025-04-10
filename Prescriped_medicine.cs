@@ -3,20 +3,22 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Clinic_Management_System
 {
     public partial class Prescriped_medicine : UserControl
     {
-        int prescription_id, medicine_qty, charges,    patient_id;
+        int prescription_id, medicine_qty, charges, patient_id;
         decimal purchase_price, profit, sell_price, med_price, ttl_pres_charges;
         string dialog;
+
         List<TextBox> medicineNameTextBoxes = new List<TextBox>();
         List<TextBox> quantityTextBoxes = new List<TextBox>();
-        
         List<ListBox> suggestionListBoxes = new List<ListBox>();
+
         databaseclass dbclass = new databaseclass();
+
+        int controlYOffset = 50; // Vertical offset for dynamic controls
 
         public Prescriped_medicine(string dialog)
         {
@@ -36,15 +38,12 @@ namespace Clinic_Management_System
 
         private void GenerateDynamicControls()
         {
-            panel1.AutoScroll = true;
-            // Clear any existing controls
             this.Controls.Clear();
             medicineNameTextBoxes.Clear();
             quantityTextBoxes.Clear();
-
             suggestionListBoxes.Clear();
 
-            // Title label
+            // Title
             Label lblTitle = new Label
             {
                 Text = "Prescribe Medicines",
@@ -54,91 +53,123 @@ namespace Clinic_Management_System
             };
             this.Controls.Add(lblTitle);
 
-            int startY = 50; // Starting position for dynamic controls
-            bool dataadded = false;
+            controlYOffset = 50;
+
             for (int i = 0; i < medicine_qty; i++)
             {
-                
-                // Medicine Name Label
-                Label lblMedicineName = new Label
-                {
-                    Text = $"Medicine Name {i + 1}:",
-                    Location = new System.Drawing.Point(20, startY),
-                    AutoSize = true
-                };
-                this.Controls.Add(lblMedicineName);
-
-                // Medicine Name TextBox
-                TextBox txtMedicineName = new TextBox
-                {
-                    Name = $"txtMedicineName{i}",
-                    Location = new System.Drawing.Point(150, startY),
-                    Width = 150
-                };
-                this.Controls.Add(txtMedicineName);
-                medicineNameTextBoxes.Add(txtMedicineName);
-
-                // ListBox for suggestions
-                ListBox listBoxSuggestions = new ListBox
-                {
-                    Location = new System.Drawing.Point(150, startY + 25),
-                    Width = 150,
-                    Height = 80,
-                    Visible = false
-                };
-                this.Controls.Add(listBoxSuggestions);
-                suggestionListBoxes.Add(listBoxSuggestions);
-
-                txtMedicineName.TextChanged += (sender, e) => OnMedicineNameTextChanged(sender, listBoxSuggestions);
-                listBoxSuggestions.SelectedIndexChanged += (sender, e) => OnSuggestionSelected(sender, txtMedicineName);
-
-                // Quantity Label
-                Label lblQuantity = new Label
-                {
-                    Text = "Quantity:",
-                    Location = new System.Drawing.Point(320, startY),
-                    AutoSize = true
-                };
-                this.Controls.Add(lblQuantity);
-
-                // Quantity TextBox
-                TextBox txtQuantity = new TextBox
-                {
-                    Name = $"txtQuantity{i}",
-                    Location = new System.Drawing.Point(390, startY),
-                    Width = 50
-                };
-                this.Controls.Add(txtQuantity);
-                quantityTextBoxes.Add(txtQuantity);
-
-                startY += 90; // Adjust Y position for the next set of controls
+                AddMedicineRow();
             }
 
-            // Save Button
+            // Save button
             Button btnSave = new Button
             {
                 Text = "Save",
-                Location = new System.Drawing.Point(20, startY + 20),
+                Name = "btnSave",
+                Location = new System.Drawing.Point(20, controlYOffset + 20),
                 Width = 80
             };
             btnSave.Click += BtnSave_Click;
             this.Controls.Add(btnSave);
+
+            // Add More button
+            Button btnAddMore = new Button
+            {
+                Text = "Add More",
+                Name = "btnAddMore",
+                Location = new System.Drawing.Point(120, controlYOffset + 20),
+                Width = 100
+            };
+            btnAddMore.Click += BtnAddMore_Click;
+            this.Controls.Add(btnAddMore);
+        }
+
+        private void AddMedicineRow()
+        {
+            int index = medicineNameTextBoxes.Count;
+
+            // Label
+            Label lblMedicine = new Label
+            {
+                Text = $"Medicine Name {index + 1}:",
+                Location = new System.Drawing.Point(20, controlYOffset),
+                AutoSize = true
+            };
+            this.Controls.Add(lblMedicine);
+
+            // TextBox
+            TextBox txtMedicine = new TextBox
+            {
+                Name = $"txtMedicineName{index}",
+                Location = new System.Drawing.Point(150, controlYOffset),
+                Width = 150
+            };
+            this.Controls.Add(txtMedicine);
+            medicineNameTextBoxes.Add(txtMedicine);
+
+            // Suggestion ListBox
+            ListBox lstSuggestions = new ListBox
+            {
+                Location = new System.Drawing.Point(150, controlYOffset + 25),
+                Width = 150,
+                Height = 80,
+                Visible = false
+            };
+            this.Controls.Add(lstSuggestions);
+            suggestionListBoxes.Add(lstSuggestions);
+
+            txtMedicine.TextChanged += (sender, e) => OnMedicineNameTextChanged(sender, lstSuggestions);
+            lstSuggestions.SelectedIndexChanged += (sender, e) => OnSuggestionSelected(sender, txtMedicine);
+
+            // Quantity Label
+            Label lblQty = new Label
+            {
+                Text = "Quantity:",
+                Location = new System.Drawing.Point(320, controlYOffset),
+                AutoSize = true
+            };
+            this.Controls.Add(lblQty);
+
+            // Quantity TextBox
+            TextBox txtQty = new TextBox
+            {
+                Name = $"txtQuantity{index}",
+                Location = new System.Drawing.Point(390, controlYOffset),
+                Width = 50
+            };
+            this.Controls.Add(txtQty);
+            quantityTextBoxes.Add(txtQty);
+
+            controlYOffset += 90;
+
+            // Move Save/AddMore buttons below the new row
+            Control btnSave = this.Controls["btnSave"];
+            Control btnAddMore = this.Controls["btnAddMore"];
+            if (btnSave != null && btnAddMore != null)
+            {
+                btnSave.Location = new System.Drawing.Point(20, controlYOffset + 20);
+                btnAddMore.Location = new System.Drawing.Point(120, controlYOffset + 20);
+            }
+        }
+
+        private void BtnAddMore_Click(object sender, EventArgs e)
+        {
+            AddMedicineRow();
         }
 
         private void OnMedicineNameTextChanged(object sender, ListBox listBoxSuggestions)
         {
             TextBox txtBox = sender as TextBox;
             string query = @"
-        SELECT medicine_name, medicine_type
-        FROM Medicines 
-        WHERE medicine_name LIKE @value
-        AND EXISTS (
-            SELECT 1 
-            FROM Medicine_details 
-            WHERE Medicine_details.medicine_id = Medicines.medicine_id 
-            AND CAST(medicine_stock AS BIGINT) > 0 
-            AND Expiry_Date > CURRENT_DATE
-        )";
+                SELECT medicine_name, medicine_type
+                FROM Medicines 
+                WHERE medicine_name LIKE @value
+                AND EXISTS (
+                    SELECT 1 
+                    FROM Medicine_details 
+                    WHERE Medicine_details.medicine_id = Medicines.medicine_id 
+                    AND CAST(medicine_stock AS BIGINT) > 0 
+                    AND Expiry_Date > CURRENT_DATE
+                )";
 
             if (!string.IsNullOrEmpty(txtBox.Text))
             {
@@ -173,37 +204,33 @@ namespace Clinic_Management_System
                 if (listBox.SelectedItem != null)
                 {
                     string selectedItem = listBox.SelectedItem.ToString();
-                    string medicineName = selectedItem.Split(',')[0].Trim(); 
+                    string medicineName = selectedItem.Split(',')[0].Trim();
                     txtMedicineName.Text = medicineName;
                     listBox.Visible = false;
                 }
             }
-            catch (Exception ex){ }
+            catch (Exception) { }
         }
-
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
             bool anyMedicineAdded = false;
 
-            for (int i = 0; i < medicine_qty; i++)
+            for (int i = 0; i < medicineNameTextBoxes.Count; i++)
             {
                 string medicineName = medicineNameTextBoxes[i].Text;
                 string quantityText = quantityTextBoxes[i].Text;
 
-                // Skip incomplete entries
                 if (string.IsNullOrEmpty(medicineName) || string.IsNullOrEmpty(quantityText))
-                {
                     continue;
-                }
 
                 if (int.TryParse(quantityText, out int quantity) && quantity > 0)
                 {
                     string queryStock = $@"
-        SELECT medicine_stock, Expiry_Date, purchase_price, sell_price 
-        FROM Medicine_details 
-        WHERE medicine_id = (SELECT medicine_id FROM Medicines WHERE medicine_name = '{medicineName}')
-        ORDER BY Expiry_Date ASC";
+                        SELECT medicine_stock, Expiry_Date, purchase_price, sell_price 
+                        FROM Medicine_details 
+                        WHERE medicine_id = (SELECT medicine_id FROM Medicines WHERE medicine_name = '{medicineName}')
+                        ORDER BY Expiry_Date ASC";
                     DataSet ds = dbclass.Getdata(queryStock);
 
                     if (ds != null && ds.Tables[0].Rows.Count > 0)
@@ -228,16 +255,16 @@ namespace Clinic_Management_System
                                 remainingQuantity -= quantityToDeduct;
 
                                 string queryInsert = dialog == "Prescription"
-                                    ? $@"INSERT INTO Prescribed_Medicine (medicine_name, quantity, prescription_id) VALUES ('{medicineName}', {quantityToDeduct},  {prescription_id})"
-                                    : $"INSERT INTO ipd_prescribed_medicine(medicine_name, quantity, treatment_id) VALUES ('{medicineName}', {quantityToDeduct},  {prescription_id})";
+                                    ? $@"INSERT INTO Prescribed_Medicine (medicine_name, quantity, prescription_id) VALUES ('{medicineName}', {quantityToDeduct}, {prescription_id})"
+                                    : $@"INSERT INTO ipd_prescribed_medicine(medicine_name, quantity, treatment_id) VALUES ('{medicineName}', {quantityToDeduct}, {prescription_id})";
 
                                 dbclass.databaseoperations(queryInsert);
 
                                 string queryUpdateStock = $@"
-    UPDATE Medicine_details 
-    SET medicine_stock = CAST(medicine_stock AS BIGINT) - {quantityToDeduct}
-    WHERE medicine_id = (SELECT medicine_id FROM Medicines WHERE medicine_name = '{medicineName}')
-    AND Expiry_Date = '{expiryDate:yyyy-MM-dd}'";
+                                    UPDATE Medicine_details 
+                                    SET medicine_stock = CAST(medicine_stock AS BIGINT) - {quantityToDeduct}
+                                    WHERE medicine_id = (SELECT medicine_id FROM Medicines WHERE medicine_name = '{medicineName}')
+                                    AND Expiry_Date = '{expiryDate:yyyy-MM-dd}'";
 
                                 dbclass.databaseoperations(queryUpdateStock);
 
@@ -273,60 +300,39 @@ namespace Clinic_Management_System
             {
                 profit = charges + med_price;
                 ttl_pres_charges += charges;
-                string pres_query;
 
-                if (dialog == "Prescription")
-                {
-                    pres_query = $"UPDATE prescription SET total_charge = {ttl_pres_charges} WHERE prescription_id = {prescription_id}";
-                    dbclass.databaseoperations(pres_query);
-                    string profitQuery = $"INSERT INTO profit (profit_date, amount) VALUES ('{DateTime.Now}', {profit})";
-                    dbclass.databaseoperations(profitQuery);
-                }
-                else
-                {
-                    pres_query = $"UPDATE ipd_table SET total_pay = COALESCE(total_pay, 0) + {ttl_pres_charges} WHERE patient_id = {patient_id};";
-                    dbclass.databaseoperations(pres_query);
-                    string profitQuery = $"INSERT INTO ipd_profit (profit_date, amount) VALUES ('{DateTime.Now}', {profit})";
-                    dbclass.databaseoperations(profitQuery);
-                }
+                string pres_query = dialog == "Prescription"
+                    ? $"UPDATE prescription SET total_charge = {ttl_pres_charges} WHERE prescription_id = {prescription_id}"
+                    : $"UPDATE ipd_table SET total_pay = COALESCE(total_pay, 0) + {ttl_pres_charges} WHERE patient_id = {patient_id};";
+
+                dbclass.databaseoperations(pres_query);
+
+                string profitQuery = dialog == "Prescription"
+                    ? $"INSERT INTO profit (profit_date, amount) VALUES ('{DateTime.Now}', {profit})"
+                    : $"INSERT INTO ipd_profit (profit_date, amount) VALUES ('{DateTime.Now}', {profit})";
+
+                dbclass.databaseoperations(profitQuery);
 
                 MessageBox.Show("Medicines Added");
 
-                // Navigation logic after all medicines are processed
                 this.Hide();
-                if (dialog == "Prescription")
-                {
-                    ShowPatients details = new ShowPatients();
-                    Parent.Controls.Add(details);
-                    details.Dock = DockStyle.Fill;
-                    Parent.Controls.Remove(this);
-                    this.Dispose();
-                }
-                else
-                {
-                    ShowAdmittedPatient details = new ShowAdmittedPatient("Doctor");
-                    Parent.Controls.Add(details);
-                    details.Dock = DockStyle.Fill;
-                    Parent.Controls.Remove(this);
-                    this.Dispose();
-                }
+                Control details = dialog == "Prescription"
+                    ? (Control)new ShowPatients()
+                    : new ShowAdmittedPatient("Doctor");
+
+                Parent.Controls.Add(details);
+                details.Dock = DockStyle.Fill;
+                Parent.Controls.Remove(this);
+                this.Dispose();
             }
         }
-
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             panel1.AutoScroll = true;
         }
 
-        private void btnSave_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_generate_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void btnSave_Click_1(object sender, EventArgs e) { }
+        private void btn_generate_Click(object sender, EventArgs e) { }
     }
 }
