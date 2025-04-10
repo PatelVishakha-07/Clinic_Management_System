@@ -136,7 +136,7 @@ namespace Clinic_Management_System
             SELECT 1 
             FROM Medicine_details 
             WHERE Medicine_details.medicine_id = Medicines.medicine_id 
-            AND CAST(medicine_stock AS INTEGER) > 0 
+            AND CAST(medicine_stock AS BIGINT) > 0 
             AND Expiry_Date > CURRENT_DATE
         )";
 
@@ -235,7 +235,7 @@ namespace Clinic_Management_System
 
                                 string queryUpdateStock = $@"
     UPDATE Medicine_details 
-    SET medicine_stock = medicine_stock - {quantityToDeduct}
+    SET medicine_stock = CAST(medicine_stock AS BIGINT) - {quantityToDeduct}
     WHERE medicine_id = (SELECT medicine_id FROM Medicines WHERE medicine_name = '{medicineName}')
     AND Expiry_Date = '{expiryDate:yyyy-MM-dd}'";
 
