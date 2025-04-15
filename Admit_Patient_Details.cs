@@ -162,8 +162,9 @@ namespace Clinic_Management_System
             {
                 Discharge_Charge form = new Discharge_Charge(this);
                 form.ShowDialog();
+                string connString = dbclass.GetConnectionString();
 
-                using (var conn = new NpgsqlConnection("Host=localhost;Port=5432;Username=postgres;Password=2002;Database=Clinic_Management"))
+                using (var conn = new NpgsqlConnection(connString))
                 {
                     conn.Open();
                     string updatePay = $"UPDATE ipd_table SET total_pay = COALESCE(total_pay, 0) + {amount} WHERE patient_id = {patientId} AND ipd_id = {ipd_id} RETURNING total_pay";

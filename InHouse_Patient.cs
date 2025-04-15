@@ -36,7 +36,8 @@ namespace Clinic_Management_System
                 changingname = name.Text;
 
                 string query = "SELECT patient_id, name, contact_no, age, address, gender FROM Patients WHERE name ILIKE @value";
-                NpgsqlConnection conn = new NpgsqlConnection("Host=localhost;Port=5432;Username=postgres;Password=2002;Database=Clinic_Management;");
+                string connString = dbclass.GetConnectionString();
+                NpgsqlConnection conn = new NpgsqlConnection(connString);
                 try
                 {
                     conn.Open();

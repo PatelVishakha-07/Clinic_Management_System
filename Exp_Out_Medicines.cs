@@ -57,13 +57,36 @@ namespace Clinic_Management_System
         {
             if (e.ColumnIndex == dataGridView1.Columns["delete"].Index && e.RowIndex >= 0)
             {
-                int medicineId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["Medicine_Id"].Value.ToString());
-                string query = "delete from medicine_details where medicine_id=" + medicineId;
-                databaseclass dbClass = new databaseclass();
-                dbClass.databaseoperations(query);
-                string q2 = "delete from medicines where medicine_id=" + medicineId;
-                dbClass.databaseoperations(q2);
+                int medicineId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["Medicine_Id"].Value);
+                DateTime selectedExpiry = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells["expiry_date"].Value);
+                string expiryDateFormatted = selectedExpiry.ToString("yyyy-MM-dd");
+
+                if (st == "expire")
+                {
+                    // Delete only the specific batch with matching expiry date
+                    string query = $"DELETE FROM medicine_details WHERE medicine_id = {medicineId} AND expiry_date = '{expiryDateFormatted}'";
+                    dbClass.databaseoperations(query);
+                }
+                else if (st == "out of stock")
+                {
+                    // Delete batch if its stock is 0 (already filtered)
+                    string query = $"DELETE FROM medicine_details WHERE medicine_id = {medicineId} AND medicine_stock = '0' ";
+                    dbClass.databaseoperations(query);
+                }
+
+                // Check if any batches are left for this medicine
+                string checkQuery = $"SELECT COUNT(*) FROM medicine_details WHERE medicine_id = {medicineId}";
+                DataSet dsCheck = dbClass.Getdata(checkQuery);
+                int remainingBatches = Convert.ToInt32(dsCheck.Tables[0].Rows[0][0]);
+
+                if (remainingBatches == 0)
+                {
+                    string deleteMedicine = $"DELETE FROM medicines WHERE medicine_id = {medicineId}";
+                    dbClass.databaseoperations(deleteMedicine);
+                }
+
                 MessageBox.Show("Record Deleted Successfully");
+
                 if (st == "expire")
                 {
                     ExpiredMedicine();

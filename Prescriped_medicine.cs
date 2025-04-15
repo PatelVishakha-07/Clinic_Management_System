@@ -171,9 +171,11 @@ namespace Clinic_Management_System
         AND Expiry_Date > CURRENT_DATE
     )";
 
+            string connString = dbclass.GetConnectionString();
+
             if (!string.IsNullOrEmpty(txtBox.Text))
             {
-                using (NpgsqlConnection conn = new NpgsqlConnection("Host=localhost;Port=5432;Username=postgres;Password=2002;Database=Clinic_Management;"))
+                using (NpgsqlConnection conn = new NpgsqlConnection(connString))
                 {
                     conn.Open();
                     NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(query, conn);

@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Text.RegularExpressions;
 
 namespace Clinic_Management_System
 {
@@ -104,8 +94,9 @@ namespace Clinic_Management_System
 
                 if (!lblName.Visible && !lblCmp.Visible && !lblStock.Visible && !lblPurchase.Visible && !lblSell.Visible)
                 {
-                    string query = "update Medicines set Medicine_Name= '" + medicineName + "', Company_Name= '" + companyName +
-                        "',  medicine_type='"+ type + "' where Medicine_Id= " + medicineId;
+                    string query = "UPDATE Medicines SET Medicine_Name= '" + medicineName + "', Company_Name= '" + companyName +
+    "', medicine_type= '" + type + "' WHERE Medicine_Id = (SELECT Medicine_Id FROM Medicine_Details WHERE md_id = " + md_id + ")";
+
 
                     databaseclass dbClass = new databaseclass();
                     dbClass.databaseoperations(query);

@@ -195,50 +195,50 @@ namespace Clinic_Management_System
                 changingname = txtName.Text;
 
                 string query = "SELECT medicine_id, medicine_name, company_name, medicine_type FROM Medicines WHERE medicine_name ILIKE @value";
-                NpgsqlConnection conn = new NpgsqlConnection("Host=localhost;Port=5432;Username=postgres;Password=2002;Database=Clinic_Management;");
+                //NpgsqlConnection conn = new NpgsqlConnection("Host=localhost;Port=5432;Username=postgres;Password=2002;Database=Clinic_Management;");
+                string connString = dbClass.GetConnectionString();
                 try
                 {
-                    conn.Open();
-
-                    NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(query, conn);
-                    adapter.SelectCommand.Parameters.AddWithValue("@value", "%" + changingname + "%");
-                    DataSet ds = new DataSet();
-                    adapter.Fill(ds);
-
-                    // Clear previous data
-                    listBox1.Items.Clear();
-                    medicineDataDict.Clear();
-
-                    if (ds.Tables[0].Rows.Count > 0)
+                    using (NpgsqlConnection conn = new NpgsqlConnection(connString))
                     {
-                        foreach (DataRow row in ds.Tables[0].Rows)
+                        conn.Open();
+
+                        NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(query, conn);
+                        adapter.SelectCommand.Parameters.AddWithValue("@value", "%" + changingname + "%");
+                        DataSet ds = new DataSet();
+                        adapter.Fill(ds);
+
+                        // Clear previous data
+                        listBox1.Items.Clear();
+                        medicineDataDict.Clear();
+
+                        if (ds.Tables[0].Rows.Count > 0)
                         {
-                            // Format details to display in ListBox
-                            string patientDisplay = $"{row["medicine_name"]}, Company Name: {row["company_name"]}, Type: {row["medicine_type"]}";
-
-                            listBox1.Items.Add(patientDisplay);
-
-                            // Store patient data in a dictionary using patient_id as key
-                            medicineDataDict[patientDisplay] = new MedicineData
+                            foreach (DataRow row in ds.Tables[0].Rows)
                             {
-                                patient_id = int.Parse(row["medicine_id"].ToString()),
-                                company_Name = row["company_name"].ToString(),
-                                strips = row["medicine_type"].ToString(),
-                            };
+                                // Format details to display in ListBox
+                                string patientDisplay = $"{row["medicine_name"]}, Company Name: {row["company_name"]}, Type: {row["medicine_type"]}";
+
+                                listBox1.Items.Add(patientDisplay);
+
+                                // Store patient data in a dictionary using patient_id as key
+                                medicineDataDict[patientDisplay] = new MedicineData
+                                {
+                                    patient_id = int.Parse(row["medicine_id"].ToString()),
+                                    company_Name = row["company_name"].ToString(),
+                                    strips = row["medicine_type"].ToString(),
+                                };
+                            }
                         }
-                    }
-                    else
-                    {
-                        listBox1.Visible = false;
+                        else
+                        {
+                            listBox1.Visible = false;
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Error: {ex.Message}");
-                }
-                finally
-                {
-                    conn.Close();
                 }
             }
             else
