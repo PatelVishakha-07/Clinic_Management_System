@@ -220,7 +220,7 @@ namespace Clinic_Management_System
             string updatePres = $"UPDATE Prescription SET total_charge = {ttl_pres_charges} WHERE prescription_id = {prescription_id}";
             dbclass.databaseoperations(updatePres);
 
-            string profitQuery = $"INSERT INTO profit (profit_date, amount) VALUES ('{DateTime.Now}', {profit})";
+            string profitQuery = $"INSERT INTO profit (profit_date, amount) VALUES ('{DateTime.Now:yyyy-MM-dd HH:mm:ss}', {profit})";
             dbclass.databaseoperations(profitQuery);
 
             MessageBox.Show("Prescription saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
