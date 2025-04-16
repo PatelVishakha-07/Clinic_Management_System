@@ -20,25 +20,31 @@ namespace Clinic_Management_System
             string formattedDate = date.ToString("yyyy-MM-dd");
 
             string query = "SELECT m.medicine_id, m.medicine_name, m.company_name, m.medicine_type, " +
-               "md.medicine_stock, md.expiry_date, md.purchase_price, md.sell_price, md.md_id " +
-               "FROM Medicines m " +
-               "JOIN Medicine_Details md ON m.medicine_id = md.medicine_id " +
-               "WHERE md.expiry_date > '" + formattedDate + "' " +
-               "AND CAST(md.medicine_stock AS INTEGER) > 0 " +
-               "AND md.expiry_date = (" +
-                   "SELECT MIN(md2.expiry_date) " +
-                   "FROM Medicine_Details md2 " +
-                   "WHERE md2.medicine_id = m.medicine_id " +
-                   "AND md2.expiry_date > '" + formattedDate + "' " +
-                   "AND CAST(md2.medicine_stock AS BIGINT) > 0" +
-               ") " +
-               "ORDER BY m.medicine_name;";
+                           "md.medicine_stock, md.expiry_date, md.purchase_price, md.sell_price, md.md_id " +
+                           "FROM Medicines m " +
+                           "JOIN Medicine_Details md ON m.medicine_id = md.medicine_id " +
+                           "WHERE md.expiry_date > '" + formattedDate + "' " +
+                           "AND CAST(md.medicine_stock AS INTEGER) > 0 " +
+                           "AND md.expiry_date = (" +
+                               "SELECT MIN(md2.expiry_date) " +
+                               "FROM Medicine_Details md2 " +
+                               "WHERE md2.medicine_id = m.medicine_id " +
+                               "AND md2.expiry_date > '" + formattedDate + "' " +
+                               "AND CAST(md2.medicine_stock AS BIGINT) > 0" +
+                           ") " +
+                           "ORDER BY m.medicine_name;";
 
             DataSet ds = dbclass.Getdata(query);
             allMedicines.Clear();
             foreach (DataRow row in ds.Tables[0].Rows)
             {
-                allMedicines.Add(row["medicine_name"].ToString());
+                string medicineName = row["medicine_name"].ToString();
+                string companyName = row["company_name"].ToString();
+                string medicineType = row["medicine_type"].ToString();
+
+                // Concatenate these values into a single string
+                string displayText = $"{medicineName} - {companyName} ({medicineType})";
+                allMedicines.Add(displayText);
             }
             listMedicine.DataSource = new BindingSource(allMedicines, null);
 
@@ -72,6 +78,26 @@ namespace Clinic_Management_System
             txtGender.Text = gender.ToString();
         }
 
+        private (string name, string company, string type) ParseMedicine(string displayText)
+        {
+            try
+            {
+                int dashIndex = displayText.IndexOf(" - ");
+                int parenIndex = displayText.LastIndexOf(" (");
+
+                string name = displayText.Substring(0, dashIndex).Trim();
+                string company = displayText.Substring(dashIndex + 3, parenIndex - dashIndex - 3).Trim();
+                string type = displayText.Substring(parenIndex + 2, displayText.Length - parenIndex - 3).Trim(); // Fix here
+
+                return (name, company, type);
+            }
+            catch
+            {
+                MessageBox.Show("Invalid medicine format. Please reselect the medicine.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return ("", "", "");
+            }
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtDisease.Text) || string.IsNullOrWhiteSpace(txtCharges.Text) || prescriptionTable.Rows.Count == 0)
@@ -101,11 +127,14 @@ namespace Clinic_Management_System
                 string medicineName = row["Medicine"].ToString();
                 int requestedQty = int.Parse(row["Quantity"].ToString());
 
-                string queryStock = $@"
-SELECT SUM(CAST(medicine_stock AS BIGINT)) 
-FROM Medicine_Details 
-WHERE medicine_id = (SELECT medicine_id FROM Medicines WHERE medicine_name = '{medicineName}')
-AND expiry_date > '{DateTime.Now:yyyy-MM-dd}'";
+                (string name, string company, string type) = ParseMedicine(medicineName);
+                string queryStock = $@"SELECT SUM(CAST(md.medicine_stock AS BIGINT)) 
+                                        FROM Medicine_Details md
+                                        JOIN Medicines m ON m.medicine_id = md.medicine_id 
+                                        WHERE m.medicine_name = '{name}'
+                                        AND m.company_name = '{company}' 
+                                        AND m.medicine_type = '{type}' 
+                                        AND md.expiry_date > '{DateTime.Now:yyyy-MM-dd}'";
 
                 DataSet dsStock = dbclass.Getdata(queryStock);
                 int totalAvailableStock = dsStock.Tables[0].Rows[0][0] != DBNull.Value
@@ -114,7 +143,7 @@ AND expiry_date > '{DateTime.Now:yyyy-MM-dd}'";
 
                 if (requestedQty > totalAvailableStock)
                 {
-                    MessageBox.Show($"Not enough stock for {medicineName}. Requested: {requestedQty}, Available: {totalAvailableStock}", "Stock Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show($"Not enough stock for {name}. Requested: {requestedQty}, Available: {totalAvailableStock}", "Stock Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
             }
@@ -136,13 +165,15 @@ AND expiry_date > '{DateTime.Now:yyyy-MM-dd}'";
                 string medicineName = row["Medicine"].ToString();
                 int quantity = int.Parse(row["Quantity"].ToString());
 
-                string queryStock = $@"
-SELECT medicine_stock, Expiry_Date, purchase_price, sell_price 
-FROM Medicine_details 
-WHERE medicine_id = (SELECT medicine_id FROM Medicines WHERE medicine_name = '{medicineName}')
-AND expiry_date > '{DateTime.Now:yyyy-MM-dd}'
-ORDER BY Expiry_Date ASC";
-
+                (string name, string company, string type) = ParseMedicine(medicineName);
+                string queryStock = $@"SELECT md.medicine_stock, md.Expiry_Date, md.purchase_price, md.sell_price 
+                                        FROM Medicine_Details md 
+                                        JOIN Medicines m ON m.medicine_id = md.medicine_id 
+                                        WHERE m.medicine_name = '{name}' 
+                                        AND m.company_name = '{company}' 
+                                        AND m.medicine_type = '{type}' 
+                                        AND md.expiry_date > '{DateTime.Now:yyyy-MM-dd}' 
+                                        ORDER BY md.Expiry_Date ASC";
 
                 DataSet ds = dbclass.Getdata(queryStock);
 
@@ -161,13 +192,14 @@ ORDER BY Expiry_Date ASC";
                         if (quantityToDeduct > 0)
                         {
                             string insertMedQuery = $@"INSERT INTO Prescribed_Medicine (medicine_name, quantity, prescription_id) 
-VALUES ('{medicineName}', {quantityToDeduct}, {prescription_id})";
+                                                    VALUES ('{name}', {quantityToDeduct}, {prescription_id})";
                             dbclass.databaseoperations(insertMedQuery);
 
-                            string updateStockQuery = $@" UPDATE Medicine_details 
-                        SET medicine_stock = CAST(medicine_stock AS BIGINT) - {quantityToDeduct}
-                        WHERE medicine_id = (SELECT medicine_id FROM Medicines WHERE medicine_name = '{medicineName}')
-                        AND Expiry_Date = '{expiryDate:yyyy-MM-dd}'";
+                            string updateStockQuery = $@"UPDATE Medicine_details 
+                                                        SET medicine_stock = CAST(medicine_stock AS BIGINT) - {quantityToDeduct}
+                                        WHERE medicine_id = (SELECT medicine_id FROM Medicines WHERE medicine_name = '{name}' and 
+                                        company_name = '{company}' and medicine_type = '{type}' )
+                                                        AND Expiry_Date = '{expiryDate:yyyy-MM-dd}'";
 
                             dbclass.databaseoperations(updateStockQuery);
 
