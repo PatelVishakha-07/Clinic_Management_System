@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
+﻿using System.Data;
 
 namespace Clinic_Management_System
 {
@@ -148,7 +142,7 @@ FROM Medicine_details
 WHERE medicine_id = (SELECT medicine_id FROM Medicines WHERE medicine_name = '{medicineName}')
 AND expiry_date > '{DateTime.Now:yyyy-MM-dd}'
 ORDER BY Expiry_Date ASC";
-                
+
 
                 DataSet ds = dbclass.Getdata(queryStock);
 
@@ -250,8 +244,8 @@ VALUES ('{medicineName}', {quantityToDeduct}, {prescription_id})";
             }
         }
 
-        // Unused event handlers
-        private void panel1_Paint(object sender, PaintEventArgs e) { }
+// Unused event handlers
+private void panel1_Paint(object sender, PaintEventArgs e) { }
         private void label10_Click(object sender, EventArgs e) { }
         private void label11_Click(object sender, EventArgs e) { }
         private void txtCharges_TextChanged(object sender, EventArgs e) { }

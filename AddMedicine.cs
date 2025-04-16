@@ -124,6 +124,17 @@ namespace Clinic_Management_System
                     if (ds.Tables[0].Rows.Count > 0)
                     {
                         int medID = Convert.ToInt32(ds.Tables[0].Rows[0]["medicine_id"].ToString());
+
+                        // Check for existing same entry in Medicine_Details
+                        string checkDuplicate = $"SELECT * FROM Medicine_Details WHERE medicine_id = {medID} AND expiry_date = '{date}' AND purchase_price = {float.Parse(purchase)} AND sell_price = {float.Parse(sell)} AND medicine_stock = '{stock}'";
+                        DataSet checkDs = dbClass.Getdata(checkDuplicate);
+
+                        if (checkDs.Tables[0].Rows.Count > 0)
+                        {
+                            MessageBox.Show("This medicine with the same details already exists.");
+                            return;
+                        }
+
                         string q2 = "insert into Medicine_Details(medicine_stock, expiry_date, purchase_price, sell_price, medicine_id) values('" +
                             stock + "', '" + date + "', " + float.Parse(purchase) + ", " + float.Parse(sell) + "," + medID + ");";
                         dbClass.databaseoperations(q2);
